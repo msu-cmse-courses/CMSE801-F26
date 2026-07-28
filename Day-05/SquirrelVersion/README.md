@@ -1,0 +1,1 @@
+From Devin (September 2024): I moved back to the Lyft assignment but wanted to leave the Squirrel assignment here for those who might want to try it in future offerings of CMSE 801.

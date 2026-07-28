@@ -1,0 +1,12 @@
+*.ipynb_checkpoints*
+.idea/
+*.key
+_build
+*.DS_store*
+*.DS_Store*
+Slides/*.slides.html
+
+# Liz puts Ferpa content on her local machine here that she doesn't want on the website.
+LocalOnly/*   
+LocalOnly/HW3-compare/*
+__pycache__/

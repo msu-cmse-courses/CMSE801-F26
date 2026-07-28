@@ -1,0 +1,197 @@
+%%%%
+%% class participation CMSE 801 Fall 2021
+%%%%
+
+%%%%
+%%  On charge la classe ``exam'' de Hirschborn
+%%%%
+
+\documentclass[oneside,letterpaper,11pt]{exam}
+
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amstext}
+\usepackage{amsbsy}
+\usepackage{amsopn}
+\usepackage{amsthm}
+\usepackage{amsxtra}
+\usepackage{upref}
+\usepackage{amssymb}
+\usepackage{isomath}% Pour utiliser, mathbold
+\usepackage{mathtools}
+
+\usepackage[autostyle]{csquotes}
+
+\usepackage [latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[dvips]{graphicx}
+
+\usepackage{epic}
+\usepackage{dcolumn}
+
+%%
+%   Reconfigurations locales
+%%
+
+%\usepackage{CP}
+
+
+\usepackage{color}
+\definecolor{wwwr}{rgb}{0.75,0,0}
+\definecolor{wwwv}{rgb}{0,0.5,0}
+\definecolor{wwwb}{rgb}{0,0,0.75}
+\definecolor{wwwbr}{rgb}{0.6,0,0}
+
+%%
+%   On veut des hyperliens!
+%%
+
+\usepackage[pdftex,
+            pdfauthor={},
+            pdftitle={class participation MSU Fall 2021},
+            pdfcreator={pdflatex},
+            colorlinks=wwwb,
+            urlcolor=wwwb,
+            pdfpagemode=None,
+            bookmarksopen=True,
+            breaklinks=True,
+            pdffitwindow=True,
+            pdfcenterwindow=True,
+            pdfnewwindow=True,
+            pdfstartview=XYZ]{hyperref}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %% PACKAGE QUE J'AI AJOUTE
+
+\usepackage{isomath}% Pour utiliser, mathbold
+\usepackage{mathtools}
+
+% BEGIN TIKZ
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows.meta}
+  \pgfplotsset{compat=newest}
+  %% the following commands are sometimes needed
+  \usetikzlibrary{plotmarks}
+  \usepackage{grffile}
+
+\pgfplotsset{every axis/.append style={
+        scaled ticks = false, 
+        tick label style={/pgf/number format/fixed}
+    }
+}
+
+\usetikzlibrary{external}
+\tikzexternalize[prefix=./ext/]
+\newlength\figureheight 
+\newlength\figurewidth 
+% END TIKZ
+
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{patterns}
+\usepackage{tikz-3dplot}
+\newcommand{\bb}[1]{ \mbox{\boldmath $ #1 $} }
+\newcommand{\bbb}[1]{ \mbox{\boldmath $ \mathrm{#1} $} }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\usepackage{mlp}
+
+%\usersfrenchoptions{\renewcommand{\figurename}{Figure}}
+%\usersfrenchoptions{\def\captionseparator{ }}
+%\usersfrenchoptions{\let\captionfont\textup}
+%\usersfrenchoptions{\def\pagename{}}
+
+%%%%
+%%  The text begins here...
+%%%%
+\usepackage{enumitem}
+\begin{document}
+
+%%
+%   The title
+%%
+\begin{center}
+  \normalsize{\textsc{Effective Classroom Participation}}
+  \\\vspace{0.25cm}
+  %\normalsize{11 March  2021}
+  \vspace{0.25cm}
+\end{center}
+
+\firstpagefooter{}{Page \thepage}{}
+\pointsinmargin
+
+{\noindent
+In the learning environment fostered in this course it is each group member's own responsibility to seek a complete understanding of the concepts involved in each day's activities. In order to do this, you must actively engage in the activities and practices of the learning environment. It is not sufficient to passively listen and hope to learn everything outside of the time in the learning environment by yourself.} \\
+
+{\noindent In some cases other members of your group will have a greater prior knowledge of the subject matter. In this situation it is their responsibility to help the other students in the group learn by explaining and teaching the concepts involved. This will help you to learn from each other! In addition, by sharing what they know, the students with prior knowledge can identify any holes in their own understanding.}\\
+
+{\noindent It is also each group member's responsibility to help keep the group focused on the project and to maintain a good group working environment.}\\
+
+{\noindent To help guide how you should participate in this course, here are some guidelines about how you should approach class time:}
+
+\begin{center}
+	\vspace{5pt}
+	{Group Understanding}
+	\vspace{5pt}
+\end{center}
+\begin{itemize}
+\item[] Peer tutoring:
+\begin{itemize}
+\item[] Make sure everybody understands the concepts and plan being discussed.\\[-15pt]
+\item[] If a group member does not understand something, do your best to explain it (make sure to offer evidence and justifications for your understanding).
+\end{itemize}
+
+\item[]
+{\noindent Learning issues:}
+\begin{itemize}
+\item[] Think about how you will explain a concept or concepts to the group.\\[-15pt]
+\item[] How can you explain this issue in your own words?\\[-15pt]
+\item[] Is there an analogy or real life experience you can use to more clearly relate this concept?
+\end{itemize}
+
+\item[] {\noindent Critique the understanding/arguments of others:}
+\begin{itemize}
+\item[] If an argument or others' understanding of a topic does not fit with your own understanding, present a logical argument as to what does not sit right with you.\\[-15pt]
+\item[] Try to articulate your problems with an argument by any reasonable means, including by speaking, drawing pictures, flowcharts, diagrams, pseudo-code, etc. (You may not know the particular technical terms/jargon, but try to relate your problem in your own words).\\[-15pt]
+\item[] Above all, be respectful of each others' ideas and constructive in your suggestions and criticisms!
+\end{itemize}
+
+\end{itemize}
+
+\newpage
+
+\begin{center}
+	\vspace{5pt}
+	{Group Focus}
+	\vspace{5pt}
+\end{center}
+
+\begin{itemize}
+\item[] Support the opinions of others in your group.\\[-15pt]
+\item[] Make sure the group is always open to new ideas from each group member, and take steps to ensure that all voices are heard.\\[-15pt]
+\item[] Help to analyze and identify differences when group members are disagreeing.\\[-15pt]
+\item[] Give recognition to others in your group for their contributions.
+\end{itemize}
+
+
+
+\begin{center}
+	\vspace{5pt}
+	{Individual Understanding}
+	\vspace{5pt}
+\end{center}
+
+\begin{itemize}
+\item[] Ensure you understand what group members are saying by asking questions.\\[-15pt]
+\item[] Ask others to explain their understanding: make sure to seek justifications and supporting evidence from them.\\[-15pt]
+\item[] Look for possible mistakes in your group members' ideas for how to move forward with a given activity.\\[-15pt]
+\item[] If you believe you have identified a mistake in a group member's reasoning, express this in a reasonable manner and offer evidence for your argument.
+\end{itemize}
+
+
+\end{document}
+
+%%
+%   ...and the document ends here.
+%%

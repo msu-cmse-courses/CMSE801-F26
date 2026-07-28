@@ -1,0 +1,39 @@
+.rise-enabled {
+    background-color: #ffffff !important;
+    /* border-top: 30px #919191 solid;
+    border-bottom: 30px #919191 solid; */
+}
+
+/*
+.question {
+    color: #008;
+}
+*/
+
+/*
+ .your_turn {
+    color: #e08414;
+    font-size: 100%;
+    font-weight: bold;
+}
+*/
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+    color: #18453B;
+}
+
+.rendered_html h1 {
+    color: #008208;
+}
+
+/*
+.rendered_html table, .rendered_html th, .rendered_html tr, .rendered_html td {
+    font-size: 100%;
+}
+*/
+
+/*
+.container.slides .celltoolbar, .container.slides .hide-in-slideshow {
+    display: None ! important;
+}
+*/

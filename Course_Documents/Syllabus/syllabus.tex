@@ -1,0 +1,483 @@
+%%%%
+%% Syllabus CMSE 801 Fall 2021
+%%%%
+
+%%%%
+%%  On charge la classe ``exam'' de Hirschborn
+%%%%
+
+\documentclass[oneside,letterpaper,11pt]{exam}
+
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amstext}
+\usepackage{amsbsy}
+\usepackage{amsopn}
+\usepackage{amsthm}
+\usepackage{amsxtra}
+\usepackage{upref}
+\usepackage{amssymb}
+\usepackage{isomath}% Pour utiliser, mathbold
+\usepackage{mathtools}
+
+\usepackage[autostyle]{csquotes}
+
+\usepackage [latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[dvips]{graphicx}
+
+\usepackage{epic}
+\usepackage{dcolumn}
+
+%%
+%   Reconfigurations locales
+%%
+
+%\usepackage{CP}
+
+
+\usepackage{color}
+\definecolor{wwwr}{rgb}{0.75,0,0}
+\definecolor{wwwv}{rgb}{0,0.5,0}
+\definecolor{wwwb}{rgb}{0,0,0.75}
+\definecolor{wwwbr}{rgb}{0.6,0,0}
+
+%%
+%   On veut des hyperliens!
+%%
+
+\usepackage[pdftex,
+            pdfauthor={},
+            pdftitle={Syllabus MSU Fall 2021},
+            pdfcreator={pdflatex},
+            colorlinks=wwwb,
+            urlcolor=wwwb,
+            pdfpagemode=None,
+            bookmarksopen=True,
+            breaklinks=True,
+            pdffitwindow=True,
+            pdfcenterwindow=True,
+            pdfnewwindow=True,
+            pdfstartview=XYZ]{hyperref}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %% PACKAGE QUE J'AI AJOUTE
+
+\usepackage{isomath}% Pour utiliser, mathbold
+\usepackage{mathtools}
+
+% BEGIN TIKZ
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows.meta}
+  \pgfplotsset{compat=newest}
+  %% the following commands are sometimes needed
+  \usetikzlibrary{plotmarks}
+  \usepackage{grffile}
+
+\pgfplotsset{every axis/.append style={
+        scaled ticks = false, 
+        tick label style={/pgf/number format/fixed}
+    }
+}
+
+\usetikzlibrary{external}
+\tikzexternalize[prefix=./ext/]
+\newlength\figureheight 
+\newlength\figurewidth 
+% END TIKZ
+
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{patterns}
+\usepackage{tikz-3dplot}
+\newcommand{\bb}[1]{ \mbox{\boldmath $ #1 $} }
+\newcommand{\bbb}[1]{ \mbox{\boldmath $ \mathrm{#1} $} }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\usepackage{mlp}
+
+%\usersfrenchoptions{\renewcommand{\figurename}{Figure}}
+%\usersfrenchoptions{\def\captionseparator{ }}
+%\usersfrenchoptions{\let\captionfont\textup}
+%\usersfrenchoptions{\def\pagename{}}
+
+%%%%
+%%  The text begins here...
+%%%%
+\usepackage{enumitem}
+\begin{document}
+
+%%
+%   The title
+%%
+\begin{center}
+  \normalsize\textsc{SYLLABUS}
+  \\\vspace{0.25cm}
+\textbf{CMSE 801: Introduction to Computational Modeling and Data Analysis} \\
+\textbf{Fall 2022}
+  \\\vspace{0.25cm}
+  %\normalsize{11 March  2021}
+  \vspace{0.25cm}
+\end{center}
+%\textbf{Instructions}:�\emph{This activity should take 1 hour for a group of 2 prepared students. 
+%					  The data points needed for the activity are available in the file activity.ipynb.}\\
+\begin{minipage}[t]{0.49\textwidth}
+%\center
+\emph{Instructor:} 
+\begin{itemize}
+\item[] Dr. Luciano G. Silvestri \\[-18pt]
+\item[] Fixed-term Assistant Professor \\[-22pt]
+\item[] Dept of Computational Mathematics, \phantom{aa} Science and Engineering (CMSE) \\[-22pt]
+\item[] Engineering Building 2502 \\[-22pt]
+\item[] silves28@msu.edu 
+\end{itemize}
+\end{minipage}
+\begin{minipage}[t]{0.49\textwidth}
+%\center
+\emph{Teaching Assistant:} 
+\begin{itemize}
+\item[] Stephen Lee \\[-18pt]
+\item[] Graduate Student in CMSE \\[-22pt]
+\item[] leestep9@msu.edu
+\end{itemize}
+\end{minipage}
+
+\vspace{25pt}
+\begin{minipage}[t]{0.75\textwidth}
+\emph{Days and time:} Monday and Wednesday; 8:30 a.m.-9:50 a.m. \\ [2.5pt]
+\emph{Location:} Engineering Building 1225 
+\end{minipage}
+
+
+ 
+% \begin{center}                          
+%                           \emph{\textbf{Une r\'eponse sans justification se verra
+%                           attribuer la note 0.}}
+%\end{center}
+%%
+%   Quelques d{\'e}finitions
+%%
+
+%\RecustomVerbatimEnvironment{Verbatim}{Verbatim}{frame=single,framesep=0mm,fontsize=\small,commandchars=\\\{\}}
+%\thispagestyle{empty}
+\firstpagefooter{}{Page \thepage}{}
+\pointsinmargin
+
+\begin{center}
+	\vspace{5pt}
+	\textbf{Course Description}
+	\vspace{5pt}
+\end{center}
+{\noindent
+A useful definition of \emph{computational science} is ``the use of computers to analyze and solve scientific problems.'' Over the course of this semester, we will explore various aspects of computational science and will acquire a variety of practical, fundamental computational skills. In addition, we will explore application-driven modeling of various systems, with applications to the physical, life, and social sciences, and also to engineering and mathematics. While we will learn some computer programming over this semester, the goal is utilitarian - this is a course in applied computing, rather than a course intended for traditional computer scientists!} \\
+
+{\noindent By the end of this course, you will be able to:}
+\begin{itemize}
+\item[1.] Gain insight into physical, biological, and social systems through the use of computational algorithms and tools\\[-15pt]
+\item[2.] Write programs to solve common problems in a variety of disciplines\\[-15pt]
+\item[3.] Identify salient features of a system that can be codified into a model\\[-15pt]
+\item[4.] Manipulate, analyze, and visualize datasets and use this data to evaluate models\\[-15pt]
+\item[5.] Have an understanding of basic numerical methods (e.g., numerical integration, differential equations, Monte Carlo) and be able to use them to solve problems\\[-15pt]
+\item[6.] Be able to take results from a scientific computing problem and present it both verbally and in writing
+\end{itemize}
+
+{\noindent We will work toward the goals expressed above throughout this course using a range of activities - primarily by writing software both individually and in small groups, but also through discussion, presentations, and other types of exercises.}
+
+%\newpage
+\begin{center}
+	\vspace{5pt}
+	\textbf{Topics Covered}
+	\vspace{5pt}
+\end{center}
+
+{\noindent The primary topics covered in this course include:}
+\begin{itemize}
+\item[-] Creation of models (making mathematical representations of systems)\\[-15pt]
+\item[-] The basics of functional programming in Python (i.e., variables and types, functions, simple data structures, strings, lists, tuples)\\[-15pt]
+\item[-] Plotting and data visualization\\[-15pt]
+\item[-] File and dataset manipulation\\[-15pt]
+\item[-] Basic numerical techniques, possibly including statistics, linear regression,
+difference equations, Monte Carlo, agent-based modeling, numerical integration
+\end{itemize}
+
+{\noindent Please note that \textbf{creating models to describe and understand systems} (whether they are in the physical, life, or social sciences, or in engineering) is the driving principle of this course - everything else we teach you is in service to this goal!}
+
+
+\begin{center}
+	\vspace{5pt}
+	\textbf{Required Reading Materials}
+	\vspace{5pt}
+\end{center}
+
+{\noindent This class has no required book or course pack. From time to time we will direct you toward outside online resources, but the main materials will be video lectures, instructor course notes, and software.}
+
+
+\begin{center}
+	\vspace{5pt}
+	\textbf{Required Materials for Class}
+	\vspace{5pt}
+\end{center}
+
+{\noindent In-class programming assignments are a critical part of the learning process in this course. To that end, \textbf{you are expected to bring your laptop and its power cord every day.}}\\
+
+{\noindent If you do not have a laptop, or if your laptop won't run the software that we need for class, we will have spare machines to use during class.}\\
+
+{\noindent You are also expected to have a Slack account (\url{https://slack.com/}) and sign up for the CMSE Courses Slack workspace (\url{https://cmse-courses.slack.com/}). Details for doing so are outlined in later sections.}
+
+
+\begin{center}
+	\vspace{5pt}
+	\textbf{Course Activities}
+	\vspace{5pt}
+\end{center}
+
+{\noindent \textbf{Class participation:}}\\[-5pt]
+
+{\noindent Active class participation (led both by the instructor and by students) is critical to the success of this course. As such, \textbf{you are expected to attend class every week, bring the required materials (most importantly, your computer and power cord) and to actively participate in the in-class discussion.}}\\
+
+\newpage
+{\noindent \textbf{Pre-class assignments:}}\\[-5pt]
+
+{\noindent We will assign short assignments that are due prior to class. The purpose of these assignments is to introduce new material and give you some practice with it so that we can focus on experimentation and implementation in class. These assignments will typically consist of one or more short videos or reading assignments and related questions or problems and will be due before class via the course's Desire2Learn page. The deadline for each pre-class assignment is indicated on the course's Desire2Learn page. \textbf{Completing these assignments will be critical for your success in this course.}}\\
+%at 11:59 p.m.\! the night before class via the course's Desire2Learn page. \textbf{Completing these assignments will be critical for your success in this course.}}\\
+
+
+{\noindent \textbf{In-class programming assignments:}}\\[-5pt]
+
+{\noindent Class sessions will be held twice a week and will be broken up into presentations, discussions, and programming activities that will allow you to immediately implement (and get instant feedback on) what you have just learned. In-class programming activities will be turned in at the end of the class session via the course's Desire2Learn page.}\\
+
+
+
+
+{\noindent \textbf{Homework:}}\\[-5pt]
+
+%{\noindent You will have periodic programming assignments (due roughly every other week) that will provide a more in-depth exploration of the materials covered in class. These will be pursued individually (or possibly in pairs), and will be turned in by the given deadline via the course?s Desire2Learn page. In general, homework assignments will be due roughly 3 business days after the material has been discussed in class. Since these assignments are only due every other week, you can expect that they will require two week?s worth of out-of-class effort, so you are encouraged to start your assignments as early as possible.
+%}\\
+
+{\noindent You will have periodic programming assignments that will provide a more in-depth exploration of the materials covered in class. These will be pursued individually, and will be turned in by the given deadline via the course's Desire2Learn page. You can expect that they will require two week's worth of out-of-class effort, so you are encouraged to start your assignments as early as possible.
+}\\[-5pt]
+
+{\noindent Homework assignments that are submitted late will be accepted \textbf{for up to two days beyond the due date} (i.e., 48 hours past the original deadline). \textbf{If the assignment is submitted within 24 hours of the original deadline, there is a 10\% penalty.} This applies even if the assignment is 1 minute late. Similarly, \textbf{if it is submitted in the 24-48 hour window, a 20\% deduction is applied.} Again, \textbf{after the 48th hour, the assignment will no longer be accepted.}}\\
+
+{\noindent \textbf{Midterm exam:}}\\[-5pt]
+
+{\noindent This class will have a midterm exam that will take place on \textbf{Oct 19} during class.}\\
+
+{\noindent \textbf{Final project:}}\\[-5pt]
+
+{\noindent In place of a final exam, this course will have a final project. You will complete it either individually or in pairs outside the classroom. It will involve synthesizing the computational modeling, data analysis, and data visualization techniques that you learned over the course of the term. You will present your project results in an oral presentation. You will also need to turn in the Jupyter notebook for the final project, complete with narrative text and figures that explain your project methods and corresponding results. \textbf{Your project must include references to all work used to complete your project.} The project can be on a topic of your choosing and, if possible, should be related to your research. \textbf{You will be expected to submit a project proposal to the instructor for approval.} More details will be made available as the semester progresses.}
+
+
+\newpage
+
+\begin{center}
+	\vspace{5pt}
+	\textbf{Other Important Information}
+	\vspace{5pt}
+\end{center}
+
+{\noindent \textbf{Course website and calendar:}}\\[-5pt]
+
+{\noindent This course uses a Desire2Learn page for course organization, which can be found at \url{http://d2l.msu.edu}. Accompanying course information, including this syllabus, can be found at this website. All assignments will be handed in via Desire2Learn. Consult the class website for instructions.}\\
+
+{\noindent \textbf{Email:}}\\[-5pt]
+
+{\noindent At times, we will send out important course information via email. This email is sent to your MSU email address (the one that ends in ``@msu.edu''). You are responsible for all information sent out to your University email account, and for checking this account on a regular (daily) basis.}\\
+
+{\noindent \textbf{Class discussion:}}\\[-5pt]
+
+{\noindent We will be using Slack (\url{http://slack.com}) as our means of communicating about course content as the semester progresses. We believe that this will provide an excellent avenue to have discussions not only with course instructors, TAs, and LAs, but also between you and your fellow classmates. In order to join the Slack team that we've created for the course you should complete the following steps:}
+\begin{itemize}
+\item[1.] Go to \url{https://cmse-courses.slack.com/signup} \\[-15pt]
+\item[2.] Once there, sign up using your @msu.edu email address. \\ \textbf{Important:} When you
+create your account, use your MSU NetID as your user name. This will make it easier for your instructors to recognize you within the Slack channels.
+\end{itemize}
+{\noindent Once you've joined the CMSE Courses Slack team, you'll need to \textbf{add yourself to ``cmse801-f22''}. To add yourself to this channel, click on the ``Channels'' header and search for the appropriate channel.}\\[-5pt]
+
+{\noindent The channel will be the place to go for any questions about assignments in the course or issues you're having with your computer or Python. We encourage you to help out other classmates when you can! The instructor may also send out important messages relevant to the course.}\\[-5pt]
+
+{\noindent In order to ensure that Slack is an appropriately used tool that does not become overly time-consuming for the course instructor or TA, we have a list of rules for how we expect you to use Slack. They are:}
+\begin{itemize}
+\item[1.] Before you ask a question, be sure to check the channel history to see if the question has already been answered.\\[-15pt]
+\item[2.] The Slack team is primarily for you, the students, so help each other.\\[-15pt]
+\item[3.] The TA will monitor the channel, but will defer to the students to work through things. They will only enter a conversation if students are going down the wrong path and/or there are too few other students involved. However, you should not expect that the TA will always be available. The TA will spend a limited amount of time ``logged in'' to Slack and you are expected to be respectful of their time.\\[-15pt]
+\item[4.] Slack is meant to be used to help you when you are stuck with a minor issue. If you are having major issues or trouble understanding the concept, go to office hours. Office hours are meant for more in-depth discussions of course content.
+\\[-15pt]
+\item[5.] The course instructor will occasionally check Slack, primarily to examine progress. While they may offer help, do not rely on it. The instructor will not respond to the same student twice within a 30 minute time interval.\\[-15pt]
+\item[6.] Only in rare cases should you contact an instructor through a private channel. But, if you are struggling, feel free to use this option.\\[-15pt]
+\item[7.] \textbf{Do not} post your solutions to out-of-class assignments directly into Slack unless prompted by an instructor.\\[-15pt]
+\item[8.] Be courteous to everyone on Slack. Students who are being rude or who are excessively posting might be banned from posting on the course Slack channel.
+\end{itemize}
+
+
+
+{\noindent \textbf{Class attendance:}}\\[-5pt]
+
+{\noindent This class is heavily based on material presented and worked on in class, and it is critical that you attend and participate fully every week! Therefore, class attendance is absolutely required. \textbf{An unexcused absence will result in zero points for the day, which includes the in-class programming assignment points.} \textbf{\emph{Arriving late or leaving early without prior arrangement with the instructor of your session counts as an unexcused absence.}} Note that if you have a legitimate reason to miss class (such as job interviews or work-related travel) you must arrange this ahead of time to be excused from class. Three unexcused absences will result in the reduction of your grade by one step (e.g., from 4.0 to 3.5), with additional absences reducing your grade further at the discretion of the course instructor.}\\
+
+
+{\noindent \textbf{Inclusive classroom behavior:}}\\[-5pt]
+
+{\noindent Respectful and responsible behavior is expected at all times, which includes not interrupting other students, turning your cell phone off, refraining from non-course-related use of electronic devices, and not using offensive or demeaning language in our discussions. Flagrant or repeated violations of this expectation may result in ejection from the classroom, grade-related penalties, and/or involvement of the university Ombudsperson. In particular, behaviors that could be considered discriminatory or harassing, or unwanted sexual attention, will not be tolerated and will be immediately reported to the appropriate MSU office (which may include the MSU Police Department).}\\[-5pt]
+
+{\noindent In addition, MSU welcomes a full spectrum of experiences, viewpoints, and intellectual approaches because they enrich the conversation, even as they challenge us to think differently and grow. However, we believe that expressions and actions that demean individuals or groups comprise the environment for intellectual growth and undermine the social fabric on which the community is based. These demeaning behaviors are not welcome in this classroom.}\\
+
+
+{\noindent \textbf{Academic honesty:}}\\[-5pt]
+
+{\noindent Intellectual integrity is the foundation of the scientific enterprise. In all instances, you must do your own work and give proper credit to all sources that you use in your papers and oral presentations - any instance of submitting another person's work, ideas, or wording as your own counts as plagiarism. This includes failing to cite any direct quotations in your essays, research paper, class debate, or written presentation. The MSU College of Natural Science adheres to the policies of academic honesty as specified in the General Student Regulations 1.0, Protection of Scholarship and Grades, and in the all-University statement on Integrity of Scholarship and Grades, which are included in Spartan Life: Student Handbook and Resource Guide. Students who plagiarize will receive a 0.0 in the course. In addition, University policy requires that any cheating offense, regardless of the magnitude of the infraction or punishment decided upon by the professor, be reported immediately to the dean of the student's college.}\\[-5pt]
+
+{\noindent It is important to note that \textbf{plagiarism in the context of this course includes, but is not limited to, directly copying another student's solutions to in-class or homework problems; copying materials from online sources, textbooks, or other reference materials \emph{without citing those references in your source code or documentation}, or having somebody else do your in-class work or homework on your behalf.} Any work that is done in collaboration with other students should state this explicitly, and their names, as well as yours, should be listed clearly. When collaborating with other students, you should still be coding/writing your own solutions to the assignments and should limit your collaboration to conceptual discussions about how one might go about solving the problems, not sharing exact solutions.}\\[-5pt]
+
+{\noindent More broadly, we ask that students adhere to the Spartan Code of Honor academic pledge, as written by the Associated Students of Michigan State University (ASMSU):}\\[-5pt]
+
+{\noindent ``As a Spartan, I will strive to uphold values of the highest ethical standard. I will practice honesty in my work, foster honesty in my peers, and take pride in knowing that honor is worth more than grades. I will carry these values beyond my time as a student at Michigan State University, continuing the endeavor to build personal integrity in all that I do.''}\\
+
+
+{\noindent \textbf{Accommodations:}}\\[-5pt]
+
+{\noindent If you have a university-documented learning difficulty or require other accommodations, please provide me with your VISA as soon as possible and speak with me about how I can assist you in your learning. If you do not have a VISA but have been documented with a learning difficulty or other problems for which you may still require an accommodation, please contact MSU's Resource Center for People with Disabilities (355-9642) in order to acquire current documentation.}
+
+
+\begin{center}
+	\vspace{5pt}
+	\textbf{Instructor Office Hours and Locations}
+	\vspace{5pt}
+\end{center}
+
+{\noindent Office hours will start the week of Sep 5. An email will be sent to you concerning the location and time of office hours. If you are not available in these hours, please contact the instructor.}\\[-5pt]
+
+%{\noindent Office hours will start the week of Sep 1. Office hours are Monday and Wednesday from 1pm to 2pm at the Engineering Building ???. If you are not available in these hours, please contact the instructor.}\\[-5pt]
+
+%\begin{minipage}[t]{0.5\textwidth}
+%Dr Yann-Meing Law-Kam Cio\\[2.5pt]
+%Monday and Wednesday; 1pm-2pm \\ [2.5pt]
+%Engineering Building 1125 
+%\end{minipage}
+%\begin{minipage}[t]{0.5\textwidth}
+%Ali Zera\\[2.5pt]
+%??? and ???; 1pm-2pm \\ [2.5pt]
+%Engineering Building ??? 
+%\end{minipage}
+
+{\noindent Any course personnel can help you with questions pertaining to the course material, including in-class and homework assignments. Technical questions, including issues with Python and/or Jupyter, should be first directed to your professor, but specific issues with JupyterHub (\url{https://jupyterhub.egr.msu.edu}) can be sent to support@egr.msu.edu. If you have issues relating to class administration, including missed classes, illness, VISA issues, or school-sponsored activities please contact the instructor.}
+
+\newpage
+
+\begin{center}
+	\vspace{5pt}
+	\textbf{Grading Information}
+	\vspace{5pt}
+\end{center}
+
+{\noindent There are a variety of course activities, with the percentage of total grade listed below. More detailed descriptions of each activity can be found elsewhere in the syllabus.}\\
+%***************************************
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{lll}
+  \underline{\textbf{Activity}} & \qquad & \underline{\textbf{Grade percentage}}  \\  
+Pre-class assignments & \qquad & 10  \\ 
+Participation, attendance, in-class assignments & \qquad &15 \\ 
+Midterm exam & \qquad &20 \\ 
+Homework assignments & \qquad & 25 \\
+Final project & \qquad & 30 \\[5pt]
+\textbf{Total} & \qquad & \textbf{100\%}
+\end{tabular}
+\end{table}
+%***************************************
+%***************************************
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{lll}
+\multicolumn{3}{c}{\underline{\textbf{Grading scale}}}  \\  
+4.0 & \qquad & $\geq 90\%$  \\ 
+3.5 & \qquad & $\geq 85\%$  \\ 
+3.0 & \qquad & $\geq 80\%$  \\ 
+2.5 & \qquad & $\geq 75\%$  \\ 
+2.0 & \qquad & $\geq 70\%$  \\ 
+1.5 & \qquad & $\geq 65\%$  \\ 
+1.0 & \qquad & $\geq 60\%$  \\ 
+0.0 & \qquad & $< 60\%$  
+\end{tabular}
+\end{table}
+%***************************************
+
+{\noindent \emph{Note:} grades will not be curved - your grade is based on your own effort and progress, not on competition with your classmates.}
+
+
+\begin{center}
+	\vspace{5pt}
+	\textbf{Using this Course's Python Setup}
+	\vspace{5pt}
+\end{center}
+
+
+{\noindent \textbf{Instructions for downloading Anaconda (Python 3.7.x):}}\\[-5pt]
+\begin{itemize}
+\item[1.] Go to the Anaconda Download webpage: \url{https://www.anaconda.com/download/} \\[-15pt]
+\item[2.] Select the appropriate operating system (Windows | macOS | Linux) for your
+computer (it may auto-detect the correct operating system) \\[-15pt]
+\item[3.] Download the Python 3.7 version (64 bit recommended) \\[-15pt]
+\item[4.] Follow the online documentation to install Python for your specific operating
+system: \url{https://docs.anaconda.com/anaconda/install/} \\[8pt]
+\item[5.] Open the command line program on your computer 
+	\begin{itemize}
+	\item[-] On Windows, type CMD in the run box in the Start menu \\[-15pt]
+	\item[-] On Mac, type ``terminal'' in the spotlight search and run the ``Terminal''
+application \\[-15pt]
+	\item[-] On Linux, open up the ``Console'' application\\[-15pt]
+	\end{itemize}
+\item[6.] Type ``jupyter notebook'' in the command line and hit enter
+\end{itemize}
+
+{\noindent If everything goes correctly, a browser window should open up with the Jupyter interface running. If things don't work, don't worry, we will help you get started.}\\
+
+{\noindent \textbf{Backup option if you run into issues with Python on your laptop:}}\\[-5pt]
+
+{\noindent In the event that you're having issues with the Python installation on your laptop, you can also try using the web-hosted JupyterHub server managed by MSU. It creates a virtual environment that allows you to run simple commands and host jupyter notebooks. If you want to try using the JupyterHub, follow the directions below. Note that there are extra steps involved that require that you upload and download your Jupyter notebooks to and from JupyterHub in order to turn them in on D2L.}\\[-5pt]
+
+{\noindent \textbf{\underline{Important:} Even if you do not plan to use JupyterHub, you are expected to activate your MSU Engineering DECS account, just in case you need access to JupyterHub at some point.}}\\
+
+
+
+{\noindent \textbf{Instructions for connecting to the engineering JupyterHub server:}}\\[-5pt]
+
+{\noindent Every student enrolled in this class will be given an engineering computing account. If this is your first time using your Engineering account you will need to activate the account by going to the following website: \url{https://www.egr.msu.edu/decs/myaccount/?page=activate}}\\[-5pt]
+
+{\noindent Enter your MSU NetID. The initial password will be your Apid with an @ on the end (example: A12345678@) and then they have to set a password that meets the requirements listed on the page. Verify the password. Then agree to the terms and Activate.}\\[-5pt]
+
+{\noindent Once your account is activated you can access the classroom JupyterHub server using the following instructions:}
+\begin{itemize}
+\item[1.] Open up a web browser and go to the following URL: \url{https://jupyterhub.egr.msu.edu} \\[-15pt]
+\item[2.] Type your engineering login name (this will be your MSU NetID) \\[-15pt]
+\item[3.] Type your engineering password
+\end{itemize}
+{\noindent If everything is working properly you will see the main ``Files'' windows in the Jupyter interface.}\\
+
+
+{\noindent \textbf{Instructions for getting IPython notebook files into JupyterHub:}}\\[-5pt]
+
+{\noindent IPython notebooks (also referred to as Jupyter notebooks) are files that end with the .ipynb extension. We will give you these files for all of your assignments, you will edit them and turn in the edited files in using the class website.}\\[-5pt]
+
+{\noindent You can download the ipynb assignment files from the class website (\url{http://d2l.msu.edu}). Once you have an ipynb file you can load it into JupyterHub using the ``upload'' button on the main ``Files'' tab in the Jupyter web interface. Hitting this button will cause a file browser window to open. Just navigate to your ipynb file, select it and hit the open button.}\\[-5pt]
+
+{\noindent Once you see your filename in the Jupyter window you can just click on that name to start using that file.}\\
+
+
+{\noindent \textbf{Instructions for making a copy of IPython notebooks and turning them in:}}\\[-5pt]
+
+{\noindent When you are finished editing your IPython notebook and are ready to turn it in you will need to download the ipynb file from the JupyterHub interface.}
+\begin{itemize}
+\item[1.] With the notebook file open in Jupyter, go to the ``File'' menu, select the ``Download as'' menu option and then choose ``iPython Notebook (.ipynb)'' \\[-15pt]
+\item[2.] Pick a place to save the file (a designated course folder, perhaps on the desktop, is a good choice) \\[-15pt]
+\item[3.] Make sure you make a copy of the .ipynb file for your own records \\[-15pt]
+\item[4.] Go to the Desire2Learn (\url{http://d2l.msu.edu}) class website and upload the .ipynb file into the assignment folder 
+\end{itemize}
+
+
+\end{document}
+
+%%
+%   ...and the document ends here.
+%%
