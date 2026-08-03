@@ -21,23 +21,23 @@ parts:
       - file: Course_Documents/GenerativeAI/GenerativeAI_Policy.md
         title: Generative AI Policy
 
-    - file: Project/Project
-      title: Semester Project  
-      sections: 
-      - file: Project/SemesterProjectDetails.md
-        title: Project Details
-      - file: Project/ProjectProposal
-        title: Project Proposal - Due Mar 12
-      - file: Project/FinalProject_RequirementsAndGradingRubric
-        title: Requirements and Grading Rubric
-      - file: Project/FinalProjectTemplate
-        title: Final Project Template
-      - file: Project/ProjectDraft
-        title: Project Draft - Due April 6
-      - file: Project/Project_Self-Evaluation
-        title: Project Self-Evaluation
-      - url: https://github.com/msu-cmse-courses/cmse801-supplemental/raw/main/Project/Presentation_Evaluation_Rubric.pdf
-        title: Presentation Evaluation Rubric
+    # - file: Project/Project
+    #   title: Semester Project  
+    #   sections: 
+    #   - file: Project/SemesterProjectDetails.md
+    #     title: Project Details
+    #   - file: Project/ProjectProposal
+    #     title: Project Proposal - Due Mar 12
+    #   - file: Project/FinalProject_RequirementsAndGradingRubric
+    #     title: Requirements and Grading Rubric
+    #   - file: Project/FinalProjectTemplate
+    #     title: Final Project Template
+    #   - file: Project/ProjectDraft
+    #     title: Project Draft - Due April 6
+    #   - file: Project/Project_Self-Evaluation
+    #     title: Project Self-Evaluation
+    #   - url: https://github.com/msu-cmse-courses/cmse801-supplemental/raw/main/Project/Presentation_Evaluation_Rubric.pdf
+    #     title: Presentation Evaluation Rubric
 
     #   - url: https://docs.google.com/presentation/d/1E_wD1ExZhK0cC5IuBGpgcKDEQLbpCvrHYu2MsiTZaig/edit
     #     title: Project Proposal Slide Deck (MSU Login)
@@ -45,29 +45,29 @@ parts:
 #     # - url: https://github.com/msu-cmse-courses/CMSE801-supplemental/raw/main/Projects/Presentation_Evaluation_Rubric.pdf
 
   
-    - file: Homework/Homework.md
-      title: Homeworks
-      sections:
-      - file:  Homework/Spring2026/Homework-01/Homework-01_PythonFundamentals-STUDENT.ipynb
-        title: Homework 1 - Python Fundamentals
-      - file:  Homework/Spring2026/Homework-02/Homework-02_NumPyMatplotlibAndODE-STUDENT.ipynb
-        title: Homework 2 - NumPy, Matplotlib, and a Simple ODE
-      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Homework/HW02/pop_data.csv
-        title: pop_data.csv 
-      - file: Homework/Spring2026/Homework-03/Homework-03_PandasAnalysisAndSolvingODEs-STUDENT.ipynb
-        title: Homework 3 - Analyzing Data with Pandas and Solving ODEs
-      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Homework/HW03/tech_layoffs.csv
-        title: tech_layoffs.csv 
-      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Homework/HW03/stars.csv
-        title: stars.csv 
-      - file: Homework/Spring2026/Homework_04/HW-04_DataAnalysisWithPandasAndRegression-STUDENT.ipynb
-        title: Homework 4 - Fitting models to data
-      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Homework/HW04/grape_harvest.csv
-        title: grape_harvest.csv
-      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Homework/HW04/stars.csv
-        title: stars.csv
-      # - file: Homework/Spring2026/Homework-05/Homework-05_OOP_ABM-STUDENT
-      #   title: Homework 5 - Python Objects and ABM
+#     - file: Homework/Homework.md
+#       title: Homeworks
+#       sections:
+#       - file:  Homework/Spring2026/Homework-01/Homework-01_PythonFundamentals-STUDENT.ipynb
+#         title: Homework 1 - Python Fundamentals
+#       - file:  Homework/Spring2026/Homework-02/Homework-02_NumPyMatplotlibAndODE-STUDENT.ipynb
+#         title: Homework 2 - NumPy, Matplotlib, and a Simple ODE
+#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Homework/HW02/pop_data.csv
+#         title: pop_data.csv 
+#       - file: Homework/Spring2026/Homework-03/Homework-03_PandasAnalysisAndSolvingODEs-STUDENT.ipynb
+#         title: Homework 3 - Analyzing Data with Pandas and Solving ODEs
+#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Homework/HW03/tech_layoffs.csv
+#         title: tech_layoffs.csv 
+#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Homework/HW03/stars.csv
+#         title: stars.csv 
+#       - file: Homework/Spring2026/Homework_04/HW-04_DataAnalysisWithPandasAndRegression-STUDENT.ipynb
+#         title: Homework 4 - Fitting models to data
+#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Homework/HW04/grape_harvest.csv
+#         title: grape_harvest.csv
+#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Homework/HW04/stars.csv
+#         title: stars.csv
+#       # - file: Homework/Spring2026/Homework-05/Homework-05_OOP_ABM-STUDENT
+#       #   title: Homework 5 - Python Objects and ABM
 
 #### DAILY CONTENT SECTION #### 
   - caption: Daily Content
@@ -82,297 +82,297 @@ parts:
       # - url: https://docs.google.com/presentation/d/1iCCQAXvWQIBkIGBVdQwAWA9TXXaELNmiSz7VZJLCfjY/edit?usp=sharing
         title: Day 01 Slides (MSU Login)
 
-    - file: Day-02/Day-02.md
-      title: Day 02
-      sections:
-      - file: Day-02/Day-02_Pre-Class_IntroToPython-STUDENT.ipynb
-      - file: Day-02/Day-02_In-Class_OrderOfMagnitudeModeling-STUDENT.ipynb
-      - url: https://docs.google.com/presentation/d/1pLeHckjg-GkBfBEiH9T3DoHDApl6IXwK9zBQBdcEH_E/edit?usp=sharing
-      # - url: https://docs.google.com/presentation/d/1TQkGJBIcxkIcN0gk_UOlHNmbo2vdEclj9lEv9FKkN6o/edit?usp=sharing 
-        title: Day 02 Slides (MSU Login)
-
-
-    - file: Day-03/Day-03.md
-      title: Day 03
-      sections:
-      - file: Day-03/Day-03_Pre-Class_ListsAndLoops-STUDENT.ipynb
-      - file: Day-03/Day-03_In-Class_ListsLoopsAndSaving-STUDENT.ipynb
-    # # #   - url: https://docs.google.com/presentation/d/1xZ1YHw4vjtiDmY1r36Rj2JdlugHx6YQn9zel2QVlByA/edit?usp=sharing
-    # # #     title: Day 03 Slides (MSU Login)
-    
-    - file: Day-04/Day-04.md
-      title: Day 04
-      sections:
-      - file: Day-04/Day-04_Pre-Class_IfStatementsAndFunctions-STUDENT.ipynb
-      - file: Day-04/Day-04_In-Class_IfStatementsAndFunctions-STUDENT.ipynb
-    # # #   - url:  https://docs.google.com/presentation/d/1Szk0sxTe9NyrQjN8vXvI-yD9Hxe7RLskn-tUVpxQazs/edit?usp=sharing
-    # # #     title: Day 04 Slides (MSU Login)
-    
-    - file: Day-05/Day-05.md
-      title: Day 05
-      sections:
-      - file: Day-05/Day-05_Pre-Class_MoreFunctions-STUDENT.ipynb
-      - file: Day-05/Day-05_In-Class_MoreFunctions-STUDENT.ipynb
-    # # #   - url:  https://docs.google.com/presentation/d/1Fz2rj5j1q-F6U0QWtR_5nt2rNF7iJt1-ynwfy-cRdoo/edit?usp=sharing
-    # # #     title: Day 05 Slides (MSU Login)
-      
-    - file: Day-06/Day-06.md
-      title: Day 06
-      sections: 
-      - file: Day-06/Day-06_Pre-Class_ModulesMathAndPlots-STUDENT.ipynb
-      - file: Day-06/Day-06_In-Class_MathAndPlotting-STUDENT.ipynb    
-    # # #   - url:  https://docs.google.com/presentation/d/1e27R4CmaAK3854P0oTQmKBAh3x0d8mLBzrXDQrKUUnE/edit?usp=sharing
-    # # #     title: Day 06 Slides (MSU Login)
-
-    - file: Day-07/Day-07.md
-      title: Day 07
-      sections: 
-      - file: Day-07/Day-07_Pre-Class_IntroToNumPy-STUDENT.ipynb
-      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/michigan_pop.csv
-        title: michigan_pop.csv
-      - file: Day-07/Day-07_In-Class_NumPyWithTheGreatLakes-STUDENT.ipynb
-    # #   # - url: https://docs.google.com/presentation/d/1ZJnE4XiFeeG5RD1MkazxU2p4rZ227nvQSCLl6BMUxC0/edit?usp=sharing
-    # #   #   title: Day 07 Slides (MSU Login)
-      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_erie.csv
-        title: lake_erie.csv
-      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_michigan_huron.csv
-        title: lake_michigan_huron.csv
-      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_ontario.csv
-        title: lake_ontario.csv
-      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_superior.csv
-        title: lake_superior.csv
-
-    - file: Day-08/Day-08.md
-      title: Day 08
-      sections:
-      - file: Day-08/Day-08_Pre-Class-IntroToODEs-STUDENT.ipynb
-      - file: Day-08/Day-08_In-Class_IntroToODEs-STUDENT.ipynb
-    # # #   - url: https://docs.google.com/presentation/d/16CuG6IQv-8LVAduZyrv5bMCDM0M2LUx1CO2AZr6pEHk/edit?usp=sharing
-    # # #     title: Day 8 Slides (MSU Login)
-    
-    - file: Day-09/Day-09.md
-      title: Day 09
-      sections:
-      - file: Day-09/Day-09_Pre-Class_ModelingWithODEs-STUDENT.ipynb
-      - file: Day-09/Day-09_In-Class_ModelingWithODEs-STUDENT.ipynb
-    # # #   - url: https://docs.google.com/presentation/d/1gV1zdQugUXwaf8wBmBkVS2bWWzt3yID26rvy6U-vr8k/edit?usp=sharing
-    # # #     title: Day 9 Slides (MSU Login)
-
-    - file: Day-10/Day-10.md
-      title: Day 10
-      sections:
-      - file: Day-10/Day-10_Pre-Class_ViralKinetics-STUDENT.ipynb
-      - file: Day-10/Day-10_In-Class_CompartmentalModeling-STUDENT.ipynb
-    # # #   - url: https://docs.google.com/presentation/d/1k4Uy9nB6BTWB0iA1WMQyjxx91pktn7JlbolyuNLvZXQ/edit?usp=sharing
-    # # #     title: Day 10 Slides (MSU Login)
-
-    - file: Day-11/Day-11.md
-      title: Day 11
-      sections:
-      - file: Day-11/Day-11_Pre-Class_Zombies-STUDENT.ipynb
-      - file: Day-11/Day-11_In-Class_CompartmentsWithSolveIVP-STUDENT.ipynb
-    #   - url: https://docs.google.com/presentation/d/1O2pzbWes3z2efr0DDtLHAsOBuNHDSJPUCcoP2T0xfrs/edit?usp=sharing
-    # # #     title: Day 11 Slides (MSU Login)
-      - url: https://docs.google.com/presentation/d/1Zdn4TqO3E8gAzWeDiE_kKUAADjCs2qtaEwQ96zVFYP0/edit?usp=sharing
-        title: Group presentation slides (Requires MSU Login)
-
-    - file: Day-12/Day-12.md
-      title: Day 12
-      sections:
-      - file: Day-12/Day-12_Pre-Class_Pandas-STUDENT.ipynb
-      - file: Day-12/Day-12_In-Class_GDP-STUDENT.ipynb
-      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-12/GDP_Data.csv
-        title: GDP_Data.csv
-    # # #   - url: https://docs.google.com/presentation/d/1u0Y6RexJ8lqE_Pjgss1-DF7ex9zsBtPQIdEk9hu5o10/edit?usp=sharing
-    # # #     title: Day 12 Slides (MSU Login)
-
-    - file: Day-13/Day-13.md
-      title: Day 13
-      sections:
-      - file: Day-13/Day-13_Pre-Class_Masking-STUDENT.ipynb
-      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-13/GDP_Cleaned.csv
-        title: GDP_Cleaned.csv
-      - file: Day-13/Day-13_In-Class_Flint-STUDENT.ipynb
-      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-13/flint_water_data.csv
-        title: flint_water_data.csv
-    # # #   - url: https://docs.google.com/presentation/d/1cF_xgnjojLlTdpiMZxtj6w-JgrGDQyzzkOfHtQaUq5c/edit
-    # # #     title: Day 13 Slides (MSU Login)
-    
-    - file: Day-14/Day-14.md
-      title: Day 14
-      sections:
-      - file: Day-14/Day-14_Pre-Class_FittingModelsAndEvaluatingFits-STUDENT.ipynb
-      - file: Day-14/Day-14_In-Class_Evaluating_Fits-STUDENT.ipynb
-      # - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-14/biden_ratings_2023.csv
-      #   title: biden_ratings_2023.csv
-    # # #   - url: https://docs.google.com/presentation/d/1tlcRATBl4YmbBwi-U9Aaa6D7K1owdiqbdPc70eAMKqY/
-    # # #     title: Day 14 Slides (MSU Login)
-
-    - file: Day-15/Day-15.md
-      title: Day 15
-      sections:
-      - file: Day-15/Day-15_Pre-Class_CurveFitting-STUDENT.ipynb
-      - file: Day-15/Day-15_In-Class_FittingCurves-STUDENT.ipynb
-      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-15/pop200.csv
-        title: pop200.csv
-      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-15/pop300.csv
-        title: pop300.csv
-    # # #   - url: https://docs.google.com/presentation/d/1Uxkto4klGxjF17Ou0gkTeBNe4OAP3ee6hOqZJxqbi8s/
-    # # #     title: Day 15 Slides (MSU Login)
-      
-    - file: Day-16/Day-16.md
-      title: Day 16
-      sections:
-      - file: Day-16/Day-16_Pre-Class_IntroToDataVisualization-STUDENT.ipynb
-      - file: Day-16/Day-16_In-Class_IntroToDataVisualization-STUDENT.ipynb
-    # # #   - url: https://docs.google.com/presentation/d/1tHiFEUh8gnGRp_XqYHzmuWwm3sXTGAzZUNZHmTsUa9s
-    # # #     title: Day 16 Slides (MSU Login)
-    # # #  - url: https://docs.google.com/presentation/d/1p6yvtOFZVDBSNwIhfp6ANhQs5J0w2bIIaNULfLQIMS8
-    # # #     title: Data Visualization Slides (MSU Login - Editable)
-    #   - url: https://docs.google.com/presentation/d/1cfrudELW5RH8cAp1iqcW9X7HQLdQQTa9a-OPVR12rKk/edit?usp=sharing
-    #     title: Project proposal slide deck (MSU Login - Editable)
-    # # #   - url: https://forms.gle/H4ZJ2YidY6SNDaSv5
-    # # #     title: Scoring form
-
-
-    - file: Day-17/Day-17.md
-      title: Day 17
-      sections:
-      - file: Day-17/Day-17_Pre-Class_2DNumPyArrays-STUDENT.ipynb
-      - url: https://github.com/msu-cmse-courses/cmse801-supplemental/blob/main/Day-17/example.jpeg?raw=true
-        title: example.jpeg
-      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/refs/heads/main/Day-17/cars.csv
-        title: cars.csv
-      - file: Day-17/Day-17_In-Class_2DImageAnalysis-STUDENT.ipynb
-      - url: https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-supplemental/main/Day-17/beach.jpeg
-        title: beach.jpeg
-      - url: https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-supplemental/main/Day-17/landscape.jpeg
-        title: landscape.jpeg
-      - url: https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-supplemental/main/Day-17/zebra.png
-        title: zebra.png
-    # # #   - url: https://docs.google.com/presentation/d/10sQ4pFqg2EXfhgx_jSfKpU4NPJwPAH0Zg8Po4ZZUt6A/
-    # # #     title: Day 17 Slides (MSU Login)
-
-    - file: Day-18/Day-18.md
-      title: Day 18
-      sections:
-      - file: Day-18/Day-18_Pre-Class_ABMForestFire-STUDENT.ipynb
-      - file: Day-18/Day-18_In-Class_ForestFiresPartI-STUDENT.ipynb
-    # # #   - url: https://docs.google.com/presentation/d/1zSqA12bCC5QVTTKKaLzAjpL-EHx-guZQPsnskxpnajo/
-    # # #     title: Day 18 Slides (MSU Login)
-
-    - file: Day-19/Day-19.md
-      title: Day 19
-      sections:
-      - file: Day-19/Day-19_Pre-Class_MoreNumPyArrayManipulation-STUDENT.ipynb
-      - file: Day-19/Day-19_In-Class_ForestFiresPartII-STUDENT.ipynb
-    # # #   - url: https://docs.google.com/presentation/d/1M8XHJvtk3wj6JnQMBZL2653GfIL83Ca2N-X_ekGPH2s
-    # # #     title: Day 19 Slides (MSU Login)https://github.com/msu-cmse-courses/cmse801-S25/blob/main/_toc.yml
-
-    - file: Day-20/Day-20.md
-      title: Day 20
-      sections:
-      - file: Day-20/Day-20_Pre-Class_ObjectsClasses-STUDENT.ipynb
-      - file: Day-20/Day-20_In-Class_ObjectsClasses-STUDENT.ipynb
-      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-20/Animal.py 
-        title: Animal
-    # # #   - url: https://docs.google.com/presentation/d/1COqMcpmE3duI6ucg6stbsiTIWzfbCapEIQiDIuVSFYs/
-    # # #     title: Day 20 Slides (MSU Login)  
-
-
-    - file: Day-21/Day-21.md
-      title: Day 21
-      sections:
-      - file: Day-21/Day-21_Pre-class_ObjectInheritanceAndComposition-STUDENT
-      - file: Day-21/Day-21_In-Class_ObjectInheritanceAndComposition-STUDENT
-    # # #   - url: https://docs.google.com/presentation/d/1CCPQ7XqKit5En5T0ytXbfef3mz7rUFV5ZXjn6hKSZwA/
-    # # #     title: Day 21 Slides (MSU Login)
-      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-21/Animals.py
-        title: Animals.py
-      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-21/Zoo.py
-        title: Zoo.py
-
-    - file: Day-22/Day-22.md
-      title: Day 22
-      sections:
-      - file: Day-22/Day-22_Pre-Class_ProjectWorkDay-STUDENT
-      - file: Day-22/Day-22_In-Class_ProjectWorkDay-STUDENT
-    # # #   - url: https://docs.google.com/presentation/d/1JecTe4iGcnuLL9XPVa43VfWPEj2IBF3RXuWg1paRnI8/
-    # # #     title: Day 23 Slides (MSU Login)
-
-
-    - file: Day-23/Day-23.md
-      title: Day 23
-      sections:
-      - file: Day-23/Day-23_Pre-Class_RandomNumbers-STUDENT
-      - file: Day-23/Day-23_In-Class_RandomWalks-STUDENT
-    # # #   - url: https://docs.google.com/presentation/d/1pkh7OU4nyaobjaKiJgcWC_-M4pM3oAgazKhk07NwVfg/
-    # # #     title: Day 22 Slides (MSU Login)
-
-
-
-    - file: Day-24/Day-24.md
-      title: Day 24
-      sections:
-      - file: Day-24/Day-24_Pre-Class_MonteCarlo-STUDENT
-      - file: Day-24/Day-24_In-Class_TravelingSalesperson-STUDENT
-      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-24/michigan_cities.csv
-        title: michigan_cities.csv 
-
-    - file: Day-25/Day-25.md
-      title: Day 25
-      sections:
-      - file: Day-25/Day-25_Pre-class_DataFitting-STUDENT
-      # - file: Day-25/Day-25_In-Class_MarkovChainMonteCarlo-STUDENT
-
-
-
-#   #### CODE PORTFOLIO SECTION ####
-#   - caption: Code Portfolio
-#     numbered: False
-#     chapters:
-#     - file: Homework/Code_Portfolio/Code_Portfolio_Assignment
-#       title: Code Portfolio Assignment
-#     - file: Homework/Code_Portfolio/Code_Portfolio_Example.ipynb
-#       title: Code Portfolio Example
-
-# #### BOOTCAMP SECTION ####
-#   # - caption: Bootcamps
-#   #   numbered: False
-#   #   chapters:
-#   #   - file: Bootcamp_Notebooks/Bootcamp1-Python_Fundamentals_STUDENT.ipynb
-#   #   - file: Bootcamp_Notebooks/Bootcamp2-InitialConceptsReview.ipynb
-#   #   - file: Bootcamp_Notebooks/Bootcamp3-Debugging_STUDENT.ipynb
-#   #   - file: Bootcamp_Notebooks/Bootcamp4-IfStatements_STUDENT.ipynb
-#   #   - file: Bootcamp_Notebooks/Bootcamp5-Functions_STUDENT.ipynb
-#   #   - file: Bootcamp_Notebooks/Bootcamp6-Matplotlib_STUDENT.ipynb
-#   #   - file: Bootcamp_Notebooks/Bootcamp7-Arrays_STUDENT.ipynb
-#   #   - file: Bootcamp_Notebooks/Bootcamp8_Pandas_STUDENT.ipynb
-#   #   - file: Bootcamp_Notebooks/Bootcamp8_Pandas_INSTRUCTOR.ipynb
-#   #   - url: https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-S22-data/main/weather.csv
-#   #     title: weather.csv
-#   #   - file: Bootcamp_Notebooks/Bootcamp9-ScipyCurveFit_STUDENT.ipynb
-#   #   - file: Bootcamp_Notebooks/Bootcamp9-ScipyCurveFit_INSTRUCTOR.ipynb
-#   #   - file: Bootcamp_Notebooks/Bootcamp10-CompartmentalModels_STUDENT.ipynb
-#   #   - file: Bootcamp_Notebooks/Bootcamp10-CompartmentalModels_INSTRUCTOR.ipynb
-#   #   - file: Bootcamp_Notebooks/Bootcamp11_Solve_IVP_STUDENT.ipynb
-#   #   - file: Bootcamp_Notebooks/Bootcamp11_Solve_IVP_INSTRUCTOR.ipynb
-
-
-### PRACTICE NOTEBOOK SECTION ####
-#   - caption: Extra Resources
-#     numbered: False
-#     chapters:
-#     - file: ReviewAndPracticeMaterials/ReviewAndPracticeMaterials
+#     - file: Day-02/Day-02.md
+#       title: Day 02
 #       sections:
-#       - file: ReviewAndPracticeMaterials/ReviewNotebook_PythonFundamentals-STUDENT.ipynb
-#       - file: ReviewAndPracticeMaterials/ReviewNotebook_Debugging-STUDENT.ipynb
-#       - file: ReviewAndPracticeMaterials/ReviewNotebook_Functions-STUDENT.ipynb
-#       - file: ReviewAndPracticeMaterials/ReviewNotebook_Matplotlib-STUDENT.ipynb
-#       - file: ReviewAndPracticeMaterials/ReviewNotebook_CompartmentalModels-STUDENT.ipynb
-#       - file: ReviewAndPracticeMaterials/ReviewNotebook_Pandas-STUDENT.ipynb
-#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/ReviewNotebooks/weather.csv
-#         title: weather.csv
-#       - file: ReviewAndPracticeMaterials/ReviewNotebook_SolveIVP-STUDENT.ipynb
-# #     - file: Quiz_Prep_Notebooks/PracticeNotebook_ScipyCurveFit-STUDENT.ipynb
+#       - file: Day-02/Day-02_Pre-Class_IntroToPython-STUDENT.ipynb
+#       - file: Day-02/Day-02_In-Class_OrderOfMagnitudeModeling-STUDENT.ipynb
+#       - url: https://docs.google.com/presentation/d/1pLeHckjg-GkBfBEiH9T3DoHDApl6IXwK9zBQBdcEH_E/edit?usp=sharing
+#       # - url: https://docs.google.com/presentation/d/1TQkGJBIcxkIcN0gk_UOlHNmbo2vdEclj9lEv9FKkN6o/edit?usp=sharing 
+#         title: Day 02 Slides (MSU Login)
+
+
+#     - file: Day-03/Day-03.md
+#       title: Day 03
+#       sections:
+#       - file: Day-03/Day-03_Pre-Class_ListsAndLoops-STUDENT.ipynb
+#       - file: Day-03/Day-03_In-Class_ListsLoopsAndSaving-STUDENT.ipynb
+#     # # #   - url: https://docs.google.com/presentation/d/1xZ1YHw4vjtiDmY1r36Rj2JdlugHx6YQn9zel2QVlByA/edit?usp=sharing
+#     # # #     title: Day 03 Slides (MSU Login)
+    
+#     - file: Day-04/Day-04.md
+#       title: Day 04
+#       sections:
+#       - file: Day-04/Day-04_Pre-Class_IfStatementsAndFunctions-STUDENT.ipynb
+#       - file: Day-04/Day-04_In-Class_IfStatementsAndFunctions-STUDENT.ipynb
+#     # # #   - url:  https://docs.google.com/presentation/d/1Szk0sxTe9NyrQjN8vXvI-yD9Hxe7RLskn-tUVpxQazs/edit?usp=sharing
+#     # # #     title: Day 04 Slides (MSU Login)
+    
+#     - file: Day-05/Day-05.md
+#       title: Day 05
+#       sections:
+#       - file: Day-05/Day-05_Pre-Class_MoreFunctions-STUDENT.ipynb
+#       - file: Day-05/Day-05_In-Class_MoreFunctions-STUDENT.ipynb
+#     # # #   - url:  https://docs.google.com/presentation/d/1Fz2rj5j1q-F6U0QWtR_5nt2rNF7iJt1-ynwfy-cRdoo/edit?usp=sharing
+#     # # #     title: Day 05 Slides (MSU Login)
+      
+#     - file: Day-06/Day-06.md
+#       title: Day 06
+#       sections: 
+#       - file: Day-06/Day-06_Pre-Class_ModulesMathAndPlots-STUDENT.ipynb
+#       - file: Day-06/Day-06_In-Class_MathAndPlotting-STUDENT.ipynb    
+#     # # #   - url:  https://docs.google.com/presentation/d/1e27R4CmaAK3854P0oTQmKBAh3x0d8mLBzrXDQrKUUnE/edit?usp=sharing
+#     # # #     title: Day 06 Slides (MSU Login)
+
+#     - file: Day-07/Day-07.md
+#       title: Day 07
+#       sections: 
+#       - file: Day-07/Day-07_Pre-Class_IntroToNumPy-STUDENT.ipynb
+#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/michigan_pop.csv
+#         title: michigan_pop.csv
+#       - file: Day-07/Day-07_In-Class_NumPyWithTheGreatLakes-STUDENT.ipynb
+#     # #   # - url: https://docs.google.com/presentation/d/1ZJnE4XiFeeG5RD1MkazxU2p4rZ227nvQSCLl6BMUxC0/edit?usp=sharing
+#     # #   #   title: Day 07 Slides (MSU Login)
+#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_erie.csv
+#         title: lake_erie.csv
+#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_michigan_huron.csv
+#         title: lake_michigan_huron.csv
+#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_ontario.csv
+#         title: lake_ontario.csv
+#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_superior.csv
+#         title: lake_superior.csv
+
+#     - file: Day-08/Day-08.md
+#       title: Day 08
+#       sections:
+#       - file: Day-08/Day-08_Pre-Class-IntroToODEs-STUDENT.ipynb
+#       - file: Day-08/Day-08_In-Class_IntroToODEs-STUDENT.ipynb
+#     # # #   - url: https://docs.google.com/presentation/d/16CuG6IQv-8LVAduZyrv5bMCDM0M2LUx1CO2AZr6pEHk/edit?usp=sharing
+#     # # #     title: Day 8 Slides (MSU Login)
+    
+#     - file: Day-09/Day-09.md
+#       title: Day 09
+#       sections:
+#       - file: Day-09/Day-09_Pre-Class_ModelingWithODEs-STUDENT.ipynb
+#       - file: Day-09/Day-09_In-Class_ModelingWithODEs-STUDENT.ipynb
+#     # # #   - url: https://docs.google.com/presentation/d/1gV1zdQugUXwaf8wBmBkVS2bWWzt3yID26rvy6U-vr8k/edit?usp=sharing
+#     # # #     title: Day 9 Slides (MSU Login)
+
+#     - file: Day-10/Day-10.md
+#       title: Day 10
+#       sections:
+#       - file: Day-10/Day-10_Pre-Class_ViralKinetics-STUDENT.ipynb
+#       - file: Day-10/Day-10_In-Class_CompartmentalModeling-STUDENT.ipynb
+#     # # #   - url: https://docs.google.com/presentation/d/1k4Uy9nB6BTWB0iA1WMQyjxx91pktn7JlbolyuNLvZXQ/edit?usp=sharing
+#     # # #     title: Day 10 Slides (MSU Login)
+
+#     - file: Day-11/Day-11.md
+#       title: Day 11
+#       sections:
+#       - file: Day-11/Day-11_Pre-Class_Zombies-STUDENT.ipynb
+#       - file: Day-11/Day-11_In-Class_CompartmentsWithSolveIVP-STUDENT.ipynb
+#     #   - url: https://docs.google.com/presentation/d/1O2pzbWes3z2efr0DDtLHAsOBuNHDSJPUCcoP2T0xfrs/edit?usp=sharing
+#     # # #     title: Day 11 Slides (MSU Login)
+#       - url: https://docs.google.com/presentation/d/1Zdn4TqO3E8gAzWeDiE_kKUAADjCs2qtaEwQ96zVFYP0/edit?usp=sharing
+#         title: Group presentation slides (Requires MSU Login)
+
+#     - file: Day-12/Day-12.md
+#       title: Day 12
+#       sections:
+#       - file: Day-12/Day-12_Pre-Class_Pandas-STUDENT.ipynb
+#       - file: Day-12/Day-12_In-Class_GDP-STUDENT.ipynb
+#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-12/GDP_Data.csv
+#         title: GDP_Data.csv
+#     # # #   - url: https://docs.google.com/presentation/d/1u0Y6RexJ8lqE_Pjgss1-DF7ex9zsBtPQIdEk9hu5o10/edit?usp=sharing
+#     # # #     title: Day 12 Slides (MSU Login)
+
+#     - file: Day-13/Day-13.md
+#       title: Day 13
+#       sections:
+#       - file: Day-13/Day-13_Pre-Class_Masking-STUDENT.ipynb
+#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-13/GDP_Cleaned.csv
+#         title: GDP_Cleaned.csv
+#       - file: Day-13/Day-13_In-Class_Flint-STUDENT.ipynb
+#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-13/flint_water_data.csv
+#         title: flint_water_data.csv
+#     # # #   - url: https://docs.google.com/presentation/d/1cF_xgnjojLlTdpiMZxtj6w-JgrGDQyzzkOfHtQaUq5c/edit
+#     # # #     title: Day 13 Slides (MSU Login)
+    
+#     - file: Day-14/Day-14.md
+#       title: Day 14
+#       sections:
+#       - file: Day-14/Day-14_Pre-Class_FittingModelsAndEvaluatingFits-STUDENT.ipynb
+#       - file: Day-14/Day-14_In-Class_Evaluating_Fits-STUDENT.ipynb
+#       # - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-14/biden_ratings_2023.csv
+#       #   title: biden_ratings_2023.csv
+#     # # #   - url: https://docs.google.com/presentation/d/1tlcRATBl4YmbBwi-U9Aaa6D7K1owdiqbdPc70eAMKqY/
+#     # # #     title: Day 14 Slides (MSU Login)
+
+#     - file: Day-15/Day-15.md
+#       title: Day 15
+#       sections:
+#       - file: Day-15/Day-15_Pre-Class_CurveFitting-STUDENT.ipynb
+#       - file: Day-15/Day-15_In-Class_FittingCurves-STUDENT.ipynb
+#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-15/pop200.csv
+#         title: pop200.csv
+#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-15/pop300.csv
+#         title: pop300.csv
+#     # # #   - url: https://docs.google.com/presentation/d/1Uxkto4klGxjF17Ou0gkTeBNe4OAP3ee6hOqZJxqbi8s/
+#     # # #     title: Day 15 Slides (MSU Login)
+      
+#     - file: Day-16/Day-16.md
+#       title: Day 16
+#       sections:
+#       - file: Day-16/Day-16_Pre-Class_IntroToDataVisualization-STUDENT.ipynb
+#       - file: Day-16/Day-16_In-Class_IntroToDataVisualization-STUDENT.ipynb
+#     # # #   - url: https://docs.google.com/presentation/d/1tHiFEUh8gnGRp_XqYHzmuWwm3sXTGAzZUNZHmTsUa9s
+#     # # #     title: Day 16 Slides (MSU Login)
+#     # # #  - url: https://docs.google.com/presentation/d/1p6yvtOFZVDBSNwIhfp6ANhQs5J0w2bIIaNULfLQIMS8
+#     # # #     title: Data Visualization Slides (MSU Login - Editable)
+#     #   - url: https://docs.google.com/presentation/d/1cfrudELW5RH8cAp1iqcW9X7HQLdQQTa9a-OPVR12rKk/edit?usp=sharing
+#     #     title: Project proposal slide deck (MSU Login - Editable)
+#     # # #   - url: https://forms.gle/H4ZJ2YidY6SNDaSv5
+#     # # #     title: Scoring form
+
+
+#     - file: Day-17/Day-17.md
+#       title: Day 17
+#       sections:
+#       - file: Day-17/Day-17_Pre-Class_2DNumPyArrays-STUDENT.ipynb
+#       - url: https://github.com/msu-cmse-courses/cmse801-supplemental/blob/main/Day-17/example.jpeg?raw=true
+#         title: example.jpeg
+#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/refs/heads/main/Day-17/cars.csv
+#         title: cars.csv
+#       - file: Day-17/Day-17_In-Class_2DImageAnalysis-STUDENT.ipynb
+#       - url: https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-supplemental/main/Day-17/beach.jpeg
+#         title: beach.jpeg
+#       - url: https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-supplemental/main/Day-17/landscape.jpeg
+#         title: landscape.jpeg
+#       - url: https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-supplemental/main/Day-17/zebra.png
+#         title: zebra.png
+#     # # #   - url: https://docs.google.com/presentation/d/10sQ4pFqg2EXfhgx_jSfKpU4NPJwPAH0Zg8Po4ZZUt6A/
+#     # # #     title: Day 17 Slides (MSU Login)
+
+#     - file: Day-18/Day-18.md
+#       title: Day 18
+#       sections:
+#       - file: Day-18/Day-18_Pre-Class_ABMForestFire-STUDENT.ipynb
+#       - file: Day-18/Day-18_In-Class_ForestFiresPartI-STUDENT.ipynb
+#     # # #   - url: https://docs.google.com/presentation/d/1zSqA12bCC5QVTTKKaLzAjpL-EHx-guZQPsnskxpnajo/
+#     # # #     title: Day 18 Slides (MSU Login)
+
+#     - file: Day-19/Day-19.md
+#       title: Day 19
+#       sections:
+#       - file: Day-19/Day-19_Pre-Class_MoreNumPyArrayManipulation-STUDENT.ipynb
+#       - file: Day-19/Day-19_In-Class_ForestFiresPartII-STUDENT.ipynb
+#     # # #   - url: https://docs.google.com/presentation/d/1M8XHJvtk3wj6JnQMBZL2653GfIL83Ca2N-X_ekGPH2s
+#     # # #     title: Day 19 Slides (MSU Login)https://github.com/msu-cmse-courses/cmse801-S25/blob/main/_toc.yml
+
+#     - file: Day-20/Day-20.md
+#       title: Day 20
+#       sections:
+#       - file: Day-20/Day-20_Pre-Class_ObjectsClasses-STUDENT.ipynb
+#       - file: Day-20/Day-20_In-Class_ObjectsClasses-STUDENT.ipynb
+#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-20/Animal.py 
+#         title: Animal
+#     # # #   - url: https://docs.google.com/presentation/d/1COqMcpmE3duI6ucg6stbsiTIWzfbCapEIQiDIuVSFYs/
+#     # # #     title: Day 20 Slides (MSU Login)  
+
+
+#     - file: Day-21/Day-21.md
+#       title: Day 21
+#       sections:
+#       - file: Day-21/Day-21_Pre-class_ObjectInheritanceAndComposition-STUDENT
+#       - file: Day-21/Day-21_In-Class_ObjectInheritanceAndComposition-STUDENT
+#     # # #   - url: https://docs.google.com/presentation/d/1CCPQ7XqKit5En5T0ytXbfef3mz7rUFV5ZXjn6hKSZwA/
+#     # # #     title: Day 21 Slides (MSU Login)
+#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-21/Animals.py
+#         title: Animals.py
+#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-21/Zoo.py
+#         title: Zoo.py
+
+#     - file: Day-22/Day-22.md
+#       title: Day 22
+#       sections:
+#       - file: Day-22/Day-22_Pre-Class_ProjectWorkDay-STUDENT
+#       - file: Day-22/Day-22_In-Class_ProjectWorkDay-STUDENT
+#     # # #   - url: https://docs.google.com/presentation/d/1JecTe4iGcnuLL9XPVa43VfWPEj2IBF3RXuWg1paRnI8/
+#     # # #     title: Day 23 Slides (MSU Login)
+
+
+#     - file: Day-23/Day-23.md
+#       title: Day 23
+#       sections:
+#       - file: Day-23/Day-23_Pre-Class_RandomNumbers-STUDENT
+#       - file: Day-23/Day-23_In-Class_RandomWalks-STUDENT
+#     # # #   - url: https://docs.google.com/presentation/d/1pkh7OU4nyaobjaKiJgcWC_-M4pM3oAgazKhk07NwVfg/
+#     # # #     title: Day 22 Slides (MSU Login)
+
+
+
+#     - file: Day-24/Day-24.md
+#       title: Day 24
+#       sections:
+#       - file: Day-24/Day-24_Pre-Class_MonteCarlo-STUDENT
+#       - file: Day-24/Day-24_In-Class_TravelingSalesperson-STUDENT
+#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-24/michigan_cities.csv
+#         title: michigan_cities.csv 
+
+#     - file: Day-25/Day-25.md
+#       title: Day 25
+#       sections:
+#       - file: Day-25/Day-25_Pre-class_DataFitting-STUDENT
+#       # - file: Day-25/Day-25_In-Class_MarkovChainMonteCarlo-STUDENT
+
+
+
+# #   #### CODE PORTFOLIO SECTION ####
+# #   - caption: Code Portfolio
+# #     numbered: False
+# #     chapters:
+# #     - file: Homework/Code_Portfolio/Code_Portfolio_Assignment
+# #       title: Code Portfolio Assignment
+# #     - file: Homework/Code_Portfolio/Code_Portfolio_Example.ipynb
+# #       title: Code Portfolio Example
+
+# # #### BOOTCAMP SECTION ####
+# #   # - caption: Bootcamps
+# #   #   numbered: False
+# #   #   chapters:
+# #   #   - file: Bootcamp_Notebooks/Bootcamp1-Python_Fundamentals_STUDENT.ipynb
+# #   #   - file: Bootcamp_Notebooks/Bootcamp2-InitialConceptsReview.ipynb
+# #   #   - file: Bootcamp_Notebooks/Bootcamp3-Debugging_STUDENT.ipynb
+# #   #   - file: Bootcamp_Notebooks/Bootcamp4-IfStatements_STUDENT.ipynb
+# #   #   - file: Bootcamp_Notebooks/Bootcamp5-Functions_STUDENT.ipynb
+# #   #   - file: Bootcamp_Notebooks/Bootcamp6-Matplotlib_STUDENT.ipynb
+# #   #   - file: Bootcamp_Notebooks/Bootcamp7-Arrays_STUDENT.ipynb
+# #   #   - file: Bootcamp_Notebooks/Bootcamp8_Pandas_STUDENT.ipynb
+# #   #   - file: Bootcamp_Notebooks/Bootcamp8_Pandas_INSTRUCTOR.ipynb
+# #   #   - url: https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-S22-data/main/weather.csv
+# #   #     title: weather.csv
+# #   #   - file: Bootcamp_Notebooks/Bootcamp9-ScipyCurveFit_STUDENT.ipynb
+# #   #   - file: Bootcamp_Notebooks/Bootcamp9-ScipyCurveFit_INSTRUCTOR.ipynb
+# #   #   - file: Bootcamp_Notebooks/Bootcamp10-CompartmentalModels_STUDENT.ipynb
+# #   #   - file: Bootcamp_Notebooks/Bootcamp10-CompartmentalModels_INSTRUCTOR.ipynb
+# #   #   - file: Bootcamp_Notebooks/Bootcamp11_Solve_IVP_STUDENT.ipynb
+# #   #   - file: Bootcamp_Notebooks/Bootcamp11_Solve_IVP_INSTRUCTOR.ipynb
+
+
+# ### PRACTICE NOTEBOOK SECTION ####
+# #   - caption: Extra Resources
+# #     numbered: False
+# #     chapters:
+# #     - file: ReviewAndPracticeMaterials/ReviewAndPracticeMaterials
+# #       sections:
+# #       - file: ReviewAndPracticeMaterials/ReviewNotebook_PythonFundamentals-STUDENT.ipynb
+# #       - file: ReviewAndPracticeMaterials/ReviewNotebook_Debugging-STUDENT.ipynb
+# #       - file: ReviewAndPracticeMaterials/ReviewNotebook_Functions-STUDENT.ipynb
+# #       - file: ReviewAndPracticeMaterials/ReviewNotebook_Matplotlib-STUDENT.ipynb
+# #       - file: ReviewAndPracticeMaterials/ReviewNotebook_CompartmentalModels-STUDENT.ipynb
+# #       - file: ReviewAndPracticeMaterials/ReviewNotebook_Pandas-STUDENT.ipynb
+# #       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/ReviewNotebooks/weather.csv
+# #         title: weather.csv
+# #       - file: ReviewAndPracticeMaterials/ReviewNotebook_SolveIVP-STUDENT.ipynb
+# # #     - file: Quiz_Prep_Notebooks/PracticeNotebook_ScipyCurveFit-STUDENT.ipynb
 
