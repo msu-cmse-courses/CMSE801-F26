@@ -1,0 +1,775 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CMSE 801: Introduction to Computational Modeling and Data Analysis &#8212; CMSE 801</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Course_Documents/Syllabus/syllabus';</script>
+    <link rel="icon" href="../../_static/logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Course schedule" href="../Schedule/schedule.html" />
+    <link rel="prev" title="Important Course information" href="../Course_Documents.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="CMSE 801 - Home"/>
+    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="CMSE 801 - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Materials</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../Course_Documents.html">Important Course information</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Syllabus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Schedule/schedule.html">Course Schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SoftwareSetup/SoftwareSetupGuide.html">Software Setup Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classParticipation/classParticipation.html">Classroom Participation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GenerativeAI/GenerativeAI_Policy.html">Generative AI Policy</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Daily Content</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-01/Day-01.html">Day 01</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-01/Day-01_In-Class_SortingAlgorithm-STUDENT.html">Day 1 In-Class Assignment: Introductions and Sorting Algorithms</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.google.com/presentation/d/1mBo6_rlCVhmsCO6HFDx6DKClXEN_FH-7TIv8Deq4FXs/edit?usp=sharing">Day 01 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Course_Documents/Syllabus/syllabus.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>CMSE 801: Introduction to Computational Modeling and Data Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spring-2026">Spring 2026</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructors">Instructors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teaching-assistant">Teaching Assistant</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#class-days-and-time">Class days and time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#class-location">Class location</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#office-hours">Office Hours</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-description">Course Description</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-covered">Topics Covered</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#required-reading-materials">Required Reading Materials</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#required-materials-for-class">Required Materials for Class</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-activities">Course Activities</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#class-participation">Class participation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-class-assignments">Pre-class assignments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-programming-assignments">In-class programming assignments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quizzes">Quizzes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-project">Final project</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-important-information">Other Important Information</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#course-website-and-calendar">Course website and calendar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#email">Email</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#class-discussion">Class discussion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#class-attendance">Class attendance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inclusive-classroom-behavior">Inclusive classroom behavior</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#academic-honesty">Academic honesty</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accommodations">Accommodations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-office-hours-and-locations">Instructor Office Hours and Locations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grading-information">Grading information</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grading-scale">Grading scale</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="cmse-801-introduction-to-computational-modeling-and-data-analysis">
+<h1>CMSE 801: Introduction to Computational Modeling and Data Analysis<a class="headerlink" href="#cmse-801-introduction-to-computational-modeling-and-data-analysis" title="Link to this heading">#</a></h1>
+<section id="spring-2026">
+<h2>Spring 2026<a class="headerlink" href="#spring-2026" title="Link to this heading">#</a></h2>
+<section id="instructors">
+<h3>Instructors<a class="headerlink" href="#instructors" title="Link to this heading">#</a></h3>
+<p><strong>Mengsen Zhang, Ph.D.</strong> (Before Spring Break: Jan 12 - Feb 27)<br />
+Assistant Professor<br />
+Department of Computational Mathematics, Science &amp; Engineering<br />
+Dapartment of Medicine<br />
+Neuroscience Program<br />
+Engineering Building 1514<br />
+<a class="reference external" href="mailto:mengsen&#37;&#52;&#48;msu&#46;edu">mengsen<span>&#64;</span>msu<span>&#46;</span>edu</a></p>
+<p><strong>Guan’ao Yan, Ph.D.</strong> (After Spring Break: March 9 onwards)<br />
+Assistant Professor<br />
+Department of Computational Mathematics, Science &amp; Engineering
+Engineering Building 2507B<br />
+<a class="reference external" href="mailto:gayan&#37;&#52;&#48;msu&#46;edu">gayan<span>&#64;</span>msu<span>&#46;</span>edu</a></p>
+</section>
+<section id="teaching-assistant">
+<h3>Teaching Assistant<a class="headerlink" href="#teaching-assistant" title="Link to this heading">#</a></h3>
+<p>Andrew Johnprakash<br />
+Graduate Student in Data Science<br />
+<a class="reference external" href="mailto:johnprak&#37;&#52;&#48;msu&#46;edu">johnprak<span>&#64;</span>msu<span>&#46;</span>edu</a></p>
+</section>
+<section id="class-days-and-time">
+<h3>Class days and time<a class="headerlink" href="#class-days-and-time" title="Link to this heading">#</a></h3>
+<p>Tuesday and Thursday<br />
+8:30 a.m.- 9:50 a.m.</p>
+</section>
+<section id="class-location">
+<h3>Class location<a class="headerlink" href="#class-location" title="Link to this heading">#</a></h3>
+<p>Engineering Building 2320</p>
+</section>
+<section id="office-hours">
+<h3>Office Hours<a class="headerlink" href="#office-hours" title="Link to this heading">#</a></h3>
+<p>Office hours start from the second week of class. You can reach out to your instructor for appointments at other times.</p>
+<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FDetroit&showPrint=0&title=CMSE%20801%20S26&mode=WEEK&src=Y18zNzY3YjllYjg3MDA0NTk5YjJiNGQzZGJhMGNhMjJiMzBlYmU1ZjRlYjVlMWNiMTRlNzIxY2M5ZDY1MzdkOGY5QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23ad1457" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+<!-- **Mengsen Zhang**\
+Time: Tuesday and Thursday 10:00-11:00am\
+Location: Engineering Building 1514 (in-person option) or [Zoom](https://msu.zoom.us/j/94944838871?pwd=iKrDilGfJxLGoBmtd9wzKezDioCMml.1)
+
+
+**Guan'ao Yan**\
+Time: TBD\
+Location: Engineering Building xxx or [Zoom](https://msu.zoom.us/j/94944838871?pwd=iKrDilGfJxLGoBmtd9wzKezDioCMml.1)
+
+**TBN TA**
+Time: TBD\
+Location: Engineering Building xxx or [Zoom](https://msu.zoom.us/j/94944838871?pwd=iKrDilGfJxLGoBmtd9wzKezDioCMml.1) -->
+</section>
+</section>
+<section id="course-description">
+<h2>Course Description<a class="headerlink" href="#course-description" title="Link to this heading">#</a></h2>
+<p>A useful definition of <em>computational science</em> is “the use of computers to analyze and solve scientific problems.” Over the course of this semester, we will explore various aspects of computational science and will acquire a variety of practical, fundamental computational skills.
+In addition, we will explore application-driven modeling of various systems, with applications to the physical, life, and social sciences, and also to engineering and mathematics. While we will learn some computer programming over this semester, the goal is utilitarian - this is a course in applied computing, rather than a course intended for traditional computer scientists!</p>
+<p>By the end of this course, you will be able to:</p>
+<ul class="simple">
+<li><p>Gain insight into physical, biological, and social systems through the use of computational algorithms and tools</p></li>
+<li><p>Write programs to solve common problems in a variety of disciplines</p></li>
+<li><p>Identify salient features of a system that can be codified into a model</p></li>
+<li><p>Manipulate, analyze, and visualize datasets and use this data to evaluate models</p></li>
+<li><p>Have an understanding of basic numerical methods (e.g., numerical integration, differential equations, Monte Carlo) and be able to use them to solve problems</p></li>
+<li><p>Be able to take results from a scientific computing problem and present it both verbally and in writing</p></li>
+</ul>
+<p>We will work toward the goals expressed above throughout this course using a range of activities - primarily by writing software both individually and in small groups, but also through discussion, presentations, and other types of exercises.</p>
+<section id="topics-covered">
+<h3>Topics Covered<a class="headerlink" href="#topics-covered" title="Link to this heading">#</a></h3>
+<p>The primary topics covered in this course include:</p>
+<ul class="simple">
+<li><p>Creation of models (making mathematical representations of systems)</p></li>
+<li><p>The basics of functional programming in Python (i.e., variables and types, functions, simple data structures, strings, lists, tuples)</p></li>
+<li><p>Plotting and data visualization</p></li>
+<li><p>File and dataset manipulation</p></li>
+<li><p>Basic numerical techniques, possibly including statistics, linear regression, difference equations, Monte Carlo, agent-based modeling, numerical integration</p></li>
+</ul>
+<p>Please note that <strong>creating models to describe and understand systems</strong> (whether they are in the physical, life, or social sciences, or in engineering) is the driving principle of this course - everything else we teach you is in service to this goal!</p>
+</section>
+<section id="required-reading-materials">
+<h3>Required Reading Materials<a class="headerlink" href="#required-reading-materials" title="Link to this heading">#</a></h3>
+<p>This class has no required book or course pack. From time to time we will direct you toward outside online resources, but the main materials will be video lectures, instructor course notes, and software.</p>
+</section>
+<section id="required-materials-for-class">
+<h3>Required Materials for Class<a class="headerlink" href="#required-materials-for-class" title="Link to this heading">#</a></h3>
+<p>In-class programming assignments are a critical part of the learning process in this course. To that end, <strong>you are expected to bring your laptop and its power cord every day.</strong></p>
+<p>If you do not have a laptop, or if your laptop won’t run the software that we need for class, we will have spare machines to use during class.</p>
+</section>
+</section>
+<section id="course-activities">
+<h2>Course Activities<a class="headerlink" href="#course-activities" title="Link to this heading">#</a></h2>
+<section id="class-participation">
+<h3>Class participation<a class="headerlink" href="#class-participation" title="Link to this heading">#</a></h3>
+<p>Active class participation (led both by the instructor and by students) is critical to the success of this course. As such, <strong>you are expected to attend class every week, bring the required materials (most importantly, your computer and power cord) and to actively participate in the in-class discussion.</strong></p>
+</section>
+<section id="pre-class-assignments">
+<h3>Pre-class assignments<a class="headerlink" href="#pre-class-assignments" title="Link to this heading">#</a></h3>
+<p>We will assign short assignments that are due prior to class. The purpose of these assignments is to introduce new material and give you some practice with it so that we can focus on experimentation and implementation in class. These assignments will typically consist of one or more short videos or reading assignments and related questions or problems and will be due before class via the course’s Desire2Learn page. The deadline for each pre-class assignment is indicated on the course’s Desire2Learn page. <strong>Completing these assignments will be critical for your success in this course.</strong></p>
+</section>
+<section id="in-class-programming-assignments">
+<h3>In-class programming assignments<a class="headerlink" href="#in-class-programming-assignments" title="Link to this heading">#</a></h3>
+<p>Class sessions will be held twice a week and will be broken up into presentations, discussions, and programming activities that will allow you to immediately implement (and get instant feedback on) what you have just learned. In-class programming activities will be turned in at the end of the class session via the course’s Desire2Learn page.</p>
+</section>
+<section id="homework">
+<h3>Homework<a class="headerlink" href="#homework" title="Link to this heading">#</a></h3>
+<p>You will have periodic programming assignments that will provide a more in-depth exploration of the materials covered in class. These will be pursued individually, and will be turned in by the given deadline via the course’s Desire2Learn page. You can expect that they will require two week’s worth of out-of-class effort, so you are encouraged to start your assignments as early as possible.</p>
+<p>In the absence of clear communication with the course instructor prior to the original homework deadline, homework assignments that are submitted late will be accepted <strong>for up to two days beyond the due date</strong> (i.e., 48 hours past the original deadline). <strong>If the assignment is submitted within 24 hours of the original deadline, there is a 10% penalty.</strong> This applies even if the assignment is 1 minute late. Similarly, <strong>if it is submitted in the 24-48 hour window, a 20% deduction is applied.</strong> Again, <strong>after the 48th hour, the assignment will no longer be accepted.</strong> If for some reason, a given homework deadline feels infeasiable for you, you are encouraged to contact the course instructor prior to the deadline to discuss the possiblity of a homework deadline extension.</p>
+</section>
+<section id="quizzes">
+<h3>Quizzes<a class="headerlink" href="#quizzes" title="Link to this heading">#</a></h3>
+<p>This class will have four quizzes, approximately running for 30 mintues each, which are spread through the semester. See the <a class="reference internal" href="../Schedule/schedule.html"><span class="std std-doc">Course Schedule</span></a> for details.</p>
+</section>
+<section id="final-project">
+<h3>Final project<a class="headerlink" href="#final-project" title="Link to this heading">#</a></h3>
+<p>In place of a final exam, this course will have a final project. You
+will complete it either individually or in pairs outside the classroom.
+It will involve synthesizing the computational modeling, data analysis,
+and data visualization techniques that you learned over the course of
+the term. You will present your project results in an oral presentation.
+You will also need to turn in the Jupyter notebook for the final
+project, complete with narrative text and figures that explain your
+project methods and corresponding results. <strong>Your project must include
+references to all work used to complete your project.</strong> The project can
+be on a topic of your choosing and, if possible, should be related to
+your research. <strong>You will be expected to submit a project proposal to
+the instructor for approval.</strong> More details will be made available as
+the semester progresses.</p>
+</section>
+</section>
+<section id="other-important-information">
+<h2>Other Important Information<a class="headerlink" href="#other-important-information" title="Link to this heading">#</a></h2>
+<section id="course-website-and-calendar">
+<h3>Course website and calendar<a class="headerlink" href="#course-website-and-calendar" title="Link to this heading">#</a></h3>
+<p>Important course information,
+including this syllabus, and course assignments can be found one this website.
+All assignments will be handed in via Desire2Learn, which can
+be found at <a class="reference external" href="http://d2l.msu.edu">http://d2l.msu.edu</a>. Consult the class website for
+instructions on assignment submission.</p>
+</section>
+<section id="email">
+<h3>Email<a class="headerlink" href="#email" title="Link to this heading">#</a></h3>
+<p>At times, we will send out important course information via email. This
+email is sent to your MSU email address (the one that ends in
+“&#64;msu.edu”). You are responsible for all information sent out to your
+University email account, and for checking this account on a regular
+(daily) basis.</p>
+</section>
+<section id="class-discussion">
+<h3>Class discussion<a class="headerlink" href="#class-discussion" title="Link to this heading">#</a></h3>
+<p>We will be using <a class="reference external" href="https://teams.microsoft.com/l/team/19%3ABZIEX94V9q2pDQcl3Wdre8Au93LdCBcQ_zVbbJHXYhw1%40thread.tacv2/conversations?groupId=fde78d07-c683-43ed-9aa6-ce60770a8035&amp;amp;tenantId=22177130-642f-41d9-9211-74237ad5687d">Microsoft Teams</a> as our means of communicating about course content as the semester progresses. We believe that this will provide an excellent avenue to have discussions not only with course instructor and TA, but also between you and your fellow classmates.</p>
+<p>The Teams channel will be the place to go for any questions about assignments in the course or issues you’re having with your computer or Python. We encourage you to help out other classmates when you can!</p>
+<p>In order to ensure that Teams is an appropriately used tool that does not become overly time-consuming for the course instructor and TA, we have a list of rules for how
+we expect you to use Teams. They are:</p>
+<ol class="arabic simple">
+<li><p>Before you ask a question, be sure to check the main channel to see if the question has already been answered.</p></li>
+<li><p>The Teams channel is primarily for you, the students, so help each other.</p></li>
+<li><p>The TA will monitor the channel, but will defer to the students to work through things. They will only enter a conversation if students are going down the wrong path and/or there are too few other students involved. However, you should not expect that the TA will always be available. The TA will spend a limited amount of time “logged in” to Teams and we ask that you be respectful of their time.</p></li>
+<li><p>Teams is meant to be used to help you when you are stuck with a minor issue. If you are having major issues or trouble understanding the concept, go to office hours or help room hours as they are meant for more in-depth discussions of course content.</p></li>
+<li><p>The course instructor will check Teams occasionally, but potentially sporadically, primarily to examine progress. While they may offer help, do not rely on it. The instructor will not respond to the same student twice within a 30 minute time interval.</p></li>
+<li><p>Do not post your solutions to out-of-class assignments directly into Teams unless prompted by an instructor.</p></li>
+<li><p>Be courteous to everyone on Teams. Students who are being rude or who are excessively posting might be banned from posting on the course Teams channel.</p></li>
+</ol>
+</section>
+<section id="class-attendance">
+<h3>Class attendance<a class="headerlink" href="#class-attendance" title="Link to this heading">#</a></h3>
+<p>This class is heavily based on material presented and worked on in class, and it is critical that you attend and participate fully every week! Therefore, class attendance is absolutely required. However, since life can be unpredictable and you may have competing priorities that vary day-to-day, each student will be allowed two unexcused absences without a negative impact to their grade. <strong>Any further unexcused absence will result in zero points for the day, which includes the in-class programming assignment points.</strong> <em><strong>Arriving late or leaving early without prior arrangement with the instructor of your session counts as an unexcused absence.</strong></em> Note that if you have a legitimate reason to miss class (such as job interviews or work-related travel) you must arrange this ahead of time to be excused from class. Three unexcused absences will result in the reduction of your grade by one step (e.g., from 4.0 to 3.5), with additional absences reducing your grade further at the discretion of the course instructor.</p>
+</section>
+<section id="inclusive-classroom-behavior">
+<h3>Inclusive classroom behavior<a class="headerlink" href="#inclusive-classroom-behavior" title="Link to this heading">#</a></h3>
+<p>Respectful and responsible behavior is expected at all times, which includes not interrupting other students, turning your cell phone off, refraining from non-course-related use of electronic devices, and not using offensive or demeaning language in our discussions. Flagrant or repeated violations of this expectation may result in ejection from the classroom, grade-related penalties, and/or involvement of the university Ombudsperson. In particular, behaviors that could be considered discriminatory or harassing, or unwanted sexual attention, will not be tolerated and will be immediately reported to the appropriate MSU office (which may include the MSU Police Department).</p>
+<p>In addition, MSU welcomes a full spectrum of experiences, viewpoints, and intellectual approaches because they enrich the conversation, even as they challenge us to think differently and grow. However, we believe that expressions and actions that demean individuals or groups comprise the environment for intellectual growth and undermine the social fabric on which the community is based. These demeaning behaviors are not welcome in this classroom.</p>
+</section>
+<section id="academic-honesty">
+<h3>Academic honesty<a class="headerlink" href="#academic-honesty" title="Link to this heading">#</a></h3>
+<p>Intellectual integrity is the foundation of the scientific enterprise. In all instances, you must do your own work and give proper credit to all sources that you use in your papers and oral presentations - any instance of submitting another person’s work, ideas, or wording as your own counts as plagiarism. This includes failing to cite any direct quotations in your essays, research paper, class debate, or written presentation. The MSU College of Natural Science adheres to the policies of academic honesty as specified in the General Student Regulations 1.0, Protection of Scholarship and Grades, and in the all-University statement on Integrity of Scholarship and Grades, which are included in Spartan Life: Student Handbook and Resource Guide. Students who plagiarize will receive a 0.0 in the course. In addition, University policy requires that any cheating offense, regardless of the magnitude of the infraction or punishment decided upon by the professor, be reported immediately to the dean of the student’s college.</p>
+<p>It is important to note that <strong>plagiarism in the context of this course includes, but is not limited to, directly copying another student’s solutions to in-class or homework problems; copying materials from online sources, textbooks, or other reference materials <em>without citing those references in your source code or documentation</em>, or having somebody else do your in-class work or homework on your behalf (which includes online “tutoring” services).</strong> Any work that is done in collaboration with other students should state this explicitly, and their names, as well as yours, should be listed clearly. When collaborating with other students, you should still be coding/writing your own solutions to the assignments and should limit your collaboration to conceptual discussions about how one might go about solving the problems, not sharing exact solutions.</p>
+<p>More broadly, we ask that students adhere to the Spartan Code of Honor academic pledge, as written by the Associated Students of Michigan State University (ASMSU):</p>
+<blockquote>
+<div><p>“As a Spartan, I will strive to uphold values of the highest ethical standard. I will practice honesty in my work, foster honesty in my peers, and take pride in knowing that honor is worth more than grades. I will carry these values beyond my time as a student at Michigan State University, continuing the endeavor to build personal integrity in all that I do.”</p>
+</div></blockquote>
+</section>
+<section id="accommodations">
+<h3>Accommodations<a class="headerlink" href="#accommodations" title="Link to this heading">#</a></h3>
+<p>If you have a university-documented learning difficulty or require other accommodations, please provide me with your Accommodation Letter as soon as possible and speak with me about how I can assist you in your learning. If you do not have an Accommodation Letter but have been documented with a learning difficulty or other problems for which you may still require an accommodation, please contact MSU’s Resource Center for People with Disabilities (355-9642) in order to acquire current documentation.</p>
+</section>
+<section id="instructor-office-hours-and-locations">
+<h3>Instructor Office Hours and Locations<a class="headerlink" href="#instructor-office-hours-and-locations" title="Link to this heading">#</a></h3>
+<p>Regularly scheduled office hours will start the second week of classes with times to be announced. If you are not available in these hours, please contact the instructor. If you have reason to meet during the first week of classes, reach out to the instructor via email.</p>
+<p>Any course personnel can help you with questions pertaining to the course material, including in-class and homework assignments. Technical questions, including issues with Python and/or Jupyter, should be first directed to your professor, but specific issues with JupyterHub (<a class="reference external" href="https://jupyterhub.egr.msu.edu">https://jupyterhub.egr.msu.edu</a>) can be sent to <a class="reference external" href="mailto:support&#37;&#52;&#48;egr&#46;msu&#46;edu">support<span>&#64;</span>egr<span>&#46;</span>msu<span>&#46;</span>edu</a>. If you have issues relating to class administration, including missed classes, illness, Accommodation Letter issues, or school-sponsored activities please contact the instructor.</p>
+</section>
+</section>
+<section id="grading-information">
+<h2>Grading information<a class="headerlink" href="#grading-information" title="Link to this heading">#</a></h2>
+<p>There are a variety of course activities, with percentage of the total grade listed. More
+detailed descriptions of each activity can be found elsewhere in the syllabus.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Percentage of total grade</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Participation, attendance, in-class assignments</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pre-class assignments</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-even"><td><p>Quizzes</p></td>
+<td><p>20</p></td>
+</tr>
+<tr class="row-odd"><td><p>Homework assignments</p></td>
+<td><p>25</p></td>
+</tr>
+<tr class="row-even"><td><p>Semester projects</p></td>
+<td><p>25</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Total</strong></p></td>
+<td><p>100</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Note that the lowest two in-class assignments; as well as the lowest two pre-class assignments will be dropped (which accounts for the unexcused absence policy stated above).</p>
+<section id="grading-scale">
+<h3>Grading scale<a class="headerlink" href="#grading-scale" title="Link to this heading">#</a></h3>
+<p>At the end of the semester, your grade will be calculated using the following scale:</p>
+<ul class="simple">
+<li><p>4.0 ≥ 90%</p></li>
+<li><p>3.5 ≥ 85%</p></li>
+<li><p>3.0 ≥ 80%</p></li>
+<li><p>2.5 ≥ 75%</p></li>
+<li><p>2.0 ≥ 70%</p></li>
+<li><p>1.5 ≥ 65%</p></li>
+<li><p>1.0 ≥ 60%</p></li>
+<li><p>0.0 &lt; 60%</p></li>
+</ul>
+<p><strong>Note:</strong> Grades will not be curved - your grade is based on your own
+effort and progress, not on competition with your classmates.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Course_Documents\Syllabus"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../Course_Documents.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Important Course information</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Schedule/schedule.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Course schedule</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spring-2026">Spring 2026</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructors">Instructors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teaching-assistant">Teaching Assistant</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#class-days-and-time">Class days and time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#class-location">Class location</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#office-hours">Office Hours</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-description">Course Description</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-covered">Topics Covered</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#required-reading-materials">Required Reading Materials</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#required-materials-for-class">Required Materials for Class</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-activities">Course Activities</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#class-participation">Class participation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-class-assignments">Pre-class assignments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-programming-assignments">In-class programming assignments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quizzes">Quizzes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-project">Final project</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-important-information">Other Important Information</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#course-website-and-calendar">Course website and calendar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#email">Email</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#class-discussion">Class discussion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#class-attendance">Class attendance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inclusive-classroom-behavior">Inclusive classroom behavior</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#academic-honesty">Academic honesty</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accommodations">Accommodations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-office-hours-and-locations">Instructor Office Hours and Locations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grading-information">Grading information</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grading-scale">Grading scale</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Department of Computational Mathematics, Science and Engineering at Michigan State University
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,532 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CMSE 801: Introduction to Computational Modeling and Data Analysis &#8212; CMSE 801</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <link rel="icon" href="_static/logo.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Important Course information" href="Course_Documents/Course_Documents.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="CMSE 801 - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="CMSE 801 - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Materials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="Course_Documents/Course_Documents.html">Important Course information</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Course_Documents/Syllabus/syllabus.html">Syllabus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Course_Documents/Schedule/schedule.html">Course Schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Course_Documents/SoftwareSetup/SoftwareSetupGuide.html">Software Setup Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Course_Documents/classParticipation/classParticipation.html">Classroom Participation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Course_Documents/GenerativeAI/GenerativeAI_Policy.html">Generative AI Policy</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Daily Content</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="Day-01/Day-01.html">Day 01</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Day-01/Day-01_In-Class_SortingAlgorithm-STUDENT.html">Day 1 In-Class Assignment: Introductions and Sorting Algorithms</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.google.com/presentation/d/1mBo6_rlCVhmsCO6HFDx6DKClXEN_FH-7TIv8Deq4FXs/edit?usp=sharing">Day 01 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/intro.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>CMSE 801: Introduction to Computational Modeling and Data Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-course-information">Important Course Information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-information">Instructor Information</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teaching-assistant">Teaching Assistant</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#office-hours">Office hours</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-schedule">Course schedule</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="cmse-801-introduction-to-computational-modeling-and-data-analysis">
+<h1>CMSE 801: Introduction to Computational Modeling and Data Analysis<a class="headerlink" href="#cmse-801-introduction-to-computational-modeling-and-data-analysis" title="Link to this heading">#</a></h1>
+<section id="important-course-information">
+<h2>Important Course Information<a class="headerlink" href="#important-course-information" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="Course_Documents/Syllabus/syllabus.html"><span class="std std-doc">Course Syllabus</span></a></p></li>
+<li><p><a class="reference internal" href="Course_Documents/Schedule/schedule.html"><span class="std std-doc">Course Schedule</span></a></p></li>
+<li><p><a class="reference internal" href="Course_Documents/SoftwareSetup/SoftwareSetupGuide.html"><span class="std std-doc">Software Setup Guide</span></a> (Make sure to go through this before the first day of class!)</p></li>
+<li><p><a class="reference external" href="https://d2l.msu.edu/d2l/home/2387908">Desire 2 Learn</a> (Course assignments will be submitted via D2L)</p></li>
+<li><p><a class="reference internal" href="#%5BTBD%5D(https://teams.microsoft.com/l/team/19%3ABZIEX94V9q2pDQcl3Wdre8Au93LdCBcQ_zVbbJHXYhw1%40thread.tacv2/conversations?groupId=fde78d07-c683-43ed-9aa6-ce60770a8035&amp;tenantId=22177130-642f-41d9-9211-74237ad5687d)"><span class="xref myst">MS Teams Channel</span></a> – General course discussion and assistance will be held on Teams.</p></li>
+</ul>
+<!-- * [Office Hours and Help Room Calendar](https://cmse.msu.edu/cmse801-office-hours) -- Contains all of the different times and locations for faculty office hours and TA and LA help room hours. -->
+<!-- * For easy access, the Zoom room for TA/LA help room hours is  -->
+<!-- * [Instructions for using the Jupyter Book interface and uploading to D2L](https://github.com/msu-cmse-courses/cmse201-supplemental/raw/main/jupyter_intro.pdf) (document describing how to access, download notebooks, edit them, and then upload them to D2L)
+* [Instructions for screen sharing in STEM 3201](https://github.com/msu-cmse-courses/cmse201-supplemental/raw/main/Screen_Sharing_STEM_3201.pdf) (document describing how to share your screen on the monitors in STEM 3201)
+* [Resources for Extra Practice](https://docs.google.com/document/d/13ZV6qrqy1ydUnZeM2D3tm5DJH2rqdOg2m295BWSka3U/edit?usp=sharing)
+* [Jack Nugent's CMSE 201 Cheatsheet](https://github.com/jacknuge28/Projects/blob/main/03_Cheatsheet/Cheatsheet.ipynb) (created by a former CMSE 201 student) -->
+</section>
+<hr class="docutils" />
+<section id="instructor-information">
+<h2>Instructor Information<a class="headerlink" href="#instructor-information" title="Link to this heading">#</a></h2>
+<p><strong>Mengsen Zhang</strong> (Before Spring Break: Jan 12 - Feb 27)<br />
+<a class="reference external" href="mailto:mengsen&#37;&#52;&#48;msu&#46;edu">mengsen<span>&#64;</span>msu<span>&#46;</span>edu</a><br />
+Assistant Professor<br />
+Department of Computational Mathematics, Science &amp; Engineering<br />
+Dapartment of Medicine<br />
+Neuroscience Program</p>
+<!-- **Office hours** (starting during the second week of class):
+<!-- * Wednesdays 10:00-11:00am
+    * Location: Engineering Building 1508E (in-person option) or [Zoom](https://msu.zoom.us/j/97997229613?pwd=TOJcP6oGk0ICMZRqJSF5pau14Dwwej.1)
+* Thursdays 2:00-3:00pm
+    * Location: [Zoom](https://msu.zoom.us/j/97997229613?pwd=TOJcP6oGk0ICMZRqJSF5pau14Dwwej.1) (virtual-only) -->
+<p>If you would like to meet during the first week of class, email to set up an appointment. –&gt;</p>
+<p><strong>Guan’ao Yan</strong> (After Spring Break: March 9 onwards)<br />
+<a class="reference external" href="mailto:gayan&#37;&#52;&#48;msu&#46;edu">gayan<span>&#64;</span>msu<span>&#46;</span>edu</a><br />
+Assistant Professor<br />
+Department of Computational Mathematics, Science &amp; Engineering</p>
+<!-- **Office hours** (starting from date TBD): -->
+<hr class="docutils" />
+<section id="teaching-assistant">
+<h3>Teaching Assistant<a class="headerlink" href="#teaching-assistant" title="Link to this heading">#</a></h3>
+<p><strong>Andrew Johnprakash</strong><br />
+<a class="reference external" href="mailto:johnprak&#37;&#52;&#48;msu&#46;edu">johnprak<span>&#64;</span>msu<span>&#46;</span>edu</a><br />
+Graduate Student in Data Science</p>
+<!-- [tbd@msu.edu](mailto:tbd@msu.edu) -->
+<!-- **Office hours** (starting during the second week of class): -->
+<!-- * Tuesdays 12:30-2:30pm
+    * Location: Engineering Building 2504 or [Zoom](https://msu.zoom.us/j/97997229613?pwd=TOJcP6oGk0ICMZRqJSF5pau14Dwwej.1)
+* Wednesdays 1:00-3:00pm
+    * Location: Engineering Building 1508A or [Zoom](https://msu.zoom.us/j/97997229613?pwd=TOJcP6oGk0ICMZRqJSF5pau14Dwwej.1) -->
+</section>
+</section>
+<hr class="docutils" />
+<section id="office-hours">
+<h2>Office hours<a class="headerlink" href="#office-hours" title="Link to this heading">#</a></h2>
+<p>Office hours start from the second week of class. You can reach out to your instructor for appointments at other times.</p>
+<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FDetroit&showPrint=0&title=CMSE%20801%20S26&mode=WEEK&src=Y18zNzY3YjllYjg3MDA0NTk5YjJiNGQzZGJhMGNhMjJiMzBlYmU1ZjRlYjVlMWNiMTRlNzIxY2M5ZDY1MzdkOGY5QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23ad1457" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+</section>
+<hr class="docutils" />
+<section id="course-schedule">
+<h2>Course schedule<a class="headerlink" href="#course-schedule" title="Link to this heading">#</a></h2>
+<p>Please see the <a class="reference internal" href="Course_Documents/Schedule/schedule.html"><span class="std std-doc">Course Schedule Page</span></a> for the schedule of events and access to the Google calendar with office hours.</p>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="right-next"
+       href="Course_Documents/Course_Documents.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Important Course information</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-course-information">Important Course Information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-information">Instructor Information</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teaching-assistant">Teaching Assistant</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#office-hours">Office hours</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-schedule">Course schedule</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Department of Computational Mathematics, Science and Engineering at Michigan State University
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
