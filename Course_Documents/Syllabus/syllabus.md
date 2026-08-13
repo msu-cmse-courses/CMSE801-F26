@@ -1,43 +1,44 @@
 
 # CMSE 801: Introduction to Computational Modeling and Data Analysis
 
-## Spring 2026
+## Fall 2026
 
 ### Instructors
 
-**Mengsen Zhang, Ph.D.** (Before Spring Break: Jan 12 - Feb 27)\
+**Nkechi Nnadi, Ph.D.** (Before Fall Break: Aug 31 - Oct 23)\
 Assistant Professor\
 Department of Computational Mathematics, Science & Engineering\
-Dapartment of Medicine\
+Engineering Building 1515, #I6\
+<mnnadinke@msu.edu>
+
+
+**Mengsen Zhang, Ph.D.** (After Fall Break: Oct 28 and onwards)\
+Assistant Professor\
+Department of Computational Mathematics, Science & Engineering\
+Department of Medicine\
 Neuroscience Program\
 Engineering Building 1514\
 <mengsen@msu.edu>
 
-**Guan'ao Yan, Ph.D.** (After Spring Break: March 9 onwards)\
-Assistant Professor\
-Department of Computational Mathematics, Science & Engineering
-Engineering Building 2507B\
-<gayan@msu.edu>
-
 ### Teaching Assistant
-Andrew Johnprakash\
+<!-- Andrew Johnprakash\
 Graduate Student in Data Science\
-<johnprak@msu.edu>
+<johnprak@msu.edu> -->
 
 ### Class days and time
 
-Tuesday and Thursday\
+Monday and Wednesday\
 8:30 a.m.- 9:50 a.m.
 
 ### Class location
 
-Engineering Building 2320
+Engineering Building 1225
 
 ### Office Hours
 
-Office hours start from the second week of class. You can reach out to your instructor for appointments at other times. 
+Office hours begin in the second week of classes. You may reach out to your instructor for appointments at other times. 
 
-<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FDetroit&showPrint=0&title=CMSE%20801%20S26&mode=WEEK&src=Y18zNzY3YjllYjg3MDA0NTk5YjJiNGQzZGJhMGNhMjJiMzBlYmU1ZjRlYjVlMWNiMTRlNzIxY2M5ZDY1MzdkOGY5QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23ad1457" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+<iframe src="https://outlook.office.com/bookwithme/user/163739ded8e14d768789875e3631f038@msu.edu/meetingtype/eTqhq3nm90mKf75yqos2ng2?bookingcode=d493a125-ef7b-4539-a08a-ad6830bb9265&anonymous&ismsaljsauthenabled&ep=mlink" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 
 <!-- **Mengsen Zhang**\
 Time: Tuesday and Thursday 10:00-11:00am\
@@ -105,11 +106,11 @@ If you do not have a laptop, or if your laptop won't run the software that we ne
 
 ### Class participation
 
-Active class participation (led both by the instructor and by students) is critical to the success of this course. As such, **you are expected to attend class every week, bring the required materials (most importantly, your computer and power cord) and to actively participate in the in-class discussion.**
+Active class participation (led both by the instructor and by students) is critical to the success of this course. As such, **you are expected to attend class every week, bring the required materials (most importantly, your computer and power cord), and to actively participate in the in-class discussion.**
 
 ### Pre-class assignments
 
-We will assign short assignments that are due prior to class. The purpose of these assignments is to introduce new material and give you some practice with it so that we can focus on experimentation and implementation in class. These assignments will typically consist of one or more short videos or reading assignments and related questions or problems and will be due before class via the course's Desire2Learn page. The deadline for each pre-class assignment is indicated on the course's Desire2Learn page. **Completing these assignments will be critical for your success in this course.**
+We will assign short assignments that are due before class. The purpose of these assignments is to introduce new material and give you some practice with it so that we can focus on experimentation and implementation in class. These assignments will typically consist of one or more short videos or reading assignments and related questions or problems and will be due before class via the course's Desire2Learn page. The deadline for each pre-class assignment is indicated on the course's Desire2Learn page. **Completing these assignments will be critical for your success in this course.**
 
 ### In-class programming assignments
 
@@ -117,13 +118,13 @@ Class sessions will be held twice a week and will be broken up into presentation
 
 ### Homework
 
-You will have periodic programming assignments that will provide a more in-depth exploration of the materials covered in class. These will be pursued individually, and will be turned in by the given deadline via the course's Desire2Learn page. You can expect that they will require two week's worth of out-of-class effort, so you are encouraged to start your assignments as early as possible.
+You will have periodic programming assignments that will provide a more in-depth exploration of the materials covered in class. These will be pursued individually and will be turned in by the given deadline via the course's Desire2Learn page. You can expect that they will require two weeks' worth of out-of-class effort, so you are encouraged to start your assignments as early as possible.
 
-In the absence of clear communication with the course instructor prior to the original homework deadline, homework assignments that are submitted late will be accepted **for up to two days beyond the due date** (i.e., 48 hours past the original deadline). **If the assignment is submitted within 24 hours of the original deadline, there is a 10% penalty.** This applies even if the assignment is 1 minute late. Similarly, **if it is submitted in the 24-48 hour window, a 20% deduction is applied.** Again, **after the 48th hour, the assignment will no longer be accepted.** If for some reason, a given homework deadline feels infeasiable for you, you are encouraged to contact the course instructor prior to the deadline to discuss the possiblity of a homework deadline extension.
+In the absence of clear communication with the course instructor prior to the original homework deadline, homework assignments that are submitted late will be accepted **for up to two days beyond the due date** (i.e., 48 hours past the original deadline). **If the assignment is submitted within 24 hours of the original deadline, there is a 10% penalty.** This applies even if the assignment is 1 minute late. Similarly, **if it is submitted in the 24-48 hour window, a 20% deduction is applied.** Again, **after the 48th hour, the assignment will no longer be accepted.** If for some reason, a given homework deadline feels infeasible for you, you are encouraged to contact the course instructor prior to the deadline to discuss the possibility of a homework deadline extension.
 
 ### Quizzes
 
-This class will have four quizzes, approximately running for 30 mintues each, which are spread through the semester. See the [Course Schedule](../Schedule/schedule.md) for details.
+This class will have four quizzes, approximately running for 30 minutes each, which are spread through the semester. See the [Course Schedule](../Schedule/schedule.md) for details.
 
 ### Final project
 
@@ -161,11 +162,11 @@ University email account, and for checking this account on a regular
 
 ### Class discussion
 
-We will be using [Microsoft Teams](https://teams.microsoft.com/l/team/19%3ABZIEX94V9q2pDQcl3Wdre8Au93LdCBcQ_zVbbJHXYhw1%40thread.tacv2/conversations?groupId=fde78d07-c683-43ed-9aa6-ce60770a8035&tenantId=22177130-642f-41d9-9211-74237ad5687d) as our means of communicating about course content as the semester progresses. We believe that this will provide an excellent avenue to have discussions not only with course instructor and TA, but also between you and your fellow classmates.
+We will be using [Microsoft Teams](https://teams.microsoft.com/l/channel/19%3Abdv_qnEnQMz0gTX5ac8LMmZT5CQRwurZ9XRpMQ45XtE1%40thread.tacv2/CMSE801-F26?groupId=d0d12e1d-88f3-4b05-8b46-460666ebfbd8&tenantId=22177130-642f-41d9-9211-74237ad5687d&ngc=true&allowXTenantAccess=true) as our means of communicating about course content as the semester progresses. We believe that this will provide an excellent avenue to have discussions not only with the course instructor and TA, but also between you and your classmates.
 
 The Teams channel will be the place to go for any questions about assignments in the course or issues you're having with your computer or Python. We encourage you to help out other classmates when you can!
 
-In order to ensure that Teams is an appropriately used tool that does not become overly time-consuming for the course instructor and TA, we have a list of rules for how
+To ensure that Teams is an appropriately used tool that does not become overly time-consuming for the course instructor and TA, we have a list of rules for how
 we expect you to use Teams. They are:
 
 1. Before you ask a question, be sure to check the main channel to see if the question has already been answered.
@@ -178,13 +179,13 @@ we expect you to use Teams. They are:
 
 ### Class attendance
 
-This class is heavily based on material presented and worked on in class, and it is critical that you attend and participate fully every week! Therefore, class attendance is absolutely required. However, since life can be unpredictable and you may have competing priorities that vary day-to-day, each student will be allowed two unexcused absences without a negative impact to their grade. **Any further unexcused absence will result in zero points for the day, which includes the in-class programming assignment points.** ***Arriving late or leaving early without prior arrangement with the instructor of your session counts as an unexcused absence.*** Note that if you have a legitimate reason to miss class (such as job interviews or work-related travel) you must arrange this ahead of time to be excused from class. Three unexcused absences will result in the reduction of your grade by one step (e.g., from 4.0 to 3.5), with additional absences reducing your grade further at the discretion of the course instructor.
+This class is heavily based on material presented and worked on in class, and it is critical that you attend and participate fully every week! Therefore, class attendance is absolutely required. However, since life can be unpredictable and you may have competing priorities that vary day-to-day, each student will be allowed two unexcused absences without a negative impact to their grade. **Any further unexcused absence will result in zero points for the day, which includes the in-class programming assignment points.** ***Arriving late or leaving early without prior arrangement with the instructor of your session counts as an unexcused absence.*** Note that if you have a legitimate reason to miss class (such as job interviews or work-related travel), you must arrange this ahead of time to be excused from class. Three unexcused absences will result in the reduction of your grade by one step (e.g., from 4.0 to 3.5), with additional absences reducing your grade further at the discretion of the course instructor.
 
 ### Inclusive classroom behavior
 
 Respectful and responsible behavior is expected at all times, which includes not interrupting other students, turning your cell phone off, refraining from non-course-related use of electronic devices, and not using offensive or demeaning language in our discussions. Flagrant or repeated violations of this expectation may result in ejection from the classroom, grade-related penalties, and/or involvement of the university Ombudsperson. In particular, behaviors that could be considered discriminatory or harassing, or unwanted sexual attention, will not be tolerated and will be immediately reported to the appropriate MSU office (which may include the MSU Police Department).
 
-In addition, MSU welcomes a full spectrum of experiences, viewpoints, and intellectual approaches because they enrich the conversation, even as they challenge us to think differently and grow. However, we believe that expressions and actions that demean individuals or groups comprise the environment for intellectual growth and undermine the social fabric on which the community is based. These demeaning behaviors are not welcome in this classroom.
+In addition, MSU welcomes a full spectrum of experiences, viewpoints, and intellectual approaches because they enrich the conversation, even as they challenge us to think differently and grow. However, we believe that expressions and actions that demean individuals or groups compromise the environment for intellectual growth and undermine the social fabric on which the community is based. These demeaning behaviors are not welcome in this classroom.
 
 ### Academic honesty
 
@@ -202,13 +203,13 @@ If you have a university-documented learning difficulty or require other accommo
 
 ### Instructor Office Hours and Locations
 
-Regularly scheduled office hours will start the second week of classes with times to be announced. If you are not available in these hours, please contact the instructor. If you have reason to meet during the first week of classes, reach out to the instructor via email.
+Regularly scheduled office hours will start the second week of classes with times to be announced. If you are not available during these hours, please contact the instructor. If you have reason to meet during the first week of classes, reach out to the instructor via email.
 
-Any course personnel can help you with questions pertaining to the course material, including in-class and homework assignments. Technical questions, including issues with Python and/or Jupyter, should be first directed to your professor, but specific issues with JupyterHub (<https://jupyterhub.egr.msu.edu>) can be sent to <support@egr.msu.edu>. If you have issues relating to class administration, including missed classes, illness, Accommodation Letter issues, or school-sponsored activities please contact the instructor.
+Any course personnel can help you with questions about the course material, including in-class and homework assignments. Technical questions, including issues with Python and/or Jupyter, should be first directed to your professor, but specific issues with JupyterHub (<https://jupyterhub.egr.msu.edu>) can be sent to <support@egr.msu.edu>. If you have issues relating to class administration, including missed classes, illness, Accommodation Letter issues, or school-sponsored activities please contact the instructor.
 
 ## Grading information
 
-There are a variety of course activities, with percentage of the total grade listed. More
+There are a variety of course activities, with the percentage of the total grade listed. More
 detailed descriptions of each activity can be found elsewhere in the syllabus.
 
 | Component                                       | Percentage of total grade |
@@ -220,7 +221,7 @@ detailed descriptions of each activity can be found elsewhere in the syllabus.
 | Semester projects                               | 25                        |
 | **Total**                                       | 100                       |
 
-Note that the lowest two in-class assignments; as well as the lowest two pre-class assignments will be dropped (which accounts for the unexcused absence policy stated above).
+Note that the lowest two in-class assignments, as well as the lowest two pre-class assignments, will be dropped (which accounts for the unexcused absence policy stated above).
 
 ### Grading scale
 
