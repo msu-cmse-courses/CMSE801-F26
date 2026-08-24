@@ -9,7 +9,7 @@
 Assistant Professor\
 Department of Computational Mathematics, Science & Engineering\
 Engineering Building 1515, #I6\
-<mnnadinke@msu.edu>
+<nnadinke@msu.edu>
 
 
 **Mengsen Zhang, Ph.D.** (After Fall Break: Oct 28 and onwards)\
@@ -21,9 +21,9 @@ Engineering Building 1514\
 <mengsen@msu.edu>
 
 ### Teaching Assistant
-<!-- Andrew Johnprakash\
-Graduate Student in Data Science\
-<johnprak@msu.edu> -->
+**Nic Heilman**\
+Graduate Student in CMSE\
+<heilman7@msu.edu>
 
 ### Class days and time
 
@@ -38,16 +38,20 @@ Engineering Building 1225
 
 Office hours begin in the second week of classes. You may reach out to your instructor for appointments at other times. 
 
-<iframe src="https://outlook.office.com/bookwithme/user/163739ded8e14d768789875e3631f038@msu.edu/meetingtype/eTqhq3nm90mKf75yqos2ng2?bookingcode=d493a125-ef7b-4539-a08a-ad6830bb9265&anonymous&ismsaljsauthenabled&ep=mlink" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+<iframe src="https://outlook.office.com/bookwithme/user/163739ded8e14d768789875e3631f038@msu.edu?anonymous&ismsaljsauthenabled&ep=plink" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+**Nkechi Nnadi**\
+Time: TBD\
+Location: Engineering Building 1508A or [Zoom](https://msu.zoom.us/j/96461898750?pwd=p66ynY1cb2Vax6MAdxea85Dq9VP1YF.1)
+
+**Mengsen Zhang**\
+Time: TBA\
+Location: TBA
 
 <!-- **Mengsen Zhang**\
 Time: Tuesday and Thursday 10:00-11:00am\
 Location: Engineering Building 1514 (in-person option) or [Zoom](https://msu.zoom.us/j/94944838871?pwd=iKrDilGfJxLGoBmtd9wzKezDioCMml.1)
 
-
-**Guan'ao Yan**\
-Time: TBD\
-Location: Engineering Building xxx or [Zoom](https://msu.zoom.us/j/94944838871?pwd=iKrDilGfJxLGoBmtd9wzKezDioCMml.1)
 
 **TBN TA**
 Time: TBD\
