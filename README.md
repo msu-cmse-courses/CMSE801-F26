@@ -1,4 +1,4 @@
-# MSU - CMSE 801 - Spring 2026
+# MSU - CMSE 801 - Fall 2026
 
 This is the CMSE 801 Spring 2026 course content repository for instructors.  Content on the `main` branch is rendered and distributed to a JupyterBook hosted here: [https://msu-cmse-courses.github.io/cmse801-S26](https://msu-cmse-courses.github.io/cmse801-S26).
 
