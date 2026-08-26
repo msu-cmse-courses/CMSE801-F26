@@ -5,8 +5,8 @@ This is the CMSE 801 Fall 2026 course content repository for instructors.  Conte
 ## Getting started
 
 Clone this git repository to your computer:\
-`git clone https://github.com/msu-cmse-courses/CMSE801-S26.git`\
-this will create a directory called `CMSE801-S26` with all the source files.
+`git clone https://github.com/msu-cmse-courses/CMSE801-F26.git`\
+this will create a directory called `CMSE801-F26` with all the source files.
 
 If you want to be able to build and publish the html yourself then you may find it useful to create a conda environment:\
 `conda create -n cmse801`\
