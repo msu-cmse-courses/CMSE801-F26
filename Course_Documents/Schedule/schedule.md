@@ -20,19 +20,19 @@ Below is the approximate timeline for the course. Please note that everything is
 | Oct 12     |       12       | Introduction to the Pandas Data Analysis Library      |                                     |
 | Oct 14      |      13          | Exploring data with Pandas                           |  HW 3 Released (due Oct 23)       |
 | Oct 19     |       14       | Fitting models to data and evaluating fits            |     Quiz 2                          |
-| Oct 21      |                |  Fitting models, making predictions, updating models |                                    |
+| Oct 21      |      15        |  Fitting models, making predictions, updating models |                                    |
 | Oct 26     |                 |   **Fall Break,  No class **                        |                                    |
-| Oct 28     |                 |   Data Visualization                        |                                    |
-| Nov 2     |       15       | NumPy Arrays in 2D   |                                      |
-| Nov 4     |       16       | Agent Based Modeling 1                              | Quiz 3, Project Proposals<sup>*</sup>|
-| Nov 9     |       17       | Agent Based Modeling 2                                | HW 4 Released (due Nov 20)           |
-| Nov 11     |       18       | Object Oriented Programming 1                         |                                     |
-| Nov 16     |       19       | Object Oriented Programming 2                         |                                     |
-| Nov 18    |       20       | Using random numbers in modeling; Random walks        |                                      |
-| Nov 23    |       21       | Project work day, Present Drafts to Group              | HW 5 Released (due Dec 4)          |
+| Oct 28     |          16    |   Data Visualization                        |                                    |
+| Nov 2     |       17       | NumPy Arrays in 2D   |                                      |
+| Nov 4     |       18       | Agent Based Modeling 1                              | Quiz 3, Project Proposals<sup>*</sup>|
+| Nov 9     |       19       | Agent Based Modeling 2                                | HW 4 Released (due Nov 20)           |
+| Nov 11     |       20       | Object Oriented Programming 1                         |                                     |
+| Nov 16     |       21       | Object Oriented Programming 2                         |                                     |
+| Nov 18    |       22       | Using random numbers in modeling; Random walks        |                                      |
+| Nov 23    |       23       | Project work day, Present Drafts to Group              | HW 5 Released (due Dec 4)          |
 | Nov 25    |                 | Class Canceled                                       |                                      |
-| Nov 30    |       22       | Using RNGs for optimization; The Traveling Salesperson|   Quiz 4                             |
-| Dec 2    |       23       | Finding model parameters with Markov Chain Monte Carlo|                                       |
+| Nov 30    |       24       | Using RNGs for optimization; The Traveling Salesperson|   Quiz 4                             |
+| Dec 2    |       25       | Finding model parameters with Markov Chain Monte Carlo|                                       |
 | Dec 7   |       P       | Project Presentations                                 |Final project submission due Dec 6, by 11:59 pm |
 | Dec  9   |       P       | Project Presentations|                                       |
 
