@@ -104,7 +104,7 @@ This class has no required book or course pack. From time to time we will direct
 
 In-class programming assignments are a critical part of the learning process in this course. To that end, **you are expected to bring your laptop and its power cord every day.**
 
-If you do not have a laptop, or if your laptop won't run the software that we need for class, we will have spare machines to use during class.
+If you do not have a laptop, or if your laptop will not run the software we need for class, there will be spare machines available during class.
 
 ## Course Activities
 
@@ -114,7 +114,7 @@ Active class participation (led both by the instructor and by students) is criti
 
 ### Pre-class assignments
 
-We will assign short assignments that are due before class. The purpose of these assignments is to introduce new material and give you some practice with it so that we can focus on experimentation and implementation in class. These assignments will typically consist of one or more short videos or reading assignments and related questions or problems and will be due before class via the course's Desire2Learn page. The deadline for each pre-class assignment is indicated on the course's Desire2Learn page. **Completing these assignments will be critical for your success in this course.**
+We will assign short assignments that are due before class. The purpose of these assignments is to introduce new material and give you some practice with it so that we can focus on experimentation and implementation in class. These assignments will typically consist of one or more short videos or reading assignments and related questions or problems and will be due before class via the course's Desire2Learn page. In general, the deadline for each pre-class assignment is the night before class at 11:59 PM. **Completing these assignments will be critical for your success in this course.**
 
 ### In-class programming assignments
 
@@ -124,7 +124,7 @@ Class sessions will be held twice a week and will be broken up into presentation
 
 You will have periodic programming assignments that will provide a more in-depth exploration of the materials covered in class. These will be pursued individually and will be turned in by the given deadline via the course's Desire2Learn page. You can expect that they will require two weeks' worth of out-of-class effort, so you are encouraged to start your assignments as early as possible.
 
-In the absence of clear communication with the course instructor prior to the original homework deadline, homework assignments that are submitted late will be accepted **for up to two days beyond the due date** (i.e., 48 hours past the original deadline). **If the assignment is submitted within 24 hours of the original deadline, there is a 10% penalty.** This applies even if the assignment is 1 minute late. Similarly, **if it is submitted in the 24-48 hour window, a 20% deduction is applied.** Again, **after the 48th hour, the assignment will no longer be accepted.** If for some reason, a given homework deadline feels infeasible for you, you are encouraged to contact the course instructor prior to the deadline to discuss the possibility of a homework deadline extension.
+In the absence of clear communication with the course instructor before the original homework deadline, homework assignments that are submitted late will be accepted **for up to two days beyond the due date** (i.e., 48 hours past the original deadline). **If the assignment is submitted within 24 hours of the original deadline, there is a 10% penalty.** This applies even if the assignment is 1 minute late. Similarly, **if it is submitted in the 24-48 hour window, a 20% deduction is applied.** Again, **after the 48th hour, the assignment will no longer be accepted.** If for some reason, a given homework deadline feels infeasible for you, you are encouraged to contact the course instructor before the deadline to discuss the possibility of a homework deadline extension.
 
 ### Quizzes
 
@@ -151,7 +151,7 @@ the semester progresses.
 ### Course website and calendar
 
 Important course information,
-including this syllabus, and course assignments can be found one this website.
+including this syllabus, and course assignments can be found on this website.
 All assignments will be handed in via Desire2Learn, which can
 be found at <http://d2l.msu.edu>. Consult the class website for
 instructions on assignment submission.
@@ -176,14 +176,14 @@ we expect you to use Teams. They are:
 1. Before you ask a question, be sure to check the main channel to see if the question has already been answered.
 2. The Teams channel is primarily for you, the students, so help each other.
 3. The TA will monitor the channel, but will defer to the students to work through things. They will only enter a conversation if students are going down the wrong path and/or there are too few other students involved. However, you should not expect that the TA will always be available. The TA will spend a limited amount of time “logged in” to Teams and we ask that you be respectful of their time.
-4. Teams is meant to be used to help you when you are stuck with a minor issue. If you are having major issues or trouble understanding the concept, go to office hours or help room hours as they are meant for more in-depth discussions of course content.
-5. The course instructor will check Teams occasionally, but potentially sporadically, primarily to examine progress. While they may offer help, do not rely on it. The instructor will not respond to the same student twice within a 30 minute time interval.
+4. Teams is meant to be used to help you when you are stuck with a minor issue. If you are having major issues or trouble understanding the concept, go to office hours or help room hours, as they are meant for more in-depth discussions of course content.
+5. The course instructor will check Teams occasionally, but potentially sporadically, primarily to examine progress. While they may offer help, do not rely on it. The instructor will not respond to the same student twice within a 30-minute time interval.
 6. Do not post your solutions to out-of-class assignments directly into Teams unless prompted by an instructor.
 7. Be courteous to everyone on Teams. Students who are being rude or who are excessively posting might be banned from posting on the course Teams channel.
 
 ### Class attendance
 
-This class is heavily based on material presented and worked on in class, and it is critical that you attend and participate fully every week! Therefore, class attendance is absolutely required. However, since life can be unpredictable and you may have competing priorities that vary day-to-day, each student will be allowed two unexcused absences without a negative impact to their grade. **Any further unexcused absence will result in zero points for the day, which includes the in-class programming assignment points.** ***Arriving late or leaving early without prior arrangement with the instructor of your session counts as an unexcused absence.*** Note that if you have a legitimate reason to miss class (such as job interviews or work-related travel), you must arrange this ahead of time to be excused from class. Three unexcused absences will result in the reduction of your grade by one step (e.g., from 4.0 to 3.5), with additional absences reducing your grade further at the discretion of the course instructor.
+This class is heavily based on material presented and worked on in class, and it is critical that you attend and participate fully every week! Therefore, class attendance is absolutely required. However, since life can be unpredictable and you may have competing priorities that vary day-to-day, each student will be allowed two unexcused absences without a negative impact on their grade. **Any further unexcused absence will result in zero points for the day, which includes the in-class programming assignment points.** ***Arriving late or leaving early without prior arrangement with the instructor of your session counts as an unexcused absence.*** Note that if you have a legitimate reason to miss class (such as job interviews or work-related travel), you must arrange this ahead of time to be excused from class. Three unexcused absences will result in the reduction of your grade by one step (e.g., from 4.0 to 3.5), with additional absences reducing your grade further at the discretion of the course instructor.
 
 ### Inclusive classroom behavior
 
@@ -209,7 +209,7 @@ If you have a university-documented learning difficulty or require other accommo
 
 Regularly scheduled office hours will start the second week of classes with times to be announced. If you are not available during these hours, please contact the instructor. If you have reason to meet during the first week of classes, reach out to the instructor via email.
 
-Any course personnel can help you with questions about the course material, including in-class and homework assignments. Technical questions, including issues with Python and/or Jupyter, should be first directed to your professor, but specific issues with JupyterHub (<https://jupyterhub.egr.msu.edu>) can be sent to <support@egr.msu.edu>. If you have issues relating to class administration, including missed classes, illness, Accommodation Letter issues, or school-sponsored activities please contact the instructor.
+Any course personnel can help you with questions about the course material, including in-class and homework assignments. Technical questions, including issues with Python and/or Jupyter, should be directed to your professor first, but specific issues with JupyterHub (<https://jupyterhub.egr.msu.edu>) can be sent to <support@egr.msu.edu>. If you have issues relating to class administration, including missed classes, illness, Accommodation Letter issues, or school-sponsored activities please contact the instructor.
 
 ## Grading information
 
