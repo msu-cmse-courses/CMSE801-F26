@@ -82,14 +82,14 @@ parts:
       # - url: https://docs.google.com/presentation/d/1iCCQAXvWQIBkIGBVdQwAWA9TXXaELNmiSz7VZJLCfjY/edit?usp=sharing
         title: Day 01 Slides (MSU Login)
 
-#     - file: Day-02/Day-02.md
-#       title: Day 02
-#       sections:
-#       - file: Day-02/Day-02_Pre-Class_IntroToPython-STUDENT.ipynb
-#       - file: Day-02/Day-02_In-Class_OrderOfMagnitudeModeling-STUDENT.ipynb
-#       - url: https://docs.google.com/presentation/d/1pLeHckjg-GkBfBEiH9T3DoHDApl6IXwK9zBQBdcEH_E/edit?usp=sharing
-#       # - url: https://docs.google.com/presentation/d/1TQkGJBIcxkIcN0gk_UOlHNmbo2vdEclj9lEv9FKkN6o/edit?usp=sharing 
-#         title: Day 02 Slides (MSU Login)
+    - file: Day-02/Day-02.md
+      title: Day 02
+      sections:
+      - file: Day-02/Day-02_Pre-Class_IntroToPython-STUDENT.ipynb
+      - file: Day-02/Day-02_In-Class_OrderOfMagnitudeModeling-STUDENT.ipynb
+      # - url: https://docs.google.com/presentation/d/1pLeHckjg-GkBfBEiH9T3DoHDApl6IXwK9zBQBdcEH_E/edit?usp=sharing
+      # # - url: https://docs.google.com/presentation/d/1TQkGJBIcxkIcN0gk_UOlHNmbo2vdEclj9lEv9FKkN6o/edit?usp=sharing 
+      #   title: Day 02 Slides (MSU Login)
 
 
 #     - file: Day-03/Day-03.md
