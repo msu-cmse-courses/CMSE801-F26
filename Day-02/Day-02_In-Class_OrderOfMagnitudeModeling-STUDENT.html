@@ -1,0 +1,646 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Day 2 In-class Assignment: Order of Magnitude Modeling &#8212; CMSE 801</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Day-02/Day-02_In-Class_OrderOfMagnitudeModeling-STUDENT';</script>
+    <link rel="icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Day 2 Pre-class Assignment: Intro to Python" href="Day-02_Pre-Class_IntroToPython-STUDENT.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="CMSE 801 - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="CMSE 801 - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Materials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Course_Documents/Course_Documents.html">Important Course information</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/Syllabus/syllabus.html">Syllabus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/Schedule/schedule.html">Course Schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/SoftwareSetup/SoftwareSetupGuide.html">Software Setup Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/classParticipation/classParticipation.html">Classroom Participation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/GenerativeAI/GenerativeAI_Policy.html">Generative AI Policy</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Daily Content</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-01/Day-01.html">Day 01</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-01/Day-01_In-Class_SortingAlgorithm-STUDENT.html">Day 1 In-Class Assignment: Introductions and Sorting Algorithms</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAZKaCUMP-JQZj6mQG9yZANAfXIokhXP63-2By8XLo81Kc?e=N4QF3I">Day 01 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Day-02.html">Day 02</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Day-02_Pre-Class_IntroToPython-STUDENT.html">Day 2 Pre-class Assignment: Intro to Python</a></li>
+
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Day 2 In-class Assignment: Order of Magnitude Modeling</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Day-02/Day-02_In-Class_OrderOfMagnitudeModeling-STUDENT.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Day 2 In-class Assignment: Order of Magnitude Modeling</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-name-here"><p style="text-align: right;"> ✅ <strong>Put your name here</strong> </p></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-group-member-names-here"><p style="text-align: right;"> ✅ Put your group member names here</p></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-many-mice-would-it-take-to-fill-up-this-classroom">How many mice would it take to fill up this classroom?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-k-a-making-order-of-magnitude-estimates-for-fun-and-profit">(a.k.a., making order-of-magnitude estimates for fun and profit!)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem">The Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#you-are-strongly-encouraged-to-use-a-virtual-whiteboard-app-the-physical-whiteboards-or-pen-pencil-and-paper-to-write-out-your-ideas-to-ensure-that-everyone-is-on-the-same-page-and-allow-your-instructors-to-see-your-progress">You are strongly encouraged to use a virtual whiteboard app, the physical whiteboards, or pen/pencil and paper to write out your ideas to ensure that everyone is on the same page and allow your instructors to see your progress.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-1-describing-your-model">Part 1.1 Describing Your Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-2-coding-your-model">Part 1.2 Coding Your Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-3-exploring-model-results">Part 1.3 Exploring Model Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stop-and-ask-your-instructor-to-come-over">🛑 STOP AND ASK YOUR INSTRUCTOR TO COME OVER</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pick-a-second-model">2.1 Pick a Second Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#describe-the-model">2.2 Describe the Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-the-model">2.3 Coding the Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#submit-this-assignment-by-uploading-it-to-the-course-desire2learn-web-page">Submit this assignment by uploading it to the course Desire2Learn web page.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#congratulations-you-re-done">Congratulations, you’re done!</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="day-2-in-class-assignment-order-of-magnitude-modeling">
+<h1>Day 2 In-class Assignment: Order of Magnitude Modeling<a class="headerlink" href="#day-2-in-class-assignment-order-of-magnitude-modeling" title="Link to this heading">#</a></h1>
+<section id="put-your-name-here">
+<h2><p style="text-align: right;"> ✅ <strong>Put your name here</strong> </p><a class="headerlink" href="#put-your-name-here" title="Link to this heading">#</a></h2>
+<section id="put-your-group-member-names-here">
+<h3><p style="text-align: right;"> ✅ Put your group member names here</p><a class="headerlink" href="#put-your-group-member-names-here" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="how-many-mice-would-it-take-to-fill-up-this-classroom">
+<h2>How many mice would it take to fill up this classroom?<a class="headerlink" href="#how-many-mice-would-it-take-to-fill-up-this-classroom" title="Link to this heading">#</a></h2>
+<section id="a-k-a-making-order-of-magnitude-estimates-for-fun-and-profit">
+<h3>(a.k.a., making order-of-magnitude estimates for fun and profit!)<a class="headerlink" href="#a-k-a-making-order-of-magnitude-estimates-for-fun-and-profit" title="Link to this heading">#</a></h3>
+<p><img alt="Mouse" src="https://media.jax.org/transform/Content-Tile-Image/df1c464c-ebbf-4d21-8251-61c4836e74c3/find-mice_research-model-platforms" /></p>
+</section>
+</section>
+<section id="learning-goals">
+<h2>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<p>Why are we asking you to do this?</p>
+<p>One type of modeling is called “order-of-magnitude estimation” or “order-of-magnitude modeling.”  A physicist would call this a “Fermi Problem” after Enrico Fermi, a physicist who participated in the Manhattan Project and who was famously good at making estimates of this sort.  More specifically, this sort of modeling makes us think about:</p>
+<ul class="simple">
+<li><p>The quantities that should go into our models, and the reasonable values of those quantities.</p></li>
+<li><p>How the different parts of our model might interact with one another.</p></li>
+<li><p>What a “good enough” answer would be to a particular problem</p></li>
+</ul>
+</section>
+<section id="the-problem">
+<h2>The Problem<a class="headerlink" href="#the-problem" title="Link to this heading">#</a></h2>
+<p>In this project, your group is going to calculate an answer to one of the following questions:</p>
+<ol class="arabic simple">
+<li><p>How many grams of caffeine get consumed on MSU’s campus each week?</p></li>
+<li><p>How much does the air above Lake Superior weigh?</p></li>
+<li><p>If somebody left one of the bathroom faucets running at the Breslin Center, how long would it take to fill it up with water?</p></li>
+<li><p>If all of the toilet paper used per week in the United States were rolled out across the surface of Michigan could you cover the entire state? If so, could you cover it more than once?</p></li>
+<li><p>Which has more mass, the air in this classroom or the brains in this classroom?</p></li>
+<li><p>On average, how many people are airborne in the world at a given moment?</p></li>
+<li><p>How many total miles do all Americans drive in their cars in one year, and how does this compare to the circumference of the Earth (<span class="math notranslate nohighlight">\(2.5 \times 10^4\)</span> miles), the distance from the Earth to the Sun (<span class="math notranslate nohighlight">\(9 \times 10^7\)</span> miles), and size of the Solar System (<span class="math notranslate nohighlight">\(10^9\)</span> miles)?</p></li>
+<li><p>After a particularly exciting Spartan football game, the fans rush the field. How many people can fit onto the football field at Spartan Stadium?</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="part-1">
+<h2>Part 1<a class="headerlink" href="#part-1" title="Link to this heading">#</a></h2>
+<p><strong>As a group</strong>, you will be assigned one of these problems to answer. You will need to come up with:</p>
+<ol class="arabic simple">
+<li><p>The questions that you need to ask and</p></li>
+<li><p>An estimate for your problem.</p></li>
+<li><p>The equation(s) you will need to solve your problem.</p></li>
+<li><p>The reasonable values that would go into the equation(s).</p></li>
+</ol>
+<p>Once you have finished these steps, you and your group will implement a simple computer program to calculate a range of answers to your problem.</p>
+<section id="you-are-strongly-encouraged-to-use-a-virtual-whiteboard-app-the-physical-whiteboards-or-pen-pencil-and-paper-to-write-out-your-ideas-to-ensure-that-everyone-is-on-the-same-page-and-allow-your-instructors-to-see-your-progress">
+<h3>You are strongly encouraged to use a virtual whiteboard app, the physical whiteboards, or pen/pencil and paper to write out your ideas to ensure that everyone is on the same page and allow your instructors to see your progress.<a class="headerlink" href="#you-are-strongly-encouraged-to-use-a-virtual-whiteboard-app-the-physical-whiteboards-or-pen-pencil-and-paper-to-write-out-your-ideas-to-ensure-that-everyone-is-on-the-same-page-and-allow-your-instructors-to-see-your-progress" title="Link to this heading">#</a></h3>
+</section>
+<section id="part-1-1-describing-your-model">
+<h3>Part 1.1 Describing Your Model<a class="headerlink" href="#part-1-1-describing-your-model" title="Link to this heading">#</a></h3>
+<p><strong>In the cell below, write down your assigned question and the parameters in your model.</strong> Also write down the range of possible values for each of the parameters!</p>
+<p><font size=6 color="#009600">✎</font> <em>Put your answer here! (reminder: double-click on this cell to go into “edit mode” and then hit shift+enter when you’re done)</em></p>
+</section>
+<section id="part-1-2-coding-your-model">
+<h3>Part 1.2 Coding Your Model<a class="headerlink" href="#part-1-2-coding-your-model" title="Link to this heading">#</a></h3>
+<p>In the cell below, write a program to calculate and print out an estimate for your model.</p>
+<blockquote>
+<div><p><strong>Important</strong>: When writing your code, <strong>define variables for each value of interest.</strong>  Then use those variables in your equations.  In other words, do not  hard-code the values in your equations (do not put <em>numbers</em> in your equations, put <em>variables</em> in your equations).</p>
+<p>As an example, if I want to compute and then print the area of a right triangle, which I know to be <span class="math notranslate nohighlight">\(A = \frac{1}{2} b h\)</span>, I might write my code like so:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">base</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">height</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="n">area</span> <span class="o">=</span> <span class="p">(</span><span class="n">base</span> <span class="o">*</span> <span class="n">height</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The area is:&quot;</span><span class="p">,</span> <span class="n">area</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>By doing this, if I decide I need to change the <code class="docutils literal notranslate"><span class="pre">base</span></code> value or the <code class="docutils literal notranslate"><span class="pre">height</span></code> value, I can just change the value where they are defined. This can be especially useful if I have to use the values multiple times or if I want to experiment with changing the values.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write a program in this cell to calculate and print out an estimate</span>
+<span class="c1"># of the answer to the question you&#39;ve chosen to solve!</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="part-1-3-exploring-model-results">
+<h3>Part 1.3 Exploring Model Results<a class="headerlink" href="#part-1-3-exploring-model-results" title="Link to this heading">#</a></h3>
+<p><strong>Now, run your model several times</strong>, and each time change the values of the parameters to a different value in the range you think is valid.  In the cell below, write down all of your answers.  What is the total range, and approximately what is the average value?</p>
+<p><font size=6 color="#009600">✎</font> <em>Put your answer here!</em></p>
+</section>
+<hr class="docutils" />
+<section id="stop-and-ask-your-instructor-to-come-over">
+<h3>🛑 STOP AND ASK YOUR INSTRUCTOR TO COME OVER<a class="headerlink" href="#stop-and-ask-your-instructor-to-come-over" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="part-2">
+<h2>Part 2<a class="headerlink" href="#part-2" title="Link to this heading">#</a></h2>
+<section id="pick-a-second-model">
+<h3>2.1 Pick a Second Model<a class="headerlink" href="#pick-a-second-model" title="Link to this heading">#</a></h3>
+<p><strong>Now, picking one of the other questions and going through the process of making another order-of-magnitude estimate.</strong> Each group must choose a <em>different</em> question. Once you have decided on which question you are going to try to tackle, try working through the answer on your own, but check in with the members of your group if you run into issues or want to bounce ideas off each other.</p>
+</section>
+<section id="describe-the-model">
+<h3>2.2 Describe the Model<a class="headerlink" href="#describe-the-model" title="Link to this heading">#</a></h3>
+<p><strong>In the cell below, write down your chosen question and the parameters in your model.</strong> Also write down the range of possible values for each of the parameters!</p>
+<p><font size=6 color="#009600">✎</font> <em>Put your answer here!</em></p>
+</section>
+<section id="coding-the-model">
+<h3>2.3 Coding the Model<a class="headerlink" href="#coding-the-model" title="Link to this heading">#</a></h3>
+<p>In the cell below, write a program to calculate and print out an estimate for your model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write a program in this cell to calculate and print out an estimate</span>
+<span class="c1"># of the answer to the question you&#39;ve chosen to solve!</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="submit-this-assignment-by-uploading-it-to-the-course-desire2learn-web-page">
+<h3>Submit this assignment by uploading it to the course Desire2Learn web page.<a class="headerlink" href="#submit-this-assignment-by-uploading-it-to-the-course-desire2learn-web-page" title="Link to this heading">#</a></h3>
+<p>Go to the “In-class assignments” folder, find the assignment submission link for today’s assignment, and upload it there.</p>
+<hr class="docutils" />
+<section id="congratulations-you-re-done">
+<h4>Congratulations, you’re done!<a class="headerlink" href="#congratulations-you-re-done" title="Link to this heading">#</a></h4>
+<p>Make sure to complete the <strong>Pre-class assignment before next class.</strong></p>
+<p>See you next class!</p>
+<p>© Copyright 2025, Department of Computational Mathematics, Science and Engineering at Michigan State University.</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Day-02"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Day-02_Pre-Class_IntroToPython-STUDENT.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Day 2 Pre-class Assignment: Intro to Python</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-name-here"><p style="text-align: right;"> ✅ <strong>Put your name here</strong> </p></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-group-member-names-here"><p style="text-align: right;"> ✅ Put your group member names here</p></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-many-mice-would-it-take-to-fill-up-this-classroom">How many mice would it take to fill up this classroom?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-k-a-making-order-of-magnitude-estimates-for-fun-and-profit">(a.k.a., making order-of-magnitude estimates for fun and profit!)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem">The Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#you-are-strongly-encouraged-to-use-a-virtual-whiteboard-app-the-physical-whiteboards-or-pen-pencil-and-paper-to-write-out-your-ideas-to-ensure-that-everyone-is-on-the-same-page-and-allow-your-instructors-to-see-your-progress">You are strongly encouraged to use a virtual whiteboard app, the physical whiteboards, or pen/pencil and paper to write out your ideas to ensure that everyone is on the same page and allow your instructors to see your progress.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-1-describing-your-model">Part 1.1 Describing Your Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-2-coding-your-model">Part 1.2 Coding Your Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-3-exploring-model-results">Part 1.3 Exploring Model Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stop-and-ask-your-instructor-to-come-over">🛑 STOP AND ASK YOUR INSTRUCTOR TO COME OVER</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pick-a-second-model">2.1 Pick a Second Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#describe-the-model">2.2 Describe the Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-the-model">2.3 Coding the Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#submit-this-assignment-by-uploading-it-to-the-course-desire2learn-web-page">Submit this assignment by uploading it to the course Desire2Learn web page.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#congratulations-you-re-done">Congratulations, you’re done!</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Department of Computational Mathematics, Science and Engineering at Michigan State University
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
