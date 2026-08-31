@@ -21,28 +21,28 @@ parts:
       - file: Course_Documents/GenerativeAI/GenerativeAI_Policy.md
         title: Generative AI Policy
 
-    # - file: Project/Project
-    #   title: Semester Project  
-    #   sections: 
-    #   - file: Project/SemesterProjectDetails.md
-    #     title: Project Details
-    #   - file: Project/ProjectProposal
-    #     title: Project Proposal - Due Mar 12
-    #   - file: Project/FinalProject_RequirementsAndGradingRubric
-    #     title: Requirements and Grading Rubric
-    #   - file: Project/FinalProjectTemplate
-    #     title: Final Project Template
-    #   - file: Project/ProjectDraft
-    #     title: Project Draft - Due April 6
-    #   - file: Project/Project_Self-Evaluation
-    #     title: Project Self-Evaluation
-    #   - url: https://github.com/msu-cmse-courses/cmse801-supplemental/raw/main/Project/Presentation_Evaluation_Rubric.pdf
-    #     title: Presentation Evaluation Rubric
+    - file: Project/Project
+      title: Semester Project  
+      sections: 
+      - file: Project/SemesterProjectDetails.md
+        title: Project Details
+      - file: Project/ProjectProposal
+        title: Project Proposal - Due October 28
+      - file: Project/FinalProject_RequirementsAndGradingRubric
+        title: Requirements and Grading Rubric
+      - file: Project/FinalProjectTemplate
+        title: Final Project Template
+      - file: Project/ProjectDraft
+        title: Project Draft - Due November 18
+      - file: Project/Project_Self-Evaluation
+        title: Project Self-Evaluation
+      - url: https://github.com/msu-cmse-courses/cmse801-supplemental/raw/main/Project/Presentation_Evaluation_Rubric.pdf
+        title: Presentation Evaluation Rubric
 
-    #   - url: https://docs.google.com/presentation/d/1E_wD1ExZhK0cC5IuBGpgcKDEQLbpCvrHYu2MsiTZaig/edit
-    #     title: Project Proposal Slide Deck (MSU Login)
+      # - url: https://docs.google.com/presentation/d/1E_wD1ExZhK0cC5IuBGpgcKDEQLbpCvrHYu2MsiTZaig/edit
+      #   title: Project Proposal Slide Deck (MSU Login)
 
-#     # - url: https://github.com/msu-cmse-courses/CMSE801-supplemental/raw/main/Projects/Presentation_Evaluation_Rubric.pdf
+    # - url: https://github.com/msu-cmse-courses/CMSE801-supplemental/raw/main/Projects/Presentation_Evaluation_Rubric.pdf
 
   
 #     - file: Homework/Homework.md
