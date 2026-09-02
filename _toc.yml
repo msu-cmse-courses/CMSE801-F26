@@ -87,15 +87,15 @@ parts:
       sections:
       - file: Day-02/Day-02_Pre-Class_IntroToPython-STUDENT.ipynb
       - file: Day-02/Day-02_In-Class_OrderOfMagnitudeModeling-STUDENT.ipynb
-      # - url: https://docs.google.com/presentation/d/1pLeHckjg-GkBfBEiH9T3DoHDApl6IXwK9zBQBdcEH_E/edit?usp=sharing
+      - url: https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAsDxwKy1WsQZESscQmuyYNAcZv06dZ4sIq42ScDGWk0NI?e=N9uij2
       # # - url: https://docs.google.com/presentation/d/1TQkGJBIcxkIcN0gk_UOlHNmbo2vdEclj9lEv9FKkN6o/edit?usp=sharing 
-      #   title: Day 02 Slides (MSU Login)
+        title: Day 02 Slides (MSU Login)
 
 
-#     - file: Day-03/Day-03.md
-#       title: Day 03
-#       sections:
-#       - file: Day-03/Day-03_Pre-Class_ListsAndLoops-STUDENT.ipynb
+    - file: Day-03/Day-03.md
+      title: Day 03
+      sections:
+      - file: Day-03/Day-03_Pre-Class_ListsAndLoops-STUDENT.ipynb
 #       - file: Day-03/Day-03_In-Class_ListsLoopsAndSaving-STUDENT.ipynb
 #     # # #   - url: https://docs.google.com/presentation/d/1xZ1YHw4vjtiDmY1r36Rj2JdlugHx6YQn9zel2QVlByA/edit?usp=sharing
 #     # # #     title: Day 03 Slides (MSU Login)
