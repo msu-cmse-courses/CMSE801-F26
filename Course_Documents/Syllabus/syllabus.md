@@ -38,15 +38,15 @@ Engineering Building 1225
 
 Office hours begin in the second week of classes. You may reach out to your instructor for appointments at other times. 
 
-<iframe src="https://calendar.google.com/calendar/u/3?cid=Y19lNWM3MWMxODNkY2JkZGMyZmNjMWM2N2E5NDZjYjkxNGI1YTRhMTU5OTY2MWMxNDZiODEwZDIwYmViNmVmMDIzQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+<!-- <iframe src="https://calendar.google.com/calendar/u/3?cid=Y19lNWM3MWMxODNkY2JkZGMyZmNjMWM2N2E5NDZjYjkxNGI1YTRhMTU5OTY2MWMxNDZiODEwZDIwYmViNmVmMDIzQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe> -->
 
-**Nkechi Nnadi**\
-Time: TBD\
-Location: Engineering Building 1508A or [Zoom](https://msu.zoom.us/j/96461898750?pwd=p66ynY1cb2Vax6MAdxea85Dq9VP1YF.1)
+**Dr. Nkechi Nnadi**\
+When: Thursdays, 3:30 PM -5:30 PM\
+Where: [Zoom](https://msu.zoom.us/j/96461898750)
 
-**Mengsen Zhang**\
-Time: TBA\
-Location: TBA
+**Nic Heilman (TA)**\
+When: Mondays, 2:00 PM - 4:00 PM\
+Where: [Zoom](https://msu.zoom.us/j/96461898750) (same Zoom link)
 
 <!-- **Mengsen Zhang**\
 Time: Tuesday and Thursday 10:00-11:00am\
