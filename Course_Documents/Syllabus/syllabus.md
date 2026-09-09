@@ -36,7 +36,7 @@ Engineering Building 1225
 
 ### Office Hours
 
-Office hours begin in the second week of classes. You may reach out to your instructor for appointments at other times. 
+Regular office hours begin in the second week of classes. You may reach out to your instructor for appointments at other times. 
 
 <!-- <iframe src="https://calendar.google.com/calendar/u/3?cid=Y19lNWM3MWMxODNkY2JkZGMyZmNjMWM2N2E5NDZjYjkxNGI1YTRhMTU5OTY2MWMxNDZiODEwZDIwYmViNmVmMDIzQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe> -->
 

@@ -108,10 +108,10 @@ parts:
 #     # # #   - url:  https://docs.google.com/presentation/d/1Szk0sxTe9NyrQjN8vXvI-yD9Hxe7RLskn-tUVpxQazs/edit?usp=sharing
 #     # # #     title: Day 04 Slides (MSU Login)
     
-#     - file: Day-05/Day-05.md
-#       title: Day 05
-#       sections:
-#       - file: Day-05/Day-05_Pre-Class_MoreFunctions-STUDENT.ipynb
+    - file: Day-05/Day-05.md
+      title: Day 05
+      sections:
+      - file: Day-05/Day-05_Pre-Class_MoreFunctions-STUDENT.ipynb
 #       - file: Day-05/Day-05_In-Class_MoreFunctions-STUDENT.ipynb
 #     # # #   - url:  https://docs.google.com/presentation/d/1Fz2rj5j1q-F6U0QWtR_5nt2rNF7iJt1-ynwfy-cRdoo/edit?usp=sharing
 #     # # #     title: Day 05 Slides (MSU Login)
