@@ -87,7 +87,7 @@ parts:
       sections:
       - file: Day-02/Day-02_Pre-Class_IntroToPython-STUDENT.ipynb
       - file: Day-02/Day-02_In-Class_OrderOfMagnitudeModeling-STUDENT.ipynb
-      - url: https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAsDxwKy1WsQZESscQmuyYNAcZv06dZ4sIq42ScDGWk0NI?e=N9uij2
+      - url: https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAsDxwKy1WsQZESscQmuyYNAcZv06dZ4sIq42ScDGWk0NI?e=DpWI1l
       # # - url: https://docs.google.com/presentation/d/1TQkGJBIcxkIcN0gk_UOlHNmbo2vdEclj9lEv9FKkN6o/edit?usp=sharing 
         title: Day 02 Slides (MSU Login)
 
@@ -359,15 +359,15 @@ parts:
 # #   #   - file: Bootcamp_Notebooks/Bootcamp11_Solve_IVP_INSTRUCTOR.ipynb
 
 
-# ### PRACTICE NOTEBOOK SECTION ####
-# #   - caption: Extra Resources
-# #     numbered: False
-# #     chapters:
-# #     - file: ReviewAndPracticeMaterials/ReviewAndPracticeMaterials
-# #       sections:
-# #       - file: ReviewAndPracticeMaterials/ReviewNotebook_PythonFundamentals-STUDENT.ipynb
-# #       - file: ReviewAndPracticeMaterials/ReviewNotebook_Debugging-STUDENT.ipynb
-# #       - file: ReviewAndPracticeMaterials/ReviewNotebook_Functions-STUDENT.ipynb
+### PRACTICE NOTEBOOK SECTION ####
+  - caption: Extra Resources
+    numbered: False
+    chapters:
+    - file: ReviewAndPracticeMaterials/ReviewAndPracticeMaterials.md
+      sections:
+      - file: ReviewAndPracticeMaterials/ReviewNotebook_PythonFundamentals-STUDENT.ipynb
+      - file: ReviewAndPracticeMaterials/ReviewNotebook_Debugging-STUDENT.ipynb
+      - file: ReviewAndPracticeMaterials/ReviewNotebook_Functions-STUDENT.ipynb
 # #       - file: ReviewAndPracticeMaterials/ReviewNotebook_Matplotlib-STUDENT.ipynb
 # #       - file: ReviewAndPracticeMaterials/ReviewNotebook_CompartmentalModels-STUDENT.ipynb
 # #       - file: ReviewAndPracticeMaterials/ReviewNotebook_Pandas-STUDENT.ipynb
