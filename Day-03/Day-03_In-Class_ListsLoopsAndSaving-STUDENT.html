@@ -1,0 +1,667 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Day 3 In-class Assignment: The power of compound interest &#8212; CMSE 801</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Day-03/Day-03_In-Class_ListsLoopsAndSaving-STUDENT';</script>
+    <link rel="icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Day-04" href="../Day-04/Day-04.html" />
+    <link rel="prev" title="Day 3: Pre-Class Assignment: Lists and Loops" href="Day-03_Pre-Class_ListsAndLoops-STUDENT.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="CMSE 801 - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="CMSE 801 - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Materials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Course_Documents/Course_Documents.html">Important Course information</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/Syllabus/syllabus.html">Syllabus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/Schedule/schedule.html">Course Schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/SoftwareSetup/SoftwareSetupGuide.html">Software Setup Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/classParticipation/classParticipation.html">Classroom Participation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/GenerativeAI/GenerativeAI_Policy.html">Generative AI Policy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Project/Project.html">Semester Project</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Project/SemesterProjectDetails.html">Project Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Project/ProjectProposal.html">Project Proposal - Due October 28</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Project/FinalProject_RequirementsAndGradingRubric.html">Requirements and Grading Rubric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Project/FinalProjectTemplate.html">CMSE 801 Final Project Template</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Project/ProjectDraft.html">Project Draft - Due November 18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Project/Project_Self-Evaluation.html">Project Self-Evaluation</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/msu-cmse-courses/cmse801-supplemental/raw/main/Project/Presentation_Evaluation_Rubric.pdf">Presentation Evaluation Rubric</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Daily Content</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-01/Day-01.html">Day 01</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-01/Day-01_In-Class_SortingAlgorithm-STUDENT.html">Day 1 In-Class Assignment: Introductions and Sorting Algorithms</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAZKaCUMP-JQZj6mQG9yZANAfXIokhXP63-2By8XLo81Kc?e=N4QF3I">Day 01 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-02/Day-02.html">Day 02</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-02/Day-02_Pre-Class_IntroToPython-STUDENT.html">Day 2 Pre-class Assignment: Intro to Python</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Day-02/Day-02_In-Class_OrderOfMagnitudeModeling-STUDENT.html">Day 2 In-class Assignment: Order of Magnitude Modeling</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAsDxwKy1WsQZESscQmuyYNAcZv06dZ4sIq42ScDGWk0NI?e=N9uij2">Day 02 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Day-03.html">Day 03</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Day-03_Pre-Class_ListsAndLoops-STUDENT.html">Day 3: Pre-Class Assignment: Lists and Loops</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Day 3 In-class Assignment: The power of compound interest</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/r/personal/nnadinke_msu_edu/Documents/CMSE%20801%20F26/Slides/Day03_FS26_CMSE801.pptx?d=wc944f41b28364584a5b2e32ac8c78aa1&amp;csf=1&amp;web=1&amp;e=YI69c7">Day 03 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-04/Day-04.html">Day 04</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-04/Day-04_Pre-Class_IfStatementsAndFunctions-STUDENT.html">Day 4: Pre-class Assignment: Boolean logic, if statements, and an introduction to functions</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Day-03/Day-03_In-Class_ListsLoopsAndSaving-STUDENT.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Day 3 In-class Assignment: The power of compound interest</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-name-here"><p style="text-align: right;"> ✅ Put your name here.</p></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem">The Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planning-your-solution-and-pseudo-coding">1. Planning your solution and pseudo-coding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#you-and-your-group-members-are-expected-to-use-the-white-board-at-your-table-a-virtual-whiteboard-app-feel-free-to-ask-your-instructor-for-suggestions-or-pen-pencil-and-paper-to-write-out-your-ideas-to-ensure-that-everyone-is-on-the-same-page-and-allow-your-instructors-to-see-your-progress">You and your group members are expected to use the white board at your table, a virtual whiteboard app (feel free to ask your instructor for suggestions), or pen/pencil and paper to write out your ideas to ensure that everyone is on the same page and allow your instructors to see your progress.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#record-the-details-of-you-plan-in-the-markdown-cell-below">✅  1.1 Record the details of you plan in the Markdown cell below.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stop-and-ask-your-instructor-to-come-over-and-check-your-pseudocode">🛑 STOP AND ASK YOUR INSTRUCTOR TO COME OVER AND CHECK YOUR PSEUDOCODE</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-up-your-solution">2. Coding up your solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-code">✅  2.1 Writing Code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stop">🛑 STOP</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-up-your-solution-for-a-range-of-values">3. Coding up your solution for a range of values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#putting-in-a-range-of-values">✅  3.1 Putting in a Range of Values</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bringing-in-new-customers">4. Bringing in new customers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#answering-your-boss-question-code">✅  4.1 Answering your Boss’ Question, Code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#answering-your-boss-question-answer">✅  4.2 Answering your Boss’ Question, Answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#congratulations-you-re-done">Congratulations, you’re done!</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="day-3-in-class-assignment-the-power-of-compound-interest">
+<h1>Day 3 In-class Assignment: The power of compound interest<a class="headerlink" href="#day-3-in-class-assignment-the-power-of-compound-interest" title="Link to this heading">#</a></h1>
+<img src="https://g.foolcdn.com/image/?url=https%3A//g.foolcdn.com/editorial/images/463624/retirement-savings-jar-full-of-coins-and-alarm-clock.jpg&w=2000&op=resize" width=400px>
+<section id="put-your-name-here">
+<h2><p style="text-align: right;"> ✅ Put your name here.<a class="headerlink" href="#put-your-name-here" title="Link to this heading">#</a></h2>
+<p style="text-align: right;"> &#9989; Put your group member names here.</section>
+<section id="learning-goals">
+<h2>Learning Goals:<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<p>By the end of this assignment you should be able to:</p>
+<ul class="simple">
+<li><p>Use Python lists to store values</p></li>
+<li><p>Use loops to iterate over a specified range or until a condition is met.</p></li>
+<li><p>Compute the best retirement savings plan.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="the-problem">
+<h2>The Problem<a class="headerlink" href="#the-problem" title="Link to this heading">#</a></h2>
+<p>You are working for a bank, writing code to calculate the revenue and expenses for the company. A person can deposit money in a retirement account at your bank, and the bank pays interest every year on the money in the retirement account. The mathematical expression for calculating the amount of money in the retirement account every year is:</p>
+<div class="math notranslate nohighlight">
+\[ s_{\rm new} = s_{\rm old} (1 + r) + d\]</div>
+<p>where <span class="math notranslate nohighlight">\(s_{\rm new}\)</span> is the new amount in the retirement account, <span class="math notranslate nohighlight">\(s_{\rm old}\)</span> is the money in the retirement account from the previous year, <span class="math notranslate nohighlight">\(r\)</span> is the interest rate, <span class="math notranslate nohighlight">\(d\)</span> is the amount deposited.</p>
+<p><strong>Your job is to write a piece of code that calculates and stores (in a list) the total amount of money in the retirement account <em>every year</em> for some number of years</strong> (your boss is going to make a plot of it, so make sure you have the value for each year!).</p>
+<p>Your boss tells you to model the total retirement savings for a <em><strong>range</strong></em> of different parameters (<em>e.g.</em> interest rates and annual contributions).</p>
+<p><strong>You can assume that the person saving for retirement starts when they’re 22 and continues until they’re 65. Also assume that the interest rate and annual contributions are fixed.</strong></p>
+</section>
+<hr class="docutils" />
+<section id="planning-your-solution-and-pseudo-coding">
+<h2>1. Planning your solution and pseudo-coding<a class="headerlink" href="#planning-your-solution-and-pseudo-coding" title="Link to this heading">#</a></h2>
+<p>Before you start writing any code you should come up with a plan for how you’ve going to solve the problem. During this phase you should identify and define the variables that are revelant to the problem, the equations you’re going to need to model, the overall structure of the program that you will write, and how you will make sure the code is running correctly.</p>
+<section id="you-and-your-group-members-are-expected-to-use-the-white-board-at-your-table-a-virtual-whiteboard-app-feel-free-to-ask-your-instructor-for-suggestions-or-pen-pencil-and-paper-to-write-out-your-ideas-to-ensure-that-everyone-is-on-the-same-page-and-allow-your-instructors-to-see-your-progress">
+<h3>You and your group members are expected to use the white board at your table, a virtual whiteboard app (feel free to ask your instructor for suggestions), or pen/pencil and paper to write out your ideas to ensure that everyone is on the same page and allow your instructors to see your progress.<a class="headerlink" href="#you-and-your-group-members-are-expected-to-use-the-white-board-at-your-table-a-virtual-whiteboard-app-feel-free-to-ask-your-instructor-for-suggestions-or-pen-pencil-and-paper-to-write-out-your-ideas-to-ensure-that-everyone-is-on-the-same-page-and-allow-your-instructors-to-see-your-progress" title="Link to this heading">#</a></h3>
+<p>Part of this planning process should involve writing “<strong>pseudo-code</strong>”, a plain language description of the steps in your code (sort of like writing out in your code in form of a cooking recipe). <strong>You actually already did a version of this on Day 1 when you and your group came up with an <em>algorithm</em> for sorting people by their birthday.</strong></p>
+<p>As a reminder, <strong>an algorithm is</strong>: a procedure for solving a problem in terms of the actions to be executed and the order in which those actions are to be executed. In other words, an algorithm is merely the sequence of steps taken to solve a problem.</p>
+<p>You can see some examples of pseudocode and how you might approach writing pseudocode <a class="reference external" href="https://www.geeksforgeeks.org/how-to-write-a-pseudo-code/">here</a> and <a class="reference external" href="https://www.wikihow.com/Write-Pseudocode">here</a>.</p>
+<p>Things you should decide on during your planning and psuedo-coding:</p>
+<ol class="arabic simple">
+<li><p>What quantities in your model are “variables” that will change as a function of time? What are the initial values of these variables?</p></li>
+<li><p>What quantities in your model are “parameters” that are constant over time? What are reasonable ranges for each parameter?</p></li>
+<li><p>How will you go about solving this problem for a given set of inputs?</p></li>
+<li><p>How will you check to make sure your code is running correctly.</p></li>
+</ol>
+<p>You should be able to justify your choices.</p>
+</section>
+<section id="record-the-details-of-you-plan-in-the-markdown-cell-below">
+<h3>✅  1.1 Record the details of you plan in the Markdown cell below.<a class="headerlink" href="#record-the-details-of-you-plan-in-the-markdown-cell-below" title="Link to this heading">#</a></h3>
+<p><font size=6 color="#009600">✎</font> <em>Put your plan details here!</em></p>
+</section>
+<section id="stop-and-ask-your-instructor-to-come-over-and-check-your-pseudocode">
+<h3>🛑 STOP AND ASK YOUR INSTRUCTOR TO COME OVER AND CHECK YOUR PSEUDOCODE<a class="headerlink" href="#stop-and-ask-your-instructor-to-come-over-and-check-your-pseudocode" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<hr class="docutils" />
+<section id="coding-up-your-solution">
+<h2>2. Coding up your solution<a class="headerlink" href="#coding-up-your-solution" title="Link to this heading">#</a></h2>
+<p>Now that you and your group have come up with a plan for your code, it’s time to put your plan into action.</p>
+<section id="writing-code">
+<h3>✅  2.1 Writing Code<a class="headerlink" href="#writing-code" title="Link to this heading">#</a></h3>
+<p>Write your code for calculating the total retirement savings, <span class="math notranslate nohighlight">\(s_{\rm new}\)</span>, in the cell below. <strong>Start by writing code for a single set of parameter values (i.e., not a range).</strong> It is simpler, and you can also add to it later.</p>
+<p><strong>Hint: Remember to update the value of <span class="math notranslate nohighlight">\(s_{\rm old}\)</span> in your loop!</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code for calculating the total amount of retirement savings here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="stop">
+<h3>🛑 STOP<a class="headerlink" href="#stop" title="Link to this heading">#</a></h3>
+<p><strong>Check to make sure your code is working correctly.</strong> This might involve modifying and re-running your code a few times or it might involve write some test code below to explore the results. You should check that the values you’re getting make sense and that they match your expectations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># If your method for checking your results involves writing code, put it here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Explain how you know your code is working correctly.</em></p>
+<p><font size=6 color="#009600">✎</font> <em>Put your explanation here!</em></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="coding-up-your-solution-for-a-range-of-values">
+<h2>3. Coding up your solution for a range of values<a class="headerlink" href="#coding-up-your-solution-for-a-range-of-values" title="Link to this heading">#</a></h2>
+<section id="putting-in-a-range-of-values">
+<h3>✅  3.1 Putting in a Range of Values<a class="headerlink" href="#putting-in-a-range-of-values" title="Link to this heading">#</a></h3>
+<p><strong>Take the code you wrote in Part 2 and expand on it so that you can calculate total retirement savings for a range of different input parameters.</strong> To start, try 3 different annual contribution values and 4 different interests rates, but try to write your code so that you could easily do greater or fewer numbers of values for both parameters.</p>
+<p><strong>Note:</strong> To explore a range of input parameters, you may want to use a “nested” loop (a loop inside a loop). Look back at the pre-class assignment for an example!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code for calculating the total amount of retirement savings for a range of values here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="bringing-in-new-customers">
+<h2>4. Bringing in new customers<a class="headerlink" href="#bringing-in-new-customers" title="Link to this heading">#</a></h2>
+<p>Your boss says the bank is trying to attract customers that don’t start saving for retirement until later in life, and they’re trying to find a good way to do this. You suggest offering <strong>double the usual interest rate</strong> for people that don’t start saving until they’re 30.</p>
+<p>Your boss likes the idea and wants you to run the numbers.</p>
+<section id="answering-your-boss-question-code">
+<h3>✅  4.1 Answering your Boss’ Question, Code<a class="headerlink" href="#answering-your-boss-question-code" title="Link to this heading">#</a></h3>
+<p><strong>Who would end up with more money saved: someone that starts saving at 22 with a normal interest rate, or someone that starts saving at 30 with double the interest rate?</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="answering-your-boss-question-answer">
+<h3>✅  4.2 Answering your Boss’ Question, Answer<a class="headerlink" href="#answering-your-boss-question-answer" title="Link to this heading">#</a></h3>
+<p><strong>Who would end up saving more money for retirement?</strong></p>
+<p><em>Write your answer here</em></p>
+</section>
+</section>
+<section id="congratulations-you-re-done">
+<h2>Congratulations, you’re done!<a class="headerlink" href="#congratulations-you-re-done" title="Link to this heading">#</a></h2>
+<p>Submit this assignment by uploading it to the course Desire2Learn web page.  Go to the “In-class assignments” folder, find the appropriate submission link, and upload it there.</p>
+<p>See you next class!</p>
+<p>© Copyright 2026,  Department of Computational Mathematics, Science and Engineering at Michigan State University.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Day-03"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Day-03_Pre-Class_ListsAndLoops-STUDENT.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Day 3: Pre-Class Assignment: Lists and Loops</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Day-04/Day-04.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Day-04</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-name-here"><p style="text-align: right;"> ✅ Put your name here.</p></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem">The Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planning-your-solution-and-pseudo-coding">1. Planning your solution and pseudo-coding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#you-and-your-group-members-are-expected-to-use-the-white-board-at-your-table-a-virtual-whiteboard-app-feel-free-to-ask-your-instructor-for-suggestions-or-pen-pencil-and-paper-to-write-out-your-ideas-to-ensure-that-everyone-is-on-the-same-page-and-allow-your-instructors-to-see-your-progress">You and your group members are expected to use the white board at your table, a virtual whiteboard app (feel free to ask your instructor for suggestions), or pen/pencil and paper to write out your ideas to ensure that everyone is on the same page and allow your instructors to see your progress.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#record-the-details-of-you-plan-in-the-markdown-cell-below">✅  1.1 Record the details of you plan in the Markdown cell below.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stop-and-ask-your-instructor-to-come-over-and-check-your-pseudocode">🛑 STOP AND ASK YOUR INSTRUCTOR TO COME OVER AND CHECK YOUR PSEUDOCODE</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-up-your-solution">2. Coding up your solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-code">✅  2.1 Writing Code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stop">🛑 STOP</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-up-your-solution-for-a-range-of-values">3. Coding up your solution for a range of values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#putting-in-a-range-of-values">✅  3.1 Putting in a Range of Values</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bringing-in-new-customers">4. Bringing in new customers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#answering-your-boss-question-code">✅  4.1 Answering your Boss’ Question, Code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#answering-your-boss-question-answer">✅  4.2 Answering your Boss’ Question, Answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#congratulations-you-re-done">Congratulations, you’re done!</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Department of Computational Mathematics, Science and Engineering at Michigan State University
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
