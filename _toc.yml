@@ -96,14 +96,14 @@ parts:
       title: Day 03
       sections:
       - file: Day-03/Day-03_Pre-Class_ListsAndLoops-STUDENT.ipynb
-#       - file: Day-03/Day-03_In-Class_ListsLoopsAndSaving-STUDENT.ipynb
-#     # # #   - url: https://docs.google.com/presentation/d/1xZ1YHw4vjtiDmY1r36Rj2JdlugHx6YQn9zel2QVlByA/edit?usp=sharing
-#     # # #     title: Day 03 Slides (MSU Login)
+      - file: Day-03/Day-03_In-Class_ListsLoopsAndSaving-STUDENT.ipynb
+      - url: https://michiganstate-my.sharepoint.com/:p:/r/personal/nnadinke_msu_edu/Documents/CMSE%20801%20F26/Slides/Day03_FS26_CMSE801.pptx?d=wc944f41b28364584a5b2e32ac8c78aa1&csf=1&web=1&e=YI69c7
+        title: Day 03 Slides (MSU Login)
     
-#     - file: Day-04/Day-04.md
-#       title: Day 04
-#       sections:
-#       - file: Day-04/Day-04_Pre-Class_IfStatementsAndFunctions-STUDENT.ipynb
+    - file: Day-04/Day-04.md
+      title: Day 04
+      sections:
+      - file: Day-04/Day-04_Pre-Class_IfStatementsAndFunctions-STUDENT.ipynb
 #       - file: Day-04/Day-04_In-Class_IfStatementsAndFunctions-STUDENT.ipynb
 #     # # #   - url:  https://docs.google.com/presentation/d/1Szk0sxTe9NyrQjN8vXvI-yD9Hxe7RLskn-tUVpxQazs/edit?usp=sharing
 #     # # #     title: Day 04 Slides (MSU Login)
