@@ -42,11 +42,11 @@ Regular office hours begin in the second week of classes. You may contact your i
 
 **Dr. Nkechi Nnadi**\
 When: Thursdays, 3:30 PM -5:30 PM\
-Where: [Zoom](https://msu.zoom.us/j/96461898750)
+Where: [Zoom](https://msu.zoom.us/j/96461898750) ID: 964 6189 8750
 
 **Nic Heilman (TA)**\
 When: Mondays, 2:00 PM - 4:00 PM\
-Where: [Zoom](https://msu.zoom.us/j/96461898750) (same Zoom link)
+Where: [Zoom](https://msu.zoom.us/j/96461898750) ID: 964 6189 8750 (same Zoom link)
 
 <!-- **Mengsen Zhang**\
 Time: Tuesday and Thursday 10:00-11:00am\
