@@ -36,7 +36,7 @@ Engineering Building 1225
 
 ### Office Hours
 
-Regular office hours begin in the second week of classes. You may reach out to your instructor for appointments at other times. 
+Regular office hours begin in the second week of classes. You may contact your instructor to schedule appointments at other times. 
 
 <!-- <iframe src="https://calendar.google.com/calendar/u/3?cid=Y19lNWM3MWMxODNkY2JkZGMyZmNjMWM2N2E5NDZjYjkxNGI1YTRhMTU5OTY2MWMxNDZiODEwZDIwYmViNmVmMDIzQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe> -->
 
@@ -214,7 +214,7 @@ Any course personnel can help you with questions about the course material, incl
 ## Grading information
 
 There are a variety of course activities, with the percentage of the total grade listed. More
-detailed descriptions of each activity can be found elsewhere in the syllabus.
+detailed descriptions of each activity are elsewhere in the syllabus.
 
 | Component                                       | Percentage of total grade |
 | ----------------------------------------------- | ------------------------- |
