@@ -21,7 +21,7 @@ parts:
       - file: Course_Documents/GenerativeAI/GenerativeAI_Policy.md
         title: Generative AI Policy
 
-    - file: Project/Project
+    - file: Project/Project.md
       title: Semester Project  
       sections: 
       - file: Project/SemesterProjectDetails.md
@@ -46,7 +46,7 @@ parts:
 
   
     - file: Homework/Homework.md
-      title: Homeworks
+      title: Homework
       sections:
       - file:  Homework/HW1/Homework-01_PythonFundamentals-STUDENT-F26.ipynb
         title: Homework 1 - Python Fundamentals
