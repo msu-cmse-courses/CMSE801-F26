@@ -9,7 +9,7 @@
 Assistant Professor\
 Department of Computational Mathematics, Science & Engineering\
 Engineering Building 1515, #I6\
-<nnadinke@msu.edu>
+[nnadinke@msu.edu](mailto:nnadinke@msu.edu)
 
 
 **Mengsen Zhang, Ph.D.** (After Fall Break: Oct 28 and onwards)\
@@ -18,12 +18,12 @@ Department of Computational Mathematics, Science & Engineering\
 Department of Medicine\
 Neuroscience Program\
 Engineering Building 1514\
-<mengsen@msu.edu>
+[mengsen@msu.edu](mailto:mengsen@msu.edu)
 
 ### Teaching Assistant
 **Nic Heilman**\
 Graduate Student in CMSE\
-<heilman7@msu.edu>
+[heilman7@msu.edu](heilman7@msu.edu)
 
 ### Class days and time
 
@@ -32,7 +32,7 @@ Monday and Wednesday\
 
 ### Class location
 
-Engineering Building 1225
+Engineering Building 1220
 
 ### Office Hours
 
