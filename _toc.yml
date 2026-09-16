@@ -114,20 +114,20 @@ parts:
       - url:  https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQDLt3-WevlVSIWT7hGXL7nmASHUThF9gw6ot2vXQYI5urM?e=tcg0FD
         title: Day 05 Slides (MSU Login)
       
-#     - file: Day-06/Day-06.md
-#       title: Day 06
-#       sections: 
-#       - file: Day-06/Day-06_Pre-Class_ModulesMathAndPlots-STUDENT.ipynb
+    - file: Day-06/Day-06.md
+      title: Day 06
+      sections: 
+      - file: Day-06/Day-06_Pre-Class_ModulesMathAndPlots-STUDENT.ipynb
 #       - file: Day-06/Day-06_In-Class_MathAndPlotting-STUDENT.ipynb    
 #     # # #   - url:  https://docs.google.com/presentation/d/1e27R4CmaAK3854P0oTQmKBAh3x0d8mLBzrXDQrKUUnE/edit?usp=sharing
 #     # # #     title: Day 06 Slides (MSU Login)
 
-#     - file: Day-07/Day-07.md
-#       title: Day 07
-#       sections: 
-#       - file: Day-07/Day-07_Pre-Class_IntroToNumPy-STUDENT.ipynb
-#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/michigan_pop.csv
-#         title: michigan_pop.csv
+    - file: Day-07/Day-07.md
+      title: Day 07
+      sections: 
+      - file: Day-07/Day-07_Pre-Class_IntroToNumPy-STUDENT.ipynb
+      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/michigan_pop.csv
+        title: michigan_pop.csv
 #       - file: Day-07/Day-07_In-Class_NumPyWithTheGreatLakes-STUDENT.ipynb
 #     # #   # - url: https://docs.google.com/presentation/d/1ZJnE4XiFeeG5RD1MkazxU2p4rZ227nvQSCLl6BMUxC0/edit?usp=sharing
 #     # #   #   title: Day 07 Slides (MSU Login)
