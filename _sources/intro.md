@@ -22,7 +22,7 @@
 Assistant Professor\
 Department of Computational Mathematics, Science & Engineering\
 Engineering Building 1515, #I6\
-<[nnadinke@msu.edu](mailto:nnadinke@msu.edu)>
+[nnadinke@msu.edu](mailto:nnadinke@msu.edu)
 
 If you would like to meet during the first week of class, email to set up an appointment. -->
 
@@ -32,7 +32,7 @@ Department of Computational Mathematics, Science & Engineering\
 Department of Medicine\
 Neuroscience Program\
 Engineering Building 1514\
-<[mengsen@msu.edu](mailto:mengsen@msu.edu)>
+[mengsen@msu.edu](mailto:mengsen@msu.edu)
 
 ---
 ### Teaching Assistant
@@ -52,7 +52,13 @@ Graduate Student in CMSE\
 ## Office hours
 Office hours start from the second week of class. You can reach out to your instructor for appointments at other times. 
 
-<iframe src="https://outlook.office.com/bookwithme/user/163739ded8e14d768789875e3631f038@msu.edu?anonymous&ismsaljsauthenabled&ep=plink" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+**Dr. Nkechi Nnadi**\
+When: Thursdays, 3:30 PM -5:30 PM\
+Where: [Zoom](https://msu.zoom.us/j/96461898750) ID: 964 6189 8750
+
+**Nic Heilman (TA)**\
+When: Mondays, 2:00 PM - 4:00 PM\
+Where: [Zoom](https://msu.zoom.us/j/96461898750) ID: 964 6189 8750 (same Zoom link)
 
 ---
 
