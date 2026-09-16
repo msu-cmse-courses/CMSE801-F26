@@ -1,0 +1,758 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Day 5 In-class Assignment: Practicing with functions (for profit!) &#8212; CMSE 801</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Day-05/Day-05_In-Class_MoreFunctions-STUDENT';</script>
+    <link rel="icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Review and Practice Materials" href="../ReviewAndPracticeMaterials/ReviewAndPracticeMaterials.html" />
+    <link rel="prev" title="Day 5: Pre-class Assignment: Thinking more about functions" href="Day-05_Pre-Class_MoreFunctions-STUDENT.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="CMSE 801 - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="CMSE 801 - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Materials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Course_Documents/Course_Documents.html">Important Course information</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/Syllabus/syllabus.html">Syllabus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/Schedule/schedule.html">Course Schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/SoftwareSetup/SoftwareSetupGuide.html">Software Setup Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/classParticipation/classParticipation.html">Classroom Participation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/GenerativeAI/GenerativeAI_Policy.html">Generative AI Policy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Project/Project.html">Semester Project</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Project/SemesterProjectDetails.html">Project Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Project/ProjectProposal.html">Project Proposal - Due October 28</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Project/FinalProject_RequirementsAndGradingRubric.html">Requirements and Grading Rubric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Project/FinalProjectTemplate.html">CMSE 801 Final Project Template</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Project/ProjectDraft.html">Project Draft - Due November 18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Project/Project_Self-Evaluation.html">Project Self-Evaluation</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/msu-cmse-courses/cmse801-supplemental/raw/main/Project/Presentation_Evaluation_Rubric.pdf">Presentation Evaluation Rubric</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Daily Content</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-01/Day-01.html">Day 01</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-01/Day-01_In-Class_SortingAlgorithm-STUDENT.html">Day 1 In-Class Assignment: Introductions and Sorting Algorithms</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAZKaCUMP-JQZj6mQG9yZANAfXIokhXP63-2By8XLo81Kc?e=N4QF3I">Day 01 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-02/Day-02.html">Day 02</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-02/Day-02_Pre-Class_IntroToPython-STUDENT.html">Day 2 Pre-class Assignment: Intro to Python</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Day-02/Day-02_In-Class_OrderOfMagnitudeModeling-STUDENT.html">Day 2 In-class Assignment: Order of Magnitude Modeling</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAsDxwKy1WsQZESscQmuyYNAcZv06dZ4sIq42ScDGWk0NI?e=DpWI1l">Day 02 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-03/Day-03.html">Day 03</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-03/Day-03_Pre-Class_ListsAndLoops-STUDENT.html">Day 3: Pre-Class Assignment: Lists and Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-03/Day-03_In-Class_ListsLoopsAndSaving-STUDENT.html">Day 3 In-class Assignment: The power of compound interest</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAb9ETJNiiERaWy4yrIx4qhAdgLnvkqZzhlufoRgjSFbsc?e=eX1d6g">Day 03 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-04/Day-04.html">Day 04</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-04/Day-04_Pre-Class_IfStatementsAndFunctions-STUDENT.html">Day 4: Pre-class Assignment: Boolean logic, if statements, and an introduction to functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-04/Day-04_In-Class_IfStatementsAndFunctions-STUDENT.html">Day 4 In-class Assignment: Savings for Everyone</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQBUE1SWtyFdS7cpuhMKR9ziAZImiGk0yIZ7am1QEZSJNzY?e=CNH5Pn">Day 04 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Day-05.html">Day 05</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Day-05_Pre-Class_MoreFunctions-STUDENT.html">Day 5: Pre-class Assignment: Thinking more about functions</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Day 5 In-class Assignment: Practicing with functions (for profit!)</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQDLt3-WevlVSIWT7hGXL7nmASHUThF9gw6ot2vXQYI5urM?e=tcg0FD">Day 05 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Extra Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewAndPracticeMaterials.html">Review and Practice Materials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewNotebook_PythonFundamentals-STUDENT.html">Reviewing and practicing prior concepts: Python Fundamentals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewNotebook_Debugging-STUDENT.html">Practice with Debugging</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewNotebook_Functions-STUDENT.html">Practice with: functions</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Day-05/Day-05_In-Class_MoreFunctions-STUDENT.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Day 5 In-class Assignment: Practicing with functions (for profit!)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-name-here"><p style="text-align: right;"> ✅ Put your name here.</p></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#revisiting-the-last-function-from-the-pre-class-assignment">1. Revisiting the last function from the pre-class assignment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-this-function-more-flexible">Making this function more flexible</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-distances-with-functions">2. Computing distances with functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-euclidean-distance">2.1 Computing the Euclidean distance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-lyft-distance">2.2 Computing the “Lyft” distance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-fare-computing-function">2.3 Creating a fare-computing function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-your-functions">3. Combining your functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planning-your-route">4. Planning your route</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#work-out-a-plan-for-your-function-on-a-whiteboard-or-piece-of-paper-first-you-may-need-to-draw-a-diagram-to-figure-out-how-to-solve-this">Work out a plan for your function on a whiteboard or piece of paper first! You may need to draw a diagram to figure out how to solve this.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-permitting">Time permitting:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-aside-for-those-that-are-interested">An aside, for those that are interested</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#congratulations-you-re-done">Congratulations, you’re done!</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="day-5-in-class-assignment-practicing-with-functions-for-profit">
+<h1>Day 5 In-class Assignment: Practicing with functions (for profit!)<a class="headerlink" href="#day-5-in-class-assignment-practicing-with-functions-for-profit" title="Link to this heading">#</a></h1>
+<section id="put-your-name-here">
+<h2><p style="text-align: right;"> ✅ Put your name here.<a class="headerlink" href="#put-your-name-here" title="Link to this heading">#</a></h2>
+<p style="text-align: right;"> &#9989; Put your group member names here.<img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/1*aTfS-plmbZpMeFfMkV-47w.png" width=400px>
+<p>As we’ve mentioned previously, writing functions in Python can be <em>very</em> useful. In this assignment, you’ll spend some more time writing functions so that it starts to become second nature. If you get into the habit of writing functions early on, you’ll find that you start writing more efficient code as the problems you’re trying to solve get more complicated!</p>
+<p>In this assignment, we’ll use functions to compute distances and optimize rideshare routes.</p>
+</section>
+<section id="learning-goals">
+<h2>Learning Goals:<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<p>By the end of this assignment you should be able to:</p>
+<ul class="simple">
+<li><p>Confidently write and execute functions in Python using varying numbers of input parameters, default parameters, and returned values</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="revisiting-the-last-function-from-the-pre-class-assignment">
+<h2>1. Revisiting the last function from the pre-class assignment<a class="headerlink" href="#revisiting-the-last-function-from-the-pre-class-assignment" title="Link to this heading">#</a></h2>
+<p>In your pre-class assignment, you were asked to do the following:</p>
+<ol class="arabic simple">
+<li><p>Write a function called <code class="docutils literal notranslate"><span class="pre">x_squared</span></code>.</p></li>
+<li><p>The function should take in a list of <span class="math notranslate nohighlight">\(x\)</span>-values of any length, but should have a default of [1,2,3].</p></li>
+<li><p>The function should return a new list of values that are <span class="math notranslate nohighlight">\(x^2\)</span> values of the original input values.</p></li>
+<li><p>Print the resulting new list.</p></li>
+</ol>
+<p>Hopefully you were able to figure this out, but if not here’s one possible solution:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">x_squared</span><span class="p">(</span><span class="n">x_values</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]):</span>
+    <span class="n">x_sq</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">x_values</span><span class="p">:</span>
+        <span class="n">x_sq</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x_sq</span>
+
+<span class="n">x2</span> <span class="o">=</span> <span class="n">x_squared</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that when the function is called, <strong>it doesn’t take any input and yet produces an output</strong>. This is the upside to defining a default value for the input. Of course, I can also make the <span class="math notranslate nohighlight">\(x\)</span>-values to be anything I want. Like so:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">x_squared</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="making-this-function-more-flexible">
+<h3>Making this function more flexible<a class="headerlink" href="#making-this-function-more-flexible" title="Link to this heading">#</a></h3>
+<p>Now, the above function is great for computing <span class="math notranslate nohighlight">\(x^2\)</span>, but what if I wanted a function that could more generally compute the values for a list of <span class="math notranslate nohighlight">\(x\)</span>-values raised to any power?</p>
+<p><strong>As a group</strong>, design a small function called <code class="docutils literal notranslate"><span class="pre">compute_exponent</span></code> that satisfies the following:</p>
+<ol class="arabic simple">
+<li><p>Given a <strong>list</strong> of <span class="math notranslate nohighlight">\(x\)</span>-values, it computes the value of <span class="math notranslate nohighlight">\(x^a\)</span> for each value, where <span class="math notranslate nohighlight">\(a\)</span> is a parameter that is fed into your function.</p></li>
+<li><p>The default value of <span class="math notranslate nohighlight">\(a\)</span> is “2”.</p></li>
+<li><p>It returns the <strong>list</strong> of all the <span class="math notranslate nohighlight">\(x^a\)</span> values.</p></li>
+</ol>
+<p><em>Make sure you print out the list of resulting values to confirm that your code is working</em>. <strong>Run your function for a variety of input values.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE PSEUDO-CODE HERE (in the form of comments)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>✅  <strong>Question</strong>: What happens in your function if <span class="math notranslate nohighlight">\(a=0.5\)</span> and your <span class="math notranslate nohighlight">\(x\)</span>-values are a combination of positive and negative numbers?</p>
+<p><font size="+3">✎</font> <em>Put your answer here</em></p>
+<p>✅  <strong>Question</strong>: What if you only wanted your function to return a list of new values if all of the values are non-imaginary numbers? Explain how you might re-write your code to accomplish this. You should brainstorms ideas with your group!</p>
+<p>In case you don’t remember what imaginary numbers are: <a class="reference external" href="https://en.wikipedia.org/wiki/Imaginary_number">https://en.wikipedia.org/wiki/Imaginary_number</a></p>
+<p><font size="+3">✎</font> <em>Put your answer here</em></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="computing-distances-with-functions">
+<h2>2. Computing distances with functions<a class="headerlink" href="#computing-distances-with-functions" title="Link to this heading">#</a></h2>
+<div style="text-align: center">
+<img src="https://i.imgur.com/FrMebl0.png" width=300px>
+<p>Anything look familiar about this map? </div>
+<br></p>
+<p>For the next part of this assignment, we’re going to think about how we might be able to write functions that can be used to compute distances on a map.</p>
+<section id="computing-the-euclidean-distance">
+<h3>2.1 Computing the Euclidean distance<a class="headerlink" href="#computing-the-euclidean-distance" title="Link to this heading">#</a></h3>
+<p>“Euclidean distance” is simply the distance of the straight line that connects two points in Euclidean space. It’s basically the distance “as the crow flies”. On a map, it might look something like this:</p>
+<div style="text-align: center"> <img src="https://i.imgur.com/KSmguA5.png" width=500px> </div><p>For this part of the assignment, <strong>write a function</strong> that takes in two points on an <span class="math notranslate nohighlight">\(x\)</span>-<span class="math notranslate nohighlight">\(y\)</span> plane and <strong>returns the Euclidean distance between these two points</strong>. Define your function so that by default, the “stop” point is the point (0,0). Don’t worry about the units of this distance for this problem.</p>
+<p><strong>Work with your group to figure this out!</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your function here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="computing-the-lyft-distance">
+<h3>2.2 Computing the “Lyft” distance<a class="headerlink" href="#computing-the-lyft-distance" title="Link to this heading">#</a></h3>
+<p>For this part of the assignment, let’s say that you’ve been thinking about starting a new rideshare company similar to Uber or Lyft. You’ve started thinking about how you should go about estimating the amount you should charge for a given ride, but you’ve realized that computing the Euclidean distance between two points doesn’t really make sense. Now you need to create a new function that computes an estimate for the total distance of the ride for your new “Lyft-like” service.</p>
+<p>When you’re driving a car you can’t just travel in a straight line between two points, you’re forced to drive along the grid structure defined by where the streets are. Your path might look something like this:</p>
+<div style="text-align: center">
+<img src="https://i.imgur.com/ieJ1Z4k.png" width=500px>
+<p>Another potentially familiar place… </div>
+<br></p>
+<p>For the purposes of computing these new “Lyft”-like distances, you’re going to assume that the drivers for your company are generally pretty good about taking the shortest possible route, and you’re also going to assume that, most of the time, the streets will have a pretty standard grid-like structure. After all, it would be pretty hard to predict just how irregular the routes might end up being.</p>
+<p><strong>Write a function for computing a “Lyft” distance</strong> based on the restriction that the car must travel on a grid of roads that run parallel to the <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> axes of an <span class="math notranslate nohighlight">\(x\)</span>-<span class="math notranslate nohighlight">\(y\)</span> plane. Your function should take a <strong>starting point and a stopping point as input variables</strong> and <strong>return</strong> the distance estimate. Your estimate will essentially tell you how many blocks the driver will travel to get to the destination. <em>Use the white boards to plan out how to do this calculation!</em> <strong>Hint</strong>: you may want to use the absolute value function for this calculation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your function here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="creating-a-fare-computing-function">
+<h3>2.3 Creating a fare-computing function<a class="headerlink" href="#creating-a-fare-computing-function" title="Link to this heading">#</a></h3>
+<p>Let’s assume that you want to be able to quickly calculate an estimate for the cost of the trip so that you can let your riders know roughly how much you’ll charge them.  To start with, you’re going to use a flat rate of <strong>40 cents</strong> per unit distance the driver travels.</p>
+<p><strong>Write another function</strong> called <code class="docutils literal notranslate"><span class="pre">trip_cost</span></code> that <strong>uses the function you just wrote</strong> for computing the total distance of the ride to <strong><em>print</em> the cost of the trip</strong> so that it reads “The cost of the trip will be $&lt; amount &gt;” where &lt; amount &gt; is the total in dollars that the trip will cost. Your function should take the starting point, the stopping point, and the rate (with a default value) as inputs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your function here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="combining-your-functions">
+<h2>3. Combining your functions<a class="headerlink" href="#combining-your-functions" title="Link to this heading">#</a></h2>
+<p>Now that you’ve written two different functions for finding the distance, you’re thinking that it would be more convenient if you could use the same function to compute both the Euclidean distance and the Lyft distance. It would also make it a lot easier to compare how much longer the Lyft distance is than the Euclidean distance.</p>
+<p><strong>Write a function</strong> that is capable of computing the Euclidean distance <strong>or</strong> the Lyft distance based on a keyword argument call <code class="docutils literal notranslate"><span class="pre">path_type</span></code>.</p>
+<ul class="simple">
+<li><p>If the <code class="docutils literal notranslate"><span class="pre">path_type</span></code> is ‘Lyft’, compute the Lyft distance, otherwise compute the standard Euclidean distance.</p></li>
+<li><p>Make sure that the default stopping point is (0,0).</p></li>
+</ul>
+<p>As before, your function should <strong>return</strong> the distance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Write another function</strong> that <strong>uses your previous function</strong> to compute both the Euclidean distance and the Lyft distances and <strong>prints</strong>:</p>
+<p>“The Lyft distance is &lt; X &gt; times longer than the Euclidean distance”</p>
+<p>where &lt; X &gt; is the appropriate ratio of the two distances.</p>
+<p><strong>Compare the two distances</strong> for a starting point of (-2, -6) and stopping point of (4,5).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="planning-your-route">
+<h2>4. Planning your route<a class="headerlink" href="#planning-your-route" title="Link to this heading">#</a></h2>
+<p>Now that you’ve worked out a system for estimating travel distances and ride fares, you’re ready to start testing your new rideshare service. You fire up your fancy new program and immediately get three simultaneous rider requests, but luckily they all are looking for a ride to the same place – the airport!</p>
+<p>You plan on picking up all three passengers on the <strong>same trip</strong> so that you can drop them all off at the same time. You want to take the shortest possible route so that you minimize the cost of gas and, in turn, the amount of money the trip costs you!</p>
+<p><strong>The challenge</strong>: You need to create a function that takes in a starting position, a list of three rider locations, and a stopping location and determines the order of rider pickups that will require the least amount of driving. You want to make the default stopping location be the airport, since you figure this is where people will be headed most often. You should be able to use your function for computing the Lyft distance to help solve this problem.</p>
+<section id="work-out-a-plan-for-your-function-on-a-whiteboard-or-piece-of-paper-first-you-may-need-to-draw-a-diagram-to-figure-out-how-to-solve-this">
+<h3>Work out a plan for your function on a whiteboard or piece of paper first! You may need to draw a diagram to figure out how to solve this.<a class="headerlink" href="#work-out-a-plan-for-your-function-on-a-whiteboard-or-piece-of-paper-first-you-may-need-to-draw-a-diagram-to-figure-out-how-to-solve-this" title="Link to this heading">#</a></h3>
+<p>Once you’ve come up with a plan, try <strong>writing the function</strong>. The function should <strong>return the list of rider locations in the appropriate pick-up order and the total distance of the trip</strong>.</p>
+<p>Let’s assume that:</p>
+<ol class="arabic simple">
+<li><p>Your starting location is (-2,3).</p></li>
+<li><p>The ride locations are (-1, -2), (3,3), and (2, -1).</p></li>
+<li><p>The stopping location, the airport, is at (4,0).</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="time-permitting">
+<h2>Time permitting:<a class="headerlink" href="#time-permitting" title="Link to this heading">#</a></h2>
+<p>If you finish this assignment early, take a moment to go back to the end of Part 1 and try to code up your solution for dealing with imaginary numbers in your <code class="docutils literal notranslate"><span class="pre">compute_exponent</span></code> function.</p>
+<hr class="docutils" />
+<section id="an-aside-for-those-that-are-interested">
+<h3>An aside, for those that are interested<a class="headerlink" href="#an-aside-for-those-that-are-interested" title="Link to this heading">#</a></h3>
+<p>The maps in this assignment were made, in part, using the <a class="reference external" href="http://geoffboeing.com/2016/11/osmnx-python-street-networks/">OSMnx</a> Python package. You can check out some example code <a class="reference external" href="https://github.com/gboeing/osmnx-examples/blob/master/notebooks/09-example-figure-ground.ipynb">here</a>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="congratulations-you-re-done">
+<h2>Congratulations, you’re done!<a class="headerlink" href="#congratulations-you-re-done" title="Link to this heading">#</a></h2>
+<p>Submit this assignment by uploading it to the course Desire2Learn web page.  Go to the “In-class assignments” folder, find the dropbox link for Day 5, and upload it there.</p>
+<p>See you next class!</p>
+<p>© Copyright 2026,  Michigan State University Board of Trustees</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Day-05"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Day-05_Pre-Class_MoreFunctions-STUDENT.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Day 5: Pre-class Assignment: Thinking more about functions</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../ReviewAndPracticeMaterials/ReviewAndPracticeMaterials.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Review and Practice Materials</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-name-here"><p style="text-align: right;"> ✅ Put your name here.</p></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#revisiting-the-last-function-from-the-pre-class-assignment">1. Revisiting the last function from the pre-class assignment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-this-function-more-flexible">Making this function more flexible</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-distances-with-functions">2. Computing distances with functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-euclidean-distance">2.1 Computing the Euclidean distance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-lyft-distance">2.2 Computing the “Lyft” distance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-fare-computing-function">2.3 Creating a fare-computing function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-your-functions">3. Combining your functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planning-your-route">4. Planning your route</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#work-out-a-plan-for-your-function-on-a-whiteboard-or-piece-of-paper-first-you-may-need-to-draw-a-diagram-to-figure-out-how-to-solve-this">Work out a plan for your function on a whiteboard or piece of paper first! You may need to draw a diagram to figure out how to solve this.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-permitting">Time permitting:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-aside-for-those-that-are-interested">An aside, for those that are interested</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#congratulations-you-re-done">Congratulations, you’re done!</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Department of Computational Mathematics, Science and Engineering at Michigan State University
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

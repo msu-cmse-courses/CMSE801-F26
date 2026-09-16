@@ -1,0 +1,1539 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Homework 1: Python fundamentals &#8212; CMSE 801</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Homework/HW1/Homework-01_PythonFundamentals-STUDENT-F26';</script>
+    <link rel="icon" href="../../_static/logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="CMSE 801 - Home"/>
+    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="CMSE 801 - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Materials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Course_Documents/Course_Documents.html">Important Course information</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Course_Documents/Syllabus/syllabus.html">Syllabus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Course_Documents/Schedule/schedule.html">Course Schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Course_Documents/SoftwareSetup/SoftwareSetupGuide.html">Software Setup Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Course_Documents/classParticipation/classParticipation.html">Classroom Participation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Course_Documents/GenerativeAI/GenerativeAI_Policy.html">Generative AI Policy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Project/Project.html">Semester Project</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Project/SemesterProjectDetails.html">Project Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Project/ProjectProposal.html">Project Proposal - Due October 28</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Project/FinalProject_RequirementsAndGradingRubric.html">Requirements and Grading Rubric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Project/FinalProjectTemplate.html">CMSE 801 Final Project Template</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../Project/ProjectDraft.html">Project Draft - Due November 18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Project/Project_Self-Evaluation.html">Project Self-Evaluation</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/msu-cmse-courses/cmse801-supplemental/raw/main/Project/Presentation_Evaluation_Rubric.pdf">Presentation Evaluation Rubric</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Daily Content</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-01/Day-01.html">Day 01</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-01/Day-01_In-Class_SortingAlgorithm-STUDENT.html">Day 1 In-Class Assignment: Introductions and Sorting Algorithms</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAZKaCUMP-JQZj6mQG9yZANAfXIokhXP63-2By8XLo81Kc?e=N4QF3I">Day 01 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-02/Day-02.html">Day 02</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-02/Day-02_Pre-Class_IntroToPython-STUDENT.html">Day 2 Pre-class Assignment: Intro to Python</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../Day-02/Day-02_In-Class_OrderOfMagnitudeModeling-STUDENT.html">Day 2 In-class Assignment: Order of Magnitude Modeling</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAsDxwKy1WsQZESscQmuyYNAcZv06dZ4sIq42ScDGWk0NI?e=DpWI1l">Day 02 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-03/Day-03.html">Day 03</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-03/Day-03_Pre-Class_ListsAndLoops-STUDENT.html">Day 3: Pre-Class Assignment: Lists and Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-03/Day-03_In-Class_ListsLoopsAndSaving-STUDENT.html">Day 3 In-class Assignment: The power of compound interest</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAb9ETJNiiERaWy4yrIx4qhAdgLnvkqZzhlufoRgjSFbsc?e=eX1d6g">Day 03 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-04/Day-04.html">Day 04</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-04/Day-04_Pre-Class_IfStatementsAndFunctions-STUDENT.html">Day 4: Pre-class Assignment: Boolean logic, if statements, and an introduction to functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-04/Day-04_In-Class_IfStatementsAndFunctions-STUDENT.html">Day 4 In-class Assignment: Savings for Everyone</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQBUE1SWtyFdS7cpuhMKR9ziAZImiGk0yIZ7am1QEZSJNzY?e=CNH5Pn">Day 04 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-05/Day-05.html">Day 05</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-05/Day-05_Pre-Class_MoreFunctions-STUDENT.html">Day 5: Pre-class Assignment: Thinking more about functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-05/Day-05_In-Class_MoreFunctions-STUDENT.html">Day 5 In-class Assignment: Practicing with functions (for profit!)</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQDLt3-WevlVSIWT7hGXL7nmASHUThF9gw6ot2vXQYI5urM?e=tcg0FD">Day 05 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Extra Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../ReviewAndPracticeMaterials/ReviewAndPracticeMaterials.html">Review and Practice Materials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ReviewAndPracticeMaterials/ReviewNotebook_PythonFundamentals-STUDENT.html">Reviewing and practicing prior concepts: Python Fundamentals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReviewAndPracticeMaterials/ReviewNotebook_Debugging-STUDENT.html">Practice with Debugging</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../ReviewAndPracticeMaterials/ReviewNotebook_Functions-STUDENT.html">Practice with: functions</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Homework/HW1/Homework-01_PythonFundamentals-STUDENT-F26.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Homework 1: Python fundamentals</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#and-using-external-resources-to-better-understand-code">And using external resources to better understand code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-name-here"><p style="text-align: right;"> ✅ <strong>Put your name here</strong> </p></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#content-goals">Content Goals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-goals">Practice Goals</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-instructions">Assignment instructions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-check">Version check</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grading">Grading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#doing-basic-math-with-python-6-points">1. Doing basic math with Python (6 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1-4-points">✅  Question 1.1 (4 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#answer">ANSWER</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2-2-points">✅  Question 1.2 (2 Points)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storing-and-accessing-data-using-lists-21-points">2. Storing and accessing data using lists (21 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-list-from-scratch">Creating a list from scratch</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1-2-points">✅  Question 2.1 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-2-2-points">✅  Question 2.2 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-3-3-points">✅  Question 2.3 (3 Points)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-and-changing-values-stored-in-a-python-list">Accessing and changing values stored in a Python list</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-4-2-points">✅  Question 2.4 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-5-2-points">✅  Question 2.5 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-6-3-points">✅  Question 2.6 (3 Points)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-or-appending-values-to-a-python-list">Adding or “appending” values to a Python list</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-7-2-points">✅  Question 2.7 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-8-2-points">✅  Question 2.8 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-9-3-points">✅  Question 2.9 (3 Points)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-for-loops-in-python-21-points">3. Writing <code class="docutils literal notranslate"><span class="pre">for</span></code> loops in Python (21 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-by-integers-or-index">Looping by integers or index</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-1-2-points">✅  Question 3.1 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-2-2-points">✅  Question 3.2 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-3-3-points">✅  Question 3.3 (3 Points)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-by-value-e-g-through-a-list">Looping by value (e.g. through a list)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-4-2-points">✅  Question 3.4 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-5-2-points">✅  Question 3.5 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-6-3-points">✅  Question 3.6 (3 Points)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-a-loop-that-accesses-list-values-using-integers-or-by-index">Writing a loop that accesses list values using integers or “by index”</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-7-2-points">✅  Question 3.7 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-8-2-points">✅  Question 3.8 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-9-3-points">✅  Question 3.9 (3 Points)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-while-loops-in-python-7-points">4. Writing <code class="docutils literal notranslate"><span class="pre">while</span></code> loops in Python (7 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-by-condition">Looping by condition</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-1-2-points">✅  Question 4.1 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-2-2-points">✅  Question 4.2 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-3-3-points">✅  Question 4.3 (3 Points)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-if-statements-in-python-9-points">5. Writing “<code class="docutils literal notranslate"><span class="pre">if</span></code>” statements in Python (9 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-5-1-3-points">✅  Question 5.1 (3 Points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-5-2-3-points">✅  Question 5.2 (3 Points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">ANSWER</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-5-3-3-points">✅  Question 5.3 (3 Points)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-functions-in-python-11-points">6. Writing functions in Python (11 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-6-1-4-points">✅  Question 6.1 (4 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-6-2-4-points">✅  Question 6.2 (4 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-6-3-3-points">✅  Question 6.3 (3 points)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#putting-it-all-together-student-grade-analysis-15-points">7. Putting it all together: student grade analysis (15 points)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wait-before-you-submit-your-notebook-read-the-following-important-recommendations">Wait! Before you submit your notebook, read the following important recommendations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#congratulations-you-re-done">Congratulations, you’re done!</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="homework-1-python-fundamentals">
+<h1>Homework 1: Python fundamentals<a class="headerlink" href="#homework-1-python-fundamentals" title="Link to this heading">#</a></h1>
+<section id="and-using-external-resources-to-better-understand-code">
+<h2>And using external resources to better understand code<a class="headerlink" href="#and-using-external-resources-to-better-understand-code" title="Link to this heading">#</a></h2>
+<section id="put-your-name-here">
+<h3><p style="text-align: right;"> ✅ <strong>Put your name here</strong> </p><a class="headerlink" href="#put-your-name-here" title="Link to this heading">#</a></h3>
+<p><img src="https://cmse.msu.edu/_assets/images/about/image001.png"
+     alt="CMSE Logo"
+     align="right"
+     style="width: 50%; height: auto;"/></p>
+</section>
+</section>
+<section id="learning-goals">
+<h2>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<section id="content-goals">
+<h3>Content Goals<a class="headerlink" href="#content-goals" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Review the arithmetic operators in Python</p></li>
+<li><p>Utilize loops to perform repeated operations and to store, access, and manipulate data in one more or lists</p></li>
+<li><p>Utilize variables and lists to store and access data</p></li>
+<li><p>Use conditional statements to control code flow.</p></li>
+<li><p>Use functions to organize code and make it more readable and reusable.</p></li>
+</ul>
+</section>
+<section id="practice-goals">
+<h3>Practice Goals<a class="headerlink" href="#practice-goals" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Use the internet as a resource for learning how to write code, learn new things, and troubleshoot problems</p></li>
+<li><p>Solve a variety of problems using code</p></li>
+<li><p>Troubleshoot errors and debug your code as issues arise (you’ll do this all the time in this course!)</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="assignment-instructions">
+<h2>Assignment instructions<a class="headerlink" href="#assignment-instructions" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Work through the following assignment, making sure to follow all the directions and answer all the questions.</p></li>
+<li><p>You will be required to use the internet to find various types of example code throughout this assignment, wherever the 🌐 symbol appears. Remember, when you are searching for examples, it can be very important to include the word <code class="docutils literal notranslate"><span class="pre">python</span></code> in your search terms to make sure you get code that’s written in Python, rather than some other language.</p>
+<p><strong>Note</strong>: Feel free to experiment with using Generative AI (e.g., HiTA, ChatGPT, Claude, etc.) to generate code examples. Just make sure you follow the attribution guidelines specified in the generative AI policy for this course when you do. Your attribution comment should look something like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># OpenAI. (2026). ChatGPT-4o. Prompt chain:{‘give me an example code to create lists in Python in two different ways&#39;; &#39;Make the second list longer&#39;}. Accessed on Sep 12, 2026.</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>This assignment is due at 11:59 pm on Friday,  Sep 25th.</strong> It should be uploaded into the “Homework Assignments” submission folder for Homework #1.  Submission instructions can be found at the end of the notebook.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="version-check">
+<h2>Version check<a class="headerlink" href="#version-check" title="Link to this heading">#</a></h2>
+<p>Before you begin, make sure your Jupyter kernel is Python 3. There are significant differences between Python 2 and Python 3, and we use Python 3 in this course. The kernel type at the upper-right corner should say “Python 3”, and the following code should show a version of the form: <code class="docutils literal notranslate"><span class="pre">3.x.y</span></code> (where “x” and “y” are the sub-version numbers).</p>
+<p>If your kernel is Python 2, try selecting Python 3 from the Kernel menu above under the sub-menu “Change kernel”. If that does not work, consult the Teams help channel for assistance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="grading">
+<h2>Grading<a class="headerlink" href="#grading" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Doing basic math with Python (6 points)</p></li>
+<li><p>Storing and accessing data using lists (21 points)</p></li>
+<li><p>Writing for loops in Python (21 points)</p></li>
+<li><p>Writing while loops in Python (7 points)</p></li>
+<li><p>Writing if statements in Python (9 points)</p></li>
+<li><p>Writing functions in Python (11 points)</p></li>
+<li><p>Putting it all together (15 points)</p></li>
+</ol>
+<p><strong>Total points possible</strong>: 90</p>
+</section>
+<hr class="docutils" />
+<section id="doing-basic-math-with-python-6-points">
+<h2>1. Doing basic math with Python (6 points)<a class="headerlink" href="#doing-basic-math-with-python-6-points" title="Link to this heading">#</a></h2>
+<p>As you explored with your order of magnitude modeling assignment in the Day 2 in-class assignment, Python is great at doing basic math – much like your favorite calculator! As you get more comfortable with writing Python code, you might find yourself writing a bit of code when you need to do some calculations instead of pulling digging out your calculator or launching the calculator app on your phone.</p>
+<p>Doing basic math with Python involves using various “<strong>operators</strong>” – these operators are the Python symbols used to do the actual math. For example, to add two variables, we use the “<code class="docutils literal notranslate"><span class="pre">+</span></code>” operator. To subtract, we use the “<code class="docutils literal notranslate"><span class="pre">-</span></code>” operator.</p>
+<p>There are a number of other arithmetic (math) operators as well.</p>
+<section id="question-1-1-4-points">
+<h3>✅  Question 1.1 (4 points)<a class="headerlink" href="#question-1-1-4-points" title="Link to this heading">#</a></h3>
+<p>In the markdown cell below, fill out the following table to indicate what math each operator is used for. If you don’t know the answer off the top of your head, you should practice using Google (or your search engine of choice) to pick up some new Python knowledge (something even the pros do!). <strong>Make sure you use the keyword “python” in your search terms when looking for these math operators.</strong></p>
+<p><strong>Remember</strong>: You can double-click on a markdown cell to edit it.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Arithmetic Operator Symbol</p></th>
+<th class="head text-left"><p>Name of Mathematical Operation</p></th>
+<th class="head text-left"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>+</p></td>
+<td class="text-left"><p>Addition</p></td>
+<td class="text-left"><p>Add two variables or numbers together</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>-</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>*</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>/</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>**</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p>Divide one variable or number by another and return the remainder</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>%</p></td>
+<td class="text-left"><p>Modulo</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="answer">
+<h3>ANSWER<a class="headerlink" href="#answer" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Arithmetic Operator Symbol</p></th>
+<th class="head text-left"><p>Name of Mathematical Operation</p></th>
+<th class="head text-left"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>+</p></td>
+<td class="text-left"><p>Addition</p></td>
+<td class="text-left"><p>Add two variables together</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>-</p></td>
+<td class="text-left"><p>Subtraction</p></td>
+<td class="text-left"><p>Subtract one variable from another</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>*</p></td>
+<td class="text-left"><p>Multiplication</p></td>
+<td class="text-left"><p>Multiply two variables or numbers together</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>/</p></td>
+<td class="text-left"><p>Division</p></td>
+<td class="text-left"><p>Divide one variable or number by another</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>**</p></td>
+<td class="text-left"><p>Exponentiation</p></td>
+<td class="text-left"><p>Raise one variable or number to the power of another</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>%</p></td>
+<td class="text-left"><p>Modulo</p></td>
+<td class="text-left"><p>Divide one variable or number by another and return the remainder</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="question-1-2-2-points">
+<h3>✅  Question 1.2 (2 Points)<a class="headerlink" href="#question-1-2-2-points" title="Link to this heading">#</a></h3>
+<p>One arithmetic operator is missing from the table above. This is the “Floor Division” operator, which looks like this: <code class="docutils literal notranslate"><span class="pre">//</span></code></p>
+<p>In your own words in the cell below, explain what this operator does. In the code cell below that, use the operator in an example to confirm that your explanation is accurate.</p>
+<p><font size=6 color="#009600">✎</font> <em>Put your explanation here.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your example code that showcases how the // operator works to ensure that it agrees with your explanation</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="storing-and-accessing-data-using-lists-21-points">
+<h2>2. Storing and accessing data using lists (21 points)<a class="headerlink" href="#storing-and-accessing-data-using-lists-21-points" title="Link to this heading">#</a></h2>
+<p>The Python <code class="docutils literal notranslate"><span class="pre">list</span></code> datatype can be a really useful way to store and access data using the functionality that is built into the default version of Python. As the semester progresses, we’ll learn about other Python “libraries” (packages of code designed to do useful things) designed to work with data, but for now, the <code class="docutils literal notranslate"><span class="pre">list</span></code> datatype has been our primary tool.</p>
+<section id="creating-a-list-from-scratch">
+<h3>Creating a list from scratch<a class="headerlink" href="#creating-a-list-from-scratch" title="Link to this heading">#</a></h3>
+<p>There are a variety of ways you can create a list and fill it with values, and you’ll want to make sure you’re comfortable doing this.</p>
+<section id="question-2-1-2-points">
+<h4>✅  Question 2.1 (2 Points)<a class="headerlink" href="#question-2-1-2-points" title="Link to this heading">#</a></h4>
+<p>🌐 Using the internet, find some examples of how to create a list in Python. After you find some examples, <strong>pick two of the examples, copy them into your notebook in the code cells below, and get them to run.</strong> Try to find two examples that are different in some way, e.g., the examples create the list in different ways or store different types of values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your first example, where it came from, and when you accessed the URL here </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your second example, where it came from, and when you accessed the URL here </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-2-2-2-points">
+<h4>✅  Question 2.2 (2 Points)<a class="headerlink" href="#question-2-2-2-points" title="Link to this heading">#</a></h4>
+<p>For each example, answer the following questions in the markdown cell below.</p>
+<ol class="arabic">
+<li><p>What does this example do?</p></li>
+<li><p>Considering what the example code you found and copied does, <strong>write a homework prompt you could give another CMSE 801 student, where the answer to your problem is the example code you’ve found.</strong></p>
+<p>For example, if my code example was:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mylist</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>then my prompt might be “Write a program that creates a list that contains the integer numbers 0, 1, and 2 and then prints the list”</p>
+</li>
+</ol>
+<p><font size=6 color="#009600">✎</font> <em>Respond to the questions for each example here.</em></p>
+</section>
+<section id="question-2-3-3-points">
+<h4>✅  Question 2.3 (3 Points)<a class="headerlink" href="#question-2-3-3-points" title="Link to this heading">#</a></h4>
+<p>Now that you’ve looked at some examples that create a Python list, <strong>you’re going to write a bit of code that creates such a list.</strong></p>
+<p>Since there a wide variety of problems that can be tackled with this sort of code, you have the option to <strong>choose from one of the following problems</strong>:</p>
+<ol class="arabic simple">
+<li><p>Write a program that creates a list containing the days of the week in order, starting with Monday. Print the list to ensure it includes all seven days.</p></li>
+<li><p>Create a Python program that generates a list of the first 7 multiples of a given number (e.g., 5, 10, 15, …). Ensure that these multiples are stored as integers, and print the list to verify the values.</p></li>
+<li><p>Write a program that generates a list containing the first 7 consonants in the English alphabet in lowercase. Make sure to exclude vowels and any other non-alphabet characters. Print the list to confirm that it contains all the appropriate consonants.</p></li>
+</ol>
+<p>For all of these problems, <strong>try to use good coding practices when writing your solutions!</strong></p>
+<p>In the markdown cell below, <strong>state which problem you intend to solve</strong>. Then, in the code cell below that, <strong>solve the problem by creating a Python list and using it as indicated.</strong></p>
+<p><font size=6 color="#009600">✎</font> <em>Write which of the 3 problems stated above you plan to solve here.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Problem #: </span>
+<span class="c1"># Put your code that solves the problem here.</span>
+<span class="c1"># Make sure you make use of a list</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="accessing-and-changing-values-stored-in-a-python-list">
+<h3>Accessing and changing values stored in a Python list<a class="headerlink" href="#accessing-and-changing-values-stored-in-a-python-list" title="Link to this heading">#</a></h3>
+<p>Once we get comfortable with creating lists with some set of initial values, we need to get comfortable with accessing the information stored in the list. The way that we access information is by using an <strong>index</strong> to access a value at a particular position in the list. Index values are <strong>integers</strong> that allow you to refer to values at specific positions in the list. The first index is always 0 in Python. So the <em>third element</em> in a list would be accessed using an index of “2”. <strong>You’ll just need to get in the habit of thinking this way when working with Python</strong>.</p>
+<p>Using an index not only allows us to access a value in a list, but <strong>it also allows us to update or change values in a list.</strong></p>
+<section id="question-2-4-2-points">
+<h4>✅  Question 2.4 (2 Points)<a class="headerlink" href="#question-2-4-2-points" title="Link to this heading">#</a></h4>
+<p>🌐 Using the internet, find some examples of how to access values and change values in a list in Python using an index. After you find some examples, pick:</p>
+<ul class="simple">
+<li><p>one example that just accesses values in a list using an index, and</p></li>
+<li><p>one example that shows how you can use an index to <em>change</em> a value in a list.</p></li>
+</ul>
+<p><strong>Copy each example into your notebook in the code cell below and get them both to run.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your first example, where it came from, and when you accessed the URL here </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your second example, where it came from, and when you accessed the URL here </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-2-5-2-points">
+<h4>✅  Question 2.5 (2 Points)<a class="headerlink" href="#question-2-5-2-points" title="Link to this heading">#</a></h4>
+<p>For each example, answer the following questions in the markdown cell below.</p>
+<ol class="arabic simple">
+<li><p>What does this example do?</p></li>
+<li><p>Considering what the example code you found and copied does, <strong>write a homework prompt you could give another CMSE 801 student, where the answer to your problem is the example code you’ve found.</strong></p></li>
+</ol>
+<p><font size=6 color="#009600">✎</font> <em>Respond to the questions for each example here.</em></p>
+</section>
+<section id="question-2-6-3-points">
+<h4>✅  Question 2.6 (3 Points)<a class="headerlink" href="#question-2-6-3-points" title="Link to this heading">#</a></h4>
+<p>Now that you’ve looked at some examples that create a Python list, <strong>you’re going to write a bit of code that accesses and changes values in a list.</strong></p>
+<p>Since there a wide variety of problems that can be tackled with this sort of code, you have the option to <strong>choose from one of the following problems</strong>:</p>
+<ol class="arabic simple">
+<li><p>Write a program that creates a list of odd <a class="reference external" href="https://en.wikipedia.org/wiki/Natural_number">natural numbers</a> that are less than 10. Then change the second number so that it is the original value squared, change the fifth number so that it increases by 3 from the original value. Print the list to make sure the results are what you expect.</p></li>
+<li><p>Write a program that creates a list that contains individual letters in the word “python” all in lower case. Then change the first letter to uppercase, and the letter “o” to the integer 0. Print the list to make sure the results are what you expect.</p></li>
+<li><p>Write a program that creates a list that contains the names of the four inner planets of the solar system. Then change the name of the one that we live on to be “home world”. Print the list to make sure the results are what you expect.</p></li>
+</ol>
+<p>For all of these problems, <strong>try to use good coding practices when writing your solutions!</strong></p>
+<p>In the markdown cell below, <strong>state which problem you intend to solve</strong>. Then, in the code cell below that, <strong>solve the problem by accessing and modifying values in a list.</strong></p>
+<p><font size=6 color="#009600">✎</font> <em>Write which of the 3 problems stated above you plan to solve here.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code that solves the problem, here.</span>
+<span class="c1"># Make sure you make use of a list to access and modify the values</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="adding-or-appending-values-to-a-python-list">
+<h3>Adding or “appending” values to a Python list<a class="headerlink" href="#adding-or-appending-values-to-a-python-list" title="Link to this heading">#</a></h3>
+<p>From time to time, we might need to do more than just access and change values inside a list, we might need to <strong>add or “append” items to a list</strong>. This can be especially useful if our code generates information in a loop and we want to make sure we store that information as we go along. Or, alternatively, we might find situations where we want to append certain information to our list based on a specific condition. In these sorts of situations, the <code class="docutils literal notranslate"><span class="pre">append()</span></code> function is useful for adding items to a pre-existing list.</p>
+<section id="question-2-7-2-points">
+<h4>✅  Question 2.7 (2 Points)<a class="headerlink" href="#question-2-7-2-points" title="Link to this heading">#</a></h4>
+<p>🌐 Using the internet, find some examples of how to append values to a list in Python. After you find some examples,  <strong>pick two of the examples, copy them into your notebook in the code cells below, and get them to run.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your first example, where it came from, and when you accessed the URL here </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your second example, where it came from, and when you accessed the URL here </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-2-8-2-points">
+<h4>✅  Question 2.8 (2 Points)<a class="headerlink" href="#question-2-8-2-points" title="Link to this heading">#</a></h4>
+<p>For each example, answer the following questions in the markdown cell below.</p>
+<ol class="arabic simple">
+<li><p>What does this example do?</p></li>
+<li><p>Considering what the example code you found and copied does, <strong>write a homework problem you could give another CMSE 801 student, where the answer to your problem is the example code you’ve found.</strong></p></li>
+</ol>
+<p><font size=6 color="#009600">✎</font> <em>Respond to the questions for each example here.</em></p>
+</section>
+<section id="question-2-9-3-points">
+<h4>✅  Question 2.9 (3 Points)<a class="headerlink" href="#question-2-9-3-points" title="Link to this heading">#</a></h4>
+<p>Now that you’ve looked at some examples that append items to a Python list, <strong>you’re going to write a bit of code that uses the <code class="docutils literal notranslate"><span class="pre">append()</span></code> function to add items to a Python list.</strong></p>
+<p>Since there a wide variety of problems that can be tackled with this sort of code, you have the option to <strong>choose from one of the following problems</strong>:</p>
+<ol class="arabic simple">
+<li><p>Write a program that creates a list that contains all of the vowels in the alphabet. Then using the <code class="docutils literal notranslate"><span class="pre">append()</span></code> function, add the first letter of your first name and the first letter of your last name to the end of the list. Print the list to make sure the results are what you expect.</p></li>
+<li><p>Write a program that creates a list that contains four seasons of a year in order. Then using the <code class="docutils literal notranslate"><span class="pre">append()</span></code> function, add your most favorite season and your least favorite season of the year to the end of the list. Print the list to make sure the results are what you expect.</p></li>
+<li><p>Write a program that creates a list that contains the first 10 natural numbers. Then using the <code class="docutils literal notranslate"><span class="pre">append()</span></code> function, add your favorite number and the day of the month you were born (e.g. if you were born February 29th, you would add <code class="docutils literal notranslate"><span class="pre">29</span></code>) to the end of the list. Print the list to make sure the results are what you expect.</p></li>
+</ol>
+<p>For all of these problems, <strong>try to use good coding practices when writing your solutions!</strong></p>
+<p>In the markdown cell below, <strong>state which problem you intend to solve</strong>. Then, in the code cell below that, <strong>solve the problem by appending new values to a list.</strong></p>
+<p><font size=6 color="#009600">✎</font> <em>Write which of the 3 problems stated above you plan to solve here.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code that solves the problem, here.</span>
+<span class="c1"># Make sure you make use of a list to access and modify the values</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="writing-for-loops-in-python-21-points">
+<h2>3. Writing <code class="docutils literal notranslate"><span class="pre">for</span></code> loops in Python (21 points)<a class="headerlink" href="#writing-for-loops-in-python-21-points" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">for</span></code> loop is a fundamental programming concept in many programming languages and it is one method of what is referred to as “control flow,” which is simply how the flow of execution of a program is controlled (get it?). The <code class="docutils literal notranslate"><span class="pre">for</span></code> loop basically tells the computer to execute the code inside the loop a specific numbers of times. The number of times the loop should be executed can be defined using the <code class="docutils literal notranslate"><span class="pre">range()</span></code> function or you can tell Python to iterate through sequence of values, e.g. a list, and run the loop until every value has been accessed. We’ll sometimes refer to these as <strong>“looping by index”</strong> or <strong>“looping by value”</strong>, respectively.</p>
+<section id="looping-by-integers-or-index">
+<h3>Looping by integers or index<a class="headerlink" href="#looping-by-integers-or-index" title="Link to this heading">#</a></h3>
+<p>When we use the <code class="docutils literal notranslate"><span class="pre">range()</span></code> function in a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, we end up generating a set of integer values, which we often use as the <strong>index</strong> for accessing information stored in a Python container, like a list.</p>
+<p>It’s important to understand how to use these integer index values to access elements of a list in the code that lies <em>inside</em> the loop, but for now we’ll just think about how we can loop over a set of integer values using a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.</p>
+<section id="question-3-1-2-points">
+<h4>✅  Question 3.1 (2 Points)<a class="headerlink" href="#question-3-1-2-points" title="Link to this heading">#</a></h4>
+<p>🌐 Using the internet, find some examples of how the <code class="docutils literal notranslate"><span class="pre">range()</span></code> function can be used to generate integer values inside a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop. After you find some examples, <strong>pick two of the examples, copy them into your notebook in the code cells below, and get them to run.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your first example, where it came from, and when you accessed the URL here </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your second example, where it came from, and when you accessed the URL here </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-3-2-2-points">
+<h4>✅  Question 3.2 (2 Points)<a class="headerlink" href="#question-3-2-2-points" title="Link to this heading">#</a></h4>
+<p>For each example, answer the following questions in the markdown cell below.</p>
+<ol class="arabic">
+<li><p>What does this example do?</p></li>
+<li><p>Considering what the example code you found and copied does, <strong>write a homework prompt you could give another CMSE 801 student, where the answer to your problem is the example code you’ve found.</strong></p>
+<p>For example, if my code example was:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>then my prompt might be “Write a program using a for loop that prints the number 0, 1, 2, in order one number at a time”</p>
+</li>
+</ol>
+<p><font size=6 color="#009600">✎</font> <em>Respond to the questions for each example here.</em></p>
+</section>
+<section id="question-3-3-3-points">
+<h4>✅  Question 3.3 (3 Points)<a class="headerlink" href="#question-3-3-3-points" title="Link to this heading">#</a></h4>
+<p>Now that you’ve looked at some examples that use the <code class="docutils literal notranslate"><span class="pre">range()</span></code> function in a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop iterate over a set of integers, <strong>you’re going to write a bit of code that includes a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop that uses the <code class="docutils literal notranslate"><span class="pre">range()</span></code> function.</strong></p>
+<p>Since there a wide variety of problems that can be tackled with this sort of code, you have the option to choose from one of the following problems:</p>
+<ol class="arabic">
+<li><p>Write a program that produces the “multiplication table” for a given integer value for that integer times 0 through 10. For example, if you were to choose “9” as your integer, your program should print something like:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">9</span> <span class="n">times</span> <span class="mi">0</span> <span class="ow">is</span> <span class="mi">0</span>
+<span class="mi">9</span> <span class="n">times</span> <span class="mi">1</span> <span class="ow">is</span> <span class="mi">9</span>
+<span class="mi">9</span> <span class="n">times</span> <span class="mi">2</span> <span class="ow">is</span> <span class="mi">18</span>
+<span class="o">...</span> <span class="p">(</span><span class="nb">all</span> <span class="n">of</span> <span class="n">the</span> <span class="n">other</span> <span class="n">ones</span><span class="p">)</span>
+<span class="mi">9</span> <span class="n">times</span> <span class="mi">10</span> <span class="ow">is</span> <span class="mi">90</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Write a program that calculates the sum of the first “n” integers (starting with zero) where “n” is a number of your choosing. Once the sum is calculated, print the result. For example, if you were to choose “3” as your value of “n” your code should calculate 0 + 1 + 2 and print the sum at the end (which would be 3 in this case).</p></li>
+<li><p>Write a program that starts at zero and goes to some number “n” and prints out all of the odd integers in that range, where “n” is a value of your choosing. For example, if you chose “6” as your value of “n” then your code should print 1, 3, and 5. <strong>Hint</strong>: if you choose this one, you might find it useful to use the “modulo” operator you should have learned about when you completed Part 1 of this assignment.</p></li>
+</ol>
+<p>For all of these problems, <strong>try to use good coding practices when writing your solutions!</strong></p>
+<p>In the markdown cell below, <strong>state which problem you intend to solve</strong>. Then, in the code cell below that, <strong>solve the problem using a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop that uses the <code class="docutils literal notranslate"><span class="pre">range()</span></code> function.</strong></p>
+<p><font size=6 color="#009600">✎</font> <em>Write which of the 3 problems stated above you plan to solve here.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code that solves the problem, here.</span>
+<span class="c1"># Make sure you make use of a for loop and the range function</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="looping-by-value-e-g-through-a-list">
+<h3>Looping by value (e.g. through a list)<a class="headerlink" href="#looping-by-value-e-g-through-a-list" title="Link to this heading">#</a></h3>
+<p>Another way that Python allows us to write <code class="docutils literal notranslate"><span class="pre">for</span></code> loops is by looping through values stored in a sequence of some sort. We often seen this with <code class="docutils literal notranslate"><span class="pre">for</span></code> loops that <strong>iterate through a Python list</strong>.</p>
+<p>This can be really useful if we have some important data stored in a list and want to go through and do something with each value/item stored in that list. For example, if you had a list of all the students in CMSE 801, you could use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to print out all of their names when you wanted to see the class roster.</p>
+<section id="question-3-4-2-points">
+<h4>✅  Question 3.4 (2 Points)<a class="headerlink" href="#question-3-4-2-points" title="Link to this heading">#</a></h4>
+<p>🌐 Using the internet, find some examples where a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop is used to move through a Python list and the code does something with the values in that list. After you find some examples, <strong>pick two of the examples, copy them into your notebook in the code cells below, and get them to run.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your first example, where it came from, and when you accessed the URL here </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your second example, where it came from, and when you accessed the URL here </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-3-5-2-points">
+<h4>✅  Question 3.5 (2 Points)<a class="headerlink" href="#question-3-5-2-points" title="Link to this heading">#</a></h4>
+<p>For each example, answer the following questions in the markdown cell below.</p>
+<ol class="arabic simple">
+<li><p>What does this example do?</p></li>
+<li><p>As before, considering what the example code you found and copied does, <strong>write a homework prompt you could give another CMSE 801 student, where the answer to your problem is the example code you’ve found.</strong></p></li>
+</ol>
+<p><font size=6 color="#009600">✎</font> <em>Respond to the questions for each example here.</em></p>
+</section>
+<section id="question-3-6-3-points">
+<h4>✅  Question 3.6 (3 Points)<a class="headerlink" href="#question-3-6-3-points" title="Link to this heading">#</a></h4>
+<p>Now that you’ve looked at some examples that use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to iterate through a list, <strong>you’re going to write a bit of code that uses a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to iterate through a list</strong></p>
+<p>Since there a wide variety of problems that can be tackled with this sort of code, you have the option to choose from one of the following problems:</p>
+<ol class="arabic">
+<li><p>Write a program that takes the following list, iterates through it using a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop without using index values to access the items in the list, and prints the first letter of each item in the list. The list you should use is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;Nine&#39;</span><span class="p">,</span><span class="s1">&#39;iguanas&#39;</span><span class="p">,</span><span class="s1">&#39;consumed&#39;</span><span class="p">,</span><span class="s1">&#39;eight&#39;</span><span class="p">,</span><span class="s1">&#39;Wooly&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;riggly&#39;</span><span class="p">,</span><span class="s1">&#39;katerpillars&#39;</span><span class="p">]</span> <span class="c1"># hmm... a couple words are spelled strangely...</span>
+</pre></div>
+</div>
+</li>
+<li><p>Write a program that takes the following list, interates through it using a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop without using index values to access the items in the list, and prints the result of each number in the list times 9. The list you should use is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Write a program that takes the following list, iterates through it using a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop without using index values to access the items in the list, and prints the length of each item in the list. The list you should use is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">,</span> <span class="s1">&#39;four&#39;</span><span class="p">,</span> <span class="s1">&#39;five&#39;</span><span class="p">,</span> <span class="s1">&#39;six&#39;</span><span class="p">,</span> <span class="s1">&#39;seven&#39;</span><span class="p">,</span> <span class="s1">&#39;eight&#39;</span><span class="p">,</span> <span class="s1">&#39;nine&#39;</span><span class="p">,</span> <span class="s1">&#39;ten&#39;</span><span class="p">]</span>
+
+</pre></div>
+</div>
+</li>
+</ol>
+<p>For all of these problems, <strong>try to use good coding practices when writing your solutions!</strong></p>
+<p>In the markdown cell below, <strong>state which problem you intend to solve</strong>. Then, in the code cell below that, <strong>solve the problem using a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop that iterates through a list.</strong></p>
+<p><font size=6 color="#009600">✎</font> <em>Write which of the 3 problems stated above you plan to solve here.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code that solves the problem, here.</span>
+<span class="c1"># Make sure you make use of a for loop that iterates through a list</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="writing-a-loop-that-accesses-list-values-using-integers-or-by-index">
+<h3>Writing a loop that accesses list values using integers or “by index”<a class="headerlink" href="#writing-a-loop-that-accesses-list-values-using-integers-or-by-index" title="Link to this heading">#</a></h3>
+<p>Now that you’ve looked at how you can use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to move through a series of integer values and how you can use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to step through a Python list of values, you’re go to explore how you can use the integer-based <code class="docutils literal notranslate"><span class="pre">for</span></code> loop approach to <strong>index values in a list inside a loops</strong>.</p>
+<p>If you find yourself in a situation where you need to do a set of repeated operations on using more than one list at a time, using this integer or <strong>index-based</strong> approach can be really valueable.</p>
+<section id="question-3-7-2-points">
+<h4>✅  Question 3.7 (2 Points)<a class="headerlink" href="#question-3-7-2-points" title="Link to this heading">#</a></h4>
+<p>🌐 Using the internet, find some examples where a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop uses the <code class="docutils literal notranslate"><span class="pre">range()</span></code> function to generate integers that are then used as indices (the plural of “index”) to access information from a list inside the loop. After you find some examples, <strong>pick two of the examples, copy them into your notebook in the code cells below, and get them to run.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your first example, where it came from, and when you accessed the URL here </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your second example, where it came from, and when you accessed the URL here </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-3-8-2-points">
+<h4>✅  Question 3.8 (2 Points)<a class="headerlink" href="#question-3-8-2-points" title="Link to this heading">#</a></h4>
+<p>For each example, answer the following questions in the markdown cell below.</p>
+<ol class="arabic simple">
+<li><p>What does this example do?</p></li>
+<li><p>As before, considering what the example code you found and copied does, <strong>write a homework prompt you could give another CMSE 801 student, where the answer to your problem is the example code you’ve found.</strong></p></li>
+</ol>
+<p><font size=6 color="#009600">✎</font> <em>Respond to the questions for each example here.</em></p>
+</section>
+<section id="question-3-9-3-points">
+<h4>✅  Question 3.9 (3 Points)<a class="headerlink" href="#question-3-9-3-points" title="Link to this heading">#</a></h4>
+<p>Now that you’ve looked at some examples that use the <code class="docutils literal notranslate"><span class="pre">range()</span></code> function in a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to access information in list, <strong>you’re going to write a bit of code that does precisely this</strong>.</p>
+<p>Since there a wide variety of problems that can be tackled with this sort of code, you have the option to choose from one of the following problems:</p>
+<ol class="arabic">
+<li><p>Write a program that iterates through two lists (which are the same length) and prints the product of the values in the lists such that the result of the first iteration is the first item in the first list multiplied by the first item in the second list, the result of the second iteration is the second item in the first list multiplied by the second item in the second list, and so on…</p>
+<p>Use these two lists:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Write a program that iterates through two lists (which are the same length), concatenates the letters in each list item-by-item, and prints the concatenated results for each iteration. The end result should be such that the printed output of the first iteration is the concatenation of the first item in the first list with the first item in the second list, the second printed output is the concatenation of the second item in the first list with the second item in the second list, and so on…</p>
+<p>Use these two lists:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;gre&#39;</span><span class="p">,</span> <span class="s1">&#39;wo&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;re&#39;</span><span class="p">,</span> <span class="s1">&#39;at&#39;</span><span class="p">,</span> <span class="s1">&#39;rk&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;ar&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>As a reminder</strong>, you can concatenate two strings by using the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator in Python.</p>
+</li>
+<li><p>Write a program that iterates through two lists (which are the same length), takes the length of the item in the first list and divides it by the value in the second list, and prints the result for each iteration. The end result should be printed output of numbers such that the first output is the length of the first item in the first list divided by the first value in the second list, the second output is the length of the second item in the first list divided by the second value in the second list, and so on…</p>
+<p>Use these two lists:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">,</span> <span class="s1">&#39;four&#39;</span><span class="p">,</span> <span class="s1">&#39;five&#39;</span><span class="p">,</span> <span class="s1">&#39;six&#39;</span><span class="p">,</span> <span class="s1">&#39;seven&#39;</span><span class="p">,</span> <span class="s1">&#39;eight&#39;</span><span class="p">,</span> <span class="s1">&#39;nine&#39;</span><span class="p">,</span> <span class="s1">&#39;ten&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>For all of these problems, <strong>try to use good coding practices when writing your solutions!</strong></p>
+<p>In the markdown cell below, <strong>state which problem you intend to solve</strong>. Then, in the code cell below that, <strong>solve the problem using the <code class="docutils literal notranslate"><span class="pre">range()</span></code> function in <code class="docutils literal notranslate"><span class="pre">for</span></code> loop that accesses information from one or more lists.</strong></p>
+<p><font size=6 color="#009600">✎</font> <em>Write which of the 3 problems stated above you plan to solve here.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code that solves the problem, here.</span>
+<span class="c1"># Make sure you make use of a for loop and the range function to access information is one or more lists</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="writing-while-loops-in-python-7-points">
+<h2>4. Writing <code class="docutils literal notranslate"><span class="pre">while</span></code> loops in Python (7 points)<a class="headerlink" href="#writing-while-loops-in-python-7-points" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">while</span></code> loop is another fundamental programming concept in many programming languages and another “control flow” method. The <code class="docutils literal notranslate"><span class="pre">while</span></code> loop basically tells the computer to execute the code inside the loop until a particlar condition is met. This means that the number of times the loop is executed may not be immediately known because the conditional statement used to determine when to exit the loop is often dependent on the code that is being called inside the loop.</p>
+<p>While using a conditional statement to determine when to stop iterating over the loop can be really useful, it can also be <strong>really problematic</strong>. A poorly written <code class="docutils literal notranslate"><span class="pre">while</span></code> loop can result in what is often referred to as an <strong>“infinite” or “endless” loop</strong>. An infinite loop is a loop that, as you might expect, runs continuously with no end (hence the alternate “endless” name). Infinite loops occur when the conditional statement used in the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop never becomes <code class="docutils literal notranslate"><span class="pre">False</span></code>. If the conditional statement is always <code class="docutils literal notranslate"><span class="pre">True</span></code>, then the loop will run forever.</p>
+<p><strong>When using <code class="docutils literal notranslate"><span class="pre">while</span></code> loops in Python, <font color="red">watch out for infinite loops!</font></strong>. You’ll often notice that you’ve created an infinite loop when you see <code class="docutils literal notranslate"><span class="pre">In[*]</span></code> on the left-hand side of the cell you just executed for longer than expected. Normally, when a cell finishes running, the <code class="docutils literal notranslate"><span class="pre">*</span></code> becomes a number. <strong>Take a look at your code cells above to confirm this.</strong></p>
+<p>If, in this assignment, you’ve found that you created an infinite loop, or suspect that you might have, you can “interrupt” the notebook and stop the code from trying to run. Then you can fix your error and try again. To interrupt your notebook and stop the cell from running, click on the “Kernel” tab at the top of your notebook and select “Interrupt” or, simply click on the ■ at the top of the notebook.</p>
+<section id="looping-by-condition">
+<h3>Looping by condition<a class="headerlink" href="#looping-by-condition" title="Link to this heading">#</a></h3>
+<p>When we use a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop, we are telling the computer to repeat a block of code until a particular condition is met. The condition may be met with only a few iterations or it may take many iterations. If we’re not sure in advance how many iterations will be necessary, using this condition-based <code class="docutils literal notranslate"><span class="pre">while</span></code> loop can be a great option.</p>
+<p><strong>Important</strong>: When deciding to use a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop to tackle a problem make sure to first ask yourself, does this really require a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop or would I have better luck with a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop? It’s important to get into the habit of choosing the right tool for the job!</p>
+<section id="question-4-1-2-points">
+<h4>✅  Question 4.1 (2 Points)<a class="headerlink" href="#question-4-1-2-points" title="Link to this heading">#</a></h4>
+<p>🌐 Using the internet, find some examples of how a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop can be used to repeatedly execute a block of code until a specific condition is met. After you find some examples, <strong>pick two of the examples, copy them into your notebook in the code cells below, and get them to run.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your first example, where it came from, and when you accessed the URL here </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your second example, where it came from, and when you accessed the URL here </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-4-2-2-points">
+<h4>✅  Question 4.2 (2 Points)<a class="headerlink" href="#question-4-2-2-points" title="Link to this heading">#</a></h4>
+<p>For each example, answer the following questions in the markdown cell below.</p>
+<ol class="arabic">
+<li><p>What does this example do?</p></li>
+<li><p>Considering what the example code you found and copied does, <strong>write a homework prompt you could give another CMSE 801 student, where the answer to your problem is the example code you’ve found.</strong></p>
+<p>For example, if my code example was:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>then my prompt might be “Write a program using a while loop that prints all integers that are less than 3, starting with 0.”</p>
+</li>
+</ol>
+<p><font size=6 color="#009600">✎</font> <em>Respond to the questions for each example here.</em></p>
+</section>
+<section id="question-4-3-3-points">
+<h4>✅  Question 4.3 (3 Points)<a class="headerlink" href="#question-4-3-3-points" title="Link to this heading">#</a></h4>
+<p>Now that you’ve looked at some examples that use a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop to interate over some code until a particular condition is met, <strong>you’re going to write a bit of code that uses a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop.</strong></p>
+<p>Since there a wide variety of problems that can be tackled with this sort of code, you have the option to choose from one of the following problems:</p>
+<ol class="arabic simple">
+<li><p>Write a program that prints all of the integers (starting at 0) that are less than some number “n” where “n” is a number of your choosing. Make sure you don’t accidentally create an <strong>infinite loop</strong>!</p></li>
+<li><p>Write a program that calculates a running sum of all odd numbers (starting with 1) until the sum is greater than 56. Print out the sum after each number you add to the total. To clarify this a bit, you should add 1+3, which is 4, then 4+5, which is 9, then 9+7, which is 16, and so on… The loop should stop after the sum becomes greater than 56. Make sure you don’t accidentally create an <strong>infinite loop</strong>!</p></li>
+<li><p>Write a program that keeps track of how many tacos are consumed assuming that people greedily eat 5 tacos at a time and stops running when there are no longer 5 or more tacos left to eat. Assume that you start with 42 tacos. Print how many tacos are left in each iteration of your loop. Make sure you don’t accidentally create an <strong>infinite loop</strong>!</p></li>
+</ol>
+<p>For all of these problems, <strong>try to use good coding practices when writing your solutions!</strong></p>
+<p>In the markdown cell below, <strong>state which problem you intend to solve</strong>. Then, in the code cell below that, <strong>solve the problem using a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop.</strong></p>
+<p><font size=6 color="#009600">✎</font> <em>Write which of the 3 problems stated above you plan to solve here.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code that solves the problem, here.</span>
+<span class="c1"># Make sure you make use of a while loop</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="writing-if-statements-in-python-9-points">
+<h2>5. Writing “<code class="docutils literal notranslate"><span class="pre">if</span></code>” statements in Python (9 points)<a class="headerlink" href="#writing-if-statements-in-python-9-points" title="Link to this heading">#</a></h2>
+<p>Conditional statements that are used outside of <code class="docutils literal notranslate"><span class="pre">while</span></code> loops in Python, often referred to as “<code class="docutils literal notranslate"><span class="pre">if</span></code>” statements, are a really useful way to control the flow of your code so that certain pieces of code are only executed when specific conditions are met (hence the term “conditional”). Getting used to using <code class="docutils literal notranslate"><span class="pre">if</span></code> statements, and more complex <code class="docutils literal notranslate"><span class="pre">if</span></code>-<code class="docutils literal notranslate"><span class="pre">else</span></code> or <code class="docutils literal notranslate"><span class="pre">if</span></code>-<code class="docutils literal notranslate"><span class="pre">elif</span></code>-<code class="docutils literal notranslate"><span class="pre">else</span></code> statements, is an important part of learning to build evermore complex algorithms.</p>
+<p>One of the most challenging aspects of writing <code class="docutils literal notranslate"><span class="pre">if</span></code> statements is just thinking through the logic of what the right conditions are to get the code to do what you want. When writing <code class="docutils literal notranslate"><span class="pre">if</span></code> statements, it can be a useful exercise to try and think through the variety of outcomes that might be possible when your code runs and determine how your <code class="docutils literal notranslate"><span class="pre">if</span></code> statements would be evaluated given these possible outcomes.</p>
+<section id="question-5-1-3-points">
+<h3>✅  Question 5.1 (3 Points)<a class="headerlink" href="#question-5-1-3-points" title="Link to this heading">#</a></h3>
+<p>🌐 Using the internet, find some examples of how <code class="docutils literal notranslate"><span class="pre">if</span></code> statements, <code class="docutils literal notranslate"><span class="pre">if</span></code>-<code class="docutils literal notranslate"><span class="pre">else</span></code> statements, and <code class="docutils literal notranslate"><span class="pre">if</span></code>-<code class="docutils literal notranslate"><span class="pre">elif</span></code>-<code class="docutils literal notranslate"><span class="pre">else</span></code> statements can be used in Python to control the flow of your code. After you find some examples, <strong>pick three of the examples such that you have</strong>:</p>
+<ol class="arabic simple">
+<li><p>One example that uses just one or more <code class="docutils literal notranslate"><span class="pre">if</span></code> statements</p></li>
+<li><p>One example that uses the combination of <code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">else</span></code></p></li>
+<li><p>One example that uses the combination of <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">elif</span></code>, and <code class="docutils literal notranslate"><span class="pre">else</span></code></p></li>
+</ol>
+<p><strong>Copy these examples into your notebook in the code cells below, and get them to run.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your first example, where it came from, and when you accessed the URL here </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your second example, where it came from, and when you accessed the URL here </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your third example, where it came from, and when you accessed the URL here </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-5-2-3-points">
+<h3>✅  Question 5.2 (3 Points)<a class="headerlink" href="#question-5-2-3-points" title="Link to this heading">#</a></h3>
+<p>For each example, answer the following questions in the markdown cell below.</p>
+<ol class="arabic simple">
+<li><p>What does this example do?</p></li>
+<li><p>Considering what the example code you found and copied does, <strong>write a homework prompt you could give another CMSE 801 student, where the answer to your problem is the example code you’ve found.</strong></p></li>
+</ol>
+<p><font size=6 color="#009600">✎</font> <em>Respond to the questions for each example here.</em></p>
+</section>
+<section id="id1">
+<h3>ANSWER<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>They just need to reasonably explain their code and generate a prompt that makes sense with this explanation.</p>
+<section id="question-5-3-3-points">
+<h4>✅  Question 5.3 (3 Points)<a class="headerlink" href="#question-5-3-3-points" title="Link to this heading">#</a></h4>
+<p>Now that you’ve looked at some examples that use <code class="docutils literal notranslate"><span class="pre">if</span></code> statements (or more complex statements with <code class="docutils literal notranslate"><span class="pre">elif</span></code> and <code class="docutils literal notranslate"><span class="pre">else</span></code>) to control the flow of your code based on specific conditions, <strong>you’re going to write a bit of code that uses conditional statements.</strong></p>
+<p>Since there a wide variety of problems that can be tackled with this sort of code, you have the option to choose from one of the following problems:</p>
+<ol class="arabic simple">
+<li><p>Write a program that determines if a word (as a string) ends with the letter <code class="docutils literal notranslate"><span class="pre">'a'</span></code>, <code class="docutils literal notranslate"><span class="pre">'b'</span></code>, or something else. If the word ends with the letter <code class="docutils literal notranslate"><span class="pre">'a'</span></code>, print “ends with a”, if the word ends with the letter <code class="docutils literal notranslate"><span class="pre">'b'</span></code>, print “ends with b”, and if the word doesn’t end with an <code class="docutils literal notranslate"><span class="pre">'a'</span></code> or <code class="docutils literal notranslate"><span class="pre">'b'</span></code>, print “does not end with a or b.” Test your program with the words <code class="docutils literal notranslate"><span class="pre">'superb'</span></code>, <code class="docutils literal notranslate"><span class="pre">'banana'</span></code>, and <code class="docutils literal notranslate"><span class="pre">'potato'</span></code>, to confirm your program works.</p></li>
+<li><p>Write a program that adds 2 to a number if it is less than 10, multiplies the number by 3 if it is greater than 10, and mutiplies the number by 4 if it is 10. Print out the result at the end. Make sure to test your code for all three cases to ensure your program works.</p></li>
+<li><p>Write a program that compares two digital numbers a and b. If b is greater than a, print “b is greater than a”. If b is not greater than a, then print “b is not greater than a.”</p></li>
+</ol>
+<p>For all of these problems, <strong>try to use good coding practices when writing your solutions!</strong></p>
+<p>In the markdown cell below, <strong>state which problem you intend to solve</strong>. Then, in the code cell below that, <strong>solve the problem using conditional statements.</strong></p>
+<p><font size=6 color="#009600">✎</font> <em>Write which of the 3 problems stated above you plan to solve here.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code that solves the problem, here.</span>
+<span class="c1"># Make sure you make use of conditional statements</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="writing-functions-in-python-11-points">
+<h2>6. Writing functions in Python (11 points)<a class="headerlink" href="#writing-functions-in-python-11-points" title="Link to this heading">#</a></h2>
+<p>As we start building more and more complex code, you might find yourself using the “copy-paste” functionality a lot to reuse certain snippets of code that perform a useful task. <strong>When you find yourself using the same chunk of code over and over again, it might be time to think about turning that code into a function!</strong></p>
+<p>Remember, functions are a great programming concept because they are:</p>
+<ol class="arabic simple">
+<li><p>Modular</p></li>
+<li><p>Re-usable</p></li>
+<li><p>Useful</p></li>
+</ol>
+<p>While functions can help us to build progressively more sophisticated code, we need to make sure we understand the basic structure of a function to properly write them.</p>
+<section id="question-6-1-4-points">
+<h3>✅  Question 6.1 (4 points)<a class="headerlink" href="#question-6-1-4-points" title="Link to this heading">#</a></h3>
+<p>🌐 Using the internet, find some examples of how functions can be written and used in Python. After you find some examples, <strong>pick four of the examples such that you have</strong>:</p>
+<ol class="arabic simple">
+<li><p>One example that <strong>does not</strong> require any input arguments and doesn’t use the <code class="docutils literal notranslate"><span class="pre">return</span></code> statement.</p></li>
+<li><p>One example that <strong>does</strong> use the <code class="docutils literal notranslate"><span class="pre">return</span></code> statement</p></li>
+<li><p>One example that <strong>does</strong> use input arguments (i.e., there should be variables between the <code class="docutils literal notranslate"><span class="pre">()</span></code> in the function definition).</p></li>
+<li><p>One example that uses input arguments that <strong>have default values</strong>.</p></li>
+</ol>
+<p><strong>Copy these examples into your notebook in the code cells below, and get them to run.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your first example, where it came from, and when you accessed the URL here </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your second example, where it came from, and when you accessed the URL here </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your third example, where it came from, and when you accessed the URL here </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your fourth example, where it came from, and when you accessed the URL here </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-6-2-4-points">
+<h3>✅  Question 6.2 (4 points)<a class="headerlink" href="#question-6-2-4-points" title="Link to this heading">#</a></h3>
+<p>For each example answer, the following questions in the markdown cell below.</p>
+<ol class="arabic simple">
+<li><p>What does this example do?</p></li>
+<li><p>Considering what the example code you found and copied does, <strong>write a homework prompt you could give another CMSE 801 student, where the answer to your problem is the example code you’ve found.</strong></p></li>
+</ol>
+<p><font size=6 color="#009600">✎</font> <em>Respond to the questions for each example here.</em></p>
+</section>
+<section id="question-6-3-3-points">
+<h3>✅  Question 6.3 (3 points)<a class="headerlink" href="#question-6-3-3-points" title="Link to this heading">#</a></h3>
+<p>Now that you’ve looked at some examples of functions that can be written in Python, <strong>you’re going to write some Python functions from scratch.</strong></p>
+<p>Since there are a wide variety of problems that can be tackled with this sort of code, you have the option to choose from one of the following problems:</p>
+<ol class="arabic simple">
+<li><p>Write a function that takes a list of strings as an input and concatenates the strings from the list into one long string where each string in the list is separated by a space (i.e. <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">'</span></code>). Store that concatenated string in a new variable inside the function called “<code class="docutils literal notranslate"><span class="pre">sentence</span></code>” and return that variable. Make sure to <strong>write some code that tests your function to ensure that it is working.</strong></p></li>
+<li><p>Write a function that takes in three separate numbers as arguments, prints the largest number, and returns the smallest number. Make sure to <strong>write some code that tests your function to ensure that it is working.</strong></p></li>
+<li><p>Write a function that takes two arguments of any type and compares them to each other. Use <code class="docutils literal notranslate"><span class="pre">v1</span></code> for the first argument and <code class="docutils literal notranslate"><span class="pre">v2</span></code> for the second argument. If the arguments are identical, it should print “These are the same.” If the arguments are different, it should print “These are not the same.” <strong>Set the default value for the first argument to be <code class="docutils literal notranslate"><span class="pre">&quot;801</span></code>” (a string) and set the default value for the second argument to be <code class="docutils literal notranslate"><span class="pre">801</span></code> (an integer).</strong> Make sure to <strong>write some code that tests your function to ensure that it is working.</strong></p></li>
+</ol>
+<p>For all of these problems, <strong>try to use good coding practices when writing your solutions!</strong></p>
+<p>In the markdown cell below, <strong>state which problem you intend to solve</strong>. Then, in the code cell below that, <strong>solve the problem by writing and using a function.</strong></p>
+<p><font size=6 color="#009600">✎</font> <em>Write which of the 3 problems stated above you plan to solve here.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code that solves the problem, here.</span>
+<span class="c1"># Make sure you create and test a function.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="putting-it-all-together-student-grade-analysis-15-points">
+<h2>7. Putting it all together: student grade analysis (15 points)<a class="headerlink" href="#putting-it-all-together-student-grade-analysis-15-points" title="Link to this heading">#</a></h2>
+<p>Now that you’ve had a chance to explore a variety of Python programming concepts, you’re going to put all of these concepts together to solve a problem that will require using most, if not all, of the concepts you’ve covered in this assignment.</p>
+<p>In the cell below, you are provided with a list of student names and a list of their corresponding grades on a recent exam. In order to analyze the students’ exam performance, your job is to <strong>do the following</strong>:</p>
+<ol class="arabic simple">
+<li><p>Write a function called <code class="docutils literal notranslate"><span class="pre">calculate_average</span></code> that takes a list of grades as an argument and returns the average of those grades.</p></li>
+<li><p>Write a function called <code class="docutils literal notranslate"><span class="pre">find_highest_grade</span></code> that takes a list of grades as an argument and returns the highest grade in that list.</p></li>
+<li><p>Write a function called <code class="docutils literal notranslate"><span class="pre">find_lowest_grade</span></code> that takes a list of grades as an argument and returns the lowest grade in that list.</p></li>
+<li><p>Write a function called <code class="docutils literal notranslate"><span class="pre">grade_summary</span></code> that takes a list of student names and a list of grades as arguments and prints each student’s name along with their grade, and then also prints the average, highest, and lowest grades for the class. <strong>Make sure to use the functions you wrote in steps 1-3 to calculate the average, highest, and lowest grades.</strong></p></li>
+<li><p>Use a loop to iterate through the list of grades to count how many students passed the exam. Consider a passing grade to be 60 or above.</p>
+<ul class="simple">
+<li><p>Within in the loop, use an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement to determine if a student passed the exam and increment a counter variable if they did.</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Your code should display all of the following information when it is run</strong>:</p>
+<ol class="arabic simple">
+<li><p>Each student’s name and grade (this should be coming from your <code class="docutils literal notranslate"><span class="pre">grade_summary</span></code> function)</p></li>
+<li><p>The average grade for the class (this should be coming from your <code class="docutils literal notranslate"><span class="pre">calculate_average</span></code> function, which should be called within your <code class="docutils literal notranslate"><span class="pre">grade_summary</span></code> function)</p></li>
+<li><p>The highest grade in the class (this should be coming from your <code class="docutils literal notranslate"><span class="pre">find_highest_grade</span></code> function, which should be called within your <code class="docutils literal notranslate"><span class="pre">grade_summary</span></code> function)</p></li>
+<li><p>The lowest grade in the class (this should be coming from your <code class="docutils literal notranslate"><span class="pre">find_lowest_grade</span></code> function, which should be called within your <code class="docutils literal notranslate"><span class="pre">grade_summary</span></code> function)</p></li>
+<li><p>The number of students who passed the exam (this should be calculated using a loop and an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement with the result being printed at the end of your code)</p></li>
+</ol>
+<p>You output should look something like this:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Student</span> <span class="n">grades</span><span class="p">:</span>
+<span class="n">Alice</span><span class="p">:</span> <span class="mi">85</span>
+<span class="n">Bob</span><span class="p">:</span> <span class="mi">70</span>
+<span class="n">Charlie</span><span class="p">:</span> <span class="mi">60</span>
+<span class="n">David</span><span class="p">:</span> <span class="mi">55</span>
+<span class="n">Emily</span><span class="p">:</span> <span class="mi">90</span>
+<span class="n">Frank</span><span class="p">:</span> <span class="mi">75</span>
+<span class="n">Grace</span><span class="p">:</span> <span class="mi">65</span>
+<span class="n">Henry</span><span class="p">:</span> <span class="mi">80</span>
+<span class="n">Isabel</span><span class="p">:</span> <span class="mi">95</span>
+<span class="n">Jack</span><span class="p">:</span> <span class="mi">50</span>
+
+<span class="n">Average</span> <span class="n">Grade</span><span class="p">:</span> <span class="mf">72.5</span>
+<span class="n">Highest</span> <span class="n">Grade</span><span class="p">:</span> <span class="mi">95</span>
+<span class="n">Lowest</span> <span class="n">Grade</span><span class="p">:</span> <span class="mi">50</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">students</span> <span class="n">who</span> <span class="n">passed</span><span class="p">:</span> <span class="mi">8</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Hints</strong>: you’ll likely find the <code class="docutils literal notranslate"><span class="pre">len()</span></code>, <code class="docutils literal notranslate"><span class="pre">sum()</span></code>, <code class="docutils literal notranslate"><span class="pre">min()</span></code>, and <code class="docutils literal notranslate"><span class="pre">max()</span></code> functions useful when writing your functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## DO NOT MODIFY THIS CELL.</span>
+<span class="c1">## PUT YOUR CODE IN THE CELL BELOW</span>
+
+<span class="c1"># List of student names</span>
+<span class="n">students</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;Charlie&#39;</span><span class="p">,</span> <span class="s1">&#39;David&#39;</span><span class="p">,</span> <span class="s1">&#39;Emily&#39;</span><span class="p">,</span> <span class="s1">&#39;Frank&#39;</span><span class="p">,</span> <span class="s1">&#39;Grace&#39;</span><span class="p">,</span> <span class="s1">&#39;Henry&#39;</span><span class="p">,</span> <span class="s1">&#39;Isabel&#39;</span><span class="p">,</span> <span class="s1">&#39;Jack&#39;</span><span class="p">]</span>
+
+<span class="c1"># List of exam scores</span>
+<span class="n">grades</span> <span class="o">=</span> <span class="p">[</span><span class="mi">85</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="wait-before-you-submit-your-notebook-read-the-following-important-recommendations">
+<h2>Wait! Before you submit your notebook, read the following important recommendations<a class="headerlink" href="#wait-before-you-submit-your-notebook-read-the-following-important-recommendations" title="Link to this heading">#</a></h2>
+<p>When your TA opens your notebook to grade the assignment, it will be really useful if your notebook is saved in a <strong>fully executed state</strong> so that they can see the output of all your code. Additionally, it may be necessary from time to time for the TA to actually run your notebook, but when they run the notebook, it is important that you are certain that all the code will actually run for them!</p>
+<p>You should get into the following habit: <strong>before you save and submit your final notebook for your assignments, go to the “Kernel” tab at the top of the notebook and select “Restart and Run all”.</strong> This will restart your notebook and try to run the code cell-by-cell from the top to the bottom. Once it finished, review you notebook and make sure there weren’t any errors that popped up. Sometimes, when working with notebooks, we accidentally change code in one cell that break our code in another cell. If your TA stumbles across code cells that don’t work, <strong>they will likely have to give you a zero for those portions of the notebook that don’t work</strong>. Testing your notebook one last time is a good way to make sure this doesn’t happen.</p>
+<p><strong>Once you’ve tested your whole notebook again, make sure you save it one last time before you upload it to D2L.</strong></p>
+<hr class="docutils" />
+<section id="congratulations-you-re-done">
+<h3>Congratulations, you’re done!<a class="headerlink" href="#congratulations-you-re-done" title="Link to this heading">#</a></h3>
+<p>Submit this assignment by uploading it to the course Desire2Learn web page. Go to the “Homework Assignments” section, find the submission folder link for Homework #1, and upload it there.</p>
+<p>Copyright © 2026, <a class="reference external" href="https://cmse.msu.edu/">Department of Computational Mathematics, Science and Engineering</a> at Michigan State University, All rights reserved.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Homework\HW1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#and-using-external-resources-to-better-understand-code">And using external resources to better understand code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-name-here"><p style="text-align: right;"> ✅ <strong>Put your name here</strong> </p></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#content-goals">Content Goals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-goals">Practice Goals</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-instructions">Assignment instructions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-check">Version check</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grading">Grading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#doing-basic-math-with-python-6-points">1. Doing basic math with Python (6 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1-4-points">✅  Question 1.1 (4 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#answer">ANSWER</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2-2-points">✅  Question 1.2 (2 Points)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storing-and-accessing-data-using-lists-21-points">2. Storing and accessing data using lists (21 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-list-from-scratch">Creating a list from scratch</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1-2-points">✅  Question 2.1 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-2-2-points">✅  Question 2.2 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-3-3-points">✅  Question 2.3 (3 Points)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-and-changing-values-stored-in-a-python-list">Accessing and changing values stored in a Python list</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-4-2-points">✅  Question 2.4 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-5-2-points">✅  Question 2.5 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-6-3-points">✅  Question 2.6 (3 Points)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-or-appending-values-to-a-python-list">Adding or “appending” values to a Python list</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-7-2-points">✅  Question 2.7 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-8-2-points">✅  Question 2.8 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-9-3-points">✅  Question 2.9 (3 Points)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-for-loops-in-python-21-points">3. Writing <code class="docutils literal notranslate"><span class="pre">for</span></code> loops in Python (21 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-by-integers-or-index">Looping by integers or index</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-1-2-points">✅  Question 3.1 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-2-2-points">✅  Question 3.2 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-3-3-points">✅  Question 3.3 (3 Points)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-by-value-e-g-through-a-list">Looping by value (e.g. through a list)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-4-2-points">✅  Question 3.4 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-5-2-points">✅  Question 3.5 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-6-3-points">✅  Question 3.6 (3 Points)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-a-loop-that-accesses-list-values-using-integers-or-by-index">Writing a loop that accesses list values using integers or “by index”</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-7-2-points">✅  Question 3.7 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-8-2-points">✅  Question 3.8 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-9-3-points">✅  Question 3.9 (3 Points)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-while-loops-in-python-7-points">4. Writing <code class="docutils literal notranslate"><span class="pre">while</span></code> loops in Python (7 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-by-condition">Looping by condition</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-1-2-points">✅  Question 4.1 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-2-2-points">✅  Question 4.2 (2 Points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-3-3-points">✅  Question 4.3 (3 Points)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-if-statements-in-python-9-points">5. Writing “<code class="docutils literal notranslate"><span class="pre">if</span></code>” statements in Python (9 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-5-1-3-points">✅  Question 5.1 (3 Points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-5-2-3-points">✅  Question 5.2 (3 Points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">ANSWER</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-5-3-3-points">✅  Question 5.3 (3 Points)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-functions-in-python-11-points">6. Writing functions in Python (11 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-6-1-4-points">✅  Question 6.1 (4 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-6-2-4-points">✅  Question 6.2 (4 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-6-3-3-points">✅  Question 6.3 (3 points)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#putting-it-all-together-student-grade-analysis-15-points">7. Putting it all together: student grade analysis (15 points)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wait-before-you-submit-your-notebook-read-the-following-important-recommendations">Wait! Before you submit your notebook, read the following important recommendations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#congratulations-you-re-done">Congratulations, you’re done!</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Department of Computational Mathematics, Science and Engineering at Michigan State University
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
