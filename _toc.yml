@@ -118,7 +118,7 @@ parts:
       title: Day 06
       sections: 
       - file: Day-06/Day-06_Pre-Class_ModulesMathAndPlots-STUDENT.ipynb
-#       - file: Day-06/Day-06_In-Class_MathAndPlotting-STUDENT.ipynb    
+      - file: Day-06/Day-06_In-Class_MathAndPlotting-STUDENT.ipynb    
 #     # # #   - url:  https://docs.google.com/presentation/d/1e27R4CmaAK3854P0oTQmKBAh3x0d8mLBzrXDQrKUUnE/edit?usp=sharing
 #     # # #     title: Day 06 Slides (MSU Login)
 
