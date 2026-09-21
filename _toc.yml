@@ -128,31 +128,31 @@ parts:
       - file: Day-07/Day-07_Pre-Class_IntroToNumPy-STUDENT.ipynb
       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/michigan_pop.csv
         title: michigan_pop.csv
-#       - file: Day-07/Day-07_In-Class_NumPyWithTheGreatLakes-STUDENT.ipynb
-#     # #   # - url: https://docs.google.com/presentation/d/1ZJnE4XiFeeG5RD1MkazxU2p4rZ227nvQSCLl6BMUxC0/edit?usp=sharing
-#     # #   #   title: Day 07 Slides (MSU Login)
-#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_erie.csv
-#         title: lake_erie.csv
-#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_michigan_huron.csv
-#         title: lake_michigan_huron.csv
-#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_ontario.csv
-#         title: lake_ontario.csv
-#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_superior.csv
-#         title: lake_superior.csv
+      - file: Day-07/Day-07_In-Class_NumPyWithTheGreatLakes-STUDENT.ipynb
+    # #   # - url: https://docs.google.com/presentation/d/1ZJnE4XiFeeG5RD1MkazxU2p4rZ227nvQSCLl6BMUxC0/edit?usp=sharing
+    # #   #   title: Day 07 Slides (MSU Login)
+      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_erie.csv
+        title: lake_erie.csv
+      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_michigan_huron.csv
+        title: lake_michigan_huron.csv
+      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_ontario.csv
+        title: lake_ontario.csv
+      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_superior.csv
+        title: lake_superior.csv
 
-#     - file: Day-08/Day-08.md
-#       title: Day 08
-#       sections:
-#       - file: Day-08/Day-08_Pre-Class-IntroToODEs-STUDENT.ipynb
-#       - file: Day-08/Day-08_In-Class_IntroToODEs-STUDENT.ipynb
+    - file: Day-08/Day-08.md
+      title: Day 08
+      sections:
+      - file: Day-08/Day-08_Pre-Class-IntroToODEs-STUDENT.ipynb
+      - file: Day-08/Day-08_In-Class_IntroToODEs-STUDENT.ipynb
 #     # # #   - url: https://docs.google.com/presentation/d/16CuG6IQv-8LVAduZyrv5bMCDM0M2LUx1CO2AZr6pEHk/edit?usp=sharing
 #     # # #     title: Day 8 Slides (MSU Login)
     
-#     - file: Day-09/Day-09.md
-#       title: Day 09
-#       sections:
-#       - file: Day-09/Day-09_Pre-Class_ModelingWithODEs-STUDENT.ipynb
-#       - file: Day-09/Day-09_In-Class_ModelingWithODEs-STUDENT.ipynb
+    - file: Day-09/Day-09.md
+      title: Day 09
+      sections:
+      - file: Day-09/Day-09_Pre-Class_ModelingWithODEs-STUDENT.ipynb
+      - file: Day-09/Day-09_In-Class_ModelingWithODEs-STUDENT.ipynb
 #     # # #   - url: https://docs.google.com/presentation/d/1gV1zdQugUXwaf8wBmBkVS2bWWzt3yID26rvy6U-vr8k/edit?usp=sharing
 #     # # #     title: Day 9 Slides (MSU Login)
 
