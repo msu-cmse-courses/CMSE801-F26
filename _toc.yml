@@ -129,8 +129,8 @@ parts:
       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/michigan_pop.csv
         title: michigan_pop.csv
       - file: Day-07/Day-07_In-Class_NumPyWithTheGreatLakes-STUDENT.ipynb
-    # #   # - url: https://docs.google.com/presentation/d/1ZJnE4XiFeeG5RD1MkazxU2p4rZ227nvQSCLl6BMUxC0/edit?usp=sharing
-    # #   #   title: Day 07 Slides (MSU Login)
+      - url: https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQC4UK6S6FAlTqwsLIkhTNpQAbHBjQg5M_lRHffAMQJdjXw?e=iN7YPP
+        title: Day 07 Slides (MSU Login)
       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_erie.csv
         title: lake_erie.csv
       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_michigan_huron.csv
