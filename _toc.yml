@@ -145,8 +145,8 @@ parts:
       sections:
       - file: Day-08/Day-08_Pre-Class-IntroToODEs-STUDENT.ipynb
       - file: Day-08/Day-08_In-Class_IntroToODEs-STUDENT.ipynb
-#     # # #   - url: https://docs.google.com/presentation/d/16CuG6IQv-8LVAduZyrv5bMCDM0M2LUx1CO2AZr6pEHk/edit?usp=sharing
-#     # # #     title: Day 8 Slides (MSU Login)
+      - url: https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQCbGYeCi1IcRqONrvJOsN0-AQ30GucqeDx29bQm1a7xgWA?e=C2vB1I
+        title: Day 8 Slides (MSU Login)
     
     - file: Day-09/Day-09.md
       title: Day 09
