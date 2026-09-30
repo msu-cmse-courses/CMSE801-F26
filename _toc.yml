@@ -153,34 +153,34 @@ parts:
       sections:
       - file: Day-09/Day-09_Pre-Class_ModelingWithODEs-STUDENT.ipynb
       - file: Day-09/Day-09_In-Class_ModelingWithODEs-STUDENT.ipynb
-#     # # #   - url: https://docs.google.com/presentation/d/1gV1zdQugUXwaf8wBmBkVS2bWWzt3yID26rvy6U-vr8k/edit?usp=sharing
-#     # # #     title: Day 9 Slides (MSU Login)
+      - url: https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQC7RociakEXRIzDiwRVDKtgAYwCrHYiKafuZGCVEg_7ojw?e=eVuLhB
+        title: Day 9 Slides (MSU Login)
 
-#     - file: Day-10/Day-10.md
-#       title: Day 10
-#       sections:
-#       - file: Day-10/Day-10_Pre-Class_ViralKinetics-STUDENT.ipynb
-#       - file: Day-10/Day-10_In-Class_CompartmentalModeling-STUDENT.ipynb
+    - file: Day-10/Day-10.md
+      title: Day 10
+      sections:
+      - file: Day-10/Day-10_Pre-Class_ViralKinetics-STUDENT.ipynb
+      - file: Day-10/Day-10_In-Class_CompartmentalModeling-STUDENT.ipynb
 #     # # #   - url: https://docs.google.com/presentation/d/1k4Uy9nB6BTWB0iA1WMQyjxx91pktn7JlbolyuNLvZXQ/edit?usp=sharing
 #     # # #     title: Day 10 Slides (MSU Login)
 
-#     - file: Day-11/Day-11.md
-#       title: Day 11
-#       sections:
-#       - file: Day-11/Day-11_Pre-Class_Zombies-STUDENT.ipynb
-#       - file: Day-11/Day-11_In-Class_CompartmentsWithSolveIVP-STUDENT.ipynb
+    - file: Day-11/Day-11.md
+      title: Day 11
+      sections:
+      - file: Day-11/Day-11_Pre-Class_Zombies-STUDENT.ipynb
+      - file: Day-11/Day-11_In-Class_CompartmentsWithSolveIVP-STUDENT.ipynb
 #     #   - url: https://docs.google.com/presentation/d/1O2pzbWes3z2efr0DDtLHAsOBuNHDSJPUCcoP2T0xfrs/edit?usp=sharing
 #     # # #     title: Day 11 Slides (MSU Login)
 #       - url: https://docs.google.com/presentation/d/1Zdn4TqO3E8gAzWeDiE_kKUAADjCs2qtaEwQ96zVFYP0/edit?usp=sharing
 #         title: Group presentation slides (Requires MSU Login)
 
-#     - file: Day-12/Day-12.md
-#       title: Day 12
-#       sections:
-#       - file: Day-12/Day-12_Pre-Class_Pandas-STUDENT.ipynb
-#       - file: Day-12/Day-12_In-Class_GDP-STUDENT.ipynb
-#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-12/GDP_Data.csv
-#         title: GDP_Data.csv
+    - file: Day-12/Day-12.md
+      title: Day 12
+      sections:
+      - file: Day-12/Day-12_Pre-Class_Pandas-STUDENT.ipynb
+      - file: Day-12/Day-12_In-Class_GDP-STUDENT.ipynb
+      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-12/GDP_Data.csv
+        title: GDP_Data.csv
 #     # # #   - url: https://docs.google.com/presentation/d/1u0Y6RexJ8lqE_Pjgss1-DF7ex9zsBtPQIdEk9hu5o10/edit?usp=sharing
 #     # # #     title: Day 12 Slides (MSU Login)
 
