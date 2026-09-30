@@ -1,0 +1,1035 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Day 12 Pre-class Assignment: Computational Models Overview and The Pandas Data Analysis Library &#8212; CMSE 801</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Day-12/Day-12_Pre-Class_Pandas-STUDENT';</script>
+    <link rel="icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Day 12 In-Class: Cleaning and Analyzing Economic Data" href="Day-12_In-Class_GDP-STUDENT.html" />
+    <link rel="prev" title="Day-12" href="Day-12.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="CMSE 801 - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="CMSE 801 - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Materials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Course_Documents/Course_Documents.html">Important Course information</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/Syllabus/syllabus.html">Syllabus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/Schedule/schedule.html">Course Schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/SoftwareSetup/SoftwareSetupGuide.html">Software Setup Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/classParticipation/classParticipation.html">Classroom Participation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/GenerativeAI/GenerativeAI_Policy.html">Generative AI Policy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Project/Project.html">Semester Project</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Project/SemesterProjectDetails.html">Project Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Project/ProjectProposal.html">Project Proposal - Due October 28</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Project/FinalProject_RequirementsAndGradingRubric.html">Requirements and Grading Rubric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Project/FinalProjectTemplate.html">CMSE 801 Final Project Template</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Project/ProjectDraft.html">Project Draft - Due November 18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Project/Project_Self-Evaluation.html">Project Self-Evaluation</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/msu-cmse-courses/cmse801-supplemental/raw/main/Project/Presentation_Evaluation_Rubric.pdf">Presentation Evaluation Rubric</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Homework/Homework.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Homework/HW1/Homework-01_PythonFundamentals-STUDENT-F26.html">Homework 1 - Python Fundamentals</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Daily Content</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-01/Day-01.html">Day 01</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-01/Day-01_In-Class_SortingAlgorithm-STUDENT.html">Day 1 In-Class Assignment: Introductions and Sorting Algorithms</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAZKaCUMP-JQZj6mQG9yZANAfXIokhXP63-2By8XLo81Kc?e=N4QF3I">Day 01 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-02/Day-02.html">Day 02</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-02/Day-02_Pre-Class_IntroToPython-STUDENT.html">Day 2 Pre-class Assignment: Intro to Python</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Day-02/Day-02_In-Class_OrderOfMagnitudeModeling-STUDENT.html">Day 2 In-class Assignment: Order of Magnitude Modeling</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAsDxwKy1WsQZESscQmuyYNAcZv06dZ4sIq42ScDGWk0NI?e=DpWI1l">Day 02 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-03/Day-03.html">Day 03</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-03/Day-03_Pre-Class_ListsAndLoops-STUDENT.html">Day 3: Pre-Class Assignment: Lists and Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-03/Day-03_In-Class_ListsLoopsAndSaving-STUDENT.html">Day 3 In-class Assignment: The power of compound interest</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAb9ETJNiiERaWy4yrIx4qhAdgLnvkqZzhlufoRgjSFbsc?e=eX1d6g">Day 03 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-04/Day-04.html">Day 04</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-04/Day-04_Pre-Class_IfStatementsAndFunctions-STUDENT.html">Day 4: Pre-class Assignment: Boolean logic, if statements, and an introduction to functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-04/Day-04_In-Class_IfStatementsAndFunctions-STUDENT.html">Day 4 In-class Assignment: Savings for Everyone</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQBUE1SWtyFdS7cpuhMKR9ziAZImiGk0yIZ7am1QEZSJNzY?e=CNH5Pn">Day 04 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-05/Day-05.html">Day 05</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-05/Day-05_Pre-Class_MoreFunctions-STUDENT.html">Day 5: Pre-class Assignment: Thinking more about functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-05/Day-05_In-Class_MoreFunctions-STUDENT.html">Day 5 In-class Assignment: Practicing with functions (for profit!)</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQDLt3-WevlVSIWT7hGXL7nmASHUThF9gw6ot2vXQYI5urM?e=tcg0FD">Day 05 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-06/Day-06.html">Day 06</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-06/Day-06_Pre-Class_ModulesMathAndPlots-STUDENT.html">Day 6 Pre-Class Assignment: Python Modules: Numpy and Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-06/Day-06_In-Class_MathAndPlotting-STUDENT.html">Day 6 In-class assignment: Visualizing population growth</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQA6BliAKVGfSKjQsFLkiz-_AV6ZJVXJGgF4R0BCNxhYRiQ?e=gAqGqt">Day 06 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-07/Day-07.html">Day 07</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-07/Day-07_Pre-Class_IntroToNumPy-STUDENT.html">Day 7 Pre-Class: Introduction to NumPy</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/michigan_pop.csv">michigan_pop.csv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-07/Day-07_In-Class_NumPyWithTheGreatLakes-STUDENT.html">Day 7 In-class Assignment: Exploring Great Lakes Water Levels using NumPy</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQC4UK6S6FAlTqwsLIkhTNpQAbHBjQg5M_lRHffAMQJdjXw?e=iN7YPP">Day 07 Slides (MSU Login)</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_erie.csv">lake_erie.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_michigan_huron.csv">lake_michigan_huron.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_ontario.csv">lake_ontario.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_superior.csv">lake_superior.csv</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-08/Day-08.html">Day 08</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-08/Day-08_Pre-Class-IntroToODEs-STUDENT.html">Day 8 Pre-class Assignment: Introduction to Modeling with Ordinary Differential Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-08/Day-08_In-Class_IntroToODEs-STUDENT.html">Day 8: In-class Assignment: Introduction to Modeling with ODEs</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQCbGYeCi1IcRqONrvJOsN0-AQ30GucqeDx29bQm1a7xgWA?e=C2vB1I">Day 8 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-09/Day-09.html">Day 09</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-09/Day-09_Pre-Class_ModelingWithODEs-STUDENT.html">Day 9: Pre-class Assignment: Modeling with Ordinary Differential Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-09/Day-09_In-Class_ModelingWithODEs-STUDENT.html">Day 9: In-class Assignment: Modeling with ODEs</a></li>
+
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQC7RociakEXRIzDiwRVDKtgAYwCrHYiKafuZGCVEg_7ojw?e=eVuLhB">Day 9 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-10/Day-10.html">Day 10</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-10/Day-10_Pre-Class_ViralKinetics-STUDENT.html">Day 10 Pre-Class: Viral Kinetics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-10/Day-10_In-Class_CompartmentalModeling-STUDENT.html">Day 10 In-class Assignment: Building Compartmental Models</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-11/Day-11.html">Day 11</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-11/Day-11_Pre-Class_Zombies-STUDENT.html">Day 11 Pre-class Assignment: ZOMBIES!!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-11/Day-11_In-Class_CompartmentsWithSolveIVP-STUDENT.html">Day 11 In-Class Assignment: Compartmental Modeling, moving from the model to the code</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Day-12.html">Day 12</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Day 12 Pre-class Assignment: Computational Models Overview and The Pandas Data Analysis Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Day-12_In-Class_GDP-STUDENT.html">Day 12 In-Class: Cleaning and Analyzing Economic Data</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-12/GDP_Data.csv">GDP_Data.csv</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Extra Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewAndPracticeMaterials.html">Review and Practice Materials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewNotebook_PythonFundamentals-STUDENT.html">Reviewing and practicing prior concepts: Python Fundamentals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewNotebook_Debugging-STUDENT.html">Practice with Debugging</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewNotebook_Functions-STUDENT.html">Practice with: functions</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Day-12/Day-12_Pre-Class_Pandas-STUDENT.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Day 12 Pre-class Assignment: Computational Models Overview and The Pandas Data Analysis Library</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-name-here"><p style="text-align: right;"> ✅ Put your name here</p></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today-s-pre-class-assignment">Goals for today’s pre-class assignment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-instructions">Assignment instructions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-computational-models"><strong>1. Overview of Computational Models</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-data-in-pandas"><strong>2. Working with data in Pandas</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#video-1">Video 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#video-2">Video 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-pandas-references">Useful Pandas references</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-and-plotting"><strong>2.1 Pandas and Plotting</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-pandas-and-all-of-our-other-useful-modules-we-know-up-to-this-point">Importing Pandas and all of our other useful modules we know up to this point.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-out-the-dataframe"><strong>2.1.1 Checking out the DataFrame</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-to-accessing-data-in-pandas-dataframes"><strong>2.1.2 Intro to Accessing data in Pandas Dataframes</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-data"><strong>2.2 Visualizing the data</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#note">Note:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-parts-of-dataframes"><strong>3. Accessing Parts of Dataframes</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-using-iloc-and-loc-to-access-data"><strong>3.1 Examples of using .iloc and .loc to access data</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-practice-different-ways-to-index-using-both-iloc-and-loc"><strong>3.2 Let’s practice different ways to index using both <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> and <code class="docutils literal notranslate"><span class="pre">.loc</span></code></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-pandas-dataframes-default"><strong>3.3 Understanding the Pandas Dataframes default</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-wrap-up">Assignment wrap-up</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#congratulations-you-re-done">Congratulations, you’re done!</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="day-12-pre-class-assignment-computational-models-overview-and-the-pandas-data-analysis-library">
+<h1>Day 12 Pre-class Assignment: Computational Models Overview and The Pandas Data Analysis Library<a class="headerlink" href="#day-12-pre-class-assignment-computational-models-overview-and-the-pandas-data-analysis-library" title="Link to this heading">#</a></h1>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Pandas_logo.svg/1200px-Pandas_logo.svg.png" width=400px><section id="put-your-name-here">
+<h2><p style="text-align: right;"> ✅ Put your name here</p><a class="headerlink" href="#put-your-name-here" title="Link to this heading">#</a></h2>
+</section>
+<section id="goals-for-today-s-pre-class-assignment">
+<h2>Goals for today’s pre-class assignment<a class="headerlink" href="#goals-for-today-s-pre-class-assignment" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Review some types of Computational Models</p></li>
+<li><p>Use the Pandas module to explore and visualize data</p></li>
+</ul>
+</section>
+<section id="assignment-instructions">
+<h2>Assignment instructions<a class="headerlink" href="#assignment-instructions" title="Link to this heading">#</a></h2>
+<p><strong>This assignment is due by 11:59 p.m. the day before class,</strong> and should be uploaded to the appropriate “Pre-class assignments” submission folder.  If you run into issues with your code, make sure to use the Teams channel to help each other out and receive some assistance from the instructors. Submission instructions can be found at the end of the notebook.</p>
+<p>A reminder: <strong>it is important that you do your best to complete the pre-class assignment!</strong> Going through this assignment and trying to complete it to the best of your ability will help to make sure you’re prepared for the content that is covered in class.</p>
+</section>
+<hr class="docutils" />
+<section id="overview-of-computational-models">
+<h2><strong>1. Overview of Computational Models</strong><a class="headerlink" href="#overview-of-computational-models" title="Link to this heading">#</a></h2>
+<p>So far this semester, we looked and and even <em>built</em> a few examples of computational models, but we haven’t necessarily paused to define what we mean when we talk about “models” or “computational modeling”. Now that we have some of those experiences under our belts, let’s take a moment to think about what we mean when we talk about “models” by watching the following overview video to get an introduction to the definition of <strong>Computational Models</strong>. If the YouTube video doesn’t work, try this <a class="reference external" href="https://mediaspace.msu.edu/media/Introduction+to+Computational+Models/1_yh81zqwi">MediaSpace link</a>.</p>
+<p><strong>Note:</strong> This video references a model for the motion of a snowball that was replaced by the Retirement Savings model. If you want to learn more about the model, ask your instructor!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Video on the Pandas module  </span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">YouTubeVideo</span>  
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s2">&quot;7qAunwHsuj8&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">640</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">360</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>✅  <strong>Question 1:</strong>  In your own words, decribe what scientific and/or computational models do.</p>
+<p><font size="+3">✎</font> <em>Put your answer here</em></p>
+<p>✅  <strong>Question 2:</strong> What are some of the limitations of scientific and/or computational models?</p>
+<p><font size="+3">✎</font> <em>Put your answer here</em></p>
+</section>
+<hr class="docutils" />
+<section id="working-with-data-in-pandas">
+<h2><strong>2. Working with data in Pandas</strong><a class="headerlink" href="#working-with-data-in-pandas" title="Link to this heading">#</a></h2>
+<p><em>Pandas</em> is an extremely useful Python library for reading and analyzing datasets in a variety of formats with a variety of data types. Managing complicated files with only the Python tools we’ve learned up to this point is often very difficult and at times, may seem impossible. Lucky for you, someone else decided to make your life easier and created Pandas!</p>
+<p><strong>Watch the following videos</strong> to learn a bit about how you can load and analyze data using this handy library!</p>
+<p><strong>Note</strong>: In a previous semester of this course, the order of the topics covered was slightly different so there may be references to “future” content that you already have experience with. Also, the version of Python used in this video is a bit older than the version that you have, so the format of the Pandas dataframe might look a bit different in your notebook when you display it in your notebook.</p>
+<hr class="docutils" />
+<section id="video-1">
+<h3>Video 1<a class="headerlink" href="#video-1" title="Link to this heading">#</a></h3>
+<p>In this video, pay particular attention to the part of the video that talks about “slicing” the data, which is sometimes how we refer to extracting subsets of the entire dataframe. If the YouTube video doesn’t work, try this <a class="reference external" href="https://mediaspace.msu.edu/media/The+Pandas+module/1_yvaobs9w">MediaSpace link</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Video on the Pandas module  </span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">YouTubeVideo</span>  
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s2">&quot;A0InxIMAvlU&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">640</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">360</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="mi">405</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="video-2">
+<h3>Video 2<a class="headerlink" href="#video-2" title="Link to this heading">#</a></h3>
+<p>This next video introduces plotting dataframes using the <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> module, rather than the built-in plotting functions that come with Pandas, which you may see referenced from time to time. You are welcome to explore them and use them, but in this course, we try to focus on using Pandas (or NumPy) for loading and analyzing data and Matplotlib for visualizing the data!</p>
+<p><strong>Note</strong>: this video will reference the “blood pressure” dataset, which you will be working with in the code cells below.</p>
+<p><strong>Access the video using this <a class="reference external" href="https://mediaspace.msu.edu/media/Plotting+Pandas+Data/1_f4gzgb3v">MediaSpace Link!</a></strong></p>
+</section>
+<section id="useful-pandas-references">
+<h3>Useful Pandas references<a class="headerlink" href="#useful-pandas-references" title="Link to this heading">#</a></h3>
+<p>For this pre-class assignment and the assignments that follow during the next week of the course, these two references might prove to be particularly useful:</p>
+<ul class="simple">
+<li><p>The <a class="reference external" href="http://pandas.pydata.org/">Pandas website</a></p></li>
+<li><p><a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/user_guide/10min.html">10-minute Pandas Tutorial</a></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="pandas-and-plotting">
+<h3><strong>2.1 Pandas and Plotting</strong><a class="headerlink" href="#pandas-and-plotting" title="Link to this heading">#</a></h3>
+<p>Now that we understand a bit of the fundamentals for Pandas dataframes, we’re going to use a small database of data taken from patients that were admitted to the hospital with chest pains.  In the dataset, there are several columns. Here are what a few of them correspond to:</p>
+<ul class="simple">
+<li><p><strong>age</strong> is patient age</p></li>
+<li><p><strong>chol</strong> is serum cholesterol in units of mg/dl</p></li>
+<li><p><strong>trestbps</strong> is the resting blood pressure of the patient upon admission</p></li>
+<li><p><strong>thalach</strong> is the maximum heart rate achieved</p></li>
+</ul>
+<p>The cell immediately below this uses Pandas to read in the data, and you should <strong>run that cell before you do anything else and make sure you understand what it’s doing!</strong></p>
+<section id="importing-pandas-and-all-of-our-other-useful-modules-we-know-up-to-this-point">
+<h4>Importing Pandas and all of our other useful modules we know up to this point.<a class="headerlink" href="#importing-pandas-and-all-of-our-other-useful-modules-we-know-up-to-this-point" title="Link to this heading">#</a></h4>
+<p>As always, we should make sure we import all of the Python modules we might want to use as we work through the notebook.</p>
+<p><strong>Pay special attention to the new import command for Pandas, it’s a bit different than what is shown in the video!</strong></p>
+<p>Make sure you execute this cell!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import numpy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># import matplotlib and make sure plots show up in the notebook</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Look at the Pandas import -- we take a similar approach to how we import numpy</span>
+<span class="c1"># &quot;pd&quot; will be the short-hand for accessing Pandas functions.</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Because we&#39;re looking data stored directly in this notebook, we need one other module as well</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringIO</span>
+
+<span class="c1"># read in some data on heart disease (don&#39;t worry too much about what &quot;json&quot; is!)</span>
+<span class="n">heart_disease_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;[{&quot;observation_number&quot;:0,&quot;age&quot;:67,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:160,&quot;chol&quot;:286,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:108,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.5,&quot;slope&quot;:2,&quot;ca&quot;:&quot;3.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:1,&quot;age&quot;:67,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:120,&quot;chol&quot;:229,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:129,&quot;exang&quot;:1,&quot;oldpeak&quot;:2.6,&quot;slope&quot;:2,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:2,&quot;age&quot;:37,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:130,&quot;chol&quot;:250,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:187,&quot;exang&quot;:0,&quot;oldpeak&quot;:3.5,&quot;slope&quot;:3,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:3,&quot;age&quot;:41,&quot;sex&quot;:0,&quot;cp&quot;:2,&quot;trestbps&quot;:130,&quot;chol&quot;:204,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:172,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.4,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:4,&quot;age&quot;:56,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:120,&quot;chol&quot;:236,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:178,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.8,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:5,&quot;age&quot;:62,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:140,&quot;chol&quot;:268,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:160,&quot;exang&quot;:0,&quot;oldpeak&quot;:3.6,&quot;slope&quot;:3,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:6,&quot;age&quot;:57,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:120,&quot;chol&quot;:354,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:163,&quot;exang&quot;:1,&quot;oldpeak&quot;:0.6,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:7,&quot;age&quot;:63,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:130,&quot;chol&quot;:254,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:147,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.4,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:8,&quot;age&quot;:53,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:140,&quot;chol&quot;:203,&quot;fbs&quot;:1,&quot;restecg&quot;:2,&quot;thalach&quot;:155,&quot;exang&quot;:1,&quot;oldpeak&quot;:3.1,&quot;slope&quot;:3,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:9,&quot;age&quot;:57,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:140,&quot;chol&quot;:192,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:148,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.4,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;6.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:10,&quot;age&quot;:56,&quot;sex&quot;:0,&quot;cp&quot;:2,&quot;trestbps&quot;:140,&quot;chol&quot;:294,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:153,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.3,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:11,&quot;age&quot;:56,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:130,&quot;chol&quot;:256,&quot;fbs&quot;:1,&quot;restecg&quot;:2,&quot;thalach&quot;:142,&quot;exang&quot;:1,&quot;oldpeak&quot;:0.6,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;6.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:12,&quot;age&quot;:44,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:120,&quot;chol&quot;:263,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:173,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:13,&quot;age&quot;:52,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:172,&quot;chol&quot;:199,&quot;fbs&quot;:1,&quot;restecg&quot;:0,&quot;thalach&quot;:162,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.5,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:14,&quot;age&quot;:57,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:150,&quot;chol&quot;:168,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:174,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.6,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:15,&quot;age&quot;:48,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:110,&quot;chol&quot;:229,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:168,&quot;exang&quot;:0,&quot;oldpeak&quot;:1,&quot;slope&quot;:3,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:16,&quot;age&quot;:54,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:140,&quot;chol&quot;:239,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:160,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.2,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:17,&quot;age&quot;:48,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:130,&quot;chol&quot;:275,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:139,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.2,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:18,&quot;age&quot;:49,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:130,&quot;chol&quot;:266,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:171,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.6,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:19,&quot;age&quot;:64,&quot;sex&quot;:1,&quot;cp&quot;:1,&quot;trestbps&quot;:110,&quot;chol&quot;:211,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:144,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.8,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:20,&quot;age&quot;:58,&quot;sex&quot;:0,&quot;cp&quot;:1,&quot;trestbps&quot;:150,&quot;chol&quot;:283,&quot;fbs&quot;:1,&quot;restecg&quot;:2,&quot;thalach&quot;:162,&quot;exang&quot;:0,&quot;oldpeak&quot;:1,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:21,&quot;age&quot;:58,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:120,&quot;chol&quot;:284,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:160,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.8,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:22,&quot;age&quot;:58,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:132,&quot;chol&quot;:224,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:173,&quot;exang&quot;:0,&quot;oldpeak&quot;:3.2,&quot;slope&quot;:1,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:23,&quot;age&quot;:60,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:130,&quot;chol&quot;:206,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:132,&quot;exang&quot;:1,&quot;oldpeak&quot;:2.4,&quot;slope&quot;:2,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:4},{&quot;observation_number&quot;:24,&quot;age&quot;:50,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:120,&quot;chol&quot;:219,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:158,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.6,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:25,&quot;age&quot;:58,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:120,&quot;chol&quot;:340,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:172,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:26,&quot;age&quot;:66,&quot;sex&quot;:0,&quot;cp&quot;:1,&quot;trestbps&quot;:150,&quot;chol&quot;:226,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:114,&quot;exang&quot;:0,&quot;oldpeak&quot;:2.6,&quot;slope&quot;:3,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:27,&quot;age&quot;:43,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:150,&quot;chol&quot;:247,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:171,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.5,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:28,&quot;age&quot;:40,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:110,&quot;chol&quot;:167,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:114,&quot;exang&quot;:1,&quot;oldpeak&quot;:2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:29,&quot;age&quot;:69,&quot;sex&quot;:0,&quot;cp&quot;:1,&quot;trestbps&quot;:140,&quot;chol&quot;:239,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:151,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.8,&quot;slope&quot;:1,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:30,&quot;age&quot;:60,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:117,&quot;chol&quot;:230,&quot;fbs&quot;:1,&quot;restecg&quot;:0,&quot;thalach&quot;:160,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.4,&quot;slope&quot;:1,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:31,&quot;age&quot;:64,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:140,&quot;chol&quot;:335,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:158,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:32,&quot;age&quot;:59,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:135,&quot;chol&quot;:234,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:161,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.5,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:33,&quot;age&quot;:44,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:130,&quot;chol&quot;:233,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:179,&quot;exang&quot;:1,&quot;oldpeak&quot;:0.4,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:34,&quot;age&quot;:42,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:140,&quot;chol&quot;:226,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:178,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:35,&quot;age&quot;:43,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:120,&quot;chol&quot;:177,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:120,&quot;exang&quot;:1,&quot;oldpeak&quot;:2.5,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:36,&quot;age&quot;:57,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:150,&quot;chol&quot;:276,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:112,&quot;exang&quot;:1,&quot;oldpeak&quot;:0.6,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;6.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:37,&quot;age&quot;:55,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:132,&quot;chol&quot;:353,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:132,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:38,&quot;age&quot;:61,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:150,&quot;chol&quot;:243,&quot;fbs&quot;:1,&quot;restecg&quot;:0,&quot;thalach&quot;:137,&quot;exang&quot;:1,&quot;oldpeak&quot;:1,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:39,&quot;age&quot;:65,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:150,&quot;chol&quot;:225,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:114,&quot;exang&quot;:0,&quot;oldpeak&quot;:1,&quot;slope&quot;:2,&quot;ca&quot;:&quot;3.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:4},{&quot;observation_number&quot;:40,&quot;age&quot;:40,&quot;sex&quot;:1,&quot;cp&quot;:1,&quot;trestbps&quot;:140,&quot;chol&quot;:199,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:178,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.4,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:41,&quot;age&quot;:71,&quot;sex&quot;:0,&quot;cp&quot;:2,&quot;trestbps&quot;:160,&quot;chol&quot;:302,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:162,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.4,&quot;slope&quot;:1,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:42,&quot;age&quot;:59,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:150,&quot;chol&quot;:212,&quot;fbs&quot;:1,&quot;restecg&quot;:0,&quot;thalach&quot;:157,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.6,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:43,&quot;age&quot;:61,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:130,&quot;chol&quot;:330,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:169,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:44,&quot;age&quot;:58,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:112,&quot;chol&quot;:230,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:165,&quot;exang&quot;:0,&quot;oldpeak&quot;:2.5,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:4},{&quot;observation_number&quot;:45,&quot;age&quot;:51,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:110,&quot;chol&quot;:175,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:123,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.6,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:46,&quot;age&quot;:50,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:150,&quot;chol&quot;:243,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:128,&quot;exang&quot;:0,&quot;oldpeak&quot;:2.6,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:4},{&quot;observation_number&quot;:47,&quot;age&quot;:65,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:140,&quot;chol&quot;:417,&quot;fbs&quot;:1,&quot;restecg&quot;:2,&quot;thalach&quot;:157,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.8,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:48,&quot;age&quot;:53,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:130,&quot;chol&quot;:197,&quot;fbs&quot;:1,&quot;restecg&quot;:2,&quot;thalach&quot;:152,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.2,&quot;slope&quot;:3,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:49,&quot;age&quot;:41,&quot;sex&quot;:0,&quot;cp&quot;:2,&quot;trestbps&quot;:105,&quot;chol&quot;:198,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:168,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:50,&quot;age&quot;:65,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:120,&quot;chol&quot;:177,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:140,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.4,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:51,&quot;age&quot;:44,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:112,&quot;chol&quot;:290,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:153,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:52,&quot;age&quot;:44,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:130,&quot;chol&quot;:219,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:188,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:53,&quot;age&quot;:60,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:130,&quot;chol&quot;:253,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:144,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.4,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:54,&quot;age&quot;:54,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:124,&quot;chol&quot;:266,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:109,&quot;exang&quot;:1,&quot;oldpeak&quot;:2.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:55,&quot;age&quot;:50,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:140,&quot;chol&quot;:233,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:163,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.6,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:56,&quot;age&quot;:41,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:110,&quot;chol&quot;:172,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:158,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:57,&quot;age&quot;:54,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:125,&quot;chol&quot;:273,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:152,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.5,&quot;slope&quot;:3,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:58,&quot;age&quot;:51,&quot;sex&quot;:1,&quot;cp&quot;:1,&quot;trestbps&quot;:125,&quot;chol&quot;:213,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:125,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.4,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:59,&quot;age&quot;:51,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:130,&quot;chol&quot;:305,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:142,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:60,&quot;age&quot;:46,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:142,&quot;chol&quot;:177,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:160,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.4,&quot;slope&quot;:3,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:61,&quot;age&quot;:58,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:128,&quot;chol&quot;:216,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:131,&quot;exang&quot;:1,&quot;oldpeak&quot;:2.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;3.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:62,&quot;age&quot;:54,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:135,&quot;chol&quot;:304,&quot;fbs&quot;:1,&quot;restecg&quot;:0,&quot;thalach&quot;:170,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:63,&quot;age&quot;:54,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:120,&quot;chol&quot;:188,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:113,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.4,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:64,&quot;age&quot;:60,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:145,&quot;chol&quot;:282,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:142,&quot;exang&quot;:1,&quot;oldpeak&quot;:2.8,&quot;slope&quot;:2,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:65,&quot;age&quot;:60,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:140,&quot;chol&quot;:185,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:155,&quot;exang&quot;:0,&quot;oldpeak&quot;:3,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:66,&quot;age&quot;:54,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:150,&quot;chol&quot;:232,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:165,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.6,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:67,&quot;age&quot;:59,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:170,&quot;chol&quot;:326,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:140,&quot;exang&quot;:1,&quot;oldpeak&quot;:3.4,&quot;slope&quot;:3,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:68,&quot;age&quot;:46,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:150,&quot;chol&quot;:231,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:147,&quot;exang&quot;:0,&quot;oldpeak&quot;:3.6,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:69,&quot;age&quot;:65,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:155,&quot;chol&quot;:269,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:148,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.8,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:70,&quot;age&quot;:67,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:125,&quot;chol&quot;:254,&quot;fbs&quot;:1,&quot;restecg&quot;:0,&quot;thalach&quot;:163,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:71,&quot;age&quot;:62,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:120,&quot;chol&quot;:267,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:99,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.8,&quot;slope&quot;:2,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:72,&quot;age&quot;:65,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:110,&quot;chol&quot;:248,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:158,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.6,&quot;slope&quot;:1,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;6.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:73,&quot;age&quot;:44,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:110,&quot;chol&quot;:197,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:177,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:74,&quot;age&quot;:65,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:160,&quot;chol&quot;:360,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:151,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.8,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:75,&quot;age&quot;:60,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:125,&quot;chol&quot;:258,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:141,&quot;exang&quot;:1,&quot;oldpeak&quot;:2.8,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:76,&quot;age&quot;:51,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:140,&quot;chol&quot;:308,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:142,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.5,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:77,&quot;age&quot;:48,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:130,&quot;chol&quot;:245,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:180,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:78,&quot;age&quot;:58,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:150,&quot;chol&quot;:270,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:111,&quot;exang&quot;:1,&quot;oldpeak&quot;:0.8,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:79,&quot;age&quot;:45,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:104,&quot;chol&quot;:208,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:148,&quot;exang&quot;:1,&quot;oldpeak&quot;:3,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:80,&quot;age&quot;:53,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:130,&quot;chol&quot;:264,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:143,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.4,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:81,&quot;age&quot;:39,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:140,&quot;chol&quot;:321,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:182,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:82,&quot;age&quot;:68,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:180,&quot;chol&quot;:274,&quot;fbs&quot;:1,&quot;restecg&quot;:2,&quot;thalach&quot;:150,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.6,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:83,&quot;age&quot;:52,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:120,&quot;chol&quot;:325,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:172,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.2,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:84,&quot;age&quot;:44,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:140,&quot;chol&quot;:235,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:180,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:85,&quot;age&quot;:47,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:138,&quot;chol&quot;:257,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:156,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:86,&quot;age&quot;:53,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:128,&quot;chol&quot;:216,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:115,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;?&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:87,&quot;age&quot;:53,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:138,&quot;chol&quot;:234,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:160,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:88,&quot;age&quot;:51,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:130,&quot;chol&quot;:256,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:149,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.5,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:89,&quot;age&quot;:66,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:120,&quot;chol&quot;:302,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:151,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.4,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:90,&quot;age&quot;:62,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:160,&quot;chol&quot;:164,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:145,&quot;exang&quot;:0,&quot;oldpeak&quot;:6.2,&quot;slope&quot;:3,&quot;ca&quot;:&quot;3.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:91,&quot;age&quot;:62,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:130,&quot;chol&quot;:231,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:146,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.8,&quot;slope&quot;:2,&quot;ca&quot;:&quot;3.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:92,&quot;age&quot;:44,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:108,&quot;chol&quot;:141,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:175,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.6,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:93,&quot;age&quot;:63,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:135,&quot;chol&quot;:252,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:172,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:94,&quot;age&quot;:52,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:128,&quot;chol&quot;:255,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:161,&quot;exang&quot;:1,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:95,&quot;age&quot;:59,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:110,&quot;chol&quot;:239,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:142,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:96,&quot;age&quot;:60,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:150,&quot;chol&quot;:258,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:157,&quot;exang&quot;:0,&quot;oldpeak&quot;:2.6,&quot;slope&quot;:2,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:97,&quot;age&quot;:52,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:134,&quot;chol&quot;:201,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:158,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.8,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:98,&quot;age&quot;:48,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:122,&quot;chol&quot;:222,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:186,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:99,&quot;age&quot;:45,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:115,&quot;chol&quot;:260,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:185,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:100,&quot;age&quot;:34,&quot;sex&quot;:1,&quot;cp&quot;:1,&quot;trestbps&quot;:118,&quot;chol&quot;:182,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:174,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:101,&quot;age&quot;:57,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:128,&quot;chol&quot;:303,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:159,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:102,&quot;age&quot;:71,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:110,&quot;chol&quot;:265,&quot;fbs&quot;:1,&quot;restecg&quot;:2,&quot;thalach&quot;:130,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:103,&quot;age&quot;:49,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:120,&quot;chol&quot;:188,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:139,&quot;exang&quot;:0,&quot;oldpeak&quot;:2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;3.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:104,&quot;age&quot;:54,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:108,&quot;chol&quot;:309,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:156,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:105,&quot;age&quot;:59,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:140,&quot;chol&quot;:177,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:162,&quot;exang&quot;:1,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:106,&quot;age&quot;:57,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:128,&quot;chol&quot;:229,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:150,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.4,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:107,&quot;age&quot;:61,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:120,&quot;chol&quot;:260,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:140,&quot;exang&quot;:1,&quot;oldpeak&quot;:3.6,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:108,&quot;age&quot;:39,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:118,&quot;chol&quot;:219,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:140,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:109,&quot;age&quot;:61,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:145,&quot;chol&quot;:307,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:146,&quot;exang&quot;:1,&quot;oldpeak&quot;:1,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:110,&quot;age&quot;:56,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:125,&quot;chol&quot;:249,&quot;fbs&quot;:1,&quot;restecg&quot;:2,&quot;thalach&quot;:144,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:111,&quot;age&quot;:52,&quot;sex&quot;:1,&quot;cp&quot;:1,&quot;trestbps&quot;:118,&quot;chol&quot;:186,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:190,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;6.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:112,&quot;age&quot;:43,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:132,&quot;chol&quot;:341,&quot;fbs&quot;:1,&quot;restecg&quot;:2,&quot;thalach&quot;:136,&quot;exang&quot;:1,&quot;oldpeak&quot;:3,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:113,&quot;age&quot;:62,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:130,&quot;chol&quot;:263,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:97,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:114,&quot;age&quot;:41,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:135,&quot;chol&quot;:203,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:132,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;6.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:115,&quot;age&quot;:58,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:140,&quot;chol&quot;:211,&quot;fbs&quot;:1,&quot;restecg&quot;:2,&quot;thalach&quot;:165,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:116,&quot;age&quot;:35,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:138,&quot;chol&quot;:183,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:182,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.4,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:117,&quot;age&quot;:63,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:130,&quot;chol&quot;:330,&quot;fbs&quot;:1,&quot;restecg&quot;:2,&quot;thalach&quot;:132,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.8,&quot;slope&quot;:1,&quot;ca&quot;:&quot;3.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:118,&quot;age&quot;:65,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:135,&quot;chol&quot;:254,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:127,&quot;exang&quot;:0,&quot;oldpeak&quot;:2.8,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:119,&quot;age&quot;:48,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:130,&quot;chol&quot;:256,&quot;fbs&quot;:1,&quot;restecg&quot;:2,&quot;thalach&quot;:150,&quot;exang&quot;:1,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:120,&quot;age&quot;:63,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:150,&quot;chol&quot;:407,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:154,&quot;exang&quot;:0,&quot;oldpeak&quot;:4,&quot;slope&quot;:2,&quot;ca&quot;:&quot;3.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:4},{&quot;observation_number&quot;:121,&quot;age&quot;:51,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:100,&quot;chol&quot;:222,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:143,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:122,&quot;age&quot;:55,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:140,&quot;chol&quot;:217,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:111,&quot;exang&quot;:1,&quot;oldpeak&quot;:5.6,&quot;slope&quot;:3,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:123,&quot;age&quot;:65,&quot;sex&quot;:1,&quot;cp&quot;:1,&quot;trestbps&quot;:138,&quot;chol&quot;:282,&quot;fbs&quot;:1,&quot;restecg&quot;:2,&quot;thalach&quot;:174,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.4,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:124,&quot;age&quot;:45,&quot;sex&quot;:0,&quot;cp&quot;:2,&quot;trestbps&quot;:130,&quot;chol&quot;:234,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:175,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.6,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:125,&quot;age&quot;:56,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:200,&quot;chol&quot;:288,&quot;fbs&quot;:1,&quot;restecg&quot;:2,&quot;thalach&quot;:133,&quot;exang&quot;:1,&quot;oldpeak&quot;:4,&quot;slope&quot;:3,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:126,&quot;age&quot;:54,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:110,&quot;chol&quot;:239,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:126,&quot;exang&quot;:1,&quot;oldpeak&quot;:2.8,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:127,&quot;age&quot;:44,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:120,&quot;chol&quot;:220,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:170,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:128,&quot;age&quot;:62,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:124,&quot;chol&quot;:209,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:163,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:129,&quot;age&quot;:54,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:120,&quot;chol&quot;:258,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:147,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.4,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:130,&quot;age&quot;:51,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:94,&quot;chol&quot;:227,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:154,&quot;exang&quot;:1,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:131,&quot;age&quot;:29,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:130,&quot;chol&quot;:204,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:202,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:132,&quot;age&quot;:51,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:140,&quot;chol&quot;:261,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:186,&quot;exang&quot;:1,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:133,&quot;age&quot;:43,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:122,&quot;chol&quot;:213,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:165,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:134,&quot;age&quot;:55,&quot;sex&quot;:0,&quot;cp&quot;:2,&quot;trestbps&quot;:135,&quot;chol&quot;:250,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:161,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.4,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:135,&quot;age&quot;:70,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:145,&quot;chol&quot;:174,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:125,&quot;exang&quot;:1,&quot;oldpeak&quot;:2.6,&quot;slope&quot;:3,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:4},{&quot;observation_number&quot;:136,&quot;age&quot;:62,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:120,&quot;chol&quot;:281,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:103,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.4,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:137,&quot;age&quot;:35,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:120,&quot;chol&quot;:198,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:130,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.6,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:138,&quot;age&quot;:51,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:125,&quot;chol&quot;:245,&quot;fbs&quot;:1,&quot;restecg&quot;:2,&quot;thalach&quot;:166,&quot;exang&quot;:0,&quot;oldpeak&quot;:2.4,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:139,&quot;age&quot;:59,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:140,&quot;chol&quot;:221,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:164,&quot;exang&quot;:1,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:140,&quot;age&quot;:59,&quot;sex&quot;:1,&quot;cp&quot;:1,&quot;trestbps&quot;:170,&quot;chol&quot;:288,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:159,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:141,&quot;age&quot;:52,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:128,&quot;chol&quot;:205,&quot;fbs&quot;:1,&quot;restecg&quot;:0,&quot;thalach&quot;:184,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:142,&quot;age&quot;:64,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:125,&quot;chol&quot;:309,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:131,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.8,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:143,&quot;age&quot;:58,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:105,&quot;chol&quot;:240,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:154,&quot;exang&quot;:1,&quot;oldpeak&quot;:0.6,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:144,&quot;age&quot;:47,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:108,&quot;chol&quot;:243,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:152,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:145,&quot;age&quot;:57,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:165,&quot;chol&quot;:289,&quot;fbs&quot;:1,&quot;restecg&quot;:2,&quot;thalach&quot;:124,&quot;exang&quot;:0,&quot;oldpeak&quot;:1,&quot;slope&quot;:2,&quot;ca&quot;:&quot;3.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:4},{&quot;observation_number&quot;:146,&quot;age&quot;:41,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:112,&quot;chol&quot;:250,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:179,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:147,&quot;age&quot;:45,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:128,&quot;chol&quot;:308,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:170,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:148,&quot;age&quot;:60,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:102,&quot;chol&quot;:318,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:160,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:149,&quot;age&quot;:52,&quot;sex&quot;:1,&quot;cp&quot;:1,&quot;trestbps&quot;:152,&quot;chol&quot;:298,&quot;fbs&quot;:1,&quot;restecg&quot;:0,&quot;thalach&quot;:178,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:150,&quot;age&quot;:42,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:102,&quot;chol&quot;:265,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:122,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.6,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:151,&quot;age&quot;:67,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:115,&quot;chol&quot;:564,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:160,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.6,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:152,&quot;age&quot;:55,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:160,&quot;chol&quot;:289,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:145,&quot;exang&quot;:1,&quot;oldpeak&quot;:0.8,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:4},{&quot;observation_number&quot;:153,&quot;age&quot;:64,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:120,&quot;chol&quot;:246,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:96,&quot;exang&quot;:1,&quot;oldpeak&quot;:2.2,&quot;slope&quot;:3,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:154,&quot;age&quot;:70,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:130,&quot;chol&quot;:322,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:109,&quot;exang&quot;:0,&quot;oldpeak&quot;:2.4,&quot;slope&quot;:2,&quot;ca&quot;:&quot;3.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:155,&quot;age&quot;:51,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:140,&quot;chol&quot;:299,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:173,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.6,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:156,&quot;age&quot;:58,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:125,&quot;chol&quot;:300,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:171,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:157,&quot;age&quot;:60,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:140,&quot;chol&quot;:293,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:170,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:158,&quot;age&quot;:68,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:118,&quot;chol&quot;:277,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:151,&quot;exang&quot;:0,&quot;oldpeak&quot;:1,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:159,&quot;age&quot;:46,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:101,&quot;chol&quot;:197,&quot;fbs&quot;:1,&quot;restecg&quot;:0,&quot;thalach&quot;:156,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:160,&quot;age&quot;:77,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:125,&quot;chol&quot;:304,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:162,&quot;exang&quot;:1,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;3.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:4},{&quot;observation_number&quot;:161,&quot;age&quot;:54,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:110,&quot;chol&quot;:214,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:158,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.6,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:162,&quot;age&quot;:58,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:100,&quot;chol&quot;:248,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:122,&quot;exang&quot;:0,&quot;oldpeak&quot;:1,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:163,&quot;age&quot;:48,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:124,&quot;chol&quot;:255,&quot;fbs&quot;:1,&quot;restecg&quot;:0,&quot;thalach&quot;:175,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:164,&quot;age&quot;:57,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:132,&quot;chol&quot;:207,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:168,&quot;exang&quot;:1,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:165,&quot;age&quot;:52,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:138,&quot;chol&quot;:223,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:169,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;?&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:166,&quot;age&quot;:54,&quot;sex&quot;:0,&quot;cp&quot;:2,&quot;trestbps&quot;:132,&quot;chol&quot;:288,&quot;fbs&quot;:1,&quot;restecg&quot;:2,&quot;thalach&quot;:159,&quot;exang&quot;:1,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:167,&quot;age&quot;:35,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:126,&quot;chol&quot;:282,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:156,&quot;exang&quot;:1,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:168,&quot;age&quot;:45,&quot;sex&quot;:0,&quot;cp&quot;:2,&quot;trestbps&quot;:112,&quot;chol&quot;:160,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:138,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:169,&quot;age&quot;:70,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:160,&quot;chol&quot;:269,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:112,&quot;exang&quot;:1,&quot;oldpeak&quot;:2.9,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:170,&quot;age&quot;:53,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:142,&quot;chol&quot;:226,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:111,&quot;exang&quot;:1,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:171,&quot;age&quot;:59,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:174,&quot;chol&quot;:249,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:143,&quot;exang&quot;:1,&quot;oldpeak&quot;:0,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:172,&quot;age&quot;:62,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:140,&quot;chol&quot;:394,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:157,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:173,&quot;age&quot;:64,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:145,&quot;chol&quot;:212,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:132,&quot;exang&quot;:0,&quot;oldpeak&quot;:2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;6.0&quot;,&quot;num&quot;:4},{&quot;observation_number&quot;:174,&quot;age&quot;:57,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:152,&quot;chol&quot;:274,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:88,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:175,&quot;age&quot;:52,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:108,&quot;chol&quot;:233,&quot;fbs&quot;:1,&quot;restecg&quot;:0,&quot;thalach&quot;:147,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.1,&quot;slope&quot;:1,&quot;ca&quot;:&quot;3.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:176,&quot;age&quot;:56,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:132,&quot;chol&quot;:184,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:105,&quot;exang&quot;:1,&quot;oldpeak&quot;:2.1,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;6.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:177,&quot;age&quot;:43,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:130,&quot;chol&quot;:315,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:162,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.9,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:178,&quot;age&quot;:53,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:130,&quot;chol&quot;:246,&quot;fbs&quot;:1,&quot;restecg&quot;:2,&quot;thalach&quot;:173,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;3.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:179,&quot;age&quot;:48,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:124,&quot;chol&quot;:274,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:166,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.5,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:180,&quot;age&quot;:56,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:134,&quot;chol&quot;:409,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:150,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.9,&quot;slope&quot;:2,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:181,&quot;age&quot;:42,&quot;sex&quot;:1,&quot;cp&quot;:1,&quot;trestbps&quot;:148,&quot;chol&quot;:244,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:178,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.8,&quot;slope&quot;:1,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:182,&quot;age&quot;:59,&quot;sex&quot;:1,&quot;cp&quot;:1,&quot;trestbps&quot;:178,&quot;chol&quot;:270,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:145,&quot;exang&quot;:0,&quot;oldpeak&quot;:4.2,&quot;slope&quot;:3,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:183,&quot;age&quot;:60,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:158,&quot;chol&quot;:305,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:161,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:184,&quot;age&quot;:63,&quot;sex&quot;:0,&quot;cp&quot;:2,&quot;trestbps&quot;:140,&quot;chol&quot;:195,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:179,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:185,&quot;age&quot;:42,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:120,&quot;chol&quot;:240,&quot;fbs&quot;:1,&quot;restecg&quot;:0,&quot;thalach&quot;:194,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.8,&quot;slope&quot;:3,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:186,&quot;age&quot;:66,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:160,&quot;chol&quot;:246,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:120,&quot;exang&quot;:1,&quot;oldpeak&quot;:0,&quot;slope&quot;:2,&quot;ca&quot;:&quot;3.0&quot;,&quot;thal&quot;:&quot;6.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:187,&quot;age&quot;:54,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:192,&quot;chol&quot;:283,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:195,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:188,&quot;age&quot;:69,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:140,&quot;chol&quot;:254,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:146,&quot;exang&quot;:0,&quot;oldpeak&quot;:2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;3.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:189,&quot;age&quot;:50,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:129,&quot;chol&quot;:196,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:163,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:190,&quot;age&quot;:51,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:140,&quot;chol&quot;:298,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:122,&quot;exang&quot;:1,&quot;oldpeak&quot;:4.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;3.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:191,&quot;age&quot;:43,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:132,&quot;chol&quot;:247,&quot;fbs&quot;:1,&quot;restecg&quot;:2,&quot;thalach&quot;:143,&quot;exang&quot;:1,&quot;oldpeak&quot;:0.1,&quot;slope&quot;:2,&quot;ca&quot;:&quot;?&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:192,&quot;age&quot;:62,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:138,&quot;chol&quot;:294,&quot;fbs&quot;:1,&quot;restecg&quot;:0,&quot;thalach&quot;:106,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.9,&quot;slope&quot;:2,&quot;ca&quot;:&quot;3.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:193,&quot;age&quot;:68,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:120,&quot;chol&quot;:211,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:115,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.5,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:194,&quot;age&quot;:67,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:100,&quot;chol&quot;:299,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:125,&quot;exang&quot;:1,&quot;oldpeak&quot;:0.9,&quot;slope&quot;:2,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:195,&quot;age&quot;:69,&quot;sex&quot;:1,&quot;cp&quot;:1,&quot;trestbps&quot;:160,&quot;chol&quot;:234,&quot;fbs&quot;:1,&quot;restecg&quot;:2,&quot;thalach&quot;:131,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.1,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:196,&quot;age&quot;:45,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:138,&quot;chol&quot;:236,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:152,&quot;exang&quot;:1,&quot;oldpeak&quot;:0.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:197,&quot;age&quot;:50,&quot;sex&quot;:0,&quot;cp&quot;:2,&quot;trestbps&quot;:120,&quot;chol&quot;:244,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:162,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.1,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:198,&quot;age&quot;:59,&quot;sex&quot;:1,&quot;cp&quot;:1,&quot;trestbps&quot;:160,&quot;chol&quot;:273,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:125,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:199,&quot;age&quot;:50,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:110,&quot;chol&quot;:254,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:159,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:200,&quot;age&quot;:64,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:180,&quot;chol&quot;:325,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:154,&quot;exang&quot;:1,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:201,&quot;age&quot;:57,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:150,&quot;chol&quot;:126,&quot;fbs&quot;:1,&quot;restecg&quot;:0,&quot;thalach&quot;:173,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.2,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:202,&quot;age&quot;:64,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:140,&quot;chol&quot;:313,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:133,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.2,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:203,&quot;age&quot;:43,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:110,&quot;chol&quot;:211,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:161,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:204,&quot;age&quot;:45,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:142,&quot;chol&quot;:309,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:147,&quot;exang&quot;:1,&quot;oldpeak&quot;:0,&quot;slope&quot;:2,&quot;ca&quot;:&quot;3.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:205,&quot;age&quot;:58,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:128,&quot;chol&quot;:259,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:130,&quot;exang&quot;:1,&quot;oldpeak&quot;:3,&quot;slope&quot;:2,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:206,&quot;age&quot;:50,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:144,&quot;chol&quot;:200,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:126,&quot;exang&quot;:1,&quot;oldpeak&quot;:0.9,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:207,&quot;age&quot;:55,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:130,&quot;chol&quot;:262,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:155,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:208,&quot;age&quot;:62,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:150,&quot;chol&quot;:244,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:154,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.4,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:209,&quot;age&quot;:37,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:120,&quot;chol&quot;:215,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:170,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:210,&quot;age&quot;:38,&quot;sex&quot;:1,&quot;cp&quot;:1,&quot;trestbps&quot;:120,&quot;chol&quot;:231,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:182,&quot;exang&quot;:1,&quot;oldpeak&quot;:3.8,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:4},{&quot;observation_number&quot;:211,&quot;age&quot;:41,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:130,&quot;chol&quot;:214,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:168,&quot;exang&quot;:0,&quot;oldpeak&quot;:2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:212,&quot;age&quot;:66,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:178,&quot;chol&quot;:228,&quot;fbs&quot;:1,&quot;restecg&quot;:0,&quot;thalach&quot;:165,&quot;exang&quot;:1,&quot;oldpeak&quot;:1,&quot;slope&quot;:2,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:213,&quot;age&quot;:52,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:112,&quot;chol&quot;:230,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:160,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:214,&quot;age&quot;:56,&quot;sex&quot;:1,&quot;cp&quot;:1,&quot;trestbps&quot;:120,&quot;chol&quot;:193,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:162,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.9,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:215,&quot;age&quot;:46,&quot;sex&quot;:0,&quot;cp&quot;:2,&quot;trestbps&quot;:105,&quot;chol&quot;:204,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:172,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:216,&quot;age&quot;:46,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:138,&quot;chol&quot;:243,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:152,&quot;exang&quot;:1,&quot;oldpeak&quot;:0,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:217,&quot;age&quot;:64,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:130,&quot;chol&quot;:303,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:122,&quot;exang&quot;:0,&quot;oldpeak&quot;:2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:218,&quot;age&quot;:59,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:138,&quot;chol&quot;:271,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:182,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:219,&quot;age&quot;:41,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:112,&quot;chol&quot;:268,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:172,&quot;exang&quot;:1,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:220,&quot;age&quot;:54,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:108,&quot;chol&quot;:267,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:167,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:221,&quot;age&quot;:39,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:94,&quot;chol&quot;:199,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:179,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:222,&quot;age&quot;:53,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:123,&quot;chol&quot;:282,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:95,&quot;exang&quot;:1,&quot;oldpeak&quot;:2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:223,&quot;age&quot;:63,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:108,&quot;chol&quot;:269,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:169,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.8,&quot;slope&quot;:2,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:224,&quot;age&quot;:34,&quot;sex&quot;:0,&quot;cp&quot;:2,&quot;trestbps&quot;:118,&quot;chol&quot;:210,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:192,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.7,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:225,&quot;age&quot;:47,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:112,&quot;chol&quot;:204,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:143,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.1,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:226,&quot;age&quot;:67,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:152,&quot;chol&quot;:277,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:172,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:227,&quot;age&quot;:54,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:110,&quot;chol&quot;:206,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:108,&quot;exang&quot;:1,&quot;oldpeak&quot;:0,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:228,&quot;age&quot;:66,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:112,&quot;chol&quot;:212,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:132,&quot;exang&quot;:1,&quot;oldpeak&quot;:0.1,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:229,&quot;age&quot;:52,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:136,&quot;chol&quot;:196,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:169,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.1,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:230,&quot;age&quot;:55,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:180,&quot;chol&quot;:327,&quot;fbs&quot;:0,&quot;restecg&quot;:1,&quot;thalach&quot;:117,&quot;exang&quot;:1,&quot;oldpeak&quot;:3.4,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:231,&quot;age&quot;:49,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:118,&quot;chol&quot;:149,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:126,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.8,&quot;slope&quot;:1,&quot;ca&quot;:&quot;3.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:232,&quot;age&quot;:74,&quot;sex&quot;:0,&quot;cp&quot;:2,&quot;trestbps&quot;:120,&quot;chol&quot;:269,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:121,&quot;exang&quot;:1,&quot;oldpeak&quot;:0.2,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:233,&quot;age&quot;:54,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:160,&quot;chol&quot;:201,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:163,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:234,&quot;age&quot;:54,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:122,&quot;chol&quot;:286,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:116,&quot;exang&quot;:1,&quot;oldpeak&quot;:3.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:235,&quot;age&quot;:56,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:130,&quot;chol&quot;:283,&quot;fbs&quot;:1,&quot;restecg&quot;:2,&quot;thalach&quot;:103,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.6,&quot;slope&quot;:3,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:236,&quot;age&quot;:46,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:120,&quot;chol&quot;:249,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:144,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.8,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:237,&quot;age&quot;:49,&quot;sex&quot;:0,&quot;cp&quot;:2,&quot;trestbps&quot;:134,&quot;chol&quot;:271,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:162,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:238,&quot;age&quot;:42,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:120,&quot;chol&quot;:295,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:162,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:239,&quot;age&quot;:41,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:110,&quot;chol&quot;:235,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:153,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:240,&quot;age&quot;:41,&quot;sex&quot;:0,&quot;cp&quot;:2,&quot;trestbps&quot;:126,&quot;chol&quot;:306,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:163,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:241,&quot;age&quot;:49,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:130,&quot;chol&quot;:269,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:163,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:242,&quot;age&quot;:61,&quot;sex&quot;:1,&quot;cp&quot;:1,&quot;trestbps&quot;:134,&quot;chol&quot;:234,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:145,&quot;exang&quot;:0,&quot;oldpeak&quot;:2.6,&quot;slope&quot;:2,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:243,&quot;age&quot;:60,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:120,&quot;chol&quot;:178,&quot;fbs&quot;:1,&quot;restecg&quot;:0,&quot;thalach&quot;:96,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:244,&quot;age&quot;:67,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:120,&quot;chol&quot;:237,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:71,&quot;exang&quot;:0,&quot;oldpeak&quot;:1,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:245,&quot;age&quot;:58,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:100,&quot;chol&quot;:234,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:156,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.1,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:246,&quot;age&quot;:47,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:110,&quot;chol&quot;:275,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:118,&quot;exang&quot;:1,&quot;oldpeak&quot;:1,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:247,&quot;age&quot;:52,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:125,&quot;chol&quot;:212,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:168,&quot;exang&quot;:0,&quot;oldpeak&quot;:1,&quot;slope&quot;:1,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:248,&quot;age&quot;:62,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:128,&quot;chol&quot;:208,&quot;fbs&quot;:1,&quot;restecg&quot;:2,&quot;thalach&quot;:140,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:249,&quot;age&quot;:57,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:110,&quot;chol&quot;:201,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:126,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.5,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;6.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:250,&quot;age&quot;:58,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:146,&quot;chol&quot;:218,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:105,&quot;exang&quot;:0,&quot;oldpeak&quot;:2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:251,&quot;age&quot;:64,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:128,&quot;chol&quot;:263,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:105,&quot;exang&quot;:1,&quot;oldpeak&quot;:0.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:252,&quot;age&quot;:51,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:120,&quot;chol&quot;:295,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:157,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.6,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:253,&quot;age&quot;:43,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:115,&quot;chol&quot;:303,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:181,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:254,&quot;age&quot;:42,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:120,&quot;chol&quot;:209,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:173,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:255,&quot;age&quot;:67,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:106,&quot;chol&quot;:223,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:142,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.3,&quot;slope&quot;:1,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:256,&quot;age&quot;:76,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:140,&quot;chol&quot;:197,&quot;fbs&quot;:0,&quot;restecg&quot;:1,&quot;thalach&quot;:116,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.1,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:257,&quot;age&quot;:70,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:156,&quot;chol&quot;:245,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:143,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:258,&quot;age&quot;:57,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:124,&quot;chol&quot;:261,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:141,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.3,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:259,&quot;age&quot;:44,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:118,&quot;chol&quot;:242,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:149,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.3,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:260,&quot;age&quot;:58,&quot;sex&quot;:0,&quot;cp&quot;:2,&quot;trestbps&quot;:136,&quot;chol&quot;:319,&quot;fbs&quot;:1,&quot;restecg&quot;:2,&quot;thalach&quot;:152,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:261,&quot;age&quot;:60,&quot;sex&quot;:0,&quot;cp&quot;:1,&quot;trestbps&quot;:150,&quot;chol&quot;:240,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:171,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.9,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:262,&quot;age&quot;:44,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:120,&quot;chol&quot;:226,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:169,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:263,&quot;age&quot;:61,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:138,&quot;chol&quot;:166,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:125,&quot;exang&quot;:1,&quot;oldpeak&quot;:3.6,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:4},{&quot;observation_number&quot;:264,&quot;age&quot;:42,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:136,&quot;chol&quot;:315,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:125,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.8,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;6.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:265,&quot;age&quot;:52,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:128,&quot;chol&quot;:204,&quot;fbs&quot;:1,&quot;restecg&quot;:0,&quot;thalach&quot;:156,&quot;exang&quot;:1,&quot;oldpeak&quot;:1,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;?&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:266,&quot;age&quot;:59,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:126,&quot;chol&quot;:218,&quot;fbs&quot;:1,&quot;restecg&quot;:0,&quot;thalach&quot;:134,&quot;exang&quot;:0,&quot;oldpeak&quot;:2.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;6.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:267,&quot;age&quot;:40,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:152,&quot;chol&quot;:223,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:181,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:268,&quot;age&quot;:42,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:130,&quot;chol&quot;:180,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:150,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:269,&quot;age&quot;:61,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:140,&quot;chol&quot;:207,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:138,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.9,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:270,&quot;age&quot;:66,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:160,&quot;chol&quot;:228,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:138,&quot;exang&quot;:0,&quot;oldpeak&quot;:2.3,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;6.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:271,&quot;age&quot;:46,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:140,&quot;chol&quot;:311,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:120,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.8,&quot;slope&quot;:2,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:272,&quot;age&quot;:71,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:112,&quot;chol&quot;:149,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:125,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.6,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:273,&quot;age&quot;:59,&quot;sex&quot;:1,&quot;cp&quot;:1,&quot;trestbps&quot;:134,&quot;chol&quot;:204,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:162,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.8,&quot;slope&quot;:1,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:274,&quot;age&quot;:64,&quot;sex&quot;:1,&quot;cp&quot;:1,&quot;trestbps&quot;:170,&quot;chol&quot;:227,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:155,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.6,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:275,&quot;age&quot;:66,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:146,&quot;chol&quot;:278,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:152,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:276,&quot;age&quot;:39,&quot;sex&quot;:0,&quot;cp&quot;:3,&quot;trestbps&quot;:138,&quot;chol&quot;:220,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:152,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:277,&quot;age&quot;:57,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:154,&quot;chol&quot;:232,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:164,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:278,&quot;age&quot;:58,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:130,&quot;chol&quot;:197,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:131,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.6,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:279,&quot;age&quot;:57,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:110,&quot;chol&quot;:335,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:143,&quot;exang&quot;:1,&quot;oldpeak&quot;:3,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:280,&quot;age&quot;:47,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:130,&quot;chol&quot;:253,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:179,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:281,&quot;age&quot;:55,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:128,&quot;chol&quot;:205,&quot;fbs&quot;:0,&quot;restecg&quot;:1,&quot;thalach&quot;:130,&quot;exang&quot;:1,&quot;oldpeak&quot;:2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:282,&quot;age&quot;:35,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:122,&quot;chol&quot;:192,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:174,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:283,&quot;age&quot;:61,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:148,&quot;chol&quot;:203,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:161,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:284,&quot;age&quot;:58,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:114,&quot;chol&quot;:318,&quot;fbs&quot;:0,&quot;restecg&quot;:1,&quot;thalach&quot;:140,&quot;exang&quot;:0,&quot;oldpeak&quot;:4.4,&quot;slope&quot;:3,&quot;ca&quot;:&quot;3.0&quot;,&quot;thal&quot;:&quot;6.0&quot;,&quot;num&quot;:4},{&quot;observation_number&quot;:285,&quot;age&quot;:58,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:170,&quot;chol&quot;:225,&quot;fbs&quot;:1,&quot;restecg&quot;:2,&quot;thalach&quot;:146,&quot;exang&quot;:1,&quot;oldpeak&quot;:2.8,&quot;slope&quot;:2,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;6.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:286,&quot;age&quot;:58,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:125,&quot;chol&quot;:220,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:144,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.4,&quot;slope&quot;:2,&quot;ca&quot;:&quot;?&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:287,&quot;age&quot;:56,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:130,&quot;chol&quot;:221,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:163,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:288,&quot;age&quot;:56,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:120,&quot;chol&quot;:240,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:169,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:3,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:289,&quot;age&quot;:67,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:152,&quot;chol&quot;:212,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:150,&quot;exang&quot;:0,&quot;oldpeak&quot;:0.8,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:290,&quot;age&quot;:55,&quot;sex&quot;:0,&quot;cp&quot;:2,&quot;trestbps&quot;:132,&quot;chol&quot;:342,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:166,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.2,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:291,&quot;age&quot;:44,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:120,&quot;chol&quot;:169,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:144,&quot;exang&quot;:1,&quot;oldpeak&quot;:2.8,&quot;slope&quot;:3,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;6.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:292,&quot;age&quot;:63,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:140,&quot;chol&quot;:187,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:144,&quot;exang&quot;:1,&quot;oldpeak&quot;:4,&quot;slope&quot;:1,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:293,&quot;age&quot;:63,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:124,&quot;chol&quot;:197,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:136,&quot;exang&quot;:1,&quot;oldpeak&quot;:0,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:294,&quot;age&quot;:41,&quot;sex&quot;:1,&quot;cp&quot;:2,&quot;trestbps&quot;:120,&quot;chol&quot;:157,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:182,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0},{&quot;observation_number&quot;:295,&quot;age&quot;:59,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:164,&quot;chol&quot;:176,&quot;fbs&quot;:1,&quot;restecg&quot;:2,&quot;thalach&quot;:90,&quot;exang&quot;:0,&quot;oldpeak&quot;:1,&quot;slope&quot;:2,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;6.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:296,&quot;age&quot;:57,&quot;sex&quot;:0,&quot;cp&quot;:4,&quot;trestbps&quot;:140,&quot;chol&quot;:241,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:123,&quot;exang&quot;:1,&quot;oldpeak&quot;:0.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:297,&quot;age&quot;:45,&quot;sex&quot;:1,&quot;cp&quot;:1,&quot;trestbps&quot;:110,&quot;chol&quot;:264,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:132,&quot;exang&quot;:0,&quot;oldpeak&quot;:1.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;0.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:298,&quot;age&quot;:68,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:144,&quot;chol&quot;:193,&quot;fbs&quot;:1,&quot;restecg&quot;:0,&quot;thalach&quot;:141,&quot;exang&quot;:0,&quot;oldpeak&quot;:3.4,&quot;slope&quot;:2,&quot;ca&quot;:&quot;2.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:2},{&quot;observation_number&quot;:299,&quot;age&quot;:57,&quot;sex&quot;:1,&quot;cp&quot;:4,&quot;trestbps&quot;:130,&quot;chol&quot;:131,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:115,&quot;exang&quot;:1,&quot;oldpeak&quot;:1.2,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;7.0&quot;,&quot;num&quot;:3},{&quot;observation_number&quot;:300,&quot;age&quot;:57,&quot;sex&quot;:0,&quot;cp&quot;:2,&quot;trestbps&quot;:130,&quot;chol&quot;:236,&quot;fbs&quot;:0,&quot;restecg&quot;:2,&quot;thalach&quot;:174,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:2,&quot;ca&quot;:&quot;1.0&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:1},{&quot;observation_number&quot;:301,&quot;age&quot;:38,&quot;sex&quot;:1,&quot;cp&quot;:3,&quot;trestbps&quot;:138,&quot;chol&quot;:175,&quot;fbs&quot;:0,&quot;restecg&quot;:0,&quot;thalach&quot;:173,&quot;exang&quot;:0,&quot;oldpeak&quot;:0,&quot;slope&quot;:1,&quot;ca&quot;:&quot;?&quot;,&quot;thal&quot;:&quot;3.0&quot;,&quot;num&quot;:0}]&quot;&quot;&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="checking-out-the-dataframe">
+<h4><strong>2.1.1 Checking out the DataFrame</strong><a class="headerlink" href="#checking-out-the-dataframe" title="Link to this heading">#</a></h4>
+<p>Now let’s see what the data looks like by examining all of the columns labels and the first few rows of data using the <code class="docutils literal notranslate"><span class="pre">.head()</span></code> command that was explained in the video.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check out the top of the data structure</span>
+<span class="n">heart_disease_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s also test out the <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> function to get some details about the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check out some of the properties of the data</span>
+<span class="n">heart_disease_data</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="intro-to-accessing-data-in-pandas-dataframes">
+<h4><strong>2.1.2 Intro to Accessing data in Pandas Dataframes</strong><a class="headerlink" href="#intro-to-accessing-data-in-pandas-dataframes" title="Link to this heading">#</a></h4>
+<p>To access data in a DataFrame for plotting, there are several different ways. Review the code below to see how you access data by its column header.
+<em>Note: In Part 3, we will explore additional ways to access data with more control!</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heart_disease_data</span><span class="p">[</span><span class="s1">&#39;trestbps&#39;</span><span class="p">]</span> <span class="c1"># accesses the column labeled &#39;trestbps&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To access the data by column name, you need to know the labels for each column name. If you need to know what strings pandas is using for column headers, you can find out using the <code class="docutils literal notranslate"><span class="pre">.keys()</span></code> command. Run the cell below to get the column header names for <code class="docutils literal notranslate"><span class="pre">heart_disease_data</span></code>.</p>
+<p><strong>Note:</strong> Using <code class="docutils literal notranslate"><span class="pre">.keys()</span></code> is particularly useful when there are extra spaces or other attributes of the column names that you can’t see with the standard dataframe display. Remember this if you decide to use data for your semester project!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heart_disease_data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>✅  In the cell below, print another one of the columns of <code class="docutils literal notranslate"><span class="pre">heart_disease_data</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># put your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="visualizing-the-data">
+<h3><strong>2.2 Visualizing the data</strong><a class="headerlink" href="#visualizing-the-data" title="Link to this heading">#</a></h3>
+<p>The following questions give you a chance to try visualizing the pandas dataframe using some of the functions you were shown in the video and one you weren’t.</p>
+</section>
+<section id="note">
+<h3>Note:<a class="headerlink" href="#note" title="Link to this heading">#</a></h3>
+<p>In this section, you will be plotting using <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> as shown in <strong>Video 2</strong>.</p>
+<p>✅  <strong>Question 1:</strong>  Using <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>, make a histogram (using <code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code>) of the resting blood pressure of the patient upon admission. Make sure to include axis labels and a title indicating what you’re looking at.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>✅  <strong>Question 2:</strong>  Make a <code class="docutils literal notranslate"><span class="pre">scatter</span></code> plot of the resting blood pressure (‘trestbps’) versus age. Make sure you put the right variables on the <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> axes.</p>
+<p>Think back to (or refer to) the Great Lakes in-class assignment we did previously in the course and remind yourself about correlations. Do you think these values are correlated?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>✅  <strong>Question 3:</strong>  Make a <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.boxplot.html">boxplot</a> for the resting blood pressure. The code structure of <code class="docutils literal notranslate"><span class="pre">boxplot</span></code> is slightly different than the previous two plots.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="accessing-parts-of-dataframes">
+<h2><strong>3. Accessing Parts of Dataframes</strong><a class="headerlink" href="#accessing-parts-of-dataframes" title="Link to this heading">#</a></h2>
+<p>What if we want to access dataframes by something other than the column headers?</p>
+<p>The code below creates a dataframe from scratch. Review the code and, when necessary, use the internet to learn what the following Pandas methods/attributes are used for (e.g. <code class="docutils literal notranslate"><span class="pre">.index</span></code> and <code class="docutils literal notranslate"><span class="pre">.columns</span></code>) and <strong>comment on what each line of code is doing below.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Example_DataFrame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">],[</span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">],[</span><span class="s1">&#39;D&#39;</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">15</span><span class="p">]])</span> <span class="c1"># put comment here</span>
+
+<span class="n">Example_DataFrame</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">Example_DataFrame</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># put comment here</span>
+
+<span class="n">Example_DataFrame</span> <span class="o">=</span> <span class="n">Example_DataFrame</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span> <span class="c1"># put comment here </span>
+
+<span class="n">Example_DataFrame</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># This line is removing the column header for the index column</span>
+
+<span class="n">Example_DataFrame</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Col_1&#39;</span><span class="p">,</span> <span class="s1">&#39;Col_2&#39;</span><span class="p">,</span> <span class="s1">&#39;Col_3&#39;</span><span class="p">,</span><span class="s1">&#39;Col_4&#39;</span><span class="p">]</span> <span class="c1"># put comment here </span>
+
+<span class="n">Example_DataFrame</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we’ve created this Pandas dataframe, the following image should serve as a reference for how one can access information within it.</p>
+<img src="https://i.ibb.co/M1H3MsS/DFExamp.png" alt="Dataframe Example" border="0" width=500px><section id="examples-of-using-iloc-and-loc-to-access-data">
+<h3><strong>3.1 Examples of using .iloc and .loc to access data</strong><a class="headerlink" href="#examples-of-using-iloc-and-loc-to-access-data" title="Link to this heading">#</a></h3>
+<p>Have you figured out the difference yet?</p>
+<ul class="simple">
+<li><p>If you want to access data by its label or name, we use <code class="docutils literal notranslate"><span class="pre">.loc</span></code></p></li>
+<li><p>If you want to access data by its indices or position, we use <code class="docutils literal notranslate"><span class="pre">.iloc</span></code></p></li>
+</ul>
+<p>Now, here are some examples that require us to index Pandas dataframes:</p>
+<p>✅  <strong>Example 1</strong>: Access information in the second column of Example_Dataframe.</p>
+<ul class="simple">
+<li><p><strong>Information Needed</strong>:
+Look at the above image and in your mind ‘highlight’ the information we want to access. We want the values under <code class="docutils literal notranslate"><span class="pre">Col_2</span></code>.</p></li>
+<li><p><strong>Available Tools</strong>:</p>
+<ul>
+<li><p>We notice that since we want all the information in the column, we can access it by the column name.</p></li>
+<li><p>However, we can also simply retreive the values in that column using <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>. We want all the rows in the column at the 1 index.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Index Col_2 by name</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Example_DataFrame</span><span class="p">[</span><span class="s1">&#39;Col_2&#39;</span><span class="p">])</span>
+
+<span class="c1">#Index Col_2 by .iloc, pay special attention to the use of &quot;:&quot; -- what&#39;s going on there?</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Example_DataFrame</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Check your code</strong>: Look at the gif below. Is this the image you pictured earlier? We can check that the code we used was correct by comparing the output with the column highlighted in the original dataframe.</p>
+<img src=https://media.giphy.com/media/Z8vwrf8OuKhSKuPk6r/giphy.gif width="600" height="300" align="center"><p>✅  <strong>Example 2:</strong> We access the information in the second row in a similar manner.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Index Row B with loc</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Example_DataFrame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">])</span>
+
+<span class="c1">#Index Row B with .iloc</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Example_DataFrame</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1">#Or</span>
+<span class="c1">#Index Row B with .iloc</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Example_DataFrame</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,:])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<img src=https://media.giphy.com/media/8pxXDtD429GhQpto4B/giphy.gif width="600" height="300" align="center"><p>Now, we have a slightly more complicated task. We are going to access single entries or multiple entries in a single column.</p>
+<p>✅  <strong>Example 3</strong>: Access the top left element of the Example_Dataframe.</p>
+<ul class="simple">
+<li><p><strong>Information Needed</strong>: Look at Example_Dataframe and in your mind ‘highlight’ the information we want to access.  We want the value 0.</p></li>
+<li><p><strong>Available Tools</strong>:</p>
+<ul>
+<li><p>Since we want a single value, we can combine the column and row access we used before, by using both the column name and <code class="docutils literal notranslate"><span class="pre">.loc</span></code> with the row name.</p></li>
+<li><p>Or we could use the indices to retreive the value using <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>. We want the entry in the 0th row and 0th column.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Index Value 0 with .loc</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Example_DataFrame</span><span class="p">[</span><span class="s1">&#39;Col_1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">])</span>
+
+<span class="c1">#Index Value 0 with .iloc</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Example_DataFrame</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also access multiples entries. In the final example, we want to access the entries 1,2,3 or the entries in the 0th row and the 1st, 2nd, 3rd columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Example_DataFrame</span>
+<span class="n">Example_DataFrame</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Check your code</strong>: Look at the gif below. We can check that the code we used was correct, by comparing the output with the column highlighted in the original dataframe.</p>
+<img src=https://media.giphy.com/media/O9WnZetfXl4K9vCLSL/giphy.gif width="600" height="300" align="center"></section>
+<section id="let-s-practice-different-ways-to-index-using-both-iloc-and-loc">
+<h3><strong>3.2 Let’s practice different ways to index using both <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> and <code class="docutils literal notranslate"><span class="pre">.loc</span></code></strong><a class="headerlink" href="#let-s-practice-different-ways-to-index-using-both-iloc-and-loc" title="Link to this heading">#</a></h3>
+<p>Examine the Example_Dataframe and complete the questions below. For each question, follow the same process we did above: What is the task? What information do you need? Are you accessing row data or column data? What tools can you use? Make sure to check that the output matches what you expected from the original Dataframe.</p>
+<p>✅  <strong>Question 1:</strong> Using <code class="docutils literal notranslate"><span class="pre">.loc</span></code> and <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>, access the row of data containing [8,9,10,11] from the example dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>✅  <strong>Question 2</strong>: Using <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>, access just the values [6,10,14] from the example dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>✅  <strong>Question 3</strong>: Using <code class="docutils literal notranslate"><span class="pre">.loc</span></code> and <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>, access the value “10” from the example dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>✅  <strong>Question 4</strong>: Print out the column names and index names.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#4</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="understanding-the-pandas-dataframes-default">
+<h3><strong>3.3 Understanding the Pandas Dataframes default</strong><a class="headerlink" href="#understanding-the-pandas-dataframes-default" title="Link to this heading">#</a></h3>
+<p>By default, when you load a dataset with Pandas or create a dataframe from scratch, Pandas will define the row indices to just be numbers rather than a unique set of labels that match your data. This is how we will commonly interact with Pandas dataframes.</p>
+<p>✅  Review the following code that constructs a dataframe without providing specific row index names and <strong>comment what each line of code is doing.</strong> Indexing will be similiar to before but now the row names are just integers representing row numbers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DF_NoIndex</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">],[</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">],[</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">15</span><span class="p">]])</span> <span class="c1">#Comment here</span>
+<span class="n">DF_NoIndex</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Col_1&#39;</span><span class="p">,</span> <span class="s1">&#39;Col_2&#39;</span><span class="p">,</span> <span class="s1">&#39;Col_3&#39;</span><span class="p">,</span><span class="s1">&#39;Col_4&#39;</span><span class="p">]</span> <span class="c1"># Comment here</span>
+
+<span class="n">DF_NoIndex</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, let’s see what it looks like when we access rows from this dataframe:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Index the third row by .loc</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">DF_NoIndex</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c1">#Index the third row by .iloc</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">DF_NoIndex</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Attention</strong>: check the following cell carefully. Notice how <code class="docutils literal notranslate"><span class="pre">.loc</span></code> and <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> are used different to access multiple rows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Index the first and second row by loc</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">DF_NoIndex</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1">#Index the first and second row by .iloc</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">DF_NoIndex</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="assignment-wrap-up">
+<h2>Assignment wrap-up<a class="headerlink" href="#assignment-wrap-up" title="Link to this heading">#</a></h2>
+<p>Please fill out the form that appears when you run the code below.  <strong>You must completely fill this out in order to receive credit for the assignment!</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
+<span class="n">HTML</span><span class="p">(</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&lt;iframe </span>
+<span class="sd">	src=&quot;https://forms.cloud.microsoft/r/uyAtbWy3Sx&quot; </span>
+<span class="sd">	width=&quot;800px&quot; </span>
+<span class="sd">	height=&quot;600px&quot; </span>
+<span class="sd">	frameborder=&quot;0&quot; </span>
+<span class="sd">	marginheight=&quot;0&quot; </span>
+<span class="sd">	marginwidth=&quot;0&quot;&gt;</span>
+<span class="sd">	Loading...</span>
+<span class="sd">&lt;/iframe&gt;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe 
+	src="https://forms.cloud.microsoft/r/uyAtbWy3Sx" 
+	width="800px" 
+	height="600px" 
+	frameborder="0" 
+	marginheight="0" 
+	marginwidth="0">
+	Loading...
+</iframe>
+</div></div>
+</div>
+<section id="congratulations-you-re-done">
+<h3>Congratulations, you’re done!<a class="headerlink" href="#congratulations-you-re-done" title="Link to this heading">#</a></h3>
+<p>Submit this assignment by uploading it to the course Desire2Learn web page.  Go to the “Pre-class assignments” folder, find the appropriate submission link, and upload it there.</p>
+<p>See you in class!</p>
+<p>© Copyright 2026,  The Department of Computational Mathematics, Science and Engineering at Michigan State University</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Day-12"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Day-12.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Day-12</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Day-12_In-Class_GDP-STUDENT.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Day 12 In-Class: Cleaning and Analyzing Economic Data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-name-here"><p style="text-align: right;"> ✅ Put your name here</p></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today-s-pre-class-assignment">Goals for today’s pre-class assignment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-instructions">Assignment instructions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-computational-models"><strong>1. Overview of Computational Models</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-data-in-pandas"><strong>2. Working with data in Pandas</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#video-1">Video 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#video-2">Video 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-pandas-references">Useful Pandas references</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-and-plotting"><strong>2.1 Pandas and Plotting</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-pandas-and-all-of-our-other-useful-modules-we-know-up-to-this-point">Importing Pandas and all of our other useful modules we know up to this point.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-out-the-dataframe"><strong>2.1.1 Checking out the DataFrame</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-to-accessing-data-in-pandas-dataframes"><strong>2.1.2 Intro to Accessing data in Pandas Dataframes</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-data"><strong>2.2 Visualizing the data</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#note">Note:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-parts-of-dataframes"><strong>3. Accessing Parts of Dataframes</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-using-iloc-and-loc-to-access-data"><strong>3.1 Examples of using .iloc and .loc to access data</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-practice-different-ways-to-index-using-both-iloc-and-loc"><strong>3.2 Let’s practice different ways to index using both <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> and <code class="docutils literal notranslate"><span class="pre">.loc</span></code></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-pandas-dataframes-default"><strong>3.3 Understanding the Pandas Dataframes default</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-wrap-up">Assignment wrap-up</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#congratulations-you-re-done">Congratulations, you’re done!</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Department of Computational Mathematics, Science and Engineering at Michigan State University
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
