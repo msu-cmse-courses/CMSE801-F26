@@ -1,0 +1,1224 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Homework 2: Exploring models, data, and random numbers using NumPy and Matplotlib and solving a simple ODE &#8212; CMSE 801</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Homework/HW2/HW-02_NumPyMatplotlibAndODE-STUDENT';</script>
+    <link rel="icon" href="../../_static/logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Day-01" href="../../Day-01/Day-01.html" />
+    <link rel="prev" title="Homework 1: Python fundamentals" href="../HW1/Homework-01_PythonFundamentals-STUDENT-F26.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="CMSE 801 - Home"/>
+    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="CMSE 801 - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Materials</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Course_Documents/Course_Documents.html">Important Course information</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Course_Documents/Syllabus/syllabus.html">Syllabus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Course_Documents/Schedule/schedule.html">Course Schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Course_Documents/SoftwareSetup/SoftwareSetupGuide.html">Software Setup Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Course_Documents/classParticipation/classParticipation.html">Classroom Participation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Course_Documents/GenerativeAI/GenerativeAI_Policy.html">Generative AI Policy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Project/Project.html">Semester Project</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Project/SemesterProjectDetails.html">Project Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Project/ProjectProposal.html">Project Proposal - Due October 28</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Project/FinalProject_RequirementsAndGradingRubric.html">Requirements and Grading Rubric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Project/FinalProjectTemplate.html">CMSE 801 Final Project Template</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../Project/ProjectDraft.html">Project Draft - Due November 18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Project/Project_Self-Evaluation.html">Project Self-Evaluation</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/msu-cmse-courses/cmse801-supplemental/raw/main/Project/Presentation_Evaluation_Rubric.pdf">Presentation Evaluation Rubric</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../Homework.html">Homework</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../HW1/Homework-01_PythonFundamentals-STUDENT-F26.html">Homework 1 - Python Fundamentals</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Homework 2 - NumPy, Matplotlib, and a Simple ODE</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/msu-cmse-courses/CMSE801-F26/blob/main/Homework/HW2/pop_data.csv">https://github.com/msu-cmse-courses/CMSE801-F26/blob/main/Homework/HW2/pop_data.csv</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Daily Content</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-01/Day-01.html">Day 01</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-01/Day-01_In-Class_SortingAlgorithm-STUDENT.html">Day 1 In-Class Assignment: Introductions and Sorting Algorithms</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAZKaCUMP-JQZj6mQG9yZANAfXIokhXP63-2By8XLo81Kc?e=N4QF3I">Day 01 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-02/Day-02.html">Day 02</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-02/Day-02_Pre-Class_IntroToPython-STUDENT.html">Day 2 Pre-class Assignment: Intro to Python</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../Day-02/Day-02_In-Class_OrderOfMagnitudeModeling-STUDENT.html">Day 2 In-class Assignment: Order of Magnitude Modeling</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAsDxwKy1WsQZESscQmuyYNAcZv06dZ4sIq42ScDGWk0NI?e=DpWI1l">Day 02 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-03/Day-03.html">Day 03</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-03/Day-03_Pre-Class_ListsAndLoops-STUDENT.html">Day 3: Pre-Class Assignment: Lists and Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-03/Day-03_In-Class_ListsLoopsAndSaving-STUDENT.html">Day 3 In-class Assignment: The power of compound interest</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAb9ETJNiiERaWy4yrIx4qhAdgLnvkqZzhlufoRgjSFbsc?e=eX1d6g">Day 03 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-04/Day-04.html">Day 04</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-04/Day-04_Pre-Class_IfStatementsAndFunctions-STUDENT.html">Day 4: Pre-class Assignment: Boolean logic, if statements, and an introduction to functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-04/Day-04_In-Class_IfStatementsAndFunctions-STUDENT.html">Day 4 In-class Assignment: Savings for Everyone</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQBUE1SWtyFdS7cpuhMKR9ziAZImiGk0yIZ7am1QEZSJNzY?e=CNH5Pn">Day 04 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-05/Day-05.html">Day 05</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-05/Day-05_Pre-Class_MoreFunctions-STUDENT.html">Day 5: Pre-class Assignment: Thinking more about functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-05/Day-05_In-Class_MoreFunctions-STUDENT.html">Day 5 In-class Assignment: Practicing with functions (for profit!)</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQDLt3-WevlVSIWT7hGXL7nmASHUThF9gw6ot2vXQYI5urM?e=tcg0FD">Day 05 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-06/Day-06.html">Day 06</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-06/Day-06_Pre-Class_ModulesMathAndPlots-STUDENT.html">Day 6 Pre-Class Assignment: Python Modules: Numpy and Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-06/Day-06_In-Class_MathAndPlotting-STUDENT.html">Day 6 In-class assignment: Visualizing population growth</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQA6BliAKVGfSKjQsFLkiz-_AV6ZJVXJGgF4R0BCNxhYRiQ?e=gAqGqt">Day 06 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-07/Day-07.html">Day 07</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-07/Day-07_Pre-Class_IntroToNumPy-STUDENT.html">Day 7 Pre-Class: Introduction to NumPy</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/michigan_pop.csv">michigan_pop.csv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-07/Day-07_In-Class_NumPyWithTheGreatLakes-STUDENT.html">Day 7 In-class Assignment: Exploring Great Lakes Water Levels using NumPy</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQC4UK6S6FAlTqwsLIkhTNpQAbHBjQg5M_lRHffAMQJdjXw?e=iN7YPP">Day 07 Slides (MSU Login)</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_erie.csv">lake_erie.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_michigan_huron.csv">lake_michigan_huron.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_ontario.csv">lake_ontario.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_superior.csv">lake_superior.csv</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-08/Day-08.html">Day 08</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-08/Day-08_Pre-Class-IntroToODEs-STUDENT.html">Day 8 Pre-class Assignment: Introduction to Modeling with Ordinary Differential Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-08/Day-08_In-Class_IntroToODEs-STUDENT.html">Day 8: In-class Assignment: Introduction to Modeling with ODEs</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQCbGYeCi1IcRqONrvJOsN0-AQ30GucqeDx29bQm1a7xgWA?e=C2vB1I">Day 8 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-09/Day-09.html">Day 09</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-09/Day-09_Pre-Class_ModelingWithODEs-STUDENT.html">Day 9: Pre-class Assignment: Modeling with Ordinary Differential Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-09/Day-09_In-Class_ModelingWithODEs-STUDENT.html">Day 9: In-class Assignment: Modeling with ODEs</a></li>
+
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQC7RociakEXRIzDiwRVDKtgAYwCrHYiKafuZGCVEg_7ojw?e=eVuLhB">Day 9 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-10/Day-10.html">Day 10</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-10/Day-10_Pre-Class_ViralKinetics-STUDENT.html">Day 10 Pre-Class: Viral Kinetics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-10/Day-10_In-Class_CompartmentalModeling-STUDENT.html">Day 10 In-class Assignment: Building Compartmental Models</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-11/Day-11.html">Day 11</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-11/Day-11_Pre-Class_Zombies-STUDENT.html">Day 11 Pre-class Assignment: ZOMBIES!!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-11/Day-11_In-Class_CompartmentsWithSolveIVP-STUDENT.html">Day 11 In-Class Assignment: Compartmental Modeling, moving from the model to the code</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-12/Day-12.html">Day 12</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-12/Day-12_Pre-Class_Pandas-STUDENT.html">Day 12 Pre-class Assignment: Computational Models Overview and The Pandas Data Analysis Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-12/Day-12_In-Class_GDP-STUDENT.html">Day 12 In-Class: Cleaning and Analyzing Economic Data</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-12/GDP_Data.csv">GDP_Data.csv</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Extra Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../ReviewAndPracticeMaterials/ReviewAndPracticeMaterials.html">Review and Practice Materials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ReviewAndPracticeMaterials/ReviewNotebook_PythonFundamentals-STUDENT.html">Reviewing and practicing prior concepts: Python Fundamentals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReviewAndPracticeMaterials/ReviewNotebook_Debugging-STUDENT.html">Practice with Debugging</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../ReviewAndPracticeMaterials/ReviewNotebook_Functions-STUDENT.html">Practice with: functions</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Homework/HW2/HW-02_NumPyMatplotlibAndODE-STUDENT.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Homework 2: Exploring models, data, and random numbers using NumPy and Matplotlib and solving a simple ODE</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-name-here"><p style="text-align: right;"> ✅ <strong>Put your name here</strong> </p></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals"><strong>Learning Goals</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#content-goals">Content Goals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-goals">Practice Goals</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-instructions"><strong>Assignment instructions</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-check">Version check</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grading"><strong>Grading</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-modules-you-will-need-for-this-assignment"><strong>0. Importing the modules you will need for this assignment</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-at-random-number-distributions-and-statistics-36-points"><strong>1. Looking at Random Number Distributions and Statistics (36 points)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1-3-points">✅  Question 1.1 (3 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-random-arrays">Generate Random Arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2-2-points">✅  Question 1.2 (2 points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-3-4-points">✅  Question 1.3 (4 points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-random-distributions">Visualizing Random Distributions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-4-9-points">✅  Question 1.4 (9 points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptive-statistics-of-random-distributions">Descriptive statistics of random distributions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-5-5-points">✅  Question 1.5 (5 points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-6-5-points">✅  Question 1.6 (5 points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-7-4-points">✅  Question 1.7 (4 points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-8-4-points">✅  Question 1.8 (4 points)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-with-numpy-22-points"><strong>2. Modeling with <code class="docutils literal notranslate"><span class="pre">Numpy</span></code> (22 points)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revisiting-the-population-model-from-class">Revisiting the Population Model from Class</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1-3-points">✅ Question 2.1 (3 points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-2-3-points">✅  Question 2.2 (3 points)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-your-model-to-data">Comparing your model to data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-3-2-points">✅  Question 2.3 (2 points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-4-3-points">✅  Question 2.4 (3 points)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-data-and-your-modeling-tool-to-estimate-the-best-fit-parameters">Using the data and your modeling tool to estimate the “best fit” parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-5-4-points">✅  Question 2.5 (4 points)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confronting-the-limitations-of-your-model-given-new-data">Confronting the limitations of your model given new data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-6-5-points">✅  Question 2.6 (5 points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-7-2-points">✅  Question 2.7 (2 points)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-odes-revisting-population-modeling-again-but-with-a-twist-22-total-points"><strong>3. Solving ODEs: Revisting population modeling again, but with a twist! (22 total points)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-1-write-a-function-for-the-derivative-4-points">✅  Question 3.1 Write a function for the derivative (4 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-2-compute-a-derivative-1-point">✅  Question 3.2 Compute a derivative (1 point)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-3-simulate-population-growth-6-points">✅  Question 3.3 Simulate population growth (6 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-4-plot-population-growth-3-points">✅  Question 3.4 Plot population growth (3 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-5-plotting-alternative-models-6-points">✅  Question 3.5 Plotting alternative models (6 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-6-reflecting-on-the-model-results-2-points">✅  Question 3.6 Reflecting on the model results (2 points)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wait-before-you-submit-your-notebook-read-the-following-important-recommendations">Wait! Before you submit your notebook, read the following important recommendations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#congratulations-you-re-done">Congratulations, you’re done!</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="homework-2-exploring-models-data-and-random-numbers-using-numpy-and-matplotlib-and-solving-a-simple-ode">
+<h1>Homework 2: Exploring models, data, and random numbers using NumPy and Matplotlib and solving a simple ODE<a class="headerlink" href="#homework-2-exploring-models-data-and-random-numbers-using-numpy-and-matplotlib-and-solving-a-simple-ode" title="Link to this heading">#</a></h1>
+<p><img src="https://cmse.msu.edu/_assets/images/about/image001.png"
+     alt="CMSE Logo"
+     align="right" 
+     height="100"/></p>
+<section id="put-your-name-here">
+<h2><p style="text-align: right;"> ✅ <strong>Put your name here</strong> </p><a class="headerlink" href="#put-your-name-here" title="Link to this heading">#</a></h2>
+</section>
+<section id="learning-goals">
+<h2><strong>Learning Goals</strong><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<section id="content-goals">
+<h3>Content Goals<a class="headerlink" href="#content-goals" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Review how to define and use functions in Python (including using the <code class="docutils literal notranslate"><span class="pre">return</span></code> statement and default arguments)</p></li>
+<li><p>Use functions to calculate statistical values and build computational models</p></li>
+<li><p>Load data using NumPy</p></li>
+<li><p>Visualize models and data using matplotlib</p></li>
+<li><p>Compare models to data to understand assumptions and limitations</p></li>
+<li><p>Solve a simple ordinary differential equation (ODE) using a numerical method</p></li>
+</ul>
+</section>
+<section id="practice-goals">
+<h3>Practice Goals<a class="headerlink" href="#practice-goals" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Use the internet as a resource for learning how to write code, learn new things, and troubleshoot problems</p></li>
+<li><p>Read Python module documentation to learn how to accomplish new things that may be unfamiliar to you</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="assignment-instructions">
+<h2><strong>Assignment instructions</strong><a class="headerlink" href="#assignment-instructions" title="Link to this heading">#</a></h2>
+<p>Work through the following assignment, making sure to follow all the directions and answer all the questions.</p>
+<p><strong>This assignment is due at 11:59 pm on Friday, October 9th.</strong> It should be uploaded into the “Homework Assignments” submission folder for Homework #2.  Submission instructions can be found at the end of the notebook.</p>
+</section>
+<hr class="docutils" />
+<section id="version-check">
+<h2>Version check<a class="headerlink" href="#version-check" title="Link to this heading">#</a></h2>
+<p>Before you begin, make sure your Jupyter kernel is Python 3. There are significant differences between Python 2 and Python 3, and we use Python 3 in this course. The kernel type at the upper-right corner should say “Python 3”, and the following code should show a version of the form: <code class="docutils literal notranslate"><span class="pre">3.x.y</span></code> (where “x” and “y” are the sub-version numbers).</p>
+<p>If your kernel is Python 2, try selecting Python 3 from the Kernel menu above under the sub-menu “Change kernel”. If that does not work, consult the Teams help channel for assistance.</p>
+</section>
+<hr class="docutils" />
+<section id="grading">
+<h2><strong>Grading</strong><a class="headerlink" href="#grading" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Generating models and comparing to data (22 points)</p></li>
+<li><p>Looking at distributions and calculating simple statistics (37 points)</p></li>
+<li><p>Solving a simple ODE (23 points)</p></li>
+</ol>
+<p><strong>Total points possible</strong>: 80</p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="importing-the-modules-you-will-need-for-this-assignment">
+<h2><strong>0. Importing the modules you will need for this assignment</strong><a class="headerlink" href="#importing-the-modules-you-will-need-for-this-assignment" title="Link to this heading">#</a></h2>
+<p>In this assignment you will be using two of the new modules you’ve learned about, <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>. Of course, in order to make sure you can use these modules when you need them, you have to <strong>import</strong> them.</p>
+<p>Put the <code class="docutils literal notranslate"><span class="pre">import</span></code> commands you need to include to be able to use <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> in this notebook in the cell below. Make sure to execute the cell before you move on!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your import commands here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="looking-at-random-number-distributions-and-statistics-36-points">
+<h2><strong>1. Looking at Random Number Distributions and Statistics (36 points)</strong><a class="headerlink" href="#looking-at-random-number-distributions-and-statistics-36-points" title="Link to this heading">#</a></h2>
+<p>Occasionally, when doing computational modeling, we will find it useful to generate random numbers. Computers are capable of generating what we call “pseudorandom” numbers, which are pretty close to being completely random, but eventually, when you generate <em>a lot</em> of random numbers, a pattern will start to repeat itself. This is because these “random” numbers are generated by a mathematical algorithm that has been turned into code. As the semester progresses, you’ll see examples of where we use random number generators!</p>
+<p>In this section of the homework assignment, you will practice using the new <code class="docutils literal notranslate"><span class="pre">numpy</span></code> module that you have been getting familiar with to generate and visualize the distributions of random numbers created by your computer. You’ll also practice writing more functions that can calculate basic statistical properties of these random numbers.</p>
+<section id="question-1-1-3-points">
+<h3>✅  Question 1.1 (3 points)<a class="headerlink" href="#question-1-1-3-points" title="Link to this heading">#</a></h3>
+</section>
+<section id="generate-random-arrays">
+<h3>Generate Random Arrays<a class="headerlink" href="#generate-random-arrays" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p><strong>Generate an array <code class="docutils literal notranslate"><span class="pre">x</span></code></strong> containing <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">500</span></code> random numbers uniformly distributed on the interval <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1)</span></code>.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">numpy.random.uniform</span></code>. You can search the <a class="reference external" href="https://numpy.org/doc/stable/reference/random/legacy.html#functions-in-numpy-random">NumPy random documentation</a> if you need help. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate 20 random integers from 0 to 100</span>
+<span class="n">my_random_numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Generate an array <code class="docutils literal notranslate"><span class="pre">y</span></code></strong> containing <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">500</span></code> random numbers from the <strong>standard normal distribution</strong>.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">numpy.random.standard_normal</span></code>. Look up the NumPy documentation if needed.</p>
+</li>
+</ol>
+<p><strong>Need a refresher?</strong> If you’re unfamiliar with uniform and standard normal distributions, see <a class="reference external" href="https://www.statology.org/normal-vs-uniform-distribution/">this comparison</a> and <a class="reference external" href="https://medium.com/&#64;donroshansingh88/understanding-normal-and-uniform-distributions-a-journey-through-the-fundamentals-71772f566b99">this page</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Try running this example code to see how it works!</span>
+<span class="c1"># You can run the cell multiple times to see how the numbers change</span>
+<span class="n">my_random_numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">my_random_numbers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[12 31 16 16 41 87 41 17 38 13 22 17 85 70 68  7 10 19 41 20]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code here for generating &quot;x&quot; and &quot;y&quot; as described above</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="question-1-2-2-points">
+<h4>✅  Question 1.2 (2 points)<a class="headerlink" href="#question-1-2-2-points" title="Link to this heading">#</a></h4>
+<p>In order to visualize the distribution of these random numbers, we’ll want to use matplotlib. Read the documentation on <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hist.html"><code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.hist</span></code></a> and briefly explain what this function does.</p>
+<p><font size="+3" color="green">✎</font> <em>Put your answer here</em></p>
+</section>
+<section id="question-1-3-4-points">
+<h4>✅  Question 1.3 (4 points)<a class="headerlink" href="#question-1-3-4-points" title="Link to this heading">#</a></h4>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">hist</span></code> function to plot histograms of the random numbers you generated in Question 1.1. You should make the histograms of the <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> arrays as two separate plots (you can do this by creating an extra code cell, or you can use a <code class="docutils literal notranslate"><span class="pre">plt.figure()</span></code> call before each <code class="docutils literal notranslate"><span class="pre">hist()</span></code> plot). Make sure to <strong>label your axes</strong> so it is obvious which histogram is which.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code here (create a second code cell, if needed)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualizing-random-distributions">
+<h4>Visualizing Random Distributions<a class="headerlink" href="#visualizing-random-distributions" title="Link to this heading">#</a></h4>
+</section>
+<section id="question-1-4-9-points">
+<h4>✅  Question 1.4 (9 points)<a class="headerlink" href="#question-1-4-9-points" title="Link to this heading">#</a></h4>
+<p>Use <code class="docutils literal notranslate"><span class="pre">subplot()</span></code> and <code class="docutils literal notranslate"><span class="pre">hist()</span></code> to visualize how the distributions of your randomly generated <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> values change as <code class="docutils literal notranslate"><span class="pre">n</span></code> increases.</p>
+<p><strong>Create the following plots:</strong></p>
+<ol class="arabic simple">
+<li><p>For <strong><code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">500</span></code></strong>, plot histograms of <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> side-by-side in the first row.</p></li>
+<li><p>Repeat for <strong><code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">10^4</span></code></strong> and <strong><code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">10^6</span></code></strong>, creating a new row for each value of <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p>
+<ul class="simple">
+<li><p>Generate new <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> arrays for each value of <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p></li>
+<li><p>For the larger values of <code class="docutils literal notranslate"><span class="pre">n</span></code>, experiment with increasing the number of <code class="docutils literal notranslate"><span class="pre">bins</span></code> in <code class="docutils literal notranslate"><span class="pre">hist()</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Your final figure should contain <strong>3 rows × 2 columns = 6 histograms</strong></p></li>
+<li><p>Label the axes and give each row a title indicating its value of <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">plt.tight_layout()</span></code> to arrange the plots neatly.</p></li>
+</ol>
+<p>For help with <code class="docutils literal notranslate"><span class="pre">subplot()</span></code>, see the <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplot.html">Matplotlib documentation</a> or the example at the end of the <strong>Day 6 In-Class Assignment</strong>.</p>
+<p><strong>Question:</strong> What do you observe in the plots about the distributions as <code class="docutils literal notranslate"><span class="pre">n</span></code> increases?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><font size="+3" color="green">✎</font> <em>Put your answer to “<strong>What do you observe in the plots as <span class="math notranslate nohighlight">\(n\)</span> increases?</strong>” here.</em></p>
+</section>
+<section id="descriptive-statistics-of-random-distributions">
+<h4>Descriptive statistics of random distributions<a class="headerlink" href="#descriptive-statistics-of-random-distributions" title="Link to this heading">#</a></h4>
+<p>Next, we will try to calculate some basic descriptive statistics of our distributions. You may wish to revisit the details of the Day 7 in-class assignment for a discussion of some basic statistical calculations.</p>
+</section>
+<section id="question-1-5-5-points">
+<h4>✅  Question 1.5 (5 points)<a class="headerlink" href="#question-1-5-5-points" title="Link to this heading">#</a></h4>
+<p>To start, write a function <code class="docutils literal notranslate"><span class="pre">compute_average</span></code> that computes and <strong>returns</strong> the average of the values in an input array. Your function should do this calculation “from scratch” rather than using a built-in Python function. However, you can use <code class="docutils literal notranslate"><span class="pre">np.mean()</span></code> to test and see if the function you wrote agrees with the NumPy function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-1-6-5-points">
+<h4>✅  Question 1.6 (5 points)<a class="headerlink" href="#question-1-6-5-points" title="Link to this heading">#</a></h4>
+<p>Now, write a function <code class="docutils literal notranslate"><span class="pre">compute_median</span></code> that computes and returns the median of the values in an input array. Note that the median is the middle term after sorting an array in ascending order, when the total number of terms is odd. Otherwise, the median is the average of the two middle terms after the sorting. You can use the <code class="docutils literal notranslate"><span class="pre">np.sort()</span></code> function for this problem to sort your values. To determine if you can just grab the middle value or need to calculate the average of the two middle values, you’ll need to check if the array has a odd number of terms or not!</p>
+<p>Again, you can check your answer using the <code class="docutils literal notranslate"><span class="pre">np.median()</span></code> function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-1-7-4-points">
+<h4>✅  Question 1.7 (4 points)<a class="headerlink" href="#question-1-7-4-points" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>Generate arrays of <strong>7 different lengths</strong>, with <span class="math notranslate nohighlight">\(n = 10,\ 10^2,\ 10^3,\ 10^4,\ 10^5,\ 10^6,\ 10^7\)</span>. Each array should contain random numbers from the <strong>standard normal distribution</strong>.</p></li>
+<li><p>Use your function from the previous question to compute the <strong>average</strong> of each array.</p></li>
+<li><p>Plot the average against <code class="docutils literal notranslate"><span class="pre">n</span></code> using <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.semilogx.html"><code class="docutils literal notranslate"><span class="pre">plt.semilogx()</span></code></a>, which uses a logarithmic scale for the x-axis. Label both axes and give your plot a descriptive title.</p></li>
+</ol>
+<p><strong>Question:</strong> What happens to the averages as <code class="docutils literal notranslate"><span class="pre">n</span></code> increases?</p>
+<p>Run your code several times. How does the plot change when you generate a new set of random numbers?</p>
+<p>Your observations should illustrate the <strong>law of large numbers</strong>. Look it up afterward to see how it relates to what you observed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create a list of the 7 array lengths you will try</span>
+<span class="n">n</span><span class="o">=</span><span class="p">[]</span>
+
+<span class="c1"># Put your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><font size="+3" color="green">✎</font> <em>Put your answer to “<strong>What do you observe about the average as <span class="math notranslate nohighlight">\(n\)</span> increases?</strong>” here.</em></p>
+</section>
+<section id="question-1-8-4-points">
+<h4>✅  Question 1.8 (4 points)<a class="headerlink" href="#question-1-8-4-points" title="Link to this heading">#</a></h4>
+<p>Repeat the previous exercise, but this time:</p>
+<ul class="simple">
+<li><p>Generate arrays whose entries are <strong>uniformly distributed on</strong> <span class="math notranslate nohighlight">\([0,1)\)</span>.</p></li>
+<li><p>Use the same 7 values of <span class="math notranslate nohighlight">\(n\)</span>: <span class="math notranslate nohighlight">\(n = 10,\ 10^2,\ 10^3,\ 10^4,\ 10^5,\ 10^6,\ 10^7.\)</span></p></li>
+<li><p>Compute the <strong>median</strong> of each array.</p></li>
+<li><p>Plot the median against <code class="docutils literal notranslate"><span class="pre">n</span></code> using <code class="docutils literal notranslate"><span class="pre">plt.semilogx()</span></code>. Label both axes and give your plot a descriptive title.</p></li>
+</ul>
+<p><strong>Question:</strong> What happens to the median as <code class="docutils literal notranslate"><span class="pre">n</span></code> increases? Does this match what you would expect for a uniform distribution on <span class="math notranslate nohighlight">\([0,1)\)</span>?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><font size="+3" color="green">✎</font> <em>Put your answer to “<strong>What do you observe about the median as <span class="math notranslate nohighlight">\(n\)</span> increases?</strong>” here.</em></p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="modeling-with-numpy-22-points">
+<h2><strong>2. Modeling with <code class="docutils literal notranslate"><span class="pre">Numpy</span></code> (22 points)</strong><a class="headerlink" href="#modeling-with-numpy-22-points" title="Link to this heading">#</a></h2>
+<p>CMSE 801 combines <strong>computational modeling</strong> and <strong>data analysis</strong>. So far, we have practiced both building and visualizing models and performing exploratory data analysis. In this part of the assignment, you will combine these skills.</p>
+<section id="revisiting-the-population-model-from-class">
+<h3>Revisiting the Population Model from Class<a class="headerlink" href="#revisiting-the-population-model-from-class" title="Link to this heading">#</a></h3>
+<p>In class, you wrote a function to model population growth over time. Here, you’ll recreate that function using the <strong>logistic population model</strong>. The logistic model describes population growth using</p>
+<div class="math notranslate nohighlight">
+\[
+P(t) = \frac{K}{1 + Ae^{-k_R(t-t_0)}},
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(t)\)</span> is the population at time <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(K\)</span> is the <strong>carrying capacity</strong>: the maximum population the environment can sustain.</p></li>
+<li><p><span class="math notranslate nohighlight">\(k_R\)</span> is the <strong>relative growth rate coefficient</strong> (in units of <span class="math notranslate nohighlight">\(1/\text{time}\)</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(t_0\)</span> is the initial time.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_0\)</span> is the population at the initial time <span class="math notranslate nohighlight">\(t_0\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(A\)</span> is defined by</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+A = \frac{K-P_0}{P_0}.
+\]</div>
+<p>Recall that you can calculate the exponential function in Python using <code class="docutils literal notranslate"><span class="pre">np.exp()</span></code>.</p>
+<section id="question-2-1-3-points">
+<h4>✅ Question 2.1 (3 points)<a class="headerlink" href="#question-2-1-3-points" title="Link to this heading">#</a></h4>
+<p>Write a function called <code class="docutils literal notranslate"><span class="pre">calculate_population</span></code> that takes the following <strong>five arguments</strong>:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">P0</span></code> — the initial population</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">K</span></code> — the carrying capacity</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kR</span></code> — the relative growth rate</p></li>
+<li><p>A <strong>list of times</strong> at which to calculate the population</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t0</span></code> — the initial time</p></li>
+</ol>
+<p>Your function should:</p>
+<ul class="simple">
+<li><p>Calculate the population at each time in the provided list.</p></li>
+<li><p><strong>Return</strong> the resulting population values as a list or NumPy array.</p></li>
+</ul>
+<p>This should be similar to the function you wrote in class.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your &quot;calculate_population&quot; function here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-2-2-3-points">
+<h4>✅  Question 2.2 (3 points)<a class="headerlink" href="#question-2-2-3-points" title="Link to this heading">#</a></h4>
+<p>Test your function to see if it generates the right set of population values by using the following parameters and <strong>making a plot of the result</strong>.</p>
+<ul class="simple">
+<li><p>Use a carrying capacity, <span class="math notranslate nohighlight">\(K\)</span>, of 12 billion, but define K to be “in billions” so that you just use <strong>12</strong> for your value (this avoids dealing with numbers with many zeros!)</p></li>
+<li><p>Use an initial population, <span class="math notranslate nohighlight">\(P_0\)</span>, of 1 billion, but define <span class="math notranslate nohighlight">\(P_0\)</span> to be “in billions” so that you just use <strong>1</strong> for your value, just like <span class="math notranslate nohighlight">\(K\)</span>.</p></li>
+<li><p>Use relative population growth rate, <span class="math notranslate nohighlight">\(k_R\)</span>, of <strong>0.03 per year</strong>.</p></li>
+</ul>
+<p>You’ll calculate this population model for an array of years that span 1800 to 2100, which is provided in the cell below.</p>
+<p><strong>Make sure you label your x and y axes with appropriate labels</strong>.</p>
+<p>If everything goes as planned, you should get a plot that looks like this:</p>
+<img src="https://github.com/msu-cmse-courses/cmse801-supplemental/blob/main/images/example_population.png?raw=true" alt="example-population" border="0" width=450px>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is the array of time values you should use:</span>
+<span class="n">t_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1800</span><span class="p">,</span><span class="mi">2101</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Put your code here:</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="comparing-your-model-to-data">
+<h3>Comparing your model to data<a class="headerlink" href="#comparing-your-model-to-data" title="Link to this heading">#</a></h3>
+<p>Now that you have a functional population growth modeling tool, you’re going to try to use that tool to model some population data! Of course, before you can model the data, you need to load it into your notebook:</p>
+<section id="question-2-3-2-points">
+<h4>✅  Question 2.3 (2 points)<a class="headerlink" href="#question-2-3-2-points" title="Link to this heading">#</a></h4>
+<p>Download <code class="docutils literal notranslate"><span class="pre">pop_data.csv</span></code> from the course website and place it in the same folder as your notebook.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">numpy.loadtxt()</span></code> to load the data into your notebook. The file contains three columns:</p>
+<ol class="arabic simple">
+<li><p>Year</p></li>
+<li><p>Population Model #1 (billions)</p></li>
+<li><p>Population Model #2 (billions)</p></li>
+</ol>
+<p>Store each column in a <strong>separate variable</strong> so you can easily work with the data later.</p>
+<p><strong>Before loading the data:</strong> Check the file for a header row that describes the columns. If a header is present, make sure to <strong>skip it when using <code class="docutils literal notranslate"><span class="pre">np.loadtxt()</span></code></strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code for loading the data here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-2-4-3-points">
+<h4>✅  Question 2.4 (3 points)<a class="headerlink" href="#question-2-4-3-points" title="Link to this heading">#</a></h4>
+<p>Now that you’ve loaded up your data, start off by making <strong>a plot of Population Model #1 as a function of time</strong>. You should make sure that you plot the data as a collection of individual dots rather than connected lines.</p>
+<p>You should end up with something that looks like this, <strong>but you can choose whatever color, marker shape, and marker size that you want</strong>:</p>
+<img src="https://github.com/msu-cmse-courses/cmse801-supplemental/blob/main/images/data-plot.png?raw=true" alt="data-plot" border="0" width=450px>
+<p>Again, <strong>make sure you give your plot appropriate axis labels so it is easy to tell what your plot is showing.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="using-the-data-and-your-modeling-tool-to-estimate-the-best-fit-parameters">
+<h3>Using the data and your modeling tool to estimate the “best fit” parameters<a class="headerlink" href="#using-the-data-and-your-modeling-tool-to-estimate-the-best-fit-parameters" title="Link to this heading">#</a></h3>
+<p>Later in the semester, we shall learn about a tool that we can use to fit a model to data to determine the parameters of the model that best fit the data, but for now, you are going to take a “guess-and-check” approach to try and fit the data using your model. Of course, you’ll want to make some educated guesses based on the properties of the data and the parameters you are using to create your model.</p>
+<section id="question-2-5-4-points">
+<h4>✅  Question 2.5 (4 points)<a class="headerlink" href="#question-2-5-4-points" title="Link to this heading">#</a></h4>
+<p>Your goal is to find values of the model parameters that approximately match <strong>Population Model #1</strong>.</p>
+<ol class="arabic simple">
+<li><p>Create a plot that shows:</p>
+<ul class="simple">
+<li><p>The <strong>data points</strong> from Population Model #1.</p></li>
+<li><p>A <strong>smooth curve</strong> from your logistic population model.</p></li>
+</ul>
+</li>
+<li><p>Experiment with different values of the <strong>carrying capacity, <span class="math notranslate nohighlight">\(K\)</span></strong>, and <strong>growth rate, <span class="math notranslate nohighlight">\(k_R\)</span></strong> until the model curve roughly follows the data points.</p></li>
+<li><p>Record your best-fit values of <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(k_R\)</span> in the Markdown cell below the plot.</p></li>
+</ol>
+<p><strong>Tip:</strong> Experiment with the parameters one at a time and observe how changing each one affects the shape and position of the model curve.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><font size="6" color="green">✎</font> <em>Record your best fit values for <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(k_R\)</span> here.</em></p>
+<p>My best fit parameters are:</p>
+<p><span class="math notranslate nohighlight">\(K\)</span> =</p>
+<p><span class="math notranslate nohighlight">\(k_R\)</span> =</p>
+</section>
+</section>
+<section id="confronting-the-limitations-of-your-model-given-new-data">
+<h3>Confronting the limitations of your model given new data<a class="headerlink" href="#confronting-the-limitations-of-your-model-given-new-data" title="Link to this heading">#</a></h3>
+<p>Sometimes, in the face of new data, the model we’re using to understand our data becomes insufficient for capturing all of the features in the data. If we trust our data, this is often an indication that we need to revise our model by changing our understanding of the phenomenon we’re trying to model or developing a new theory to match the observed properties.</p>
+<p>Now you’re going to look at the Population Model #2 data and see if your current model is sufficient for matching the new data.</p>
+<section id="question-2-6-5-points">
+<h4>✅  Question 2.6 (5 points)<a class="headerlink" href="#question-2-6-5-points" title="Link to this heading">#</a></h4>
+<p><strong>Make a new plot that includes all three of the following</strong>:</p>
+<ol class="arabic simple">
+<li><p>Your best fit smooth model line from Question 2.5</p></li>
+<li><p>The Population Model #1 data</p></li>
+<li><p>The Population Model #2 data (in a different color than Population Model #1)</p></li>
+</ol>
+<p><strong>Add a legend to your plot to make it easy to tell what each of the three components are</strong> and, again, <strong>labels your axes!</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-2-7-2-points">
+<h4>✅  Question 2.7 (2 points)<a class="headerlink" href="#question-2-7-2-points" title="Link to this heading">#</a></h4>
+<p>Based on your plot from Question 2.6, <strong>how do you think your model for population growth would need to change in order to fit the Population Model #2 data?</strong> Note that just changing the model parameters isn’t going to be enough to match this new model. Something fundamentally would need to change about how the population model is defined.</p>
+<p>In the markdown cell below, <strong>propose a modification to the current population model defined in the beginning of Part 2 that you think would allow you to model this new data.</strong></p>
+<p><font size="6" color="green">✎</font> <em>Propose your modified model here.</em></p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="solving-odes-revisting-population-modeling-again-but-with-a-twist-22-total-points">
+<h2><strong>3. Solving ODEs: Revisting population modeling again, but with a twist! (22 total points)</strong><a class="headerlink" href="#solving-odes-revisting-population-modeling-again-but-with-a-twist-22-total-points" title="Link to this heading">#</a></h2>
+<p>Modeling population growth is different for populations where individuals from the population are removed, or “harvested,” at a constant rate. For example, if a village relies on fishing from the lake nearby to survive, we could model the population of the fish using harvesting. In this example, assume the village needs exactly <strong>90</strong> fish per month from the lake.</p>
+<p>Model of population for fish goes like:</p>
+<div class="math notranslate nohighlight">
+\[\frac{dP}{dt} = r P (K - P) - H\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(r\)</span> is a natural growth factor: <strong>0.002</strong> (fish * month)<span class="math notranslate nohighlight">\(^{-1}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(K\)</span> is the maximum supportable population of the lake: <strong>700</strong> fish</p></li>
+<li><p><span class="math notranslate nohighlight">\(H\)</span> is the harvesting rate: <strong>90</strong> fish/month</p></li>
+<li><p><span class="math notranslate nohighlight">\(P\)</span> is the value of the population (fish)</p></li>
+<li><p><span class="math notranslate nohighlight">\(dP/dt\)</span> is the rate of change of the population (fish per month)</p></li>
+</ul>
+<p>It may also be useful in this section to remember how values can be calculated incrementally using derivatives (we referred to these as “update equations”). For example, if we know that the value of <span class="math notranslate nohighlight">\(x\)</span> is <span class="math notranslate nohighlight">\(x_1\)</span> at a given time, and we know value of the derivative at that time is <span class="math notranslate nohighlight">\(dx/dt\)</span>, then we can compute the value of <span class="math notranslate nohighlight">\(x\)</span> at a short time (<span class="math notranslate nohighlight">\(\Delta t\)</span>) later:</p>
+<div class="math notranslate nohighlight">
+\[x_2 = x_1 + \frac{dx}{dt}\Delta t\]</div>
+<section id="question-3-1-write-a-function-for-the-derivative-4-points">
+<h3>✅  Question 3.1 Write a function for the derivative (4 points)<a class="headerlink" href="#question-3-1-write-a-function-for-the-derivative-4-points" title="Link to this heading">#</a></h3>
+<p>Write a function to calculate and <strong>return</strong> the derivative <span class="math notranslate nohighlight">\(dP/dt\)</span>. Use the template below to get started on your function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">derivs</span><span class="p">(</span><span class="n">______</span><span class="p">):</span> <span class="c1"># inputs?</span>
+    
+    <span class="c1"># some constants provided...</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="mf">0.002</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="mi">700</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="mi">90</span>
+    
+    <span class="c1"># more code?</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-3-2-compute-a-derivative-1-point">
+<h3>✅  Question 3.2 Compute a derivative (1 point)<a class="headerlink" href="#question-3-2-compute-a-derivative-1-point" title="Link to this heading">#</a></h3>
+<p>The current population of the lake is estimated to be 85 fish. Call your <code class="docutils literal notranslate"><span class="pre">derivs</span></code> function to show the value of <span class="math notranslate nohighlight">\(dP/dt\)</span> when population is 85. You should double-check that your function is working correctly by comparing your answer to the expected value, which is <strong>14.55</strong>. If you’re not getting the correct value, make sure you correct this before moving on! Come to office hours or ask questions on Teams if you need help.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-3-3-simulate-population-growth-6-points">
+<h3>✅  Question 3.3 Simulate population growth (6 points)<a class="headerlink" href="#question-3-3-simulate-population-growth-6-points" title="Link to this heading">#</a></h3>
+<p>The code below provides:</p>
+<ul class="simple">
+<li><p>An array of <code class="docutils literal notranslate"><span class="pre">times</span></code> covering <strong>5 years</strong>, with values at <strong>1-month intervals</strong>.</p></li>
+<li><p>A matching <code class="docutils literal notranslate"><span class="pre">pops</span></code> array for storing the population at each time.</p></li>
+<li><p>The initial population of <strong>85 fish</strong> already stored in the first position of <code class="docutils literal notranslate"><span class="pre">pops</span></code>.</p></li>
+</ul>
+<p><strong>Task:</strong> Write a loop that uses your <code class="docutils literal notranslate"><span class="pre">derivs</span></code> function to calculate the population at each time step over the next 5 years.</p>
+<p>Use appropriate <strong>NumPy array indexing</strong> to store each calculated population value in <code class="docutils literal notranslate"><span class="pre">pops</span></code>.</p>
+<p><strong>Check your result:</strong> When you are finished, the <code class="docutils literal notranslate"><span class="pre">pops</span></code> array should contain a population value at every time step—<strong>there should be no zeros remaining in the array.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># times, incrementing month by month, for a total of 5 years</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">12</span>
+<span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+
+<span class="c1"># pops, initially set to a bunch of 0s, and the first value has already been inserted</span>
+<span class="n">pops</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">times</span><span class="p">))</span>
+<span class="n">pops</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">85</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-3-4-plot-population-growth-3-points">
+<h3>✅  Question 3.4 Plot population growth (3 points)<a class="headerlink" href="#question-3-4-plot-population-growth-3-points" title="Link to this heading">#</a></h3>
+<p>Create a plot that shows the population growth of fish in the lake over 5 years, assuming a starting population value of <strong>85</strong>. Make sure to include axis labels and a title for your plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-3-5-plotting-alternative-models-6-points">
+<h3>✅  Question 3.5 Plotting alternative models (6 points)<a class="headerlink" href="#question-3-5-plotting-alternative-models-6-points" title="Link to this heading">#</a></h3>
+<p>The initial population estimate is <strong>85 fish</strong>, but this estimate may be off by <span class="math notranslate nohighlight">\(±15\)</span> fish. Therefore, the actual initial population could be anywhere from <strong>70 to 100 fish</strong>.</p>
+<p>Use your population model to simulate growth for the following three starting populations:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P_0 = 70\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P_0 = 85\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P_0 = 100\)</span></p></li>
+</ul>
+<p>Plot all three population curves on the <strong>same plot</strong>.</p>
+<p>Your plot should include:</p>
+<ul class="simple">
+<li><p>A legend identifying each curve by its initial population.</p></li>
+<li><p>Labels for both axes.</p></li>
+<li><p>A descriptive title.</p></li>
+</ul>
+<p><strong>Question:</strong> How does changing the initial population affect the population over time?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-3-6-reflecting-on-the-model-results-2-points">
+<h3>✅  Question 3.6 Reflecting on the model results (2 points)<a class="headerlink" href="#question-3-6-reflecting-on-the-model-results-2-points" title="Link to this heading">#</a></h3>
+<p>What stands out to you about the plot from 3.5? What do these results mean for the real life consequences of this village and its food supply?</p>
+<p><font size=8 color="#009600">✎</font> Put your answer here</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="wait-before-you-submit-your-notebook-read-the-following-important-recommendations">
+<h2>Wait! Before you submit your notebook, read the following important recommendations<a class="headerlink" href="#wait-before-you-submit-your-notebook-read-the-following-important-recommendations" title="Link to this heading">#</a></h2>
+<p>When your TA opens your notebook to grade the assignment, it will be really useful if your notebook is saved in a fully executed state so that they can see the output of all your code. Additionally, it may be necessary from time to time for the TA to actually run your notebook, but when they run the notebook, it is important that you are certain that all the code will actually run for them!</p>
+<p>You should get into the following habit: <strong>before you save and submit your final notebook for your assignments, go to the “Kernel” tab at the top of the notebook and select “Restart and Run all”.</strong> This will restart your notebook and try to run the code cell-by-cell from the top to the bottom. Once it finished, review you notebook and make sure there weren’t any errors that popped up. Sometimes, when working with notebooks, we accidentally change code in one cell that break our code in another cell. If your TA stumbles across code cells that don’t work, <strong>they will likely have to give you a zero for those portions of the notebook that don’t work</strong>. Testing your notebook one last time is a good way to make sure this doesn’t happen.</p>
+<p><strong>Once you’ve tested your whole notebook again, make sure you save it one last time before you upload it to D2L.</strong></p>
+<hr class="docutils" />
+<section id="congratulations-you-re-done">
+<h3>Congratulations, you’re done!<a class="headerlink" href="#congratulations-you-re-done" title="Link to this heading">#</a></h3>
+<p>Submit this assignment by uploading it to the course Desire2Learn web page. Go to the “Homework Assignments” section, find the submission folder link for Homework #2, and upload it there.</p>
+<p>Copyright © 2026, <a class="reference external" href="https://cmse.msu.edu/">Department of Computational Mathematics, Science and Engineering</a> at Michigan State University, All rights reserved.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Homework\HW2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../HW1/Homework-01_PythonFundamentals-STUDENT-F26.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Homework 1: Python fundamentals</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../Day-01/Day-01.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Day-01</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-name-here"><p style="text-align: right;"> ✅ <strong>Put your name here</strong> </p></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals"><strong>Learning Goals</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#content-goals">Content Goals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-goals">Practice Goals</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-instructions"><strong>Assignment instructions</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-check">Version check</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grading"><strong>Grading</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-modules-you-will-need-for-this-assignment"><strong>0. Importing the modules you will need for this assignment</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-at-random-number-distributions-and-statistics-36-points"><strong>1. Looking at Random Number Distributions and Statistics (36 points)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1-3-points">✅  Question 1.1 (3 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-random-arrays">Generate Random Arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2-2-points">✅  Question 1.2 (2 points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-3-4-points">✅  Question 1.3 (4 points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-random-distributions">Visualizing Random Distributions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-4-9-points">✅  Question 1.4 (9 points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptive-statistics-of-random-distributions">Descriptive statistics of random distributions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-5-5-points">✅  Question 1.5 (5 points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-6-5-points">✅  Question 1.6 (5 points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-7-4-points">✅  Question 1.7 (4 points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-8-4-points">✅  Question 1.8 (4 points)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-with-numpy-22-points"><strong>2. Modeling with <code class="docutils literal notranslate"><span class="pre">Numpy</span></code> (22 points)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revisiting-the-population-model-from-class">Revisiting the Population Model from Class</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1-3-points">✅ Question 2.1 (3 points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-2-3-points">✅  Question 2.2 (3 points)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-your-model-to-data">Comparing your model to data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-3-2-points">✅  Question 2.3 (2 points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-4-3-points">✅  Question 2.4 (3 points)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-data-and-your-modeling-tool-to-estimate-the-best-fit-parameters">Using the data and your modeling tool to estimate the “best fit” parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-5-4-points">✅  Question 2.5 (4 points)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confronting-the-limitations-of-your-model-given-new-data">Confronting the limitations of your model given new data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-6-5-points">✅  Question 2.6 (5 points)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-7-2-points">✅  Question 2.7 (2 points)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-odes-revisting-population-modeling-again-but-with-a-twist-22-total-points"><strong>3. Solving ODEs: Revisting population modeling again, but with a twist! (22 total points)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-1-write-a-function-for-the-derivative-4-points">✅  Question 3.1 Write a function for the derivative (4 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-2-compute-a-derivative-1-point">✅  Question 3.2 Compute a derivative (1 point)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-3-simulate-population-growth-6-points">✅  Question 3.3 Simulate population growth (6 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-4-plot-population-growth-3-points">✅  Question 3.4 Plot population growth (3 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-5-plotting-alternative-models-6-points">✅  Question 3.5 Plotting alternative models (6 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-6-reflecting-on-the-model-results-2-points">✅  Question 3.6 Reflecting on the model results (2 points)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wait-before-you-submit-your-notebook-read-the-following-important-recommendations">Wait! Before you submit your notebook, read the following important recommendations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#congratulations-you-re-done">Congratulations, you’re done!</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Department of Computational Mathematics, Science and Engineering at Michigan State University
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
