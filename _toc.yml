@@ -52,7 +52,7 @@ parts:
         title: Homework 1 - Python Fundamentals
       - file:  Homework/HW2/HW-02_NumPyMatplotlibAndODE-STUDENT.ipynb
         title: Homework 2 - NumPy, Matplotlib, and a Simple ODE
-      - url: https://github.com/msu-cmse-courses/CMSE801-F26/blob/main/Homework/HW2/pop_data.csv
+      - url: https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/blob/main/Homework/HW2/pop_data.csv
         title: pop_data.csv   
 #       - file: Homework/Spring2026/Homework-03/Homework-03_PandasAnalysisAndSolvingODEs-STUDENT.ipynb
 #         title: Homework 3 - Analyzing Data with Pandas and Solving ODEs
