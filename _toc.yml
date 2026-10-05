@@ -161,8 +161,8 @@ parts:
       sections:
       - file: Day-10/Day-10_Pre-Class_ViralKinetics-STUDENT.ipynb
       - file: Day-10/Day-10_In-Class_CompartmentalModeling-STUDENT.ipynb
-#     # # #   - url: https://docs.google.com/presentation/d/1k4Uy9nB6BTWB0iA1WMQyjxx91pktn7JlbolyuNLvZXQ/edit?usp=sharing
-#     # # #     title: Day 10 Slides (MSU Login)
+      - url: https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQDLbK78zPJ1R5jLJoa8bEKkAR03qphuQjekNdNkhh98C-I?e=aIM12Z
+        title: Day 10 Slides (MSU Login)
 
     - file: Day-11/Day-11.md
       title: Day 11
