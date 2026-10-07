@@ -169,10 +169,10 @@ parts:
       sections:
       - file: Day-11/Day-11_Pre-Class_Zombies-STUDENT.ipynb
       - file: Day-11/Day-11_In-Class_CompartmentsWithSolveIVP-STUDENT.ipynb
-#     #   - url: https://docs.google.com/presentation/d/1O2pzbWes3z2efr0DDtLHAsOBuNHDSJPUCcoP2T0xfrs/edit?usp=sharing
-#     # # #     title: Day 11 Slides (MSU Login)
-#       - url: https://docs.google.com/presentation/d/1Zdn4TqO3E8gAzWeDiE_kKUAADjCs2qtaEwQ96zVFYP0/edit?usp=sharing
-#         title: Group presentation slides (Requires MSU Login)
+      - url: https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAer6LFg2lWRoiiaoF5GmW3AeHd4QZPyA3wGhxCcnJSBiA?e=HSfSv0
+        title: Day 11 Slides (MSU Login)
+      - url: https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAN5b_HGm3jS4lDETbk8HDPAdWoxpQRsJuiqiX4EwDLtng?e=9HEl4Y
+        title: Group presentation slides (Requires MSU Login)
 
     - file: Day-12/Day-12.md
       title: Day 12
