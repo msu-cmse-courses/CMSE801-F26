@@ -181,36 +181,36 @@ parts:
       - file: Day-12/Day-12_In-Class_GDP-STUDENT.ipynb
       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-12/GDP_Data.csv
         title: GDP_Data.csv
-#     # # #   - url: https://docs.google.com/presentation/d/1u0Y6RexJ8lqE_Pjgss1-DF7ex9zsBtPQIdEk9hu5o10/edit?usp=sharing
-#     # # #     title: Day 12 Slides (MSU Login)
+      - url: https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQC-gTszoXbZTZE4olTgBenHAXBM5RPZfYsIPdEjSBlsK6w?e=Ykai0d
+        title: Day 12 Slides (MSU Login)
 
-#     - file: Day-13/Day-13.md
-#       title: Day 13
-#       sections:
-#       - file: Day-13/Day-13_Pre-Class_Masking-STUDENT.ipynb
-#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-13/GDP_Cleaned.csv
-#         title: GDP_Cleaned.csv
-#       - file: Day-13/Day-13_In-Class_Flint-STUDENT.ipynb
+    - file: Day-13/Day-13.md
+      title: Day 13
+      sections:
+      - file: Day-13/Day-13_Pre-Class_Masking-STUDENT.ipynb
+      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-13/GDP_Cleaned.csv
+        title: GDP_Cleaned.csv
+      - file: Day-13/Day-13_In-Class_Flint-STUDENT.ipynb
 #       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-13/flint_water_data.csv
 #         title: flint_water_data.csv
 #     # # #   - url: https://docs.google.com/presentation/d/1cF_xgnjojLlTdpiMZxtj6w-JgrGDQyzzkOfHtQaUq5c/edit
 #     # # #     title: Day 13 Slides (MSU Login)
     
-#     - file: Day-14/Day-14.md
-#       title: Day 14
-#       sections:
-#       - file: Day-14/Day-14_Pre-Class_FittingModelsAndEvaluatingFits-STUDENT.ipynb
-#       - file: Day-14/Day-14_In-Class_Evaluating_Fits-STUDENT.ipynb
+    - file: Day-14/Day-14.md
+      title: Day 14
+      sections:
+      - file: Day-14/Day-14_Pre-Class_FittingModelsAndEvaluatingFits-STUDENT.ipynb
+      - file: Day-14/Day-14_In-Class_Evaluating_Fits-STUDENT.ipynb
 #       # - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-14/biden_ratings_2023.csv
 #       #   title: biden_ratings_2023.csv
 #     # # #   - url: https://docs.google.com/presentation/d/1tlcRATBl4YmbBwi-U9Aaa6D7K1owdiqbdPc70eAMKqY/
 #     # # #     title: Day 14 Slides (MSU Login)
 
-#     - file: Day-15/Day-15.md
-#       title: Day 15
-#       sections:
-#       - file: Day-15/Day-15_Pre-Class_CurveFitting-STUDENT.ipynb
-#       - file: Day-15/Day-15_In-Class_FittingCurves-STUDENT.ipynb
+    - file: Day-15/Day-15.md
+      title: Day 15
+      sections:
+      - file: Day-15/Day-15_Pre-Class_CurveFitting-STUDENT.ipynb
+      - file: Day-15/Day-15_In-Class_FittingCurves-STUDENT.ipynb
 #       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-15/pop200.csv
 #         title: pop200.csv
 #       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-15/pop300.csv
