@@ -1,0 +1,904 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Day 13: In-class Assignment: Get the Lead Out: Understanding The Water Crisis in Flint, MI &#8212; CMSE 801</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Day-13/Day-13_In-Class_Flint-STUDENT';</script>
+    <link rel="icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Day-14" href="../Day-14/Day-14.html" />
+    <link rel="prev" title="Day 13 Pre-class Assignment: Normal Distributions, Masking, and Log Plots" href="Day-13_Pre-Class_Masking-STUDENT.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="CMSE 801 - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="CMSE 801 - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Materials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Course_Documents/Course_Documents.html">Important Course information</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/Syllabus/syllabus.html">Syllabus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/Schedule/schedule.html">Course Schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/SoftwareSetup/SoftwareSetupGuide.html">Software Setup Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/classParticipation/classParticipation.html">Classroom Participation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/GenerativeAI/GenerativeAI_Policy.html">Generative AI Policy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Project/Project.html">Semester Project</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Project/SemesterProjectDetails.html">Project Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Project/ProjectProposal.html">Project Proposal - Due October 28</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Project/FinalProject_RequirementsAndGradingRubric.html">Requirements and Grading Rubric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Project/FinalProjectTemplate.html">CMSE 801 Final Project Template</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Project/ProjectDraft.html">Project Draft - Due November 18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Project/Project_Self-Evaluation.html">Project Self-Evaluation</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/msu-cmse-courses/cmse801-supplemental/raw/main/Project/Presentation_Evaluation_Rubric.pdf">Presentation Evaluation Rubric</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Homework/Homework.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Homework/HW1/Homework-01_PythonFundamentals-STUDENT-F26.html">Homework 1 - Python Fundamentals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Homework/HW2/HW-02_NumPyMatplotlibAndODE-STUDENT.html">Homework 2 - NumPy, Matplotlib, and a Simple ODE</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/refs/heads/main/Homework/HW2/pop_data.csv">pop_data.csv</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Daily Content</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-01/Day-01.html">Day 01</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-01/Day-01_In-Class_SortingAlgorithm-STUDENT.html">Day 1 In-Class Assignment: Introductions and Sorting Algorithms</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAZKaCUMP-JQZj6mQG9yZANAfXIokhXP63-2By8XLo81Kc?e=N4QF3I">Day 01 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-02/Day-02.html">Day 02</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-02/Day-02_Pre-Class_IntroToPython-STUDENT.html">Day 2 Pre-class Assignment: Intro to Python</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Day-02/Day-02_In-Class_OrderOfMagnitudeModeling-STUDENT.html">Day 2 In-class Assignment: Order of Magnitude Modeling</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAsDxwKy1WsQZESscQmuyYNAcZv06dZ4sIq42ScDGWk0NI?e=DpWI1l">Day 02 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-03/Day-03.html">Day 03</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-03/Day-03_Pre-Class_ListsAndLoops-STUDENT.html">Day 3: Pre-Class Assignment: Lists and Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-03/Day-03_In-Class_ListsLoopsAndSaving-STUDENT.html">Day 3 In-class Assignment: The power of compound interest</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAb9ETJNiiERaWy4yrIx4qhAdgLnvkqZzhlufoRgjSFbsc?e=eX1d6g">Day 03 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-04/Day-04.html">Day 04</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-04/Day-04_Pre-Class_IfStatementsAndFunctions-STUDENT.html">Day 4: Pre-class Assignment: Boolean logic, if statements, and an introduction to functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-04/Day-04_In-Class_IfStatementsAndFunctions-STUDENT.html">Day 4 In-class Assignment: Savings for Everyone</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQBUE1SWtyFdS7cpuhMKR9ziAZImiGk0yIZ7am1QEZSJNzY?e=CNH5Pn">Day 04 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-05/Day-05.html">Day 05</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-05/Day-05_Pre-Class_MoreFunctions-STUDENT.html">Day 5: Pre-class Assignment: Thinking more about functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-05/Day-05_In-Class_MoreFunctions-STUDENT.html">Day 5 In-class Assignment: Practicing with functions (for profit!)</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQDLt3-WevlVSIWT7hGXL7nmASHUThF9gw6ot2vXQYI5urM?e=tcg0FD">Day 05 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-06/Day-06.html">Day 06</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-06/Day-06_Pre-Class_ModulesMathAndPlots-STUDENT.html">Day 6 Pre-Class Assignment: Python Modules: Numpy and Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-06/Day-06_In-Class_MathAndPlotting-STUDENT.html">Day 6 In-class assignment: Visualizing population growth</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQA6BliAKVGfSKjQsFLkiz-_AV6ZJVXJGgF4R0BCNxhYRiQ?e=gAqGqt">Day 06 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-07/Day-07.html">Day 07</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-07/Day-07_Pre-Class_IntroToNumPy-STUDENT.html">Day 7 Pre-Class: Introduction to NumPy</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/michigan_pop.csv">michigan_pop.csv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-07/Day-07_In-Class_NumPyWithTheGreatLakes-STUDENT.html">Day 7 In-class Assignment: Exploring Great Lakes Water Levels using NumPy</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQC4UK6S6FAlTqwsLIkhTNpQAbHBjQg5M_lRHffAMQJdjXw?e=iN7YPP">Day 07 Slides (MSU Login)</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_erie.csv">lake_erie.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_michigan_huron.csv">lake_michigan_huron.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_ontario.csv">lake_ontario.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_superior.csv">lake_superior.csv</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-08/Day-08.html">Day 08</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-08/Day-08_Pre-Class-IntroToODEs-STUDENT.html">Day 8 Pre-class Assignment: Introduction to Modeling with Ordinary Differential Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-08/Day-08_In-Class_IntroToODEs-STUDENT.html">Day 8: In-class Assignment: Introduction to Modeling with ODEs</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQCbGYeCi1IcRqONrvJOsN0-AQ30GucqeDx29bQm1a7xgWA?e=C2vB1I">Day 8 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-09/Day-09.html">Day 09</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-09/Day-09_Pre-Class_ModelingWithODEs-STUDENT.html">Day 9: Pre-class Assignment: Modeling with Ordinary Differential Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-09/Day-09_In-Class_ModelingWithODEs-STUDENT.html">Day 9: In-class Assignment: Modeling with ODEs</a></li>
+
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQC7RociakEXRIzDiwRVDKtgAYwCrHYiKafuZGCVEg_7ojw?e=eVuLhB">Day 9 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-10/Day-10.html">Day 10</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-10/Day-10_Pre-Class_ViralKinetics-STUDENT.html">Day 10 Pre-Class: Viral Kinetics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-10/Day-10_In-Class_CompartmentalModeling-STUDENT.html">Day 10 In-class Assignment: Building Compartmental Models</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQDLbK78zPJ1R5jLJoa8bEKkAR03qphuQjekNdNkhh98C-I?e=aIM12Z">Day 10 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-11/Day-11.html">Day 11</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-11/Day-11_Pre-Class_Zombies-STUDENT.html">Day 11 Pre-class Assignment: ZOMBIES!!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-11/Day-11_In-Class_CompartmentsWithSolveIVP-STUDENT.html">Day 11 In-Class Assignment: Compartmental Modeling, moving from the model to the code</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAer6LFg2lWRoiiaoF5GmW3AeHd4QZPyA3wGhxCcnJSBiA?e=HSfSv0">Day 11 Slides (MSU Login)</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAN5b_HGm3jS4lDETbk8HDPAdWoxpQRsJuiqiX4EwDLtng?e=9HEl4Y">Group presentation slides (Requires MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-12/Day-12.html">Day 12</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-12/Day-12_Pre-Class_Pandas-STUDENT.html">Day 12 Pre-class Assignment: Computational Models Overview and The Pandas Data Analysis Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-12/Day-12_In-Class_GDP-STUDENT.html">Day 12 In-Class: Cleaning and Analyzing Economic Data</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-12/GDP_Data.csv">GDP_Data.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQC-gTszoXbZTZE4olTgBenHAXBM5RPZfYsIPdEjSBlsK6w?e=Ykai0d">Day 12 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Day-13.html">Day 13</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Day-13_Pre-Class_Masking-STUDENT.html">Day 13 Pre-class Assignment: Normal Distributions, Masking, and Log Plots</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-13/GDP_Cleaned.csv">GDP_Cleaned.csv</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Day 13: In-class Assignment: Get the Lead Out: Understanding The Water Crisis in Flint, MI</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-14/Day-14.html">Day 14</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-14/Day-14_Pre-Class_FittingModelsAndEvaluatingFits-STUDENT.html">Day 14 Pre-Class Assignment: Fitting models, making predictions, and evaluating fits using data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-14/Day-14_In-Class_Evaluating_Fits-STUDENT.html">Day 14 In-Class Assignment: Evaluating Models</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-15/Day-15.html">Day 15</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-15/Day-15_Pre-Class_CurveFitting-STUDENT.html">Day 15 Pre-Class Assignment: Fitting functions to data (curve-fitting) and thinking more about models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-15/Day-15_In-Class_FittingCurves-STUDENT.html">Day 15 In-Class Assignment: (Thoughtfully) fitting models to data</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Extra Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewAndPracticeMaterials.html">Review and Practice Materials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewNotebook_PythonFundamentals-STUDENT.html">Reviewing and practicing prior concepts: Python Fundamentals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewNotebook_Debugging-STUDENT.html">Practice with Debugging</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewNotebook_Functions-STUDENT.html">Practice with: functions</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Day-13/Day-13_In-Class_Flint-STUDENT.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Day 13: In-class Assignment: Get the Lead Out: Understanding The Water Crisis in Flint, MI</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-name-here"><p style="text-align: right;"> ✅ Put your name here.</p></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-group-member-names-here"><p style="text-align: right;"> ✅ Put your group member names here.</p></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-instructions">Assignment instructions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-and-motivation"><strong>Background and motivation</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description-of-data-fields-in-this-data-set">Description of data fields in this data set:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#epa-limits-i-e-how-does-the-epa-define-unsafe-lead-levels-in-a-water-supply">EPA Limits (i.e. how does the EPA define unsafe lead levels in a water supply?)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-using-descriptive-statistics"><strong>1. Analysis Using Descriptive Statistics</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-using-visualizations"><strong>2. Analysis Using Visualizations</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.5</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stop">STOP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-using-masks"><strong>3. Analysis Using Masks</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">3.3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extending-analysis-to-the-other-samples"><strong>4. Extending Analysis to the Other Samples</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions"><strong>5. Conclusions</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-permitting-looking-for-other-sources-of-analysis"><strong>6. (Time Permitting) Looking for Other Sources of Analysis</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#congratulations-you-re-done">Congratulations, you’re done!</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="day-13-in-class-assignment-get-the-lead-out-understanding-the-water-crisis-in-flint-mi">
+<h1>Day 13: In-class Assignment: Get the Lead Out: Understanding The Water Crisis in Flint, MI<a class="headerlink" href="#day-13-in-class-assignment-get-the-lead-out-understanding-the-water-crisis-in-flint-mi" title="Link to this heading">#</a></h1>
+<section id="put-your-name-here">
+<h2><p style="text-align: right;"> ✅ Put your name here.</p><a class="headerlink" href="#put-your-name-here" title="Link to this heading">#</a></h2>
+<section id="put-your-group-member-names-here">
+<h3><p style="text-align: right;"> ✅ Put your group member names here.</p><a class="headerlink" href="#put-your-group-member-names-here" title="Link to this heading">#</a></h3>
+<div align="center"><img src="https://assets1.cbsnewsstatic.com/hub/i/r/2017/09/21/d348dfb2-b44c-49de-95c5-893fdf143ce6/thumbnail/620x349/d43e72275d7f4c4966124cfd9e66e22a/0921-eve-flinthearing-reynolds.jpg" width=600px></div>
+</section>
+</section>
+<section id="learning-goals">
+<h2>Learning Goals:<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<p>By the end of this assignment you should be able to:</p>
+<ul class="simple">
+<li><p>Use Pandas to filter data to select particular subsets of interest</p></li>
+<li><p>Articulate, based on your own perception, what you thinks makes a data visualization “good” versus “bad”</p></li>
+<li><p>Use data to support a claim or make an argument</p></li>
+</ul>
+</section>
+<section id="assignment-instructions">
+<h2>Assignment instructions<a class="headerlink" href="#assignment-instructions" title="Link to this heading">#</a></h2>
+<p>Work with your group to complete this assignment. Instructions for submitting this assignment are at the end of the notebook. The assignment is due at the end of class.</p>
+</section>
+<hr class="docutils" />
+<section id="background-and-motivation">
+<h2><strong>Background and motivation</strong><a class="headerlink" href="#background-and-motivation" title="Link to this heading">#</a></h2>
+<p>Today we want you to think about what the data is telling you, but still use coding to help you; and, use some of the visualization ideas you explored above. We’ll be looking at the publicly released <a class="reference external" href="http://flintwaterstudy.org/2015/12/complete-dataset-lead-results-in-tap-water-for-271-flint-samples/">Flint Water Quality dataset</a>. The water testing method involves collecting three different bottles worth of water.</p>
+<p><strong>Review the properties of the data, read the descriptions of the data fields, and review what the Evironmental Protection Agency (EPA) limits are on lead in water supplies.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Loading the data</span>
+<span class="n">flint_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;flint_water_data.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Double-check that your data loaded correctly by displaying the first few lines.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="description-of-data-fields-in-this-data-set">
+<h3>Description of data fields in this data set:<a class="headerlink" href="#description-of-data-fields-in-this-data-set" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><em>SampleID</em>: Unique study code for each sample</p></li>
+<li><p><em>Zip Code</em>: location where samples were collected</p></li>
+<li><p><em>Ward</em>: location where samples were collected</p></li>
+<li><p><em>PbBottle1_ppb</em>: Concentration of lead in parts per billion (ppb) in sample acquired at initial turn on of water</p></li>
+<li><p><em>PbBottle2_ppb</em>: Concentration of lead in parts per billion (ppb) in sample acquired after 45 seconds of flushing water</p></li>
+<li><p><em>PbBottle3_ppb</em>: Concentration of lead in parts per billion (ppb) in sample acquired after 120 seconds of flushing water</p></li>
+</ul>
+</section>
+<section id="epa-limits-i-e-how-does-the-epa-define-unsafe-lead-levels-in-a-water-supply">
+<h3>EPA Limits (i.e. how does the EPA define unsafe lead levels in a water supply?)<a class="headerlink" href="#epa-limits-i-e-how-does-the-epa-define-unsafe-lead-levels-in-a-water-supply" title="Link to this heading">#</a></h3>
+<p>The U.S. Environmental Protection Agency (EPA) guidelines about lead contaminants state:</p>
+<blockquote>
+<div><p>Lead and copper are regulated by a treatment technique that requires systems to control the corrosiveness of their water. <strong>If more than 10% of tap water samples exceed the action level,</strong> water systems must take additional steps. For copper, the action level is 1.3 mg/L (1300 ppb), and <strong>for lead is 0.015 mg/L (15 ppb).</strong></p>
+<p>Source: (<a class="reference external" href="http://www.epa.gov/your-drinking-water/table-regulated-drinking-water-contaminants#seven">http://www.epa.gov/your-drinking-water/table-regulated-drinking-water-contaminants#seven</a>).</p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="analysis-using-descriptive-statistics">
+<h2><strong>1. Analysis Using Descriptive Statistics</strong><a class="headerlink" href="#analysis-using-descriptive-statistics" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>1.1<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">describe()</span></code> function to determine the mean, standard deviation, min, median, and max of the first set of samples (<code class="docutils literal notranslate"><span class="pre">PbBottle1_ppb</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h3>1.2<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>From this information alone, can you determine if the water supply in Flint met the EPA standard?</p>
+<p><font size="+3" color="green">✎</font> <em>Write your answer here</em></p>
+</section>
+<section id="id3">
+<h3>1.3<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>What is the median of this sample? How does it compare to the mean? Do you expect this sample to be close to a normal (Gaussian) distribution? (think back on your pre-class assignment about the properties of normal distributions)</p>
+<p><font size="+3" color="green">✎</font> <em>Write your answer here</em></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="analysis-using-visualizations">
+<h2><strong>2. Analysis Using Visualizations</strong><a class="headerlink" href="#analysis-using-visualizations" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h3>2.1<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>Make a histogram visualization of the distribution of the first set of samples (<code class="docutils literal notranslate"><span class="pre">PbBottle1_ppb</span></code>). Use the <code class="docutils literal notranslate"><span class="pre">axvline()</span></code> function to add a line showing where the EPA limit is. (You will may need to us google to remind yourself what this function does.)</p>
+<p>Also, make sure that your plot has x and y-axes labels and a title.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id5">
+<h3>2.2<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>Does the distribution of samples look like a normal (Gaussian) distribution? Is that what you predicted based on your analysis of the descriptive statistics (Part 1.3)?</p>
+<p><font size="+3" color="green">✎</font> <em>Write your answer here</em></p>
+</section>
+<section id="id6">
+<h3>2.3<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>Looking at this, there’s a big pile up of samples that are near or below the EPA limit, and it makes it hard to get a sense of what the full distribution looks like. Use <code class="docutils literal notranslate"><span class="pre">plt.yscale()</span></code> to make the y-axis logarithmic.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id7">
+<h3>2.4<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>As discussed in the pre-class, logarithmic scales allow us to get a better handle on distributions with a <em>large dynamic range</em>. Use your log plot estimate the number of samples that lie above the EPA limit by counting the number of samples that fall into the bins that are above the limit.</p>
+<p>What fraction of the total samples appear to fall above the EPA limit?</p>
+<p><font size="+3" color="green">✎</font> <em>Write your answer here</em></p>
+</section>
+<section id="id8">
+<h3>2.5<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>Based on this analysis, does it appear that the Flint samples met the EPA standards?</p>
+<p><font size="+3" color="green">✎</font> <em>Write your answer here</em></p>
+</section>
+</section>
+<section id="stop">
+<h2>STOP<a class="headerlink" href="#stop" title="Link to this heading">#</a></h2>
+<p>Based on your analysis so far, answer the following question: <em><strong>Would you feel comfortable drinking a glass of water in Flint at the height of the water crisis?</strong></em></p>
+<p><font size="+3" color="green">✎</font> <em>Write your answer here</em></p>
+</section>
+<hr class="docutils" />
+<section id="analysis-using-masks">
+<h2><strong>3. Analysis Using Masks</strong><a class="headerlink" href="#analysis-using-masks" title="Link to this heading">#</a></h2>
+<p>In the previous part, you used descriptive statistics and a visualization to try to estimate the number of samples that fell above the EPA limit. Now we’re going to actually count the number that actually don’t meet the EPA regulation.</p>
+<section id="id9">
+<h3>3.1<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>Create a mask and a new dataframe that only contain samples where <code class="docutils literal notranslate"><span class="pre">PbBottle1_ppb</span></code> was greater than the EPA limit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id10">
+<h3>3.2<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p>Answer the following questions:</p>
+<ol class="arabic simple">
+<li><p>How many samples were above the EPA limit?</p></li>
+<li><p>What fraction of the total samples does this comprise?</p></li>
+</ol>
+<p><font size="+3" color="green">✎</font> <em>Write your answer here</em></p>
+</section>
+<section id="id11">
+<h3>3.3<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<p>Based on this analysis, do these samples meet the EPA standards?</p>
+<p><font size="+3" color="green">✎</font> <em>Write your answer here</em></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="extending-analysis-to-the-other-samples">
+<h2><strong>4. Extending Analysis to the Other Samples</strong><a class="headerlink" href="#extending-analysis-to-the-other-samples" title="Link to this heading">#</a></h2>
+<p>Repeat the analysis you did parts 1, 2, and 3 for both the <code class="docutils literal notranslate"><span class="pre">PbBottle2_ppb</span></code> and  <code class="docutils literal notranslate"><span class="pre">PbBottle3_ppb</span></code> samples. Recall that these are samples drawn 45 seconds after the taps are turned on (<code class="docutils literal notranslate"><span class="pre">PbBottle2_ppb</span></code>) and two minutes after the taps are turned on (<code class="docutils literal notranslate"><span class="pre">PbBottle3_ppb</span></code>).
+To complete this section, you should:</p>
+<ol class="arabic simple">
+<li><p>Fill in the table below with descriptive statistics and fraction of samples above the EPA limit.</p></li>
+<li><p>Have a three panel plot showing the distribution of samples. The y-axes for each of them should be logarithmic and each plot should have x and y-axes labels and a title.</p></li>
+</ol>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Sample</p></th>
+<th class="head text-left"><p>Mean</p></th>
+<th class="head text-left"><p>Std. Dev</p></th>
+<th class="head text-left"><p>Min</p></th>
+<th class="head text-left"><p>Median</p></th>
+<th class="head text-left"><p>Max</p></th>
+<th class="head text-left"><p>Fraction &gt; EPA</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>PbBottle1_ppb</p></td>
+<td class="text-left"><p>??</p></td>
+<td class="text-left"><p>??</p></td>
+<td class="text-left"><p>??</p></td>
+<td class="text-left"><p>??</p></td>
+<td class="text-left"><p>??</p></td>
+<td class="text-left"><p>??</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>PbBottle2_ppb</p></td>
+<td class="text-left"><p>??</p></td>
+<td class="text-left"><p>??</p></td>
+<td class="text-left"><p>??</p></td>
+<td class="text-left"><p>??</p></td>
+<td class="text-left"><p>??</p></td>
+<td class="text-left"><p>??</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>PbBottle3_ppb</p></td>
+<td class="text-left"><p>??</p></td>
+<td class="text-left"><p>??</p></td>
+<td class="text-left"><p>??</p></td>
+<td class="text-left"><p>??</p></td>
+<td class="text-left"><p>??</p></td>
+<td class="text-left"><p>??</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="conclusions">
+<h2><strong>5. Conclusions</strong><a class="headerlink" href="#conclusions" title="Link to this heading">#</a></h2>
+<p>Based on your new analysis, answer the following question: <em><strong>Would you feel comfortable drinking a glass of water in Flint at the height of the water crisis?</strong></em></p>
+<p><strong>Use statistical values and/or data visualizations to back up your choice.</strong></p>
+<p><font size="+3" color="green">✎</font> <em>Write your answer here</em></p>
+</section>
+<hr class="docutils" />
+<section id="time-permitting-looking-for-other-sources-of-analysis">
+<h2><strong>6. (Time Permitting) Looking for Other Sources of Analysis</strong><a class="headerlink" href="#time-permitting-looking-for-other-sources-of-analysis" title="Link to this heading">#</a></h2>
+<p>For your project, it will be good to draw upon other resources to compare your results/conclusions to.</p>
+<p>Go through the <a class="reference external" href="https://www.nytimes.com/2018/07/22/opinion/flint-lead-poisoning-water.html">following article from the New York Times</a> and compare it’s conclusions to your own from Part 5. Given the information in this article, <em><strong>Would you feel comfortable drinking a glass of water in Flint at the height of the water criss?</strong></em></p>
+<p><strong>NOTE:</strong> If you are an MSU student, you have access to a free New York Times account. <a class="reference external" href="https://asmsu.msu.edu/home/services/717-2/">Click this link</a> and follow the steps to get access through MSU.</p>
+<p><font size="+3" color="green">✎</font> <em>Write your answer here</em></p>
+</section>
+<hr class="docutils" />
+<section id="congratulations-you-re-done">
+<h2>Congratulations, you’re done!<a class="headerlink" href="#congratulations-you-re-done" title="Link to this heading">#</a></h2>
+<p>Submit this assignment by uploading your notebook to the course Desire2Learn web page.  Go to the “In-Class Assignments” folder, find the appropriate submission link, and upload everything there. Make sure your name is on it!</p>
+<p>© Copyright 2026,  The Department of Computational Mathematics, Science and Engineering at Michigan State University</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Day-13"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Day-13_Pre-Class_Masking-STUDENT.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Day 13 Pre-class Assignment: Normal Distributions, Masking, and Log Plots</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Day-14/Day-14.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Day-14</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-name-here"><p style="text-align: right;"> ✅ Put your name here.</p></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-group-member-names-here"><p style="text-align: right;"> ✅ Put your group member names here.</p></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-instructions">Assignment instructions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-and-motivation"><strong>Background and motivation</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description-of-data-fields-in-this-data-set">Description of data fields in this data set:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#epa-limits-i-e-how-does-the-epa-define-unsafe-lead-levels-in-a-water-supply">EPA Limits (i.e. how does the EPA define unsafe lead levels in a water supply?)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-using-descriptive-statistics"><strong>1. Analysis Using Descriptive Statistics</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-using-visualizations"><strong>2. Analysis Using Visualizations</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.5</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stop">STOP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-using-masks"><strong>3. Analysis Using Masks</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">3.3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extending-analysis-to-the-other-samples"><strong>4. Extending Analysis to the Other Samples</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions"><strong>5. Conclusions</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-permitting-looking-for-other-sources-of-analysis"><strong>6. (Time Permitting) Looking for Other Sources of Analysis</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#congratulations-you-re-done">Congratulations, you’re done!</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Department of Computational Mathematics, Science and Engineering at Michigan State University
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
