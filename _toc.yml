@@ -56,11 +56,12 @@ parts:
         title: pop_data.csv   
       - file: Homework/HW3/HW-03_F26_PandasAnalysisAndSolvingODEs-STUDENT.ipynb
         title: Homework 3 - Analyzing Data with Pandas and Solving ODEs
-      - url: https://raw.githubusercontent.com/msu-cmse-courses/Homework/Fall2026/HW3/zipped_data_files_part1.zip
-        title: tech_layoffs.csv 
-
-      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Homework/HW03/stars.csv
-        title: stars.csv 
+      - url: https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/main/Homework/HW3/zipped_data_files_part1.zip
+        title: zipped_data_files_part1 
+      - url: https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/main/Homework/HW3/zipped_data_files_part2.zip
+        title: zipped_data_files_part2 
+      - url: https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/refs/heads/main/Homework/HW3/Example002.csv
+        title: Example002.csv
 #       - file: Homework/Spring2026/Homework_04/HW-04_DataAnalysisWithPandasAndRegression-STUDENT.ipynb
 #         title: Homework 4 - Fitting models to data
 #       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Homework/HW04/grape_harvest.csv
