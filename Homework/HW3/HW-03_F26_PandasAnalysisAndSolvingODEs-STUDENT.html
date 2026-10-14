@@ -1,0 +1,1813 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Homework 3: Data analysis with Pandas and numerically solving ODEs &#8212; CMSE 801</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Homework/HW3/HW-03_F26_PandasAnalysisAndSolvingODEs-STUDENT';</script>
+    <link rel="icon" href="../../_static/logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Day-01" href="../../Day-01/Day-01.html" />
+    <link rel="prev" title="Homework 2: Exploring models, data, and random numbers using NumPy and Matplotlib and solving a simple ODE" href="../HW2/HW-02_NumPyMatplotlibAndODE-STUDENT.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="CMSE 801 - Home"/>
+    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="CMSE 801 - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Materials</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Course_Documents/Course_Documents.html">Important Course information</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Course_Documents/Syllabus/syllabus.html">Syllabus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Course_Documents/Schedule/schedule.html">Course Schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Course_Documents/SoftwareSetup/SoftwareSetupGuide.html">Software Setup Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Course_Documents/classParticipation/classParticipation.html">Classroom Participation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Course_Documents/GenerativeAI/GenerativeAI_Policy.html">Generative AI Policy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Project/Project.html">Semester Project</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Project/SemesterProjectDetails.html">Project Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Project/ProjectProposal.html">Project Proposal - Due October 28</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Project/FinalProject_RequirementsAndGradingRubric.html">Requirements and Grading Rubric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Project/FinalProjectTemplate.html">CMSE 801 Final Project Template</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../Project/ProjectDraft.html">Project Draft - Due November 18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Project/Project_Self-Evaluation.html">Project Self-Evaluation</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/msu-cmse-courses/cmse801-supplemental/raw/main/Project/Presentation_Evaluation_Rubric.pdf">Presentation Evaluation Rubric</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../Homework.html">Homework</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../HW1/Homework-01_PythonFundamentals-STUDENT-F26.html">Homework 1 - Python Fundamentals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW2/HW-02_NumPyMatplotlibAndODE-STUDENT.html">Homework 2 - NumPy, Matplotlib, and a Simple ODE</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/refs/heads/main/Homework/HW2/pop_data.csv">pop_data.csv</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Homework 3 - Analyzing Data with Pandas and Solving ODEs</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/main/Homework/HW3/zipped_data_files_part1.zip">zipped_data_files_part1</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/main/Homework/HW3/zipped_data_files_part2.zip">zipped_data_files_part2</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/refs/heads/main/Homework/HW3/Example002.csv">Example002.csv</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Daily Content</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-01/Day-01.html">Day 01</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-01/Day-01_In-Class_SortingAlgorithm-STUDENT.html">Day 1 In-Class Assignment: Introductions and Sorting Algorithms</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAZKaCUMP-JQZj6mQG9yZANAfXIokhXP63-2By8XLo81Kc?e=N4QF3I">Day 01 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-02/Day-02.html">Day 02</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-02/Day-02_Pre-Class_IntroToPython-STUDENT.html">Day 2 Pre-class Assignment: Intro to Python</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../Day-02/Day-02_In-Class_OrderOfMagnitudeModeling-STUDENT.html">Day 2 In-class Assignment: Order of Magnitude Modeling</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAsDxwKy1WsQZESscQmuyYNAcZv06dZ4sIq42ScDGWk0NI?e=DpWI1l">Day 02 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-03/Day-03.html">Day 03</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-03/Day-03_Pre-Class_ListsAndLoops-STUDENT.html">Day 3: Pre-Class Assignment: Lists and Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-03/Day-03_In-Class_ListsLoopsAndSaving-STUDENT.html">Day 3 In-class Assignment: The power of compound interest</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAb9ETJNiiERaWy4yrIx4qhAdgLnvkqZzhlufoRgjSFbsc?e=eX1d6g">Day 03 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-04/Day-04.html">Day 04</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-04/Day-04_Pre-Class_IfStatementsAndFunctions-STUDENT.html">Day 4: Pre-class Assignment: Boolean logic, if statements, and an introduction to functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-04/Day-04_In-Class_IfStatementsAndFunctions-STUDENT.html">Day 4 In-class Assignment: Savings for Everyone</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQBUE1SWtyFdS7cpuhMKR9ziAZImiGk0yIZ7am1QEZSJNzY?e=CNH5Pn">Day 04 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-05/Day-05.html">Day 05</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-05/Day-05_Pre-Class_MoreFunctions-STUDENT.html">Day 5: Pre-class Assignment: Thinking more about functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-05/Day-05_In-Class_MoreFunctions-STUDENT.html">Day 5 In-class Assignment: Practicing with functions (for profit!)</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQDLt3-WevlVSIWT7hGXL7nmASHUThF9gw6ot2vXQYI5urM?e=tcg0FD">Day 05 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-06/Day-06.html">Day 06</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-06/Day-06_Pre-Class_ModulesMathAndPlots-STUDENT.html">Day 6 Pre-Class Assignment: Python Modules: Numpy and Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-06/Day-06_In-Class_MathAndPlotting-STUDENT.html">Day 6 In-class assignment: Visualizing population growth</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQA6BliAKVGfSKjQsFLkiz-_AV6ZJVXJGgF4R0BCNxhYRiQ?e=gAqGqt">Day 06 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-07/Day-07.html">Day 07</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-07/Day-07_Pre-Class_IntroToNumPy-STUDENT.html">Day 7 Pre-Class: Introduction to NumPy</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/michigan_pop.csv">michigan_pop.csv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-07/Day-07_In-Class_NumPyWithTheGreatLakes-STUDENT.html">Day 7 In-class Assignment: Exploring Great Lakes Water Levels using NumPy</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQC4UK6S6FAlTqwsLIkhTNpQAbHBjQg5M_lRHffAMQJdjXw?e=iN7YPP">Day 07 Slides (MSU Login)</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_erie.csv">lake_erie.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_michigan_huron.csv">lake_michigan_huron.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_ontario.csv">lake_ontario.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_superior.csv">lake_superior.csv</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-08/Day-08.html">Day 08</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-08/Day-08_Pre-Class-IntroToODEs-STUDENT.html">Day 8 Pre-class Assignment: Introduction to Modeling with Ordinary Differential Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-08/Day-08_In-Class_IntroToODEs-STUDENT.html">Day 8: In-class Assignment: Introduction to Modeling with ODEs</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQCbGYeCi1IcRqONrvJOsN0-AQ30GucqeDx29bQm1a7xgWA?e=C2vB1I">Day 8 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-09/Day-09.html">Day 09</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-09/Day-09_Pre-Class_ModelingWithODEs-STUDENT.html">Day 9: Pre-class Assignment: Modeling with Ordinary Differential Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-09/Day-09_In-Class_ModelingWithODEs-STUDENT.html">Day 9: In-class Assignment: Modeling with ODEs</a></li>
+
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQC7RociakEXRIzDiwRVDKtgAYwCrHYiKafuZGCVEg_7ojw?e=eVuLhB">Day 9 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-10/Day-10.html">Day 10</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-10/Day-10_Pre-Class_ViralKinetics-STUDENT.html">Day 10 Pre-Class: Viral Kinetics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-10/Day-10_In-Class_CompartmentalModeling-STUDENT.html">Day 10 In-class Assignment: Building Compartmental Models</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQDLbK78zPJ1R5jLJoa8bEKkAR03qphuQjekNdNkhh98C-I?e=aIM12Z">Day 10 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-11/Day-11.html">Day 11</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-11/Day-11_Pre-Class_Zombies-STUDENT.html">Day 11 Pre-class Assignment: ZOMBIES!!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-11/Day-11_In-Class_CompartmentsWithSolveIVP-STUDENT.html">Day 11 In-Class Assignment: Compartmental Modeling, moving from the model to the code</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAer6LFg2lWRoiiaoF5GmW3AeHd4QZPyA3wGhxCcnJSBiA?e=HSfSv0">Day 11 Slides (MSU Login)</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAN5b_HGm3jS4lDETbk8HDPAdWoxpQRsJuiqiX4EwDLtng?e=9HEl4Y">Group presentation slides (Requires MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-12/Day-12.html">Day 12</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-12/Day-12_Pre-Class_Pandas-STUDENT.html">Day 12 Pre-class Assignment: Computational Models Overview and The Pandas Data Analysis Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-12/Day-12_In-Class_GDP-STUDENT.html">Day 12 In-Class: Cleaning and Analyzing Economic Data</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-12/GDP_Data.csv">GDP_Data.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQC-gTszoXbZTZE4olTgBenHAXBM5RPZfYsIPdEjSBlsK6w?e=Ykai0d">Day 12 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-13/Day-13.html">Day 13</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-13/Day-13_Pre-Class_Masking-STUDENT.html">Day 13 Pre-class Assignment: Normal Distributions, Masking, and Log Plots</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-13/GDP_Cleaned.csv">GDP_Cleaned.csv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-13/Day-13_In-Class_Flint-STUDENT.html">Day 13: In-class Assignment: Get the Lead Out: Understanding The Water Crisis in Flint, MI</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-13/flint_water_data.csv">flint_water_data.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAFC6JfPpcpR4i_P7wNFmW8AcCD7ZUsKXCNqRp_y-GCjvg?e=zVGBRk">Day 13 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-14/Day-14.html">Day 14</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-14/Day-14_Pre-Class_FittingModelsAndEvaluatingFits-STUDENT.html">Day 14 Pre-Class Assignment: Fitting models, making predictions, and evaluating fits using data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-14/Day-14_In-Class_Evaluating_Fits-STUDENT.html">Day 14 In-Class Assignment: Evaluating Models</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Day-15/Day-15.html">Day 15</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-15/Day-15_Pre-Class_CurveFitting-STUDENT.html">Day 15 Pre-Class Assignment: Fitting functions to data (curve-fitting) and thinking more about models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Day-15/Day-15_In-Class_FittingCurves-STUDENT.html">Day 15 In-Class Assignment: (Thoughtfully) fitting models to data</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Extra Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../ReviewAndPracticeMaterials/ReviewAndPracticeMaterials.html">Review and Practice Materials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ReviewAndPracticeMaterials/ReviewNotebook_PythonFundamentals-STUDENT.html">Reviewing and practicing prior concepts: Python Fundamentals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReviewAndPracticeMaterials/ReviewNotebook_Debugging-STUDENT.html">Practice with Debugging</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../ReviewAndPracticeMaterials/ReviewNotebook_Functions-STUDENT.html">Practice with: functions</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Homework/HW3/HW-03_F26_PandasAnalysisAndSolvingODEs-STUDENT.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Homework 3: Data analysis with Pandas and numerically solving ODEs</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-name-here"><p style="text-align: right;"> ✅ Put your name here </p></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals"><strong>Learning Goals</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#content-goals">Content Goals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-goals">Practice Goals</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-instructions"><strong>Assignment instructions</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents-and-grading"><strong>Table of Contents and Grading</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-modules-you-will-need-for-this-assignment"><strong>0. Importing the modules you will need for this assignment</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-describing-and-cleaning-data-28-points"><strong>1. Reading, describing, and cleaning data (28 points)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task">✅  <strong>Task</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-1-looking-over-the-data-2-points">Part 1.1 - Looking over the data (2 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">✅  <strong>Task</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">✅  <strong>Task</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-2-loading-data-5-points">Part 1.2 Loading Data (5 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-points">✅  <strong>Task (5 points)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-3-loading-multiple-files-4-points">Part 1.3 Loading multiple files (4 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">✅  <strong>Task:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-data-wrangling">Some data wrangling</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">✅  <strong>Task:</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-4-slicing-and-performing-basic-statistics-on-data-3-points">Part 1.4: Slicing and performing basic statistics on data (3 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-slicing-data-for-a-weather-prediction-model-2-points">1.4a Slicing data for a weather prediction model (2 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">✅  <strong>Task</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-descriptive-statistics-1-point">1.4b Descriptive statistics (1 point)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">✅  <strong>Task</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-5-data-cleaning-9-points">Part 1.5: Data cleaning (9 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-task">1.5a ✅  <strong>Task</strong>:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-task">1.5b ✅  <strong>Task</strong>:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c">1.5c</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">✅  <strong>Task</strong>:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-now-create-a-new-data-frame-that-does-not-have-the-nan-values">1.5d Now, create a new data frame that does not have the <code class="docutils literal notranslate"><span class="pre">"NaN"</span></code> values.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">✅  <strong>Task:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-now-examine-the-difference-in-sizes-between-the-original-and-clean-datasets">1.5e Now, examine the difference in sizes between the original and clean datasets.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-2-points">✅  <strong>Task:</strong> (2 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-let-s-reflect-on-the-cleaning-process">1.5f Let’s reflect on the cleaning process.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">✅  <strong>Task:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-6-filter-the-data-using-masking-5-points">Part 1.6 - Filter the data using masking (5 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-task-use-masking-to-isolate-data-for-each-of-these-three-stations-3-points">1.6a ✅  <strong>Task</strong>: Use masking to isolate data for each of these three stations. (3 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-task">1.6c ✅  <strong>Task</strong>:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-task-1-point">1.6d ✅  <strong>Task (1 point)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis-22-points"><strong>2. Exploratory Data Analysis (22 points)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#note">Note:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-1-correlations-5-points">Part 2.1: Correlations (5 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-2-visual-representation-of-correlations-13-points">Part 2.2: Visual representation of correlations (13 points)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-odes-with-solve-ivp-28-total-points"><strong>3. Solving ODEs with <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> (28 total points)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#congratulations-you-re-done">Congratulations, you’re done!</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-scraping-data-from-the-web">Appendix: Scraping data from the web</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="homework-3-data-analysis-with-pandas-and-numerically-solving-odes">
+<h1>Homework 3: Data analysis with Pandas and numerically solving ODEs<a class="headerlink" href="#homework-3-data-analysis-with-pandas-and-numerically-solving-odes" title="Link to this heading">#</a></h1>
+<p><img src="https://cmse.msu.edu/_assets/images/about/image001.png"
+     alt="CMSE Logo"
+     align="right" 
+     width="200"/></p>
+<section id="put-your-name-here">
+<h2><p style="text-align: right;"> ✅ Put your name here </p><a class="headerlink" href="#put-your-name-here" title="Link to this heading">#</a></h2>
+</section>
+<section id="learning-goals">
+<h2><strong>Learning Goals</strong><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<section id="content-goals">
+<h3>Content Goals<a class="headerlink" href="#content-goals" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Using pandas to work with data and clean it</p></li>
+<li><p>Make meaningful visual representations of the data</p></li>
+<li><p>Solving ODEs numerically using <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code></p></li>
+</ul>
+</section>
+<section id="practice-goals">
+<h3>Practice Goals<a class="headerlink" href="#practice-goals" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Read Python module documentation to learn how to accomplish new things that may be unfamiliar to you</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="assignment-instructions">
+<h2><strong>Assignment instructions</strong><a class="headerlink" href="#assignment-instructions" title="Link to this heading">#</a></h2>
+<p>Work through the following assignment, making sure to follow all the directions and answer all the questions.</p>
+<p><strong>This assignment is due at 11:59 pm on Friday, October 23.</strong> It should be uploaded into the “Homework Assignments” submission folder for Homework #3.  Submission instructions can be found at the end of the notebook.</p>
+<hr class="docutils" />
+<p><a id="toc"></a></p>
+</section>
+<section id="table-of-contents-and-grading">
+<h2><strong>Table of Contents and Grading</strong><a class="headerlink" href="#table-of-contents-and-grading" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="#part_0"><span class="xref myst">0. Importing the modules you will need for this assignment</span></a></p>
+<p><a class="reference internal" href="#part_1"><span class="xref myst">1. Reading, describing, and cleaning data</span></a>  (28 points)</p>
+<p><a class="reference internal" href="#part_2"><span class="xref myst">2. Exploratory Data Analysis</span></a>  (22 points)</p>
+<p><a class="reference internal" href="#part_3"><span class="xref myst">3. Solving ODEs with <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code></span></a> (28 points)</p>
+<p>Total points possible: <strong>78</strong></p>
+<hr class="docutils" />
+<p><a id="part_0"></a></p>
+</section>
+<section id="importing-the-modules-you-will-need-for-this-assignment">
+<h2><strong>0. Importing the modules you will need for this assignment</strong><a class="headerlink" href="#importing-the-modules-you-will-need-for-this-assignment" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="#toc"><span class="xref myst">Back to Top</span></a></p>
+<p>In this assignment you will be using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, and <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code>. Of course, in order to make sure you can use these modules when you need them, you have to <strong>import</strong> them.</p>
+<p>Put the <code class="docutils literal notranslate"><span class="pre">import</span></code> commands you need to include to be able to use all of the above modules in this notebook in the cell below. Make sure to execute the cell before you move on!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your import commands here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### ANSWER ###</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">solve_ivp</span>
+
+<span class="c1"># This isn&#39;t for credit, but just to get them in the habit of putting imports at the top of the file</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><a id="part_1"></a></p>
+</section>
+<section id="reading-describing-and-cleaning-data-28-points">
+<h2><strong>1. Reading, describing, and cleaning data (28 points)</strong><a class="headerlink" href="#reading-describing-and-cleaning-data-28-points" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="#toc"><span class="xref myst">Back to Top</span></a></p>
+<section id="task">
+<h3>✅  <strong>Task</strong><a class="headerlink" href="#task" title="Link to this heading">#</a></h3>
+<p>With this assignment, you will find two .zip files and one CSV file. The <code class="docutils literal notranslate"><span class="pre">zipped_data_files_part1.zip</span></code> folder and <code class="docutils literal notranslate"><span class="pre">Example002.csv</span></code> contain the files you will need for part 1. If you have not yet had to “unzip” data files before, you will need to use your resources (e.g., office hours, Google, HiTA, etc.) to find out how!</p>
+<p>Suppose you are interested in modeling the weather of the Great Lakes.  You find some great data in the <a class="reference external" href="https://apps.glerl.noaa.gov/marobs/">Great Lakes Weather Data and Marine Observations</a><span class="math notranslate nohighlight">\(^{1}\)</span> webpage that has been compiled by the <a class="reference external" href="https://www.glerl.noaa.gov/about/">Great Lakes Environmental Research Laboratory</a>, a lab that operates under NOAA. Let’s check it out!</p>
+<p><img alt="great_lakes.png" src="Homework/HW3/attachment:85245e74-495d-488e-b97c-90f7a089211d.png" />Image credit: <a class="reference external" href="https://www.glerl.noaa.gov/res/Programs/ipemf/GLCFS_nextgen.html">NOAA GLERL</a></p>
+<p>The data contains realtime marine data from Great Lakes buoys, coastal met stations, airports, and ships. Marine observations include wind speed, wind gust, wind direction, air temperature, dew point, cloud cover, sea level pressure, water temperature, wave height, wave period, and live tracking of Great Lakes ship locations.</p>
+<p>Variables are descibed as follows:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Variable name</p></th>
+<th class="head text-center"><p>stands for</p></th>
+<th class="head"><p>description /unit of measurement</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>id</p></td>
+<td class="text-center"><p>Observation Identifier</p></td>
+<td><p>includes ‘year’, ‘day’, ‘hour’, ‘minute’, ‘station type’, ‘station id’ and ‘lake’</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>data_format</p></td>
+<td class="text-center"><p>data format</p></td>
+<td><p>9 = Lake Meteorological Data (LMD) Format</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>air_temp</p></td>
+<td class="text-center"><p>Air temperature</p></td>
+<td><p>degrees Centigrade</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>dew_point</p></td>
+<td class="text-center"><p>Dew point</p></td>
+<td><p>degrees Centigrade</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>wind_direction</p></td>
+<td class="text-center"><p>Wind direction</p></td>
+<td><p>degrees from, 0=north, 90=east</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>wind_speed</p></td>
+<td class="text-center"><p>Wind speed</p></td>
+<td><p>meters/second</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>max_gust</p></td>
+<td class="text-center"><p>Maximum wind gust</p></td>
+<td><p>meters/second</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>cloud</p></td>
+<td class="text-center"><p>Cloud cover</p></td>
+<td><p>percent</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>solar</p></td>
+<td class="text-center"><p>Solar Radiation</p></td>
+<td><p>watts/meter</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>pressure</p></td>
+<td class="text-center"><p>Barometric pressure</p></td>
+<td><p>millibars</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>water_temp</p></td>
+<td class="text-center"><p>Water temperature</p></td>
+<td><p>degrees Centigrade</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>wave_height</p></td>
+<td class="text-center"><p>Significant Wave height</p></td>
+<td><p>meters</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>wave_period</p></td>
+<td class="text-center"><p>Wave period</p></td>
+<td><p>seconds</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ship_lat</p></td>
+<td class="text-center"><p>North Latitude (ship observation)</p></td>
+<td><p>Decimal degrees</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>ship_long</p></td>
+<td class="text-center"><p>West Longitude (ship observation)</p></td>
+<td><p>Decimal degrees</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>(OPTIONAL:)</strong> If you are interested, you may refer to the appendix for information on how this data was scraped from the web.</p>
+<p><span class="math notranslate nohighlight">\(^{1}\)</span>NOAA/GLERL. Realtime Great Lakes Weather Data and Marine Observations. <a class="reference external" href="https://apps.glerl.noaa.gov/marobs/">https://apps.glerl.noaa.gov/marobs/</a>, accessed March 3rd, 2025.</p>
+</section>
+</section>
+<section id="part-1-1-looking-over-the-data-2-points">
+<h2>Part 1.1 - Looking over the data (2 points)<a class="headerlink" href="#part-1-1-looking-over-the-data-2-points" title="Link to this heading">#</a></h2>
+<p>As you might recall from Day 12, data sometimes comes in formats that you might not be familiar with.  Figuring out how to load in the data in a useful way is one of the most common issues that you will face.</p>
+<section id="id1">
+<h3>✅  <strong>Task</strong><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Run the cell below to try reading in the data from the <code class="docutils literal notranslate"><span class="pre">g202502600.lmd</span></code> file using <code class="docutils literal notranslate"><span class="pre">read_csv</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run this cell!</span>
+<span class="n">problem_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;g202502600.lmd&#39;</span><span class="p">)</span>
+<span class="n">problem_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>202502600001AGCM4   29 999.9 999.9 999 99.9 99.9 999 9999.9 1015.4  0.1 99.9 99.9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>202502600001ALXN6   59 999.9 999.9 999 99.9 99...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>202502600001APNM4   29  -1.2 999.9 260  6.2  7...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>202502600001BHRI3   19   2.5 999.9 270  5.7  7...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>202502600001BIGM4   09  -2.4 999.9 330  3.6  7...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>202502600001BSBM4   19   1.0 999.9 270 16.5 21...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>You probably saw that data did not load correctly.  Open the data and take a look at the file.  You might also want to look at the format sheet that is provided on the website: <a class="reference external" href="https://apps.glerl.noaa.gov/marobs/docs/data.lmd.fmt">https://apps.glerl.noaa.gov/marobs/docs/data.lmd.fmt</a>.</p>
+</section>
+<section id="id2">
+<h3>✅  <strong>Task</strong><a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p><strong>Name at least two things about how the data is formatted that might make it hard for <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> to read in the data.</strong>(2 points)</p>
+<p><font size=8 color="#009600">✎</font> Put your answer here:</p>
+</section>
+</section>
+<section id="part-1-2-loading-data-5-points">
+<h2>Part 1.2 Loading Data (5 points)<a class="headerlink" href="#part-1-2-loading-data-5-points" title="Link to this heading">#</a></h2>
+<p>It appears we might need to use a different tool to read in the data.</p>
+<section id="task-5-points">
+<h3>✅  <strong>Task (5 points)</strong><a class="headerlink" href="#task-5-points" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Look at the format sheet that is provided with the dataset on the website: <a class="reference external" href="https://apps.glerl.noaa.gov/marobs/docs/data.lmd.fmt">https://apps.glerl.noaa.gov/marobs/docs/data.lmd.fmt</a>. Observe the format of each variable.</p></li>
+<li><p>Take a look at the tools pandas has available, and read some of the documentation: <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html">https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html</a>.  Is there one that looks like it might be useful in this case?</p></li>
+<li><p>Test out the pandas tool you selected and print the first few rows to make sure it works. Make sure to separate the identifier variable into its different components, and that the columns have appropriate descriptive names!  You should end up with 21 columns in your data frame.</p></li>
+</ol>
+<p><em>If all goes well, you should get something that looks like this:</em></p>
+<p><img alt="{D5159CD6-A640-4C71-B8BE-4F26F6F864ED}.png" src="Homework/HW3/attachment:5f3ade2e-cdd1-4c95-a5d6-7aad36783d67.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="part-1-3-loading-multiple-files-4-points">
+<h2>Part 1.3 Loading multiple files (4 points)<a class="headerlink" href="#part-1-3-loading-multiple-files-4-points" title="Link to this heading">#</a></h2>
+<p>Each file only includes data from a single day, which might not be very useful.  It would be much more useful to load data from multiple days.  This is a very common thing to do in data science.  Fortunately, we can accomplish this in Python!</p>
+<p>You have been provided with 30 data files, corresponding to daily marine data observations from day 26 to day 57 of the year 2025.</p>
+<section id="id3">
+<h3>✅  <strong>Task:</strong><a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>Write a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to load the data from each of the files and save all of the data into one dataframe.  Display the final dataframe. (4 points)</p>
+<p><strong>Note:</strong> Some example starter code is provided to you in the cell below to get you started, but <strong>you will need to modify it</strong>. In this example, the code reads in a <code class="docutils literal notranslate"><span class="pre">&quot;Example002.csv&quot;</span></code> file from a series of datasets that have file names of the form <code class="docutils literal notranslate"><span class="pre">&quot;Example001.csv&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Example002.csv&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Example003.csv&quot;</span></code>, and so on. You will augment this code to include a loop, and in each iteration of the loop, you will change the name of the file to be loaded using the file name format of the data files provided.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create an empty dataframe</span>
+<span class="c1"># this is where all the data will eventually be stored</span>
+<span class="n">store_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span> 
+
+<span class="c1"># create a filename</span>
+<span class="n">filenumber</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{:03d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;Example&quot;</span> <span class="o">+</span> <span class="n">filenumber</span> <span class="o">+</span> <span class="s2">&quot;.csv&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+<span class="c1"># load in data to a temporary variable</span>
+<span class="n">temp_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+<span class="c1"># add data to the storage variable </span>
+<span class="n">store_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">store_data</span><span class="p">,</span> <span class="n">temp_data</span><span class="p">])</span>
+<span class="n">store_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Example002.csv
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10</td>
+      <td>8</td>
+      <td>3</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4</td>
+      <td>5</td>
+      <td>3</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>12</td>
+      <td>15</td>
+      <td>6</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="some-data-wrangling">
+<h3>Some data wrangling<a class="headerlink" href="#some-data-wrangling" title="Link to this heading">#</a></h3>
+<p>Before you proceed, uncomment the cell below and modify the dataframe name <code class="docutils literal notranslate"><span class="pre">df</span></code> as appropriate . Then run the cell, to see the data types in your data frame. Compare this with the data you have displayed above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#store_data.dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>year                int64
+day                 int64
+hour                int64
+minute              int64
+station_type        int64
+station_id            str
+lake              float64
+data_format         int64
+air_temp          float64
+dew_point          object
+wind_direction     object
+wind_speed        float64
+max_gust          float64
+cloud               int64
+solar             float64
+pressure          float64
+water_temp        float64
+wave_height       float64
+wave_period       float64
+ship_lat          float64
+ship_long         float64
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>You may notice that some columns in your data frame that contain numerical measurements are neither floats nor integers. This is because there are some values that were not saved correctly as numbers, and pandas had to load the column as strings. This can present problems with data analysis later on.</p>
+<section id="id4">
+<h4>✅  <strong>Task:</strong><a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<p>Uncomment the cell below and modify the DataFrame name as appropriate to check for strings and cast them as floats:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for col in store_data.columns: #for col in df.columns:</span>
+<span class="c1">#     if col != &#39;station_id&#39;:</span>
+<span class="c1">#         print(col)</span>
+<span class="c1">#         store_data[col] = pd.to_numeric(store_data[col],errors=&#39;coerce&#39;)</span>
+
+<span class="c1"># ## Check that data types have been modified correctly:</span>
+<span class="c1"># store_data.dtypes # df.dtypes</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="part-1-4-slicing-and-performing-basic-statistics-on-data-3-points">
+<h2>Part 1.4: Slicing and performing basic statistics on data (3 points)<a class="headerlink" href="#part-1-4-slicing-and-performing-basic-statistics-on-data-3-points" title="Link to this heading">#</a></h2>
+<p>Now you have loaded 30 days worth of data.</p>
+<section id="a-slicing-data-for-a-weather-prediction-model-2-points">
+<h3>1.4a Slicing data for a weather prediction model (2 points)<a class="headerlink" href="#a-slicing-data-for-a-weather-prediction-model-2-points" title="Link to this heading">#</a></h3>
+<p>You are going to make a lake weather model, and you have determined to use the following five measurement columns (variables) in your model: <code class="docutils literal notranslate"><span class="pre">air_temp</span></code>, <code class="docutils literal notranslate"><span class="pre">wind_speed</span></code>, <code class="docutils literal notranslate"><span class="pre">max_gust</span></code>, <code class="docutils literal notranslate"><span class="pre">dew_point</span></code>, and <code class="docutils literal notranslate"><span class="pre">water_temp</span></code>.</p>
+</section>
+<section id="id5">
+<h3>✅  <strong>Task</strong><a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">iloc</span></code> function, create a new data frame that has only the first seven columns and the five measurement variables for your model. Display the first few rows of the new data frame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="b-descriptive-statistics-1-point">
+<h3>1.4b Descriptive statistics (1 point)<a class="headerlink" href="#b-descriptive-statistics-1-point" title="Link to this heading">#</a></h3>
+<p>Now it is a good time to look at the data and see what you have.</p>
+</section>
+<section id="id6">
+<h3>✅  <strong>Task</strong><a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> method on your dataset to get some statistics.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#your code here:</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="part-1-5-data-cleaning-9-points">
+<h2>Part 1.5: Data cleaning (9 points)<a class="headerlink" href="#part-1-5-data-cleaning-9-points" title="Link to this heading">#</a></h2>
+<p>Take a look at the results from the describe function.  In particular, take a look at some of mean and max values, especially for air temperature.  Do those make sense to you?</p>
+<section id="a-task">
+<h3>1.5a ✅  <strong>Task</strong>:<a class="headerlink" href="#a-task" title="Link to this heading">#</a></h3>
+<p>You may have noticed there are a lot of places in the data that are filled with the digit 9.  <strong>According to the <a class="reference external" href="https://apps.glerl.noaa.gov/marobs/docs/data.lmd.fmt">format guide</a>, what does this mean?</strong> (1 point)</p>
+<p><font size=8 color="#009600">✎</font> Put your answer here:</p>
+</section>
+<section id="b-task">
+<h3>1.5b ✅  <strong>Task</strong>:<a class="headerlink" href="#b-task" title="Link to this heading">#</a></h3>
+<p>Use the <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.replace.html"><code class="docutils literal notranslate"><span class="pre">replace()</span></code> method</a> in pandas to change all such entries to <code class="docutils literal notranslate"><span class="pre">np.nan</span></code> (NaN stands for Not a Number, and this is how pandas designates a missing value). (2 points)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#your code here</span>
+<span class="n">store</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="c">
+<h3>1.5c<a class="headerlink" href="#c" title="Link to this heading">#</a></h3>
+<p>Now use the <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> method again on your new data frame: (1 point)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#your code here:</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id7">
+<h3>✅  <strong>Task</strong>:<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>Does this make the values returned by <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> make more sense to you? (1 point)</p>
+<p><font size=8 color="#009600">✎</font> Put your answer here:</p>
+</section>
+<section id="d-now-create-a-new-data-frame-that-does-not-have-the-nan-values">
+<h3>1.5d Now, create a new data frame that does not have the <code class="docutils literal notranslate"><span class="pre">&quot;NaN&quot;</span></code> values.<a class="headerlink" href="#d-now-create-a-new-data-frame-that-does-not-have-the-nan-values" title="Link to this heading">#</a></h3>
+</section>
+<section id="id8">
+<h3>✅  <strong>Task:</strong><a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>Remove the missing values using the built-in pandas <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.dropna.html"><code class="docutils literal notranslate"><span class="pre">dropna()</span></code></a> function. (1 point)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="e-now-examine-the-difference-in-sizes-between-the-original-and-clean-datasets">
+<h3>1.5e Now, examine the difference in sizes between the original and clean datasets.<a class="headerlink" href="#e-now-examine-the-difference-in-sizes-between-the-original-and-clean-datasets" title="Link to this heading">#</a></h3>
+</section>
+<section id="task-2-points">
+<h3>✅  <strong>Task:</strong> (2 points)<a class="headerlink" href="#task-2-points" title="Link to this heading">#</a></h3>
+<p>Determine the number of rows in each dataset from #1.5b and #1.5d (1 point). Print out your results (1 point).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="f-let-s-reflect-on-the-cleaning-process">
+<h3>1.5f Let’s reflect on the cleaning process.<a class="headerlink" href="#f-let-s-reflect-on-the-cleaning-process" title="Link to this heading">#</a></h3>
+</section>
+<section id="id9">
+<h3>✅  <strong>Task:</strong><a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>For this specific dataset and the variables you selected, would it matter if you hadn’t dropped the <code class="docutils literal notranslate"><span class="pre">&quot;NaN&quot;</span></code> data? (1 point).</p>
+<p><font size=8 color="#009600">✎</font> Put your answer here</p>
+</section>
+</section>
+<section id="part-1-6-filter-the-data-using-masking-5-points">
+<h2>Part 1.6 - Filter the data using masking (5 points)<a class="headerlink" href="#part-1-6-filter-the-data-using-masking-5-points" title="Link to this heading">#</a></h2>
+<p>Now you have a clean dataset for your weather model; let us zoom in on Lake Michigan for our analysis. Suppose you want to see if the weather on the west side of Lake Michigan is correlated with the weather on the east side of Lake Michigan.</p>
+<p>Consider the three stations around Lake Michigan in Holland, Mackinaw, and Menominee, with sttaion IDs <code class="docutils literal notranslate"><span class="pre">'HLNM4'</span></code>, <code class="docutils literal notranslate"><span class="pre">'MACM4'</span></code>, and <code class="docutils literal notranslate"><span class="pre">'MNMM4'</span></code>, respectively. The first two are on the east side, and the third is on the west side of Lake Michigan.  (Use the <a class="reference external" href="https://apps.glerl.noaa.gov/marobs/php/data.php?sta=9&amp;amp;labels=n&amp;amp;param=5&amp;amp;units=e&amp;amp;zoom=m">map</a> to view by station ID to see where each station is located.)</p>
+<section id="a-task-use-masking-to-isolate-data-for-each-of-these-three-stations-3-points">
+<h3>1.6a ✅  <strong>Task</strong>: Use masking to isolate data for each of these three stations. (3 points)<a class="headerlink" href="#a-task-use-masking-to-isolate-data-for-each-of-these-three-stations-3-points" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#1.6b</span>
+<span class="c1">#your code here:</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="c-task">
+<h3>1.6c ✅  <strong>Task</strong>:<a class="headerlink" href="#c-task" title="Link to this heading">#</a></h3>
+<p>The Menominee and Holland stations are on opposite sides of Lake Michigan. Use the <code class="docutils literal notranslate"><span class="pre">iloc</span></code> function to display the first 5 air temperature records in the Menominee and Holland datasets you have just created. (1 point.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="d-task-1-point">
+<h3>1.6d ✅  <strong>Task (1 point)</strong><a class="headerlink" href="#d-task-1-point" title="Link to this heading">#</a></h3>
+<p>From the results displayed, are the air temperatures similar? Provide a possible explanation for what you observe.</p>
+<p><font size=8 color="#009600">✎</font> Put your answer here</p>
+<hr class="docutils" />
+<p><a id="part_2"></a></p>
+</section>
+</section>
+<section id="exploratory-data-analysis-22-points">
+<h2><strong>2. Exploratory Data Analysis (22 points)</strong><a class="headerlink" href="#exploratory-data-analysis-22-points" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="#toc"><span class="xref myst">Back to Top</span></a></p>
+<p>The first step in every data science project, after obtaining the dataset, is sometimes referred to as Exploratory Data Analysis (EDA). As the name suggests, it involves exploring your dataset to identify general trends and possible correlations. Basically, you want to make sure you’ve got a basic sense of the properties of the data you are working with!</p>
+<p>In this part of the assignment, you will visualize our data and look for correlations in our lake weather dataset. The focus is to explore the dataset and see what information you can pull out of it, even if you don’t have a deep grasp of the discipline it comes from. In the tasks below, you will be asked to explore the data and answer some questions about it.</p>
+<section id="note">
+<h3>Note:<a class="headerlink" href="#note" title="Link to this heading">#</a></h3>
+<p><a id="clean_data"></a> If you were not able to get part 1 done correctly, download the <code class="docutils literal notranslate"><span class="pre">zipped_data_files_part2</span></code> zip file and extract the four CSV files in it to your working directory. Then run the cell below to load the clean dataset and use it for the rest of the assignment. You can also use this data set to check your work in part 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#entire (clean) dataset</span>
+<span class="n">clean_lake_data</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;clean_lake_data.csv&quot;</span><span class="p">)</span>
+
+<span class="c1">#Menominee data</span>
+<span class="n">data_MNM</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s2">&quot;data_MNM.csv&quot;</span><span class="p">)</span>
+
+<span class="c1">#Mackinaw data</span>
+<span class="n">data_MAC</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s2">&quot;data_MAC.csv&quot;</span><span class="p">)</span>
+
+<span class="c1">#Holland data</span>
+<span class="n">data_HOL</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s2">&quot;data_HOL.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="part-2-1-correlations-5-points">
+<h3>Part 2.1: Correlations (5 points)<a class="headerlink" href="#part-2-1-correlations-5-points" title="Link to this heading">#</a></h3>
+<p>In our dataset, there are columns with numerical values and those with string values. We can only look for correlations between columns with numerical (float type) values.</p>
+<p>✅  <strong>Task:</strong> Using the Menominee, MI data subset you extracted in part <span class="math notranslate nohighlight">\(1.6\:b\)</span>, print or display a correlation matrix using only the five measurement variables you used in part 1. <strong>(1 point)</strong></p>
+<p><em>Hint1:</em> Look up the pandas <code class="docutils literal notranslate"><span class="pre">corr</span></code> function for dataframes.</p>
+<p><em>Hint2:</em> To select multiple columns, use the following notation: <code class="docutils literal notranslate"><span class="pre">df[[&quot;col1&quot;],</span> <span class="pre">[&quot;col2&quot;]]</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>✅  <strong>Task(4 points):</strong></p>
+<ol class="arabic simple">
+<li><p>Looking at the table, would you consider any of the correlations <em><strong>between</strong></em> the columns to be <em>weak</em>? (1 pt)</p></li>
+<li><p>Identify 2 pairs of variables that are <em>most strongly</em> correlated. (1 pt)</p></li>
+<li><p>For these 2 pairs of variables, describe the direction of the correlation in plain words (2 sentences, one describing each pair) (2 pts, 1 for each sentence).</p></li>
+</ol>
+<p><font size=8 color="#009600">✎</font> Put your answer here</p>
+<p><strong>1 (1pt):</strong></p>
+<p><strong>2 (1pts):</strong></p>
+<p><strong>3 (2pts):</strong></p>
+</section>
+<section id="part-2-2-visual-representation-of-correlations-13-points">
+<h3>Part 2.2: Visual representation of correlations (13 points)<a class="headerlink" href="#part-2-2-visual-representation-of-correlations-13-points" title="Link to this heading">#</a></h3>
+<p>The numbers above gives us a quantitative measure of the correlations in the dataset. Visualization in data science is a very important skill!!!</p>
+<p>You have just observed some pairs of variables that are strongly correlated. In the next exercise, you will visualize the relationships between these pairs of variables as scatterplots. You will create a plot for each relationship: 1) <code class="docutils literal notranslate"><span class="pre">Variable</span> <span class="pre">1</span></code> vs. <code class="docutils literal notranslate"><span class="pre">Variable</span> <span class="pre">2</span></code> and 2) <code class="docutils literal notranslate"><span class="pre">Variable</span> <span class="pre">3</span></code> vs. <code class="docutils literal notranslate"><span class="pre">Variable</span> <span class="pre">4</span></code>.</p>
+<p>We want to make a plot similar to the one below:</p>
+<p><img alt="lake_MI_plot.jpg" src="Homework/HW3/attachment:c17759d1-9484-4b97-8222-79ed43a3b66a.jpg" /></p>
+<p>✅  <strong>Do this (10 points):</strong>  Use <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> to make two <em>scatter plots</em> like the ones above <strong>but do not recreate them (i.e. do something new!)</strong>. For full points, do the following:</p>
+<ul class="simple">
+<li><p>Create 2 subplots using <code class="docutils literal notranslate"><span class="pre">plt.subplot</span></code>. Use 2 rows and 1 column <strong>(2 points)</strong>.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">plt.figure</span></code> and the argument <code class="docutils literal notranslate"><span class="pre">figsize</span></code> to make a plot 4 inches wide x 6 inches long <strong>(1 point)</strong>.</p></li>
+<li><p>Plot  1) <code class="docutils literal notranslate"><span class="pre">Variable</span> <span class="pre">1</span></code> vs. <code class="docutils literal notranslate"><span class="pre">Variable</span> <span class="pre">2</span></code>and 2) <code class="docutils literal notranslate"><span class="pre">Variable</span> <span class="pre">3</span></code> vs. <code class="docutils literal notranslate"><span class="pre">Variable</span> <span class="pre">4</span></code>. Provide a title for each subplot <strong>(1 point)</strong>.</p></li>
+<li><p>Give the overall plot an appropriate title <strong>(1 point)</strong></p></li>
+<li><p>Provide x-axis labels <strong>(1 point)</strong>.</p></li>
+<li><p>Provide y-axis labels <strong>(1 point)</strong>.</p></li>
+<li><p>Create variables for point size, color, and alpha outside of the code for your plots. Use the variables you created to control size, color, and alpha in your subplots. Use the same parameters for all the plots. Choose appropriate point size, color, and alpha so that you can see the relationships in your data (avoid overplotting) <strong>(2 points, one for each)</strong>.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">tight_layout</span></code> to give your plot optimal sizing <strong>(1 points)</strong>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### ANSWER ###</span>
+
+<span class="c1"># -- The points are given in the text above. </span>
+<span class="c1"># -- Partial credit if only one of the plot has the correct characteristics.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>✅  <strong>Answer the following (3 points):</strong> Looking at the plots,</p>
+<ol class="arabic simple">
+<li><p>Which plots looks like it has the strongest correlation? Justify your answer (1 point).</p></li>
+<li><p>Which plot looks the most linear? (1 point).</p></li>
+<li><p>Which of the two plots has the steepest slope? Justify your answer and look carefully at the range of values the data span. Do your best to estimate this from the plots. If you want, you can try to confirm your hunch by using the actual data values to calculate this. (2 points)</p></li>
+</ol>
+<p><font size=8 color="#009600">✎</font> Put your answer here</p>
+<p><strong>Part 1 (1pt):</strong></p>
+<p><strong>Part 2 (1pt):</strong></p>
+<p><strong>Part 3 (2pts):</strong></p>
+<hr class="docutils" />
+<p><a id="part_3"></a></p>
+</section>
+</section>
+<section id="solving-odes-with-solve-ivp-28-total-points">
+<h2><strong>3. Solving ODEs with <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> (28 total points)</strong><a class="headerlink" href="#solving-odes-with-solve-ivp-28-total-points" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="#toc"><span class="xref myst">Back to Top</span></a></p>
+<p>✅  <strong>3.1 (10 points)</strong>: As you might have heard at some point, it was discovered that various water sources in Michigan have been contaminated with high levels of PFAS chemicals (<a class="reference external" href="https://www.mlive.com/news/index.ssf/page/michigans_water_crisis_pfas.html">https://www.mlive.com/news/index.ssf/page/michigans_water_crisis_pfas.html</a>). In fact, there was <a class="reference external" href="https://www.canr.msu.edu/pfas-research/Annual-Symposium/">symposium</a> taking place in Lansing about this very issue while I was crafting this homework assignment. Many of these chemicals are introduced by manufacturing companies improperly disposing of the by-products of the manufacturing process.</p>
+<p>If you consider the network of water sources in the state of Michigan (i.e. ponds, lakes, rivers, ground water), you might begin to understand how the introduction of a chemical into one location could lead an eventual contamination of the entire system – eventually even our wonderful Lake Michigan could be impacted!</p>
+<p>Let’s take this scenario as our context for thinking about how one could build a compartmental model to study the movement of a pollutant a local pond system where a industrial factory might be dumping PFAS chemicals. Let’s say that we have three ponds, <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, and <span class="math notranslate nohighlight">\(C\)</span>, connected via streams in the following way, with the factory dumping pollutants at a rate of, <span class="math notranslate nohighlight">\(p\)</span>, into Pond <span class="math notranslate nohighlight">\(A\)</span>:</p>
+<img src="https://i.imgur.com/1dYrpNm.png" width=300px>
+<p>we can then define a set of ordinary differential equations that describe how the pollutant moves through the system that might look something like this:</p>
+<div class="math notranslate nohighlight">
+\[ \frac{dA}{dt} = p - qA + sC \]</div>
+<div class="math notranslate nohighlight">
+\[ \frac{dB}{dt} = qA - rB \]</div>
+<div class="math notranslate nohighlight">
+\[ \frac{dC}{dt} = rB - sC \]</div>
+<p>where <span class="math notranslate nohighlight">\(p\)</span> is the rate at which the pollutant is dumped into Pond <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(q\)</span>, <span class="math notranslate nohighlight">\(r\)</span>, and <span class="math notranslate nohighlight">\(s\)</span> are the “per minute” pollutant flow rates out of Ponds <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, and <span class="math notranslate nohighlight">\(C\)</span>, respectively. In this model, we’re using <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, and <span class="math notranslate nohighlight">\(C\)</span> to represent how many pounds of pollutant are currently in the corresponding pond.</p>
+<p>Solve this pond pollution system using <code class="docutils literal notranslate"><span class="pre">solve_ivp()</span></code> and assume that all of the ponds start with <strong>zero</strong> pollutant, so the initial conditions are:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A(0) = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(B(0) = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(C(0) = 0\)</span></p></li>
+</ul>
+<p>Assume that the pollutant is dumped into Pond <span class="math notranslate nohighlight">\(A\)</span> at a rate, <span class="math notranslate nohighlight">\(p = 0.125\)</span> lb/min. Let <span class="math notranslate nohighlight">\(q = r = s = 0.001\)</span>.</p>
+<p>Run the model for 48 hours (make sure to convert this to minutes!) and use a timestep of <span class="math notranslate nohighlight">\(\Delta t = 1\)</span> minute.</p>
+<p><strong>Note</strong>: at the end of this part of the assignment you should have called <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> but haven’t been asked to plot the results yet!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>✅  <strong>3.2 (6 points)</strong>: Now that you have a solution to the model, make a single plot that displays the evolution of all three variables, A, B, and C as a function time (<strong>in hours</strong>). Each line should be a different color and your plot should contain a <span class="math notranslate nohighlight">\(x\)</span>-axis label, a <span class="math notranslate nohighlight">\(y\)</span>-axis label, and a legend.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Put your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>✅  <strong>3.3 (2 points)</strong>: How are the amounts of the pollutant in the ponds evolving at late times? Does behavior match your expectations, why or why not?</p>
+<p><font size=8 color="#009600">✎</font> <em>Put your answer here</em></p>
+<p>✅  <strong>3.4 (3 points):</strong> Make a second plot where you zoom in on just the first ten hours of the evolution of the system. Ensure that all of the same labels are included. <strong>Note</strong>: <em>This should not involve re-running your model</em>, but instead should involve plotting a subset of all of the values using NumPy array indexing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Put your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>✅  <strong>3.5 (1 point)</strong>: At what point in time does the amount of pollutant in Pond <span class="math notranslate nohighlight">\(B\)</span> begin to diverge noticeably from that of Pond <span class="math notranslate nohighlight">\(C\)</span>?</p>
+<p><font size=8 color="#009600">✎</font> <em>Put your answer here</em></p>
+<p>✅  <strong>3.6 (6 points)</strong>: Using the final values from the first 48 hours as a starting point (you should be able to extract these from your solution array from <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code>), run the model for another 48 hours but assume that the factory stops dumping pollutant into Pond <span class="math notranslate nohighlight">\(A\)</span> (p = 0). Make a plot of your results from the next 48 hours. <strong>Comment on what you observe. Do the results match your expectations? Why or why not?</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><font size=8 color="#009600">✎</font> <em>Put your comments on the results here</em></p>
+<hr class="docutils" />
+<section id="congratulations-you-re-done">
+<h3>Congratulations, you’re done!<a class="headerlink" href="#congratulations-you-re-done" title="Link to this heading">#</a></h3>
+<p><a class="reference internal" href="#toc"><span class="xref myst">Back to Top</span></a></p>
+<p>Submit this assignment by uploading it to the course Desire2Learn web page.  Go to the “Homework Assignments” section, find the submission folder link for Homework #3, and upload it there.</p>
+<p>© 2026 Copyright the Department of Computational Mathematics, Science and Engineering at Michigan State University.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="appendix-scraping-data-from-the-web">
+<h2>Appendix: Scraping data from the web<a class="headerlink" href="#appendix-scraping-data-from-the-web" title="Link to this heading">#</a></h2>
+<p>Sometimes it is necessary to automate the process of extracting (or downloading) data from a web source. This is known as ‘<em>web scraping</em>’. There are many ways to do this.  The code snippet in the cell below was used to donwload the <span class="math notranslate nohighlight">\(30\)</span> different data files used in this assignment. This example uses <code class="docutils literal notranslate"><span class="pre">curl</span></code>, a command line argument.  Since these are relatively simple files, this is sufficient here and is chosen for speed: <a class="reference external" href="https://www.techtarget.com/searchnetworking/tutorial/Use-cURL-and-Wget-to-download-network-files-from-CLI">https://www.techtarget.com/searchnetworking/tutorial/Use-cURL-and-Wget-to-download-network-files-from-CLI</a>, accessed 3/3/2025</p>
+<p>There are also specific packages available in python for this purpose: <a class="reference external" href="https://realpython.com/python-download-file-from-url/">https://realpython.com/python-download-file-from-url/</a>, accessed 3/3/2025</p>
+<p>Here is the link to code to determine leading zeros from (<a class="reference external" href="https://stackoverflow.com/questions/134934/display-number-with-leading-zeros">https://stackoverflow.com/questions/134934/display-number-with-leading-zeros</a>), accessed 3/3/2025</p>
+<p>Code to use variables when making command line calls: <a class="reference external" href="https://stackoverflow.com/questions/35497069/passing-ipython-variables-as-arguments-to-bash-commands">https://stackoverflow.com/questions/35497069/passing-ipython-variables-as-arguments-to-bash-commands</a>, accessed 3/3/2025</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">26</span><span class="p">,</span><span class="mi">57</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;loading in day:&#39;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+    
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://apps.glerl.noaa.gov/marobs/recent/g2025&quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="si">{:03d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;00.lmd&quot;</span>
+    <span class="c1"># filename = &quot;g2025&quot; + &quot;{:03d}&quot;.format(i) + &quot;00&quot;</span>
+
+    <span class="c1"># start = time.time()</span>
+    <span class="c1"># urlretrieve(url, filename)</span>
+    <span class="o">!</span>curl<span class="w"> </span>-O<span class="w"> </span><span class="o">{</span>url<span class="o">}</span>
+    <span class="c1"># end = time.time()</span>
+    <span class="c1"># print(end-start)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;done with day:&#39;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading in day: 26
+done with day: 26
+loading in day: 27
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 1520k  100 1520k    0     0  2107k      0 --:--:-- --:--:-- --:--:-- 2115k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 27
+loading in day: 28
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 1506k  100 1506k    0     0  2071k      0 --:--:-- --:--:-- --:--:-- 2074k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 28
+loading in day: 29
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  1 1483k    1 15873    0     0  47464      0  0:00:32 --:--:--  0:00:32 47666
+100 1483k  100 1483k    0     0  2004k      0 --:--:-- --:--:-- --:--:-- 2010k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 29
+loading in day: 30
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+ 12 1488k   12  179k    0     0   343k      0  0:00:04 --:--:--  0:00:04  344k
+100 1488k  100 1488k    0     0  1904k      0 --:--:-- --:--:-- --:--:-- 1908k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 30
+loading in day: 31
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+ 32 1514k   32  492k    0     0   723k      0  0:00:02 --:--:--  0:00:02  724k
+100 1514k  100 1514k    0     0  1932k      0 --:--:-- --:--:-- --:--:-- 1936k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 31
+loading in day: 32
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 1515k  100 1515k    0     0  2152k      0 --:--:-- --:--:-- --:--:-- 2167k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 32
+loading in day: 33
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 1509k  100 1509k    0     0  2063k      0 --:--:-- --:--:-- --:--:-- 2068k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 33
+loading in day: 34
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  2 1507k    2 31873    0     0  99774      0  0:00:15 --:--:--  0:00:15   97k
+100 1507k  100 1507k    0     0  2267k      0 --:--:-- --:--:-- --:--:-- 2274k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 34
+loading in day: 35
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+ 37 1540k   37  570k    0     0   960k      0  0:00:01 --:--:--  0:00:01  963k
+100 1540k  100 1540k    0     0  2280k      0 --:--:-- --:--:-- --:--:-- 2285k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 35
+loading in day: 36
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 1525k  100 1525k    0     0  2021k      0 --:--:-- --:--:-- --:--:-- 2028k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 36
+loading in day: 37
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 1560k  100 1560k    0     0  1959k      0 --:--:-- --:--:-- --:--:-- 1962k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 37
+loading in day: 38
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 1544k  100 1544k    0     0  2089k      0 --:--:-- --:--:-- --:--:-- 2096k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 38
+loading in day: 39
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  7 1550k    7  109k    0     0   264k      0  0:00:05 --:--:--  0:00:05  265k
+100 1550k  100 1550k    0     0  2054k      0 --:--:-- --:--:-- --:--:-- 2061k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 39
+loading in day: 40
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+ 28 1545k   28  437k    0     0   684k      0  0:00:02 --:--:--  0:00:02  686k
+100 1545k  100 1545k    0     0  2092k      0 --:--:-- --:--:-- --:--:-- 2099k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 40
+loading in day: 41
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 1503k  100 1503k    0     0  2275k      0 --:--:-- --:--:-- --:--:-- 2285k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 41
+loading in day: 42
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 1521k  100 1521k    0     0  2259k      0 --:--:-- --:--:-- --:--:-- 2264k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 42
+loading in day: 43
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  5 1525k    5 87873    0     0   214k      0  0:00:07 --:--:--  0:00:07  216k
+100 1525k  100 1525k    0     0  2182k      0 --:--:-- --:--:-- --:--:-- 2191k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 43
+loading in day: 44
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+ 65 1525k   65  992k    0     0  1569k      0 --:--:-- --:--:-- --:--:-- 1572k
+100 1525k  100 1525k    0     0  2251k      0 --:--:-- --:--:-- --:--:-- 2257k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 44
+loading in day: 45
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 1504k  100 1504k    0     0  1871k      0 --:--:-- --:--:-- --:--:-- 1878k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 45
+loading in day: 46
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 1537k  100 1537k    0     0  2265k      0 --:--:-- --:--:-- --:--:-- 2271k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 46
+loading in day: 47
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  2 1541k    2 31873    0     0   100k      0  0:00:15 --:--:--  0:00:15  101k
+100 1541k  100 1541k    0     0  2108k      0 --:--:-- --:--:-- --:--:-- 2114k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 47
+loading in day: 48
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+ 14 1528k   14  218k    0     0   405k      0  0:00:03 --:--:--  0:00:03  407k
+100 1528k  100 1528k    0     0  2042k      0 --:--:-- --:--:-- --:--:-- 2046k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 48
+loading in day: 49
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+ 74 1543k   74 1148k    0     0  1575k      0 --:--:-- --:--:-- --:--:-- 1579k
+100 1543k  100 1543k    0     0  2061k      0 --:--:-- --:--:-- --:--:-- 2066k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 49
+loading in day: 50
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 1557k  100 1557k    0     0  1969k      0 --:--:-- --:--:-- --:--:-- 1976k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 50
+loading in day: 51
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 1559k  100 1559k    0     0  2152k      0 --:--:-- --:--:-- --:--:-- 2157k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 51
+loading in day: 52
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0 1559k    0  7873    0     0  26361      0  0:01:00 --:--:--  0:01:00 26508
+100 1559k  100 1559k    0     0  2305k      0 --:--:-- --:--:-- --:--:-- 2310k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 52
+loading in day: 53
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+ 19 1551k   19  296k    0     0   504k      0  0:00:03 --:--:--  0:00:03  506k
+100 1551k  100 1551k    0     0  2099k      0 --:--:-- --:--:-- --:--:-- 2105k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 53
+loading in day: 54
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 1554k  100 1554k    0     0  2225k      0 --:--:-- --:--:-- --:--:-- 2233k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 54
+loading in day: 55
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 1541k  100 1541k    0     0  2049k      0 --:--:-- --:--:-- --:--:-- 2055k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 55
+loading in day: 56
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 1536k  100 1536k    0     0  2051k      0 --:--:-- --:--:-- --:--:-- 2056k
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done with day: 56
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  8 1561k    8  140k    0     0   321k      0  0:00:04 --:--:--  0:00:04  322k
+100 1561k  100 1561k    0     0  2405k      0 --:--:-- --:--:-- --:--:-- 2413k
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-env-hurricane-py"
+        },
+        kernelOptions: {
+            name: "conda-env-hurricane-py",
+            path: "./Homework\HW3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-env-hurricane-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../HW2/HW-02_NumPyMatplotlibAndODE-STUDENT.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Homework 2: Exploring models, data, and random numbers using NumPy and Matplotlib and solving a simple ODE</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../Day-01/Day-01.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Day-01</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-name-here"><p style="text-align: right;"> ✅ Put your name here </p></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals"><strong>Learning Goals</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#content-goals">Content Goals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-goals">Practice Goals</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-instructions"><strong>Assignment instructions</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents-and-grading"><strong>Table of Contents and Grading</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-modules-you-will-need-for-this-assignment"><strong>0. Importing the modules you will need for this assignment</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-describing-and-cleaning-data-28-points"><strong>1. Reading, describing, and cleaning data (28 points)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task">✅  <strong>Task</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-1-looking-over-the-data-2-points">Part 1.1 - Looking over the data (2 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">✅  <strong>Task</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">✅  <strong>Task</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-2-loading-data-5-points">Part 1.2 Loading Data (5 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-points">✅  <strong>Task (5 points)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-3-loading-multiple-files-4-points">Part 1.3 Loading multiple files (4 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">✅  <strong>Task:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-data-wrangling">Some data wrangling</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">✅  <strong>Task:</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-4-slicing-and-performing-basic-statistics-on-data-3-points">Part 1.4: Slicing and performing basic statistics on data (3 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-slicing-data-for-a-weather-prediction-model-2-points">1.4a Slicing data for a weather prediction model (2 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">✅  <strong>Task</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-descriptive-statistics-1-point">1.4b Descriptive statistics (1 point)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">✅  <strong>Task</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-5-data-cleaning-9-points">Part 1.5: Data cleaning (9 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-task">1.5a ✅  <strong>Task</strong>:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-task">1.5b ✅  <strong>Task</strong>:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c">1.5c</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">✅  <strong>Task</strong>:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-now-create-a-new-data-frame-that-does-not-have-the-nan-values">1.5d Now, create a new data frame that does not have the <code class="docutils literal notranslate"><span class="pre">"NaN"</span></code> values.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">✅  <strong>Task:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-now-examine-the-difference-in-sizes-between-the-original-and-clean-datasets">1.5e Now, examine the difference in sizes between the original and clean datasets.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-2-points">✅  <strong>Task:</strong> (2 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-let-s-reflect-on-the-cleaning-process">1.5f Let’s reflect on the cleaning process.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">✅  <strong>Task:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-6-filter-the-data-using-masking-5-points">Part 1.6 - Filter the data using masking (5 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-task-use-masking-to-isolate-data-for-each-of-these-three-stations-3-points">1.6a ✅  <strong>Task</strong>: Use masking to isolate data for each of these three stations. (3 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-task">1.6c ✅  <strong>Task</strong>:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-task-1-point">1.6d ✅  <strong>Task (1 point)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis-22-points"><strong>2. Exploratory Data Analysis (22 points)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#note">Note:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-1-correlations-5-points">Part 2.1: Correlations (5 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-2-visual-representation-of-correlations-13-points">Part 2.2: Visual representation of correlations (13 points)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-odes-with-solve-ivp-28-total-points"><strong>3. Solving ODEs with <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> (28 total points)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#congratulations-you-re-done">Congratulations, you’re done!</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-scraping-data-from-the-web">Appendix: Scraping data from the web</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Department of Computational Mathematics, Science and Engineering at Michigan State University
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
