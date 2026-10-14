@@ -54,12 +54,13 @@ parts:
         title: Homework 2 - NumPy, Matplotlib, and a Simple ODE
       - url: https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/refs/heads/main/Homework/HW2/pop_data.csv
         title: pop_data.csv   
-#       - file: Homework/Spring2026/Homework-03/Homework-03_PandasAnalysisAndSolvingODEs-STUDENT.ipynb
-#         title: Homework 3 - Analyzing Data with Pandas and Solving ODEs
-#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Homework/HW03/tech_layoffs.csv
-#         title: tech_layoffs.csv 
-#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Homework/HW03/stars.csv
-#         title: stars.csv 
+      - file: Homework/HW3/HW-03_F26_PandasAnalysisAndSolvingODEs-STUDENT.ipynb
+        title: Homework 3 - Analyzing Data with Pandas and Solving ODEs
+      - url: https://raw.githubusercontent.com/msu-cmse-courses/Homework/Fall2026/HW3/zipped_data_files_part1.zip
+        title: tech_layoffs.csv 
+
+      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Homework/HW03/stars.csv
+        title: stars.csv 
 #       - file: Homework/Spring2026/Homework_04/HW-04_DataAnalysisWithPandasAndRegression-STUDENT.ipynb
 #         title: Homework 4 - Fitting models to data
 #       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Homework/HW04/grape_harvest.csv
@@ -191,10 +192,10 @@ parts:
       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-13/GDP_Cleaned.csv
         title: GDP_Cleaned.csv
       - file: Day-13/Day-13_In-Class_Flint-STUDENT.ipynb
-#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-13/flint_water_data.csv
-#         title: flint_water_data.csv
-#     # # #   - url: https://docs.google.com/presentation/d/1cF_xgnjojLlTdpiMZxtj6w-JgrGDQyzzkOfHtQaUq5c/edit
-#     # # #     title: Day 13 Slides (MSU Login)
+      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-13/flint_water_data.csv
+        title: flint_water_data.csv
+      - url: https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAFC6JfPpcpR4i_P7wNFmW8AcCD7ZUsKXCNqRp_y-GCjvg?e=zVGBRk
+        title: Day 13 Slides (MSU Login)
     
     - file: Day-14/Day-14.md
       title: Day 14
