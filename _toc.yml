@@ -213,12 +213,12 @@ parts:
       sections:
       - file: Day-15/Day-15_Pre-Class_CurveFitting-STUDENT.ipynb
       - file: Day-15/Day-15_In-Class_FittingCurves-STUDENT.ipynb
-#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-15/pop200.csv
-#         title: pop200.csv
-#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-15/pop300.csv
-#         title: pop300.csv
-#     # # #   - url: https://docs.google.com/presentation/d/1Uxkto4klGxjF17Ou0gkTeBNe4OAP3ee6hOqZJxqbi8s/
-#     # # #     title: Day 15 Slides (MSU Login)
+      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-15/pop200.csv
+        title: pop200.csv
+      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-15/pop300.csv
+        title: pop300.csv
+      - url: https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQDwkoL6n2LPQ53HLuQR51FQAbqGjTNKoHaJzQfs8qu6i5w?e=vsHHBc
+        title: Day 15 Slides (MSU Login)
       
 #     - file: Day-16/Day-16.md
 #       title: Day 16
