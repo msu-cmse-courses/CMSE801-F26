@@ -203,10 +203,10 @@ parts:
       sections:
       - file: Day-14/Day-14_Pre-Class_FittingModelsAndEvaluatingFits-STUDENT.ipynb
       - file: Day-14/Day-14_In-Class_Evaluating_Fits-STUDENT.ipynb
-#       # - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-14/biden_ratings_2023.csv
-#       #   title: biden_ratings_2023.csv
-#     # # #   - url: https://docs.google.com/presentation/d/1tlcRATBl4YmbBwi-U9Aaa6D7K1owdiqbdPc70eAMKqY/
-#     # # #     title: Day 14 Slides (MSU Login)
+      # - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-14/biden_ratings_2023.csv
+      #   title: biden_ratings_2023.csv
+      - url: https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQA11CMqBZGmS4JJSjVstnHiAZrMS7lToHeVqd8XBIGn3wg?e=8d93eL
+        title: Day 14 Slides (MSU Login)
 
     - file: Day-15/Day-15.md
       title: Day 15
