@@ -220,11 +220,11 @@ parts:
       - url: https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQDwkoL6n2LPQ53HLuQR51FQAbqGjTNKoHaJzQfs8qu6i5w?e=vsHHBc
         title: Day 15 Slides (MSU Login)
       
-#     - file: Day-16/Day-16.md
-#       title: Day 16
-#       sections:
-#       - file: Day-16/Day-16_Pre-Class_IntroToDataVisualization-STUDENT.ipynb
-#       - file: Day-16/Day-16_In-Class_IntroToDataVisualization-STUDENT.ipynb
+    - file: Day-16/Day-16.md
+      title: Day 16
+      sections:
+      - file: Day-16/Day-16_Pre-Class_IntroToDataVisualization-STUDENT.ipynb
+      - file: Day-16/Day-16_In-Class_IntroToDataVisualization-STUDENT.ipynb
 #     # # #   - url: https://docs.google.com/presentation/d/1tHiFEUh8gnGRp_XqYHzmuWwm3sXTGAzZUNZHmTsUa9s
 #     # # #     title: Day 16 Slides (MSU Login)
 #     # # #  - url: https://docs.google.com/presentation/d/1p6yvtOFZVDBSNwIhfp6ANhQs5J0w2bIIaNULfLQIMS8
@@ -235,21 +235,21 @@ parts:
 #     # # #     title: Scoring form
 
 
-#     - file: Day-17/Day-17.md
-#       title: Day 17
-#       sections:
-#       - file: Day-17/Day-17_Pre-Class_2DNumPyArrays-STUDENT.ipynb
-#       - url: https://github.com/msu-cmse-courses/cmse801-supplemental/blob/main/Day-17/example.jpeg?raw=true
-#         title: example.jpeg
-#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/refs/heads/main/Day-17/cars.csv
-#         title: cars.csv
-#       - file: Day-17/Day-17_In-Class_2DImageAnalysis-STUDENT.ipynb
-#       - url: https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-supplemental/main/Day-17/beach.jpeg
-#         title: beach.jpeg
-#       - url: https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-supplemental/main/Day-17/landscape.jpeg
-#         title: landscape.jpeg
-#       - url: https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-supplemental/main/Day-17/zebra.png
-#         title: zebra.png
+    - file: Day-17/Day-17.md
+      title: Day 17
+      sections:
+      - file: Day-17/Day-17_Pre-Class_2DNumPyArrays-STUDENT.ipynb
+      - url: https://github.com/msu-cmse-courses/cmse801-supplemental/blob/main/Day-17/example.jpeg?raw=true
+        title: example.jpeg
+      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/refs/heads/main/Day-17/cars.csv
+        title: cars.csv
+      - file: Day-17/Day-17_In-Class_2DImageAnalysis-STUDENT.ipynb
+      - url: https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-supplemental/main/Day-17/beach.jpeg
+        title: beach.jpeg
+      - url: https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-supplemental/main/Day-17/landscape.jpeg
+        title: landscape.jpeg
+      - url: https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-supplemental/main/Day-17/zebra.png
+        title: zebra.png
 #     # # #   - url: https://docs.google.com/presentation/d/10sQ4pFqg2EXfhgx_jSfKpU4NPJwPAH0Zg8Po4ZZUt6A/
 #     # # #     title: Day 17 Slides (MSU Login)
 
@@ -368,11 +368,11 @@ parts:
       - file: ReviewAndPracticeMaterials/ReviewNotebook_PythonFundamentals-STUDENT.ipynb
       - file: ReviewAndPracticeMaterials/ReviewNotebook_Debugging-STUDENT.ipynb
       - file: ReviewAndPracticeMaterials/ReviewNotebook_Functions-STUDENT.ipynb
-# #       - file: ReviewAndPracticeMaterials/ReviewNotebook_Matplotlib-STUDENT.ipynb
-# #       - file: ReviewAndPracticeMaterials/ReviewNotebook_CompartmentalModels-STUDENT.ipynb
-# #       - file: ReviewAndPracticeMaterials/ReviewNotebook_Pandas-STUDENT.ipynb
-# #       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/ReviewNotebooks/weather.csv
-# #         title: weather.csv
-# #       - file: ReviewAndPracticeMaterials/ReviewNotebook_SolveIVP-STUDENT.ipynb
-# # #     - file: Quiz_Prep_Notebooks/PracticeNotebook_ScipyCurveFit-STUDENT.ipynb
+      - file: ReviewAndPracticeMaterials/ReviewNotebook_Matplotlib-STUDENT.ipynb
+      - file: ReviewAndPracticeMaterials/ReviewNotebook_CompartmentalModels-STUDENT.ipynb
+      - file: ReviewAndPracticeMaterials/ReviewNotebook_Pandas-STUDENT.ipynb
+      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/ReviewNotebooks/weather.csv
+        title: weather.csv
+      - file: ReviewAndPracticeMaterials/ReviewNotebook_SolveIVP-STUDENT.ipynb
+    - file: Quiz_Prep_Notebooks/PracticeNotebook_ScipyCurveFit-STUDENT.ipynb
 
