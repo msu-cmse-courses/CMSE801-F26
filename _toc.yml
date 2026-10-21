@@ -33,7 +33,7 @@ parts:
       - file: Project/FinalProjectTemplate
         title: Final Project Template
       - file: Project/ProjectDraft
-        title: Project Draft - Due November 18
+        title: Project Draft - Due November 23
       - file: Project/Project_Self-Evaluation
         title: Project Self-Evaluation
       - url: https://github.com/msu-cmse-courses/cmse801-supplemental/raw/main/Project/Presentation_Evaluation_Rubric.pdf
