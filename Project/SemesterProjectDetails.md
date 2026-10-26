@@ -65,7 +65,7 @@ The following is a tentative plan for the timeline we'll be following to ensure 
 
 * **October 27/28**: Introduction to project. Project Plan Check-in assigned.
 
-* **November 22/23**: Draft of Semester Project Due; *You will submit a preliminary draft of your project notebook, along with 1-2 slides explaining your project and highlighting your work/results so far.*
+* **November 22**: Draft of Semester Project Due; *You will submit a preliminary draft of your project notebook, along with 1-2 slides explaining your project and highlighting your work/results so far.*
 
 * **November 23**: Structured Project Work Day: *All students will give *lightning presentations*, where everyone will give a short (<90 second, 2 slides max) presentation of their project in class. They will receive feedback from their classmates about their project.*
 
