@@ -41,23 +41,11 @@ msgstr "Nazadnje posodobljeno dne"
 msgid "Launch"
 msgstr "Kosilo"
 
-msgid "next page"
-msgstr "Naslednja stran"
-
 msgid "Open an issue"
 msgstr "Odprite številko"
 
-msgid "open issue"
-msgstr "odprto vprašanje"
-
-msgid "previous page"
-msgstr "Prejšnja stran"
-
 msgid "Print to PDF"
 msgstr "Natisni v PDF"
-
-msgid "repository"
-msgstr "odlagališče"
 
 msgid "Source repository"
 msgstr "Izvorno skladišče"
@@ -65,11 +53,23 @@ msgstr "Izvorno skladišče"
 msgid "Sphinx Book Theme"
 msgstr "Tema knjige Sphinx"
 
-msgid "suggest edit"
-msgstr "predlagajte urejanje"
-
 msgid "Theme by the"
 msgstr "Tema avtorja"
 
 msgid "Toggle navigation"
 msgstr "Preklopi navigacijo"
+
+msgid "next page"
+msgstr "Naslednja stran"
+
+msgid "open issue"
+msgstr "odprto vprašanje"
+
+msgid "previous page"
+msgstr "Prejšnja stran"
+
+msgid "repository"
+msgstr "odlagališče"
+
+msgid "suggest edit"
+msgstr "predlagajte urejanje"

@@ -41,23 +41,11 @@ msgstr "Последнее обновление"
 msgid "Launch"
 msgstr "Запуск"
 
-msgid "next page"
-msgstr "Следующая страница"
-
 msgid "Open an issue"
 msgstr "Открыть вопрос"
 
-msgid "open issue"
-msgstr "открытый вопрос"
-
-msgid "previous page"
-msgstr "Предыдущая страница"
-
 msgid "Print to PDF"
 msgstr "Распечатать в PDF"
-
-msgid "repository"
-msgstr "хранилище"
 
 msgid "Source repository"
 msgstr "Исходный репозиторий"
@@ -65,11 +53,23 @@ msgstr "Исходный репозиторий"
 msgid "Sphinx Book Theme"
 msgstr "Тема книги Сфинкс"
 
-msgid "suggest edit"
-msgstr "предложить редактировать"
-
 msgid "Theme by the"
 msgstr "Тема от"
 
 msgid "Toggle navigation"
 msgstr "Переключить навигацию"
+
+msgid "next page"
+msgstr "Следующая страница"
+
+msgid "open issue"
+msgstr "открытый вопрос"
+
+msgid "previous page"
+msgstr "Предыдущая страница"
+
+msgid "repository"
+msgstr "хранилище"
+
+msgid "suggest edit"
+msgstr "предложить редактировать"

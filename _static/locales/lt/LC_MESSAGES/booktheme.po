@@ -41,23 +41,11 @@ msgstr "Paskutinį kartą atnaujinta"
 msgid "Launch"
 msgstr "Paleiskite"
 
-msgid "next page"
-msgstr "Kitas puslapis"
-
 msgid "Open an issue"
 msgstr "Atidarykite problemą"
 
-msgid "open issue"
-msgstr "atviras klausimas"
-
-msgid "previous page"
-msgstr "Ankstesnis puslapis"
-
 msgid "Print to PDF"
 msgstr "Spausdinti į PDF"
-
-msgid "repository"
-msgstr "saugykla"
 
 msgid "Source repository"
 msgstr "Šaltinio saugykla"
@@ -65,11 +53,23 @@ msgstr "Šaltinio saugykla"
 msgid "Sphinx Book Theme"
 msgstr "Sfinkso knygos tema"
 
-msgid "suggest edit"
-msgstr "pasiūlyti redaguoti"
-
 msgid "Theme by the"
 msgstr "Tema"
 
 msgid "Toggle navigation"
 msgstr "Perjungti naršymą"
+
+msgid "next page"
+msgstr "Kitas puslapis"
+
+msgid "open issue"
+msgstr "atviras klausimas"
+
+msgid "previous page"
+msgstr "Ankstesnis puslapis"
+
+msgid "repository"
+msgstr "saugykla"
+
+msgid "suggest edit"
+msgstr "pasiūlyti redaguoti"

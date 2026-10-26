@@ -41,23 +41,11 @@ msgstr "Laatst geupdate op"
 msgid "Launch"
 msgstr "Lancering"
 
-msgid "next page"
-msgstr "volgende bladzijde"
-
 msgid "Open an issue"
 msgstr "Open een probleem"
 
-msgid "open issue"
-msgstr "open probleem"
-
-msgid "previous page"
-msgstr "vorige pagina"
-
 msgid "Print to PDF"
 msgstr "Afdrukken naar pdf"
-
-msgid "repository"
-msgstr "repository"
 
 msgid "Source repository"
 msgstr "Bronopslagplaats"
@@ -65,11 +53,23 @@ msgstr "Bronopslagplaats"
 msgid "Sphinx Book Theme"
 msgstr "Sphinx-boekthema"
 
-msgid "suggest edit"
-msgstr "suggereren bewerken"
-
 msgid "Theme by the"
 msgstr "Thema door de"
 
 msgid "Toggle navigation"
 msgstr "Schakel navigatie"
+
+msgid "next page"
+msgstr "volgende bladzijde"
+
+msgid "open issue"
+msgstr "open probleem"
+
+msgid "previous page"
+msgstr "vorige pagina"
+
+msgid "repository"
+msgstr "repository"
+
+msgid "suggest edit"
+msgstr "suggereren bewerken"

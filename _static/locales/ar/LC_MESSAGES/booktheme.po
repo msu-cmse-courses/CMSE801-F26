@@ -41,23 +41,11 @@ msgstr "آخر تحديث في"
 msgid "Launch"
 msgstr "إطلاق"
 
-msgid "next page"
-msgstr "الصفحة التالية"
-
 msgid "Open an issue"
 msgstr "افتح قضية"
 
-msgid "open issue"
-msgstr "قضية مفتوحة"
-
-msgid "previous page"
-msgstr "الصفحة السابقة"
-
 msgid "Print to PDF"
 msgstr "طباعة إلى PDF"
-
-msgid "repository"
-msgstr "مخزن"
 
 msgid "Source repository"
 msgstr "مستودع المصدر"
@@ -65,11 +53,23 @@ msgstr "مستودع المصدر"
 msgid "Sphinx Book Theme"
 msgstr "موضوع كتاب أبو الهول"
 
-msgid "suggest edit"
-msgstr "أقترح تحرير"
-
 msgid "Theme by the"
 msgstr "موضوع بواسطة"
 
 msgid "Toggle navigation"
 msgstr "تبديل التنقل"
+
+msgid "next page"
+msgstr "الصفحة التالية"
+
+msgid "open issue"
+msgstr "قضية مفتوحة"
+
+msgid "previous page"
+msgstr "الصفحة السابقة"
+
+msgid "repository"
+msgstr "مخزن"
+
+msgid "suggest edit"
+msgstr "أقترح تحرير"

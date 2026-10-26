@@ -41,23 +41,11 @@ msgstr "Pēdējoreiz atjaunināts"
 msgid "Launch"
 msgstr "Uzsākt"
 
-msgid "next page"
-msgstr "nākamā lapaspuse"
-
 msgid "Open an issue"
 msgstr "Atveriet problēmu"
 
-msgid "open issue"
-msgstr "atklāts jautājums"
-
-msgid "previous page"
-msgstr "iepriekšējā lapa"
-
 msgid "Print to PDF"
 msgstr "Drukāt PDF formātā"
-
-msgid "repository"
-msgstr "krātuve"
 
 msgid "Source repository"
 msgstr "Avota krātuve"
@@ -65,11 +53,23 @@ msgstr "Avota krātuve"
 msgid "Sphinx Book Theme"
 msgstr "Sfinksa grāmatas tēma"
 
-msgid "suggest edit"
-msgstr "ieteikt rediģēt"
-
 msgid "Theme by the"
 msgstr "Autora tēma"
 
 msgid "Toggle navigation"
 msgstr "Pārslēgt navigāciju"
+
+msgid "next page"
+msgstr "nākamā lapaspuse"
+
+msgid "open issue"
+msgstr "atklāts jautājums"
+
+msgid "previous page"
+msgstr "iepriekšējā lapa"
+
+msgid "repository"
+msgstr "krātuve"
+
+msgid "suggest edit"
+msgstr "ieteikt rediģēt"

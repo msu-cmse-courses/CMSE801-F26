@@ -29,7 +29,7 @@ Below is the approximate timeline for the course. Please note that everything is
 | Nov 11     |       20       | Object Oriented Programming 1                         |Quiz 3                               |
 | Nov 16     |       21       | Object Oriented Programming 2                         |                                     |
 | Nov 18    |       22       | Using random numbers in modeling; Random walks        |                                      |
-| Nov 23    |       23       | Project work day, Present Drafts to Group              | HW 5 Released (due Dec 4)          |
+| Nov 23    |       23       | Project work day, Present Drafts to Group              | HW 5 Released (due Dec 4); Project draft due Nov 22 |
 | Nov 25    |              | Class Canceled                                       |                                      |
 | Nov 30    |       24       | Using RNGs for optimization; The Traveling Salesperson|                                |
 | Dec 2    |       25       | Finding model parameters with Markov Chain Monte Carlo| Quiz 4                                     |

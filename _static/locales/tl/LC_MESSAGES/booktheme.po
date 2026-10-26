@@ -35,17 +35,8 @@ msgstr "Huling na-update noong"
 msgid "Launch"
 msgstr "Ilunsad"
 
-msgid "next page"
-msgstr "Susunod na pahina"
-
 msgid "Open an issue"
 msgstr "Magbukas ng isyu"
-
-msgid "open issue"
-msgstr "bukas na isyu"
-
-msgid "previous page"
-msgstr "Nakaraang pahina"
 
 msgid "Print to PDF"
 msgstr "I-print sa PDF"
@@ -56,11 +47,20 @@ msgstr "Pinagmulan ng imbakan"
 msgid "Sphinx Book Theme"
 msgstr "Tema ng Sphinx Book"
 
-msgid "suggest edit"
-msgstr "iminumungkahi i-edit"
-
 msgid "Theme by the"
 msgstr "Tema ng"
 
 msgid "Toggle navigation"
 msgstr "I-toggle ang pag-navigate"
+
+msgid "next page"
+msgstr "Susunod na pahina"
+
+msgid "open issue"
+msgstr "bukas na isyu"
+
+msgid "previous page"
+msgstr "Nakaraang pahina"
+
+msgid "suggest edit"
+msgstr "iminumungkahi i-edit"

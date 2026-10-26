@@ -41,23 +41,11 @@ msgstr "마지막 업데이트"
 msgid "Launch"
 msgstr "시작하다"
 
-msgid "next page"
-msgstr "다음 페이지"
-
 msgid "Open an issue"
 msgstr "이슈 열기"
 
-msgid "open issue"
-msgstr "열린 문제"
-
-msgid "previous page"
-msgstr "이전 페이지"
-
 msgid "Print to PDF"
 msgstr "PDF로 인쇄"
-
-msgid "repository"
-msgstr "저장소"
 
 msgid "Source repository"
 msgstr "소스 저장소"
@@ -65,11 +53,23 @@ msgstr "소스 저장소"
 msgid "Sphinx Book Theme"
 msgstr "스핑크스 도서 테마"
 
-msgid "suggest edit"
-msgstr "편집 제안"
-
 msgid "Theme by the"
 msgstr "테마별"
 
 msgid "Toggle navigation"
 msgstr "탐색 전환"
+
+msgid "next page"
+msgstr "다음 페이지"
+
+msgid "open issue"
+msgstr "열린 문제"
+
+msgid "previous page"
+msgstr "이전 페이지"
+
+msgid "repository"
+msgstr "저장소"
+
+msgid "suggest edit"
+msgstr "편집 제안"

@@ -41,23 +41,11 @@ msgstr "ปรับปรุงล่าสุดเมื่อ"
 msgid "Launch"
 msgstr "เปิด"
 
-msgid "next page"
-msgstr "หน้าต่อไป"
-
 msgid "Open an issue"
 msgstr "เปิดปัญหา"
 
-msgid "open issue"
-msgstr "เปิดปัญหา"
-
-msgid "previous page"
-msgstr "หน้าที่แล้ว"
-
 msgid "Print to PDF"
 msgstr "พิมพ์เป็น PDF"
-
-msgid "repository"
-msgstr "ที่เก็บ"
 
 msgid "Source repository"
 msgstr "ที่เก็บซอร์ส"
@@ -65,11 +53,23 @@ msgstr "ที่เก็บซอร์ส"
 msgid "Sphinx Book Theme"
 msgstr "ธีมหนังสือสฟิงซ์"
 
-msgid "suggest edit"
-msgstr "แนะนำแก้ไข"
-
 msgid "Theme by the"
 msgstr "ธีมโดย"
 
 msgid "Toggle navigation"
 msgstr "ไม่ต้องสลับช่องทาง"
+
+msgid "next page"
+msgstr "หน้าต่อไป"
+
+msgid "open issue"
+msgstr "เปิดปัญหา"
+
+msgid "previous page"
+msgstr "หน้าที่แล้ว"
+
+msgid "repository"
+msgstr "ที่เก็บ"
+
+msgid "suggest edit"
+msgstr "แนะนำแก้ไข"

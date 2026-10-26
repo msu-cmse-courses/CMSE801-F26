@@ -35,17 +35,8 @@ msgstr "সর্বশেষ আপডেট"
 msgid "Launch"
 msgstr "শুরু করা"
 
-msgid "next page"
-msgstr "পরবর্তী পৃষ্ঠা"
-
 msgid "Open an issue"
 msgstr "একটি সমস্যা খুলুন"
-
-msgid "open issue"
-msgstr "খোলা সমস্যা"
-
-msgid "previous page"
-msgstr "আগের পৃষ্ঠা"
 
 msgid "Print to PDF"
 msgstr "পিডিএফ প্রিন্ট করুন"
@@ -61,3 +52,12 @@ msgstr "থিম দ্বারা"
 
 msgid "Toggle navigation"
 msgstr "নেভিগেশন টগল করুন"
+
+msgid "next page"
+msgstr "পরবর্তী পৃষ্ঠা"
+
+msgid "open issue"
+msgstr "খোলা সমস্যা"
+
+msgid "previous page"
+msgstr "আগের পৃষ্ঠা"

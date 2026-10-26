@@ -41,23 +41,11 @@ msgstr "Последње ажурирање"
 msgid "Launch"
 msgstr "Лансирање"
 
-msgid "next page"
-msgstr "Следећа страна"
-
 msgid "Open an issue"
 msgstr "Отворите издање"
 
-msgid "open issue"
-msgstr "отворено издање"
-
-msgid "previous page"
-msgstr "Претходна страница"
-
 msgid "Print to PDF"
 msgstr "Испис у ПДФ"
-
-msgid "repository"
-msgstr "спремиште"
 
 msgid "Source repository"
 msgstr "Изворно спремиште"
@@ -65,11 +53,23 @@ msgstr "Изворно спремиште"
 msgid "Sphinx Book Theme"
 msgstr "Тема књиге Спхинк"
 
-msgid "suggest edit"
-msgstr "предложи уређивање"
-
 msgid "Theme by the"
 msgstr "Тхеме би"
 
 msgid "Toggle navigation"
 msgstr "Укључи / искључи навигацију"
+
+msgid "next page"
+msgstr "Следећа страна"
+
+msgid "open issue"
+msgstr "отворено издање"
+
+msgid "previous page"
+msgstr "Претходна страница"
+
+msgid "repository"
+msgstr "спремиште"
+
+msgid "suggest edit"
+msgstr "предложи уређивање"

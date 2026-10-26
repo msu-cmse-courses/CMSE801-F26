@@ -41,23 +41,11 @@ msgstr "Terakhir diperbarui saat"
 msgid "Launch"
 msgstr "Meluncurkan"
 
-msgid "next page"
-msgstr "halaman selanjutnya"
-
 msgid "Open an issue"
 msgstr "Buka masalah"
 
-msgid "open issue"
-msgstr "masalah terbuka"
-
-msgid "previous page"
-msgstr "halaman sebelumnya"
-
 msgid "Print to PDF"
 msgstr "Cetak ke PDF"
-
-msgid "repository"
-msgstr "gudang"
 
 msgid "Source repository"
 msgstr "Repositori sumber"
@@ -65,11 +53,23 @@ msgstr "Repositori sumber"
 msgid "Sphinx Book Theme"
 msgstr "Tema Buku Sphinx"
 
-msgid "suggest edit"
-msgstr "menyarankan edit"
-
 msgid "Theme by the"
 msgstr "Tema oleh"
 
 msgid "Toggle navigation"
 msgstr "Alihkan navigasi"
+
+msgid "next page"
+msgstr "halaman selanjutnya"
+
+msgid "open issue"
+msgstr "masalah terbuka"
+
+msgid "previous page"
+msgstr "halaman sebelumnya"
+
+msgid "repository"
+msgstr "gudang"
+
+msgid "suggest edit"
+msgstr "menyarankan edit"

@@ -41,23 +41,11 @@ msgstr "Последна актуализация на"
 msgid "Launch"
 msgstr "Стартиране"
 
-msgid "next page"
-msgstr "Следваща страница"
-
 msgid "Open an issue"
 msgstr "Отворете проблем"
 
-msgid "open issue"
-msgstr "отворен брой"
-
-msgid "previous page"
-msgstr "предишна страница"
-
 msgid "Print to PDF"
 msgstr "Печат в PDF"
-
-msgid "repository"
-msgstr "хранилище"
 
 msgid "Source repository"
 msgstr "Хранилище на източника"
@@ -65,11 +53,23 @@ msgstr "Хранилище на източника"
 msgid "Sphinx Book Theme"
 msgstr "Тема на книгата Sphinx"
 
-msgid "suggest edit"
-msgstr "предложи редактиране"
-
 msgid "Theme by the"
 msgstr "Тема от"
 
 msgid "Toggle navigation"
 msgstr "Превключване на навигацията"
+
+msgid "next page"
+msgstr "Следваща страница"
+
+msgid "open issue"
+msgstr "отворен брой"
+
+msgid "previous page"
+msgstr "предишна страница"
+
+msgid "repository"
+msgstr "хранилище"
+
+msgid "suggest edit"
+msgstr "предложи редактиране"

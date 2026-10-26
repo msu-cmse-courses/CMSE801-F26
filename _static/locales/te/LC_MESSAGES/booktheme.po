@@ -35,17 +35,8 @@ msgstr "చివరిగా నవీకరించబడింది"
 msgid "Launch"
 msgstr "ప్రారంభించండి"
 
-msgid "next page"
-msgstr "తరువాతి పేజీ"
-
 msgid "Open an issue"
 msgstr "సమస్యను తెరవండి"
-
-msgid "open issue"
-msgstr "ఓపెన్ ఇష్యూ"
-
-msgid "previous page"
-msgstr "ముందు పేజి"
 
 msgid "Print to PDF"
 msgstr "PDF కి ముద్రించండి"
@@ -56,11 +47,20 @@ msgstr "మూల రిపోజిటరీ"
 msgid "Sphinx Book Theme"
 msgstr "సింహిక పుస్తక థీమ్"
 
-msgid "suggest edit"
-msgstr "సవరించమని సూచించండి"
-
 msgid "Theme by the"
 msgstr "ద్వారా థీమ్"
 
 msgid "Toggle navigation"
 msgstr "నావిగేషన్‌ను టోగుల్ చేయండి"
+
+msgid "next page"
+msgstr "తరువాతి పేజీ"
+
+msgid "open issue"
+msgstr "ఓపెన్ ఇష్యూ"
+
+msgid "previous page"
+msgstr "ముందు పేజి"
+
+msgid "suggest edit"
+msgstr "సవరించమని సూచించండి"

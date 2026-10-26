@@ -1,6 +1,6 @@
 # Project Draft
 
-As part of *Day 23's pre-class assignment (which is due Nov 23, by 11:59 pm)*, you will make a short slide deck to present the current state of your project to your colleagues. Note this is not exactly the same as your slides for your project presentation, but as seen below, some of these will make sense to eventually overlap. This means you should spend time working on your semester project Jupyter notebook and generate a project draft that you can talk through with your group.
+As part of *Day 23's pre-class assignment (which is due Nov 22, by 11:59 pm)*, you will make a short slide deck to present the current state of your project to your colleagues. Note this is not exactly the same as your slides for your project presentation, but as seen below, some of these will make sense to eventually overlap. This means you should spend time working on your semester project Jupyter notebook and generate a project draft that you can talk through with your group.
 
 The submitted work for this pre-class assignment itself is minimal. However, you should spend at enough time working on your semester project to have a meaningful first draft.
 

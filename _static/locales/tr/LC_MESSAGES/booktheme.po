@@ -41,23 +41,11 @@ msgstr "Son güncelleme tarihi"
 msgid "Launch"
 msgstr "Başlatmak"
 
-msgid "next page"
-msgstr "sonraki Sayfa"
-
 msgid "Open an issue"
 msgstr "Bir sorunu açın"
 
-msgid "open issue"
-msgstr "Açık konu"
-
-msgid "previous page"
-msgstr "önceki sayfa"
-
 msgid "Print to PDF"
 msgstr "PDF olarak yazdır"
-
-msgid "repository"
-msgstr "depo"
 
 msgid "Source repository"
 msgstr "Kaynak kod deposu"
@@ -65,11 +53,23 @@ msgstr "Kaynak kod deposu"
 msgid "Sphinx Book Theme"
 msgstr "Sfenks Kitap Teması"
 
-msgid "suggest edit"
-msgstr "düzenleme öner"
-
 msgid "Theme by the"
 msgstr "Tarafından tema"
 
 msgid "Toggle navigation"
 msgstr "Gezinmeyi değiştir"
+
+msgid "next page"
+msgstr "sonraki Sayfa"
+
+msgid "open issue"
+msgstr "Açık konu"
+
+msgid "previous page"
+msgstr "önceki sayfa"
+
+msgid "repository"
+msgstr "depo"
+
+msgid "suggest edit"
+msgstr "düzenleme öner"

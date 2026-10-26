@@ -35,17 +35,8 @@ msgstr "അവസാനം അപ്‌ഡേറ്റുചെയ്‌തത�
 msgid "Launch"
 msgstr "സമാരംഭിക്കുക"
 
-msgid "next page"
-msgstr "അടുത്ത പേജ്"
-
 msgid "Open an issue"
 msgstr "ഒരു പ്രശ്നം തുറക്കുക"
-
-msgid "open issue"
-msgstr "തുറന്ന പ്രശ്നം"
-
-msgid "previous page"
-msgstr "മുൻപത്തെ താൾ"
 
 msgid "Print to PDF"
 msgstr "PDF- ലേക്ക് പ്രിന്റുചെയ്യുക"
@@ -56,11 +47,20 @@ msgstr "ഉറവിട ശേഖരം"
 msgid "Sphinx Book Theme"
 msgstr "സ്ഫിങ്ക്സ് പുസ്തക തീം"
 
-msgid "suggest edit"
-msgstr "എഡിറ്റുചെയ്യാൻ നിർദ്ദേശിക്കുക"
-
 msgid "Theme by the"
 msgstr "പ്രമേയം"
 
 msgid "Toggle navigation"
 msgstr "നാവിഗേഷൻ ടോഗിൾ ചെയ്യുക"
+
+msgid "next page"
+msgstr "അടുത്ത പേജ്"
+
+msgid "open issue"
+msgstr "തുറന്ന പ്രശ്നം"
+
+msgid "previous page"
+msgstr "മുൻപത്തെ താൾ"
+
+msgid "suggest edit"
+msgstr "എഡിറ്റുചെയ്യാൻ നിർദ്ദേശിക്കുക"

@@ -41,23 +41,11 @@ msgstr "עודכן לאחרונה ב"
 msgid "Launch"
 msgstr "לְהַשִׁיק"
 
-msgid "next page"
-msgstr "עמוד הבא"
-
 msgid "Open an issue"
 msgstr "פתח גיליון"
 
-msgid "open issue"
-msgstr "בעיה פתוחה"
-
-msgid "previous page"
-msgstr "עמוד קודם"
-
 msgid "Print to PDF"
 msgstr "הדפס לקובץ PDF"
-
-msgid "repository"
-msgstr "מאגר"
 
 msgid "Source repository"
 msgstr "מאגר המקורות"
@@ -65,11 +53,23 @@ msgstr "מאגר המקורות"
 msgid "Sphinx Book Theme"
 msgstr "נושא ספר ספינקס"
 
-msgid "suggest edit"
-msgstr "מציע לערוך"
-
 msgid "Theme by the"
 msgstr "נושא מאת"
 
 msgid "Toggle navigation"
 msgstr "החלף ניווט"
+
+msgid "next page"
+msgstr "עמוד הבא"
+
+msgid "open issue"
+msgstr "בעיה פתוחה"
+
+msgid "previous page"
+msgstr "עמוד קודם"
+
+msgid "repository"
+msgstr "מאגר"
+
+msgid "suggest edit"
+msgstr "מציע לערוך"

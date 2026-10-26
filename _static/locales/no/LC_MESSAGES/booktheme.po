@@ -41,23 +41,11 @@ msgstr "Sist oppdatert den"
 msgid "Launch"
 msgstr "Start"
 
-msgid "next page"
-msgstr "neste side"
-
 msgid "Open an issue"
 msgstr "Åpne et problem"
 
-msgid "open issue"
-msgstr "åpent nummer"
-
-msgid "previous page"
-msgstr "forrige side"
-
 msgid "Print to PDF"
 msgstr "Skriv ut til PDF"
-
-msgid "repository"
-msgstr "oppbevaringssted"
 
 msgid "Source repository"
 msgstr "Kildedepot"
@@ -65,11 +53,23 @@ msgstr "Kildedepot"
 msgid "Sphinx Book Theme"
 msgstr "Sphinx boktema"
 
-msgid "suggest edit"
-msgstr "foreslå redigering"
-
 msgid "Theme by the"
 msgstr "Tema av"
 
 msgid "Toggle navigation"
 msgstr "Bytt navigasjon"
+
+msgid "next page"
+msgstr "neste side"
+
+msgid "open issue"
+msgstr "åpent nummer"
+
+msgid "previous page"
+msgstr "forrige side"
+
+msgid "repository"
+msgstr "oppbevaringssted"
+
+msgid "suggest edit"
+msgstr "foreslå redigering"

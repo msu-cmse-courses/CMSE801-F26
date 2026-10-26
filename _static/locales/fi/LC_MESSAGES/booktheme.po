@@ -41,23 +41,11 @@ msgstr "Viimeksi päivitetty"
 msgid "Launch"
 msgstr "Tuoda markkinoille"
 
-msgid "next page"
-msgstr "seuraava sivu"
-
 msgid "Open an issue"
 msgstr "Avaa ongelma"
 
-msgid "open issue"
-msgstr "avoin ongelma"
-
-msgid "previous page"
-msgstr "Edellinen sivu"
-
 msgid "Print to PDF"
 msgstr "Tulosta PDF-tiedostoon"
-
-msgid "repository"
-msgstr "arkisto"
 
 msgid "Source repository"
 msgstr "Lähteen arkisto"
@@ -65,11 +53,23 @@ msgstr "Lähteen arkisto"
 msgid "Sphinx Book Theme"
 msgstr "Sphinx-kirjan teema"
 
-msgid "suggest edit"
-msgstr "ehdottaa muokkausta"
-
 msgid "Theme by the"
 msgstr "Teeman tekijä"
 
 msgid "Toggle navigation"
 msgstr "Vaihda navigointia"
+
+msgid "next page"
+msgstr "seuraava sivu"
+
+msgid "open issue"
+msgstr "avoin ongelma"
+
+msgid "previous page"
+msgstr "Edellinen sivu"
+
+msgid "repository"
+msgstr "arkisto"
+
+msgid "suggest edit"
+msgstr "ehdottaa muokkausta"

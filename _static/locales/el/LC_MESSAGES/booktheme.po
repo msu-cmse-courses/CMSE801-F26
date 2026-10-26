@@ -41,23 +41,11 @@ msgstr "Τελευταία ενημέρωση στις"
 msgid "Launch"
 msgstr "Εκτόξευση"
 
-msgid "next page"
-msgstr "επόμενη σελίδα"
-
 msgid "Open an issue"
 msgstr "Ανοίξτε ένα ζήτημα"
 
-msgid "open issue"
-msgstr "ανοιχτό ζήτημα"
-
-msgid "previous page"
-msgstr "προηγούμενη σελίδα"
-
 msgid "Print to PDF"
 msgstr "Εκτύπωση σε PDF"
-
-msgid "repository"
-msgstr "αποθήκη"
 
 msgid "Source repository"
 msgstr "Αποθήκη πηγής"
@@ -65,11 +53,23 @@ msgstr "Αποθήκη πηγής"
 msgid "Sphinx Book Theme"
 msgstr "Θέμα βιβλίου Sphinx"
 
-msgid "suggest edit"
-msgstr "προτείνω επεξεργασία"
-
 msgid "Theme by the"
 msgstr "Θέμα από το"
 
 msgid "Toggle navigation"
 msgstr "Εναλλαγή πλοήγησης"
+
+msgid "next page"
+msgstr "επόμενη σελίδα"
+
+msgid "open issue"
+msgstr "ανοιχτό ζήτημα"
+
+msgid "previous page"
+msgstr "προηγούμενη σελίδα"
+
+msgid "repository"
+msgstr "αποθήκη"
+
+msgid "suggest edit"
+msgstr "προτείνω επεξεργασία"

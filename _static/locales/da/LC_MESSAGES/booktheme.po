@@ -41,23 +41,11 @@ msgstr "Sidst opdateret den"
 msgid "Launch"
 msgstr "Start"
 
-msgid "next page"
-msgstr "Næste side"
-
 msgid "Open an issue"
 msgstr "Åbn et problem"
 
-msgid "open issue"
-msgstr "åbent nummer"
-
-msgid "previous page"
-msgstr "forrige side"
-
 msgid "Print to PDF"
 msgstr "Udskriv til PDF"
-
-msgid "repository"
-msgstr "lager"
 
 msgid "Source repository"
 msgstr "Kildelager"
@@ -65,11 +53,23 @@ msgstr "Kildelager"
 msgid "Sphinx Book Theme"
 msgstr "Sphinx bogtema"
 
-msgid "suggest edit"
-msgstr "foreslå redigering"
-
 msgid "Theme by the"
 msgstr "Tema af"
 
 msgid "Toggle navigation"
 msgstr "Skift navigation"
+
+msgid "next page"
+msgstr "Næste side"
+
+msgid "open issue"
+msgstr "åbent nummer"
+
+msgid "previous page"
+msgstr "forrige side"
+
+msgid "repository"
+msgstr "lager"
+
+msgid "suggest edit"
+msgstr "foreslå redigering"

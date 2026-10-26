@@ -41,23 +41,11 @@ msgstr "Ultima actualizare la"
 msgid "Launch"
 msgstr "Lansa"
 
-msgid "next page"
-msgstr "pagina următoare"
-
 msgid "Open an issue"
 msgstr "Deschideți o problemă"
 
-msgid "open issue"
-msgstr "problema deschisă"
-
-msgid "previous page"
-msgstr "pagina anterioară"
-
 msgid "Print to PDF"
 msgstr "Imprimați în PDF"
-
-msgid "repository"
-msgstr "repertoriu"
 
 msgid "Source repository"
 msgstr "Depozit sursă"
@@ -65,11 +53,23 @@ msgstr "Depozit sursă"
 msgid "Sphinx Book Theme"
 msgstr "Tema Sphinx Book"
 
-msgid "suggest edit"
-msgstr "sugerează editare"
-
 msgid "Theme by the"
 msgstr "Tema de"
 
 msgid "Toggle navigation"
 msgstr "Comutare navigare"
+
+msgid "next page"
+msgstr "pagina următoare"
+
+msgid "open issue"
+msgstr "problema deschisă"
+
+msgid "previous page"
+msgstr "pagina anterioară"
+
+msgid "repository"
+msgstr "repertoriu"
+
+msgid "suggest edit"
+msgstr "sugerează editare"

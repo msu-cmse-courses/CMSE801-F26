@@ -41,23 +41,11 @@ msgstr "Ostatnia aktualizacja"
 msgid "Launch"
 msgstr "Uruchomić"
 
-msgid "next page"
-msgstr "Następna strona"
-
 msgid "Open an issue"
 msgstr "Otwórz problem"
 
-msgid "open issue"
-msgstr "otwarty problem"
-
-msgid "previous page"
-msgstr "Poprzednia strona"
-
 msgid "Print to PDF"
 msgstr "Drukuj do PDF"
-
-msgid "repository"
-msgstr "magazyn"
 
 msgid "Source repository"
 msgstr "Repozytorium źródłowe"
@@ -65,11 +53,23 @@ msgstr "Repozytorium źródłowe"
 msgid "Sphinx Book Theme"
 msgstr "Motyw książki Sphinx"
 
-msgid "suggest edit"
-msgstr "zaproponuj edycję"
-
 msgid "Theme by the"
 msgstr "Motyw autorstwa"
 
 msgid "Toggle navigation"
 msgstr "Przełącz nawigację"
+
+msgid "next page"
+msgstr "Następna strona"
+
+msgid "open issue"
+msgstr "otwarty problem"
+
+msgid "previous page"
+msgstr "Poprzednia strona"
+
+msgid "repository"
+msgstr "magazyn"
+
+msgid "suggest edit"
+msgstr "zaproponuj edycję"
