@@ -52,7 +52,11 @@ Graduate Student in CMSE\
 ## Office hours
 Office hours start from the second week of class. You can reach out to your instructor for appointments at other times. 
 
-**Dr. Nkechi Nnadi**\
+**Dr. Mengsen Zhang**\
+When: Wednesdays, 10:30 AM - 12:30 PM (Oct 28 - Dec 9; no office hours on Nov 25)\
+Where: Engineering Building 1514 (in person) or [Zoom](https://msu.zoom.us/j/98916418319?pwd=hJOqUPXFaqshwxaetRTGPF4k3hav2b.1) ID: 989 1641 8319
+
+**Dr. Nkechi Nnadi** *(these office hours ran through fall break and have ended — please contact Dr. Zhang)*\
 When: Thursdays, 3:30 PM -5:30 PM\
 Where: [Zoom](https://msu.zoom.us/j/96461898750) ID: 964 6189 8750
 
