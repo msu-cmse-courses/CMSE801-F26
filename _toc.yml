@@ -253,10 +253,10 @@ parts:
 #     # # #   - url: https://docs.google.com/presentation/d/10sQ4pFqg2EXfhgx_jSfKpU4NPJwPAH0Zg8Po4ZZUt6A/
 #     # # #     title: Day 17 Slides (MSU Login)
 
-#     - file: Day-18/Day-18.md
-#       title: Day 18
-#       sections:
-#       - file: Day-18/Day-18_Pre-Class_ABMForestFire-STUDENT.ipynb
+    - file: Day-18/Day-18.md
+      title: Day 18
+      sections:
+      - file: Day-18/Day-18_Pre-Class_ABMForestFire-STUDENT.ipynb
 #       - file: Day-18/Day-18_In-Class_ForestFiresPartI-STUDENT.ipynb
 #     # # #   - url: https://docs.google.com/presentation/d/1zSqA12bCC5QVTTKKaLzAjpL-EHx-guZQPsnskxpnajo/
 #     # # #     title: Day 18 Slides (MSU Login)
