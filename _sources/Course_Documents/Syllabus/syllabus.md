@@ -118,7 +118,7 @@ Active class participation (led both by the instructor and by students) is criti
 
 ### Pre-class assignments
 
-We will assign short assignments that are due before class. The purpose of these assignments is to introduce new material and give you some practice with it so that we can focus on experimentation and implementation in class. These assignments will typically consist of one or more short videos or reading assignments and related questions or problems and will be due before class via the course's Desire2Learn page. In general, the deadline for each pre-class assignment is the night before class at 11:59 PM. **Completing these assignments will be critical for your success in this course.**
+We will assign short assignments that are due before class. The purpose of these assignments is to introduce new material and give you some practice with it so that we can focus on experimentation and implementation in class. These assignments will typically consist of one or more short videos or reading assignments and related questions or problems and will be due before class via the course's Desire2Learn page. In general, the deadline for each pre-class assignment is the night before class at 8:00 PM. **Completing these assignments will be critical for your success in this course.**
 
 ### In-class programming assignments
 
