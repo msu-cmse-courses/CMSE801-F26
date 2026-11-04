@@ -257,7 +257,7 @@ parts:
       title: Day 18
       sections:
       - file: Day-18/Day-18_Pre-Class_ABMForestFire-STUDENT.ipynb
-#       - file: Day-18/Day-18_In-Class_ForestFiresPartI-STUDENT.ipynb
+      - file: Day-18/Day-18_In-Class_ForestFiresPartI-STUDENT.ipynb
 #     # # #   - url: https://docs.google.com/presentation/d/1zSqA12bCC5QVTTKKaLzAjpL-EHx-guZQPsnskxpnajo/
 #     # # #     title: Day 18 Slides (MSU Login)
 
