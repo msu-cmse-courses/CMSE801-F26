@@ -261,10 +261,10 @@ parts:
 #     # # #   - url: https://docs.google.com/presentation/d/1zSqA12bCC5QVTTKKaLzAjpL-EHx-guZQPsnskxpnajo/
 #     # # #     title: Day 18 Slides (MSU Login)
 
-#     - file: Day-19/Day-19.md
-#       title: Day 19
-#       sections:
-#       - file: Day-19/Day-19_Pre-Class_MoreNumPyArrayManipulation-STUDENT.ipynb
+    - file: Day-19/Day-19.md
+      title: Day 19
+      sections:
+      - file: Day-19/Day-19_Pre-Class_MoreNumPyArrayManipulation-STUDENT.ipynb
 #       - file: Day-19/Day-19_In-Class_ForestFiresPartII-STUDENT.ipynb
 #     # # #   - url: https://docs.google.com/presentation/d/1M8XHJvtk3wj6JnQMBZL2653GfIL83Ca2N-X_ekGPH2s
 #     # # #     title: Day 19 Slides (MSU Login)https://github.com/msu-cmse-courses/cmse801-S25/blob/main/_toc.yml
