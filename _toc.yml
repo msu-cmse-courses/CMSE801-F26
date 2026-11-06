@@ -62,12 +62,12 @@ parts:
         title: zipped_data_files_part2 
       - url: https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/refs/heads/main/Homework/HW3/Example002.csv
         title: Example002.csv
-#       - file: Homework/Spring2026/Homework_04/HW-04_DataAnalysisWithPandasAndRegression-STUDENT.ipynb
-#         title: Homework 4 - Fitting models to data
-#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Homework/HW04/grape_harvest.csv
-#         title: grape_harvest.csv
-#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Homework/HW04/stars.csv
-#         title: stars.csv
+      - file: Homework/HW4/HW-04_F26_DataAnalysisWithPandasAndRegression-STUDENT.ipynb
+        title: Homework 4 - Grouping, Visualizing, and Fitting a Model to Data
+      - url: https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/refs/heads/main/Homework/HW4/grape_harvest.csv
+        title: grape_harvest.csv
+      - url: https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/refs/heads/main/Homework/HW4/stars.csv
+        title: stars.csv
 #       # - file: Homework/Spring2026/Homework-05/Homework-05_OOP_ABM-STUDENT
 #       #   title: Homework 5 - Python Objects and ABM
 
