@@ -26,7 +26,7 @@ Below is the approximate timeline for the course. Please note that everything is
 | Nov 2     |       17       | NumPy Arrays in 2D   |                                      |
 | Nov 4     |       18       | Agent Based Modeling 1                              |  |
 | Nov 9     |       19       | Agent Based Modeling 2                                | HW 4 Released (due Nov 18)           |
-| Nov 11     |       20       | Object Oriented Programming 1                         |Quiz 3                               |
+| Nov 11     |       20       | Object Oriented Programming 1                         |Quiz 3 (first 30 min of class, 8:30-9:00 am) |
 | Nov 16     |       21       | Object Oriented Programming 2                         |                                     |
 | Nov 18    |       22       | Using random numbers in modeling; Random walks        |                                      |
 | Nov 23    |       23       | Project work day, Present Drafts to Group              | HW 5 Released (due Dec 4); Project draft due Nov 22 |
