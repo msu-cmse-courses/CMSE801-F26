@@ -265,14 +265,14 @@ parts:
       title: Day 19
       sections:
       - file: Day-19/Day-19_Pre-Class_MoreNumPyArrayManipulation-STUDENT.ipynb
-#       - file: Day-19/Day-19_In-Class_ForestFiresPartII-STUDENT.ipynb
+      - file: Day-19/Day-19_In-Class_ForestFiresPartII-STUDENT.ipynb
 #     # # #   - url: https://docs.google.com/presentation/d/1M8XHJvtk3wj6JnQMBZL2653GfIL83Ca2N-X_ekGPH2s
 #     # # #     title: Day 19 Slides (MSU Login)https://github.com/msu-cmse-courses/cmse801-S25/blob/main/_toc.yml
 
-#     - file: Day-20/Day-20.md
-#       title: Day 20
-#       sections:
-#       - file: Day-20/Day-20_Pre-Class_ObjectsClasses-STUDENT.ipynb
+    - file: Day-20/Day-20.md
+      title: Day 20
+      sections:
+      - file: Day-20/Day-20_Pre-Class_ObjectsClasses-STUDENT.ipynb
 #       - file: Day-20/Day-20_In-Class_ObjectsClasses-STUDENT.ipynb
 #       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-20/Animal.py 
 #         title: Animal
