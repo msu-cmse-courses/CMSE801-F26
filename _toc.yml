@@ -273,17 +273,17 @@ parts:
       title: Day 20
       sections:
       - file: Day-20/Day-20_Pre-Class_ObjectsClasses-STUDENT.ipynb
-#       - file: Day-20/Day-20_In-Class_ObjectsClasses-STUDENT.ipynb
-#       - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-20/Animal.py 
-#         title: Animal
+      - file: Day-20/Day-20_In-Class_ObjectsClasses-STUDENT.ipynb
+      - url: https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-20/Animal.py 
+        title: Animal
 #     # # #   - url: https://docs.google.com/presentation/d/1COqMcpmE3duI6ucg6stbsiTIWzfbCapEIQiDIuVSFYs/
 #     # # #     title: Day 20 Slides (MSU Login)  
 
 
-#     - file: Day-21/Day-21.md
-#       title: Day 21
-#       sections:
-#       - file: Day-21/Day-21_Pre-class_ObjectInheritanceAndComposition-STUDENT
+    - file: Day-21/Day-21.md
+      title: Day 21
+      sections:
+      - file: Day-21/Day-21_Pre-class_ObjectInheritanceAndComposition-STUDENT
 #       - file: Day-21/Day-21_In-Class_ObjectInheritanceAndComposition-STUDENT
 #     # # #   - url: https://docs.google.com/presentation/d/1CCPQ7XqKit5En5T0ytXbfef3mz7rUFV5ZXjn6hKSZwA/
 #     # # #     title: Day 21 Slides (MSU Login)
