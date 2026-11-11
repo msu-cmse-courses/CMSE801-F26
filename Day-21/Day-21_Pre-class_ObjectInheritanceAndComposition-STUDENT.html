@@ -1,0 +1,1174 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Day 21 Pre-class Assignment: Object inheritance and composition &#8212; CMSE 801</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Day-21/Day-21_Pre-class_ObjectInheritanceAndComposition-STUDENT';</script>
+    <link rel="icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Review and Practice Materials" href="../ReviewAndPracticeMaterials/ReviewAndPracticeMaterials.html" />
+    <link rel="prev" title="Day-21" href="Day-21.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="CMSE 801 - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="CMSE 801 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Materials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Course_Documents/Course_Documents.html">Important Course information</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/Syllabus/syllabus.html">Syllabus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/Schedule/schedule.html">Course Schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/SoftwareSetup/SoftwareSetupGuide.html">Software Setup Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/classParticipation/classParticipation.html">Classroom Participation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/GenerativeAI/GenerativeAI_Policy.html">Generative AI Policy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Project/Project.html">Semester Project</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Project/SemesterProjectDetails.html">Project Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Project/ProjectProposal.html">Project Proposal - Due October 28</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Project/FinalProject_RequirementsAndGradingRubric.html">Requirements and Grading Rubric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Project/FinalProjectTemplate.html">CMSE 801 Final Project Template</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Project/ProjectDraft.html">Project Draft - Due November 22</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Project/Project_Self-Evaluation.html">Project Self-Evaluation</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/msu-cmse-courses/cmse801-supplemental/raw/main/Project/Presentation_Evaluation_Rubric.pdf">Presentation Evaluation Rubric</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Homework/Homework.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Homework/HW1/Homework-01_PythonFundamentals-STUDENT-F26.html">Homework 1 - Python Fundamentals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Homework/HW2/HW-02_NumPyMatplotlibAndODE-STUDENT.html">Homework 2 - NumPy, Matplotlib, and a Simple ODE</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/refs/heads/main/Homework/HW2/pop_data.csv">pop_data.csv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Homework/HW3/HW-03_F26_PandasAnalysisAndSolvingODEs-STUDENT.html">Homework 3 - Analyzing Data with Pandas and Solving ODEs</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/main/Homework/HW3/zipped_data_files_part1.zip">zipped_data_files_part1</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/main/Homework/HW3/zipped_data_files_part2.zip">zipped_data_files_part2</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/refs/heads/main/Homework/HW3/Example002.csv">Example002.csv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Homework/HW4/HW-04_F26_DataAnalysisWithPandasAndRegression-STUDENT.html">Homework 4 - Grouping, Visualizing, and Fitting a Model to Data</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/refs/heads/main/Homework/HW4/grape_harvest.csv">grape_harvest.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/refs/heads/main/Homework/HW4/stars.csv">stars.csv</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Daily Content</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-01/Day-01.html">Day 01</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-01/Day-01_In-Class_SortingAlgorithm-STUDENT.html">Day 1 In-Class Assignment: Introductions and Sorting Algorithms</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAZKaCUMP-JQZj6mQG9yZANAfXIokhXP63-2By8XLo81Kc?e=N4QF3I">Day 01 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-02/Day-02.html">Day 02</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-02/Day-02_Pre-Class_IntroToPython-STUDENT.html">Day 2 Pre-class Assignment: Intro to Python</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Day-02/Day-02_In-Class_OrderOfMagnitudeModeling-STUDENT.html">Day 2 In-class Assignment: Order of Magnitude Modeling</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAsDxwKy1WsQZESscQmuyYNAcZv06dZ4sIq42ScDGWk0NI?e=DpWI1l">Day 02 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-03/Day-03.html">Day 03</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-03/Day-03_Pre-Class_ListsAndLoops-STUDENT.html">Day 3: Pre-Class Assignment: Lists and Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-03/Day-03_In-Class_ListsLoopsAndSaving-STUDENT.html">Day 3 In-class Assignment: The power of compound interest</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAb9ETJNiiERaWy4yrIx4qhAdgLnvkqZzhlufoRgjSFbsc?e=eX1d6g">Day 03 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-04/Day-04.html">Day 04</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-04/Day-04_Pre-Class_IfStatementsAndFunctions-STUDENT.html">Day 4: Pre-class Assignment: Boolean logic, if statements, and an introduction to functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-04/Day-04_In-Class_IfStatementsAndFunctions-STUDENT.html">Day 4 In-class Assignment: Savings for Everyone</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQBUE1SWtyFdS7cpuhMKR9ziAZImiGk0yIZ7am1QEZSJNzY?e=CNH5Pn">Day 04 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-05/Day-05.html">Day 05</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-05/Day-05_Pre-Class_MoreFunctions-STUDENT.html">Day 5: Pre-class Assignment: Thinking more about functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-05/Day-05_In-Class_MoreFunctions-STUDENT.html">Day 5 In-class Assignment: Practicing with functions (for profit!)</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQDLt3-WevlVSIWT7hGXL7nmASHUThF9gw6ot2vXQYI5urM?e=tcg0FD">Day 05 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-06/Day-06.html">Day 06</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-06/Day-06_Pre-Class_ModulesMathAndPlots-STUDENT.html">Day 6 Pre-Class Assignment: Python Modules: Numpy and Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-06/Day-06_In-Class_MathAndPlotting-STUDENT.html">Day 6 In-class assignment: Visualizing population growth</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQA6BliAKVGfSKjQsFLkiz-_AV6ZJVXJGgF4R0BCNxhYRiQ?e=gAqGqt">Day 06 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-07/Day-07.html">Day 07</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-07/Day-07_Pre-Class_IntroToNumPy-STUDENT.html">Day 7 Pre-Class: Introduction to NumPy</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/michigan_pop.csv">michigan_pop.csv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-07/Day-07_In-Class_NumPyWithTheGreatLakes-STUDENT.html">Day 7 In-class Assignment: Exploring Great Lakes Water Levels using NumPy</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQC4UK6S6FAlTqwsLIkhTNpQAbHBjQg5M_lRHffAMQJdjXw?e=iN7YPP">Day 07 Slides (MSU Login)</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_erie.csv">lake_erie.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_michigan_huron.csv">lake_michigan_huron.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_ontario.csv">lake_ontario.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_superior.csv">lake_superior.csv</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-08/Day-08.html">Day 08</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-08/Day-08_Pre-Class-IntroToODEs-STUDENT.html">Day 8 Pre-class Assignment: Introduction to Modeling with Ordinary Differential Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-08/Day-08_In-Class_IntroToODEs-STUDENT.html">Day 8: In-class Assignment: Introduction to Modeling with ODEs</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQCbGYeCi1IcRqONrvJOsN0-AQ30GucqeDx29bQm1a7xgWA?e=C2vB1I">Day 8 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-09/Day-09.html">Day 09</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-09/Day-09_Pre-Class_ModelingWithODEs-STUDENT.html">Day 9: Pre-class Assignment: Modeling with Ordinary Differential Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-09/Day-09_In-Class_ModelingWithODEs-STUDENT.html">Day 9: In-class Assignment: Modeling with ODEs</a></li>
+
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQC7RociakEXRIzDiwRVDKtgAYwCrHYiKafuZGCVEg_7ojw?e=eVuLhB">Day 9 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-10/Day-10.html">Day 10</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-10/Day-10_Pre-Class_ViralKinetics-STUDENT.html">Day 10 Pre-Class: Viral Kinetics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-10/Day-10_In-Class_CompartmentalModeling-STUDENT.html">Day 10 In-class Assignment: Building Compartmental Models</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQDLbK78zPJ1R5jLJoa8bEKkAR03qphuQjekNdNkhh98C-I?e=aIM12Z">Day 10 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-11/Day-11.html">Day 11</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-11/Day-11_Pre-Class_Zombies-STUDENT.html">Day 11 Pre-class Assignment: ZOMBIES!!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-11/Day-11_In-Class_CompartmentsWithSolveIVP-STUDENT.html">Day 11 In-Class Assignment: Compartmental Modeling, moving from the model to the code</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAer6LFg2lWRoiiaoF5GmW3AeHd4QZPyA3wGhxCcnJSBiA?e=HSfSv0">Day 11 Slides (MSU Login)</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAN5b_HGm3jS4lDETbk8HDPAdWoxpQRsJuiqiX4EwDLtng?e=9HEl4Y">Group presentation slides (Requires MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-12/Day-12.html">Day 12</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-12/Day-12_Pre-Class_Pandas-STUDENT.html">Day 12 Pre-class Assignment: Computational Models Overview and The Pandas Data Analysis Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-12/Day-12_In-Class_GDP-STUDENT.html">Day 12 In-Class: Cleaning and Analyzing Economic Data</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-12/GDP_Data.csv">GDP_Data.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQC-gTszoXbZTZE4olTgBenHAXBM5RPZfYsIPdEjSBlsK6w?e=Ykai0d">Day 12 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-13/Day-13.html">Day 13</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-13/Day-13_Pre-Class_Masking-STUDENT.html">Day 13 Pre-class Assignment: Normal Distributions, Masking, and Log Plots</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-13/GDP_Cleaned.csv">GDP_Cleaned.csv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-13/Day-13_In-Class_Flint-STUDENT.html">Day 13: In-class Assignment: Get the Lead Out: Understanding The Water Crisis in Flint, MI</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-13/flint_water_data.csv">flint_water_data.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAFC6JfPpcpR4i_P7wNFmW8AcCD7ZUsKXCNqRp_y-GCjvg?e=zVGBRk">Day 13 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-14/Day-14.html">Day 14</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-14/Day-14_Pre-Class_FittingModelsAndEvaluatingFits-STUDENT.html">Day 14 Pre-Class Assignment: Fitting models, making predictions, and evaluating fits using data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-14/Day-14_In-Class_Evaluating_Fits-STUDENT.html">Day 14 In-Class Assignment: Evaluating Models</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQA11CMqBZGmS4JJSjVstnHiAZrMS7lToHeVqd8XBIGn3wg?e=8d93eL">Day 14 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-15/Day-15.html">Day 15</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-15/Day-15_Pre-Class_CurveFitting-STUDENT.html">Day 15 Pre-Class Assignment: Fitting functions to data (curve-fitting) and thinking more about models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-15/Day-15_In-Class_FittingCurves-STUDENT.html">Day 15 In-Class Assignment: (Thoughtfully) fitting models to data</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-15/pop200.csv">pop200.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-15/pop300.csv">pop300.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQDwkoL6n2LPQ53HLuQR51FQAbqGjTNKoHaJzQfs8qu6i5w?e=vsHHBc">Day 15 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-16/Day-16.html">Day 16</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-16/Day-16_Pre-Class_IntroToDataVisualization-STUDENT.html">Day 16 Pre-class Assignment: Introduction to Data Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-16/Day-16_In-Class_IntroToDataVisualization-STUDENT.html">Day 16 In-Class: Introduction to Data Visualization</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-17/Day-17.html">Day 17</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-17/Day-17_Pre-Class_2DNumPyArrays-STUDENT.html">Day 17 Pre-Class: 2D NumPy Arrays</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/msu-cmse-courses/cmse801-supplemental/blob/main/Day-17/example.jpeg?raw=true">example.jpeg</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/refs/heads/main/Day-17/cars.csv">cars.csv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-17/Day-17_In-Class_2DImageAnalysis-STUDENT.html">Day 17 In-Class Assignment: Image Analysis</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-supplemental/main/Day-17/beach.jpeg">beach.jpeg</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-supplemental/main/Day-17/landscape.jpeg">landscape.jpeg</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-supplemental/main/Day-17/zebra.png">zebra.png</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-18/Day-18.html">Day 18</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-18/Day-18_Pre-Class_ABMForestFire-STUDENT.html">Day 18 Pre-class: Agent-based models and forest fires</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../Day-18/Day-18_In-Class_ForestFiresPartI-STUDENT.html">Day 18 In-class Assignment: Modeling forest fires with an Agent-based Model (Part 1)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-19/Day-19.html">Day 19</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-19/Day-19_Pre-Class_MoreNumPyArrayManipulation-STUDENT.html">Day 19 Pre-class: More practice manipulating 2D Numpy Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-19/Day-19_In-Class_ForestFiresPartII-STUDENT.html">Day 19: In-class Assignment: Modeling forest fires with an Agent-based Model (Part 2)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-20/Day-20.html">Day 20</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-20/Day-20_Pre-Class_ObjectsClasses-STUDENT.html">Day 20 Pre-class Assignment: introduction to Object Oriented programming (OOP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-20/Day-20_In-Class_ObjectsClasses-STUDENT.html">Day 20 In-class Assignment: We have a Zoo!</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-20/Animal.py">Animal</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Day-21.html">Day 21</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Day 21 Pre-class Assignment: Object inheritance and composition</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Extra Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewAndPracticeMaterials.html">Review and Practice Materials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewNotebook_PythonFundamentals-STUDENT.html">Reviewing and practicing prior concepts: Python Fundamentals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewNotebook_Debugging-STUDENT.html">Practice with Debugging</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewNotebook_Functions-STUDENT.html">Practice with: functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewNotebook_Matplotlib-STUDENT.html">Practice with: <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewNotebook_CompartmentalModels-STUDENT.html">Practice with: Compartmental Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewNotebook_Pandas-STUDENT.html">Practice with: Pandas</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/ReviewNotebooks/weather.csv">weather.csv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewNotebook_SolveIVP-STUDENT.html">Practice with: <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code></a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Day-21/Day-21_Pre-class_ObjectInheritanceAndComposition-STUDENT.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Day 21 Pre-class Assignment: Object inheritance and composition</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-name-here"><p style="text-align: right;"> ✅ Put your name here</p></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today-s-pre-class-assignment">Goals for Today’s Pre-Class Assignment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-instructions">Assignment instructions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-an-additional-file">Download an additional file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-inheritance"><strong>1. Object inheritance</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-questions">Quick questions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-inheritance"><strong>2. Using inheritance</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-inheritance-to-build-our-animal-kingdom">2.1 Using inheritance to build our <code class="docutils literal notranslate"><span class="pre">Animal</span></code> kingdom</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-object-for-lions">2.2 Creating object for lions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-objects-for-zebras-and-penguins">2.3 Creating objects for zebras and penguins</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-your-code">2.4 Test your code!</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-composition"><strong>3. Object composition</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-question">Quick question</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#few-important-things-before-combining-objects">3.1 Few important things before combining objects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-a-zoo-object">3.2 Defining a <code class="docutils literal notranslate"><span class="pre">Zoo</span></code> object</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-missing-code-in-methods-get-animal-names-and-total-area">3.3 Adding missing code in methods <code class="docutils literal notranslate"><span class="pre">get_animal_names()</span></code> and <code class="docutils literal notranslate"><span class="pre">total_area()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.4 Test your code!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#does-it-work">Does it work?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-reading-not-mandatory"><strong>4. Additional reading (not mandatory)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#follow-up-questions">Follow-up Questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-wrap-up">Assignment wrap-up</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#congratulations-you-re-done">Congratulations, you’re done!</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="day-21-pre-class-assignment-object-inheritance-and-composition">
+<h1>Day 21 Pre-class Assignment: Object inheritance and composition<a class="headerlink" href="#day-21-pre-class-assignment-object-inheritance-and-composition" title="Link to this heading">#</a></h1>
+<img src="https://files.realpython.com/media/Inheritance-vs-Composition-in-Python_Watermarked_1.aec726368a97.jpg" width=500px>
+<p>(image from <code class="docutils literal notranslate"><span class="pre">realpython.com</span></code>)</p>
+<section id="put-your-name-here">
+<h2><p style="text-align: right;"> ✅ Put your name here</p><a class="headerlink" href="#put-your-name-here" title="Link to this heading">#</a></h2>
+</section>
+<section id="goals-for-today-s-pre-class-assignment">
+<h2>Goals for Today’s Pre-Class Assignment<a class="headerlink" href="#goals-for-today-s-pre-class-assignment" title="Link to this heading">#</a></h2>
+<p>By the end of this assignment, you should be able to:</p>
+<ul class="simple">
+<li><p>Understand the concept of object inheritance and composition</p></li>
+<li><p>Practice using inheritance and composition using custom classes</p></li>
+</ul>
+</section>
+<section id="assignment-instructions">
+<h2>Assignment instructions<a class="headerlink" href="#assignment-instructions" title="Link to this heading">#</a></h2>
+<p>Watch the video (you will watch video in twice: first time for inheritance (from beginning till 8:30 minutes) and second time for composition - the from 8:30 till the end), read all included and linked content, and complete any assigned programming problems.  Please get started early, and come to office hours if you have any questions and make use of Teams!</p>
+<p><strong>This assignment is due by 8:00 p.m. the day before class,</strong> and should be uploaded into the appropriate “Pre-class assignments” submission folder. Submission instructions can be found at the end of the notebook.</p>
+</section>
+<section id="download-an-additional-file">
+<h2>Download an additional file<a class="headerlink" href="#download-an-additional-file" title="Link to this heading">#</a></h2>
+<p>For this assignment, you’ll need the <code class="docutils literal notranslate"><span class="pre">Animal.py</span></code> file you worked with previously. If you don’t already have it handy, you may need to re-download the file and save it in the same folder as this Jupyter notebook. The file contains definition of the class you will use in the assignment. You can find the file on the course website. Make sure you say the file with the “<code class="docutils literal notranslate"><span class="pre">.py</span></code>” extension or, if Windows adds a “<code class="docutils literal notranslate"><span class="pre">.txt</span></code>” extension, remove it and replace it with “<code class="docutils literal notranslate"><span class="pre">.py</span></code>”.</p>
+</section>
+<hr class="docutils" />
+<section id="object-inheritance">
+<h2><strong>1. Object inheritance</strong><a class="headerlink" href="#object-inheritance" title="Link to this heading">#</a></h2>
+<p>Objects present a powerful programing paradigm (called Object Oriented Programming - OOP) by combining the attributes and methods for easy access and use. As mentioned before, objects are everywhere in Python.</p>
+<p>Object <strong>inheritance</strong> is a programming technique that allow us to combine the objects in a way such that one object <strong>inherits</strong> properties from another object. This enables us to create a hierarchy of objects. But no worries, we will practice that later in the assignment!</p>
+<p>✅ <strong>Do this:</strong> To learn more about the idea behind using <strong>inheritance</strong> with Python objects, watch the video below (watch only first <strong>8:30 minutes</strong>) and <strong>answer the questions</strong> below the video.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Don&#39;t forget to watch the video in full-screen mode!</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">YouTubeVideo</span>  
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s2">&quot;RiRrcCUyn4M&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">450</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="mi">510</span><span class="p">)</span>  <span class="c1"># objects </span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="quick-questions">
+<h3>Quick questions<a class="headerlink" href="#quick-questions" title="Link to this heading">#</a></h3>
+<p>After watching the video above, answer the following two questions to overview the most important facts about objects.</p>
+<p>✅ <strong>Question 1</strong>: What is the relationship between the <strong>Dog</strong> and <strong>Animal</strong> objects in the video?</p>
+<p><font size=+3>✎</font> Do This - Erase the contents of this cell and replace it with your answer to the above question!  (double-click on this text to edit this cell, and hit shift+enter to save the text)</p>
+<p>✅ <strong>Question 2</strong>: In your own words, explain why would we might use object inheritance? In what ways might it make programming efforts easier?</p>
+<p><font size=+3>✎</font> Do This - Erase the contents of this cell and replace it with your answer to the above question!  (double-click on this text to edit this cell, and hit shift+enter to save the text)</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="using-inheritance">
+<h2><strong>2. Using inheritance</strong><a class="headerlink" href="#using-inheritance" title="Link to this heading">#</a></h2>
+<p>The main information we have to remember about inheritance is that objects have an “<strong>is a(n)</strong>” relationship: the <code class="docutils literal notranslate"><span class="pre">Lion</span></code> object <strong>is an</strong> <code class="docutils literal notranslate"><span class="pre">Animal</span></code> object, with a few attributes and methods tailored for a lion. When defining new object for lions, all <code class="docutils literal notranslate"><span class="pre">Animal</span></code>-specific attributes for lions are pre-defined in one place and there is no need to specify them explicitly when we want to use the <code class="docutils literal notranslate"><span class="pre">Lion</span></code> object.</p>
+<section id="using-inheritance-to-build-our-animal-kingdom">
+<h3>2.1 Using inheritance to build our <code class="docutils literal notranslate"><span class="pre">Animal</span></code> kingdom<a class="headerlink" href="#using-inheritance-to-build-our-animal-kingdom" title="Link to this heading">#</a></h3>
+<p>Let’s now use the knowledge of the inheritance to simplify the creation of our Zoo. In the previous in-class assignment, we created the Zoo by:</p>
+<ul class="simple">
+<li><p>creating an ‘Animal’ object for all animals in our Zoo</p></li>
+<li><p>defining properties for every single animal object that we put in our Zoo</p></li>
+</ul>
+<p>That was tedious task involving a lot of typing, as we had to define the requested area and the number of zookeepers for every animal individually. With the use of inheritance, that will be significantly easier and will require less typing, which usually means less possibilities for making mistakes. We will create an object (class) for each animal based on the already created object <code class="docutils literal notranslate"><span class="pre">Animal</span></code> - this way each animal will <strong>inherit</strong> properties from pre-construct <code class="docutils literal notranslate"><span class="pre">Animal</span></code> object.</p>
+<p>To create a Zoo using multiple types of <code class="docutils literal notranslate"><span class="pre">Animal</span></code> objects, we would need to create the following classes:</p>
+<ol class="arabic simple">
+<li><p>create a class for lions: <code class="docutils literal notranslate"><span class="pre">Lion</span></code></p></li>
+<li><p>create a class for zebras: <code class="docutils literal notranslate"><span class="pre">Zebra</span></code></p></li>
+<li><p>create a class for penguins: <code class="docutils literal notranslate"><span class="pre">Penguin</span></code></p></li>
+</ol>
+<p><strong>Note:</strong> Before continuing, make sure you can access or have re-downloaded the “<code class="docutils literal notranslate"><span class="pre">Animal.py</span></code>” file and saved it in the same folder as this Jupyter notebook. If you don’t have the file next to the notebook, download it now. The file is required for the rest of the assignment.</p>
+<p>✅ <strong>Do this:</strong> Run the following cell to make sure the the “<code class="docutils literal notranslate"><span class="pre">Animal</span></code>” class can be imported from the <code class="docutils literal notranslate"><span class="pre">Animal.py</span></code> file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The magic command below tells Jupyter Notebook to automatically load classes and methods from external files </span>
+<span class="c1"># in case they have changed from last load time;</span>
+<span class="c1"># This is needed when you change the Animal.py file</span>
+<span class="o">%</span><span class="k">reload_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+
+<span class="c1"># import animal object that will be used to create other objects</span>
+<span class="c1"># note how the Animal class is imported!</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">Animal</span><span class="w"> </span><span class="kn">import</span> <span class="n">Animal</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="creating-object-for-lions">
+<h3>2.2 Creating object for lions<a class="headerlink" href="#creating-object-for-lions" title="Link to this heading">#</a></h3>
+<p>According to the “plan” above, we have to create objects for each animal we want to have in the Zoo.</p>
+<p>✅ <strong>Do this:</strong> Check the code bellow, read carefully all comments and fill-in the missing pieces - enter 2 values. Then use the cell below to test if new object is working correctly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># here is the class for lions; read all comments and add missing </span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Lion</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is a Lion class, used to store information about lions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Initialize Lion class. All we need now is the animal nick name. &quot;&quot;&quot;</span>
+        
+        <span class="c1"># this class is only for lions, so we can define animal &#39;kind&#39; as lion</span>
+        <span class="n">kind</span> <span class="o">=</span> <span class="s2">&quot;lion&quot;</span>
+        
+        <span class="c1"># this calls initialization of Animal class and sets the animal to given &#39;name&#39;      </span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">kind</span><span class="p">,</span><span class="n">name</span><span class="p">)</span>     
+        
+        <span class="c1">#--- in lines below we define attribute values for lions--#</span>
+        
+        <span class="c1"># default required area: </span>
+        <span class="c1"># ENTER VALUE (arbitrary one or one you used in the previous </span>
+        <span class="c1"># in-class assignment)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">required_area</span> <span class="o">=</span> 
+        
+        <span class="c1"># set default number of Zoo keepers needed for lions: </span>
+        <span class="c1"># ENTER VALUE (arbitrary one or one you used in the previous </span>
+        <span class="c1"># in-class assignment)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">required_staff</span> <span class="o">=</span> 
+        
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use this cell to test the &#39;Lion&#39; class</span>
+<span class="n">alex</span> <span class="o">=</span> <span class="n">Lion</span><span class="p">(</span><span class="s2">&quot;Alex&quot;</span><span class="p">)</span>
+<span class="n">alex</span><span class="o">.</span><span class="n">set_arrive_to_zoo</span><span class="p">(</span><span class="s2">&quot;2019-01-01&quot;</span><span class="p">)</span>
+
+<span class="c1"># printing animal&#39;s names</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> is a </span><span class="si">{1}</span><span class="s2">, arrived to Zoo on </span><span class="si">{4}</span><span class="s2"> and requires </span><span class="si">{2}</span><span class="s2"> m^2 of space and </span><span class="si">{3}</span><span class="s2"> keepers to be happy.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="n">alex</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="n">alex</span><span class="o">.</span><span class="n">get_kind</span><span class="p">(),</span> <span class="n">alex</span><span class="o">.</span><span class="n">get_required_area</span><span class="p">(),</span> <span class="n">alex</span><span class="o">.</span><span class="n">get_number_keepers</span><span class="p">(),</span> <span class="n">alex</span><span class="o">.</span><span class="n">get_arrive_to_zoo</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Note</strong>: If running the cell above does not return an error, you are good to move forward.</p>
+<p>✅ <strong>Question 3</strong>: The <code class="docutils literal notranslate"><span class="pre">Lion</span></code> class does not have the methods <code class="docutils literal notranslate"><span class="pre">set_arrive_to_zoo()</span></code> and <code class="docutils literal notranslate"><span class="pre">get_required_area()</span></code> defined within it and yet, the code above works when you print the information about <code class="docutils literal notranslate"><span class="pre">alex</span></code>, how can this be? <strong>Hint:</strong> something to do with inheritance!</p>
+<p><font size=+3>✎</font> Do This - Erase the contents of this cell and replace it with your answer to the above question!  (double-click on this text to edit this cell, and hit shift+enter to save the text)</p>
+</section>
+<section id="creating-objects-for-zebras-and-penguins">
+<h3>2.3 Creating objects for zebras and penguins<a class="headerlink" href="#creating-objects-for-zebras-and-penguins" title="Link to this heading">#</a></h3>
+<p>The next steps in our plan are creating objects for zebras and penguins.</p>
+<p>✅ <strong>Do this:</strong> Using the code above (for creating the object for a lion), create objects for zebras and penguins. As before, run the cell below to test of your objects are correct.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here is a starting point for the Zebra class;</span>
+<span class="c1"># use the Lion class as a guide to complete this class</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Zebra</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is a Zebra class, used to store information about zebras.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize Zebra class. All we need now is the animal nickname.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># ---- fill in missing code----#</span>
+        
+    
+<span class="k">class</span><span class="w"> </span><span class="nc">Penguin</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+    <span class="k">pass</span>     <span class="c1"># delete this line and fill in missing pieces for Penguin class; use class definitions above as a guide</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="test-your-code">
+<h3>2.4 Test your code!<a class="headerlink" href="#test-your-code" title="Link to this heading">#</a></h3>
+<p>✅ <strong>Do this:</strong> Now use the code in the cell below to test your new classes. The code creates two objects with animal names from Madagascar movie and prints their names with some additional information. The output should be something like this (depending on what you used for your animal attributes):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Marty</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">zebra</span> <span class="ow">and</span> <span class="n">requires</span> <span class="mi">100</span> <span class="n">m</span><span class="o">^</span><span class="mi">2</span> <span class="n">of</span> <span class="n">space</span> <span class="ow">and</span> <span class="mi">1</span> <span class="n">keepers</span> <span class="n">to</span> <span class="n">be</span> <span class="n">happy</span><span class="o">.</span>
+<span class="n">Skipper</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">penguin</span> <span class="ow">and</span> <span class="n">requires</span> <span class="mi">300</span> <span class="n">m</span><span class="o">^</span><span class="mi">2</span> <span class="n">of</span> <span class="n">space</span> <span class="ow">and</span> <span class="mf">0.5</span> <span class="n">keepers</span> <span class="n">to</span> <span class="n">be</span> <span class="n">happy</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>If that is the case, you are good to move on!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use this cell to test the &#39;Lion&#39; class</span>
+<span class="n">marty</span> <span class="o">=</span> <span class="n">Zebra</span><span class="p">(</span><span class="s2">&quot;Marty&quot;</span><span class="p">)</span>
+<span class="n">skipper</span> <span class="o">=</span> <span class="n">Penguin</span><span class="p">(</span><span class="s2">&quot;Skipper&quot;</span><span class="p">)</span>
+<span class="c1"># printing animal&#39;s names</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> is a </span><span class="si">{1}</span><span class="s2"> and requires </span><span class="si">{2}</span><span class="s2"> m^2 of space and </span><span class="si">{3}</span><span class="s2"> keepers to be happy.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">marty</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="n">marty</span><span class="o">.</span><span class="n">get_kind</span><span class="p">(),</span> <span class="n">marty</span><span class="o">.</span><span class="n">get_required_area</span><span class="p">(),</span> <span class="n">marty</span><span class="o">.</span><span class="n">get_number_keepers</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> is a </span><span class="si">{1}</span><span class="s2"> and requires </span><span class="si">{2}</span><span class="s2"> m^2 of space and </span><span class="si">{3}</span><span class="s2"> keepers to be happy.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">skipper</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="n">skipper</span><span class="o">.</span><span class="n">get_kind</span><span class="p">(),</span> <span class="n">skipper</span><span class="o">.</span><span class="n">get_required_area</span><span class="p">(),</span> <span class="n">skipper</span><span class="o">.</span><span class="n">get_number_keepers</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print OBJECT&#39;s attribute directly</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">marty</span><span class="o">.</span><span class="n">required_area</span><span class="p">)</span>
+
+
+<span class="c1"># Use OBJECT&#39;s method</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">marty</span><span class="o">.</span><span class="n">get_required_area</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="object-composition">
+<h2><strong>3. Object composition</strong><a class="headerlink" href="#object-composition" title="Link to this heading">#</a></h2>
+<p>The main idea behind object composition is to combine properties (attributes and methods) from different objects into single one. You’re going to watch the second part of the previous video to learn a bit about the idea behind object composition through the provided example.</p>
+<p><strong>Composition</strong> is a programming technique that allow us to combine the objects in a way that one object is <strong>built</strong> from other objects. Objects from which new object is built, can be completely non-related and are usually combined because each object brings a piece of puzzle to the newly combined object.</p>
+<p>In simpler terms, composition is really just a word for when one class (object) is used inside another class (object). This is a way to combine classes that are not related by inheritance.</p>
+<p>✅ <strong>Do this:</strong> Watch the video below (from <strong>8:30 min</strong> on) how composition can be used in Python. Answer the questions below the video.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Don&#39;t forget to watch the video in full-screen mode!</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">YouTubeVideo</span>  
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s2">&quot;RiRrcCUyn4M&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">450</span><span class="p">,</span><span class="n">start</span><span class="o">=</span><span class="mi">515</span><span class="p">)</span>  <span class="c1"># objects</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="quick-question">
+<h3>Quick question<a class="headerlink" href="#quick-question" title="Link to this heading">#</a></h3>
+<p>After watching the video above, answer the following question to review the motivation behind object composition.</p>
+<p>✅ <strong>Question 4</strong>: When might you use object composition? In what ways might it make our programming efforts easier?</p>
+<p><font size=+3>✎</font> Do This - Erase the contents of this cell and replace it with your answer to the above question!  (double-click on this text to edit this cell, and hit shift+enter to save the text)</p>
+</section>
+<section id="few-important-things-before-combining-objects">
+<h3>3.1 Few important things before combining objects<a class="headerlink" href="#few-important-things-before-combining-objects" title="Link to this heading">#</a></h3>
+<p>Object <strong>composition</strong> is <strong>combining</strong> different objects into new one, where each object brings part of properties to the newly created class. Objects <strong>do not</strong> inherit or share anything and the only common thing could be the fact that they are combined into one object. Another way to think about <strong>composition</strong> is that it represents a “<strong>has a</strong>” relationship. That is, an object/class <strong>has a</strong> component that might be another class/object.</p>
+</section>
+<section id="defining-a-zoo-object">
+<h3>3.2 Defining a <code class="docutils literal notranslate"><span class="pre">Zoo</span></code> object<a class="headerlink" href="#defining-a-zoo-object" title="Link to this heading">#</a></h3>
+<p>We can use object <strong>composition</strong> to create a new object, <code class="docutils literal notranslate"><span class="pre">Zoo</span></code>, which will be a place where we can store <code class="docutils literal notranslate"><span class="pre">Animal</span></code> objects. In the previous in-class assignment, we were creating our “Zoo” by storing animals in a list. We can extend that idea by creating a class <code class="docutils literal notranslate"><span class="pre">Zoo</span></code> that will hold all animals in the Zoo and also offer methods to manipulate attributes of <code class="docutils literal notranslate"><span class="pre">Zoo</span></code> class.</p>
+<p>First we should define what properties (attributes and methods) we have to implement in our <code class="docutils literal notranslate"><span class="pre">Zoo</span></code> class:</p>
+<ul class="simple">
+<li><p>our <code class="docutils literal notranslate"><span class="pre">Zoo</span></code> class should have at least the following attributes:</p>
+<ul>
+<li><p>list of animals in the Zoo, these should be <code class="docutils literal notranslate"><span class="pre">Animal</span></code> objects</p></li>
+<li><p>list of zookeepers (we will create the zookeeper class later)</p></li>
+</ul>
+</li>
+<li><p>and at least the following methods:</p>
+<ul>
+<li><p>add new animal</p></li>
+<li><p>add new zookeeper (we will create the method later)</p></li>
+<li><p>get total Zoo area</p></li>
+<li><p>get total number of Zookeepers</p></li>
+</ul>
+</li>
+</ul>
+<p>You might remember from the previous in-class assignment that we created most of the required attributes and methods during that class. All we have to do now is to combine them into a single class.</p>
+</section>
+<section id="adding-missing-code-in-methods-get-animal-names-and-total-area">
+<h3>3.3 Adding missing code in methods <code class="docutils literal notranslate"><span class="pre">get_animal_names()</span></code> and <code class="docutils literal notranslate"><span class="pre">total_area()</span></code><a class="headerlink" href="#adding-missing-code-in-methods-get-animal-names-and-total-area" title="Link to this heading">#</a></h3>
+<p>Most of the before mentioned methods are already in the <code class="docutils literal notranslate"><span class="pre">Zoo</span></code> class. Two methods, <code class="docutils literal notranslate"><span class="pre">get_animal_names()</span></code> and <code class="docutils literal notranslate"><span class="pre">total_area()</span></code>, are in the class but have no content - most of the method’s body is missing.</p>
+<p>✅ <strong>Do this:</strong> Your task is to add the missing code into methods <code class="docutils literal notranslate"><span class="pre">get_animal_names()</span></code> and <code class="docutils literal notranslate"><span class="pre">total_area()</span></code> (last two methods in the cell) so they will perform their designed functionality. Last part of the previous in-class assignment was similar to this task - printing animal names and computing the Zoo’s total area. Use ideas/steps from that assignment, but pay attention how animal objects are stored.</p>
+<p><strong>Hint:</strong> here we use dictionary to store animal objects, before we were using lists. Adding and retrieving items from a dictionary is slightly different and you might not have much experience with dictionaries. If you are not sure how to use dictionaries, check the Python documentation, do a bit of google searching, or ask for help. This site also provides a comprehensive overview of dictionaries: <a class="reference external" href="https://realpython.com/python-dicts/">https://realpython.com/python-dicts/</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here is a skeleton of Zoo class with few methods defined, but with some missing.</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Zoo</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Class for Zoo.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Initialize the Zoo object</span>
+<span class="sd">        Input:</span>
+<span class="sd">        name : a name for the Zoo</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># name of the Zoo</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="c1"># we are using dictionaries for animals and personnel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">animals</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">zookeepers</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_animal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">animal</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Adds an animal to the zoo. &quot;&quot;&quot;</span>
+        <span class="c1"># we use animal&#39;s name as a key in the dictionary</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">animal</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">animals</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">animal</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">animals</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">animal</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Shorter name of function to add animals to the Zoo. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_animal</span><span class="p">(</span><span class="n">animal</span><span class="p">)</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_animals</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Return all animals in the zoo.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">animals</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">number_animals</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Return number of animals in the zoo.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">animals</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Remove animal from the Zoo for given name.</span>
+<span class="sd">        If the name does not exist, error is printed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">animals</span><span class="p">:</span>
+            <span class="c1"># yes, animal with given name is in the Zoo</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">animals</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Animal with given name is not in&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;Zoo.&quot;</span><span class="p">)</span>
+
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">number_zookeepers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Return number of zookeepers in the zoo.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">zookeepers</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_animal_names</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return animal names in the Zoo.</span>
+<span class="sd">        Return sorted names if parameters sorted==True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="c1">#</span>
+        <span class="c1"># add the content of this method; the method should return names of all animals in the Zoo</span>
+        <span class="c1"># hint: to get names of all animals in the Zoo, you can use the &#39;animals&#39; dictionary</span>
+        <span class="c1">#       the dictionary &quot;keys&quot; are animal names, you might need to look up how to get dictionary keys!</span>
+        <span class="c1">#</span>
+        
+        <span class="k">if</span> <span class="n">sort</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="c1"># we have to return sorted names; so sort the names</span>
+            <span class="n">names</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+    
+        <span class="k">return</span> <span class="n">names</span>
+        
+    <span class="k">def</span><span class="w"> </span><span class="nf">total_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the total Zoo area to host all animals defined in the object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">area</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="c1">#</span>
+        <span class="c1"># add the content of this method; the method should return total area required by animals</span>
+        <span class="c1"># use the code from the previous in-class assignment - code for computing required area</span>
+        <span class="c1"># hint: for this method you&#39;ll need to iterate over all animals in the Zoo, which are stored in the &#39;animals&#39; dictionary</span>
+        <span class="c1">#        the dictionary &quot;values&quot; are animal objects, you might need to look up how to get dictionary values!</span>
+        <span class="c1">#</span>
+        
+        <span class="k">return</span> <span class="n">area</span>
+        
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h3>3.4 Test your code!<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>✅ <strong>Do this:</strong> Now use the code in the cell below to test your class. The code creates few objects with animal names <a class="reference external" href="https://en.wikipedia.org/wiki/Madagascar_(franchise)">from Madagascar movies</a>, adds them into the ‘NYC ZOO’ and prints out their names and the total Zoo area.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create object for defining few characters from The Madagascar</span>
+<span class="c1"># the code may look long, but will produce only 5 lines of output. </span>
+<span class="c1"># You are encouraged to go through the code to get familiar with the usage of the Zoo class.</span>
+<span class="c1"># creating all classes</span>
+<span class="n">alex</span> <span class="o">=</span> <span class="n">Lion</span><span class="p">(</span><span class="s1">&#39;Alex&#39;</span><span class="p">)</span>
+<span class="n">marty</span> <span class="o">=</span> <span class="n">Zebra</span><span class="p">(</span><span class="s1">&#39;Marty&#39;</span><span class="p">)</span>
+<span class="n">skipper</span> <span class="o">=</span> <span class="n">Penguin</span><span class="p">(</span><span class="s1">&#39;Skipper&#39;</span><span class="p">)</span>
+<span class="n">kowalski</span> <span class="o">=</span> <span class="n">Penguin</span><span class="p">(</span><span class="s1">&#39;Kowalski&#39;</span><span class="p">)</span>
+
+<span class="c1"># create a Zoo and adding Alex and Skipper</span>
+<span class="n">zoo</span> <span class="o">=</span> <span class="n">Zoo</span><span class="p">(</span><span class="s1">&#39;NYC ZOO&#39;</span><span class="p">)</span>
+<span class="n">zoo</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">alex</span><span class="p">)</span>
+<span class="n">zoo</span><span class="o">.</span><span class="n">add_animal</span><span class="p">(</span><span class="n">skipper</span><span class="p">)</span>
+
+<span class="c1"># get animal names and print them</span>
+<span class="n">names</span> <span class="o">=</span> <span class="n">zoo</span><span class="o">.</span><span class="n">get_animal_names</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Alex and Skipper?&quot;</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span>
+
+<span class="c1"># add few more names</span>
+<span class="n">zoo</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">marty</span><span class="p">)</span>
+<span class="n">zoo</span><span class="o">.</span><span class="n">add_animal</span><span class="p">(</span><span class="n">kowalski</span><span class="p">)</span>
+
+<span class="c1"># get animal names and print them</span>
+<span class="n">names</span> <span class="o">=</span> <span class="n">zoo</span><span class="o">.</span><span class="n">get_animal_names</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Alex, Skipper, Marty, and Kowalski?&quot;</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span>
+
+<span class="c1">#</span>
+<span class="c1"># remove Alex</span>
+<span class="n">zoo</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;Alex&#39;</span><span class="p">)</span>
+<span class="c1"># get animal names and print them</span>
+<span class="n">names</span> <span class="o">=</span> <span class="n">zoo</span><span class="o">.</span><span class="n">get_animal_names</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">All, but Alex?&quot;</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span>
+
+<span class="c1">#</span>
+<span class="c1"># Add him back</span>
+<span class="n">zoo</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">alex</span><span class="p">)</span>
+
+<span class="c1"># get animal names and print them</span>
+<span class="n">names</span> <span class="o">=</span> <span class="n">zoo</span><span class="o">.</span><span class="n">get_animal_names</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Alex, Skipper, Marty, and Kowalski?&quot;</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Total Zoo area is:&quot;</span><span class="p">,</span> <span class="n">zoo</span><span class="o">.</span><span class="n">total_area</span><span class="p">(),</span> <span class="s2">&quot;m^2.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="does-it-work">
+<h3>Does it work?<a class="headerlink" href="#does-it-work" title="Link to this heading">#</a></h3>
+<p>If the output above looks like this (the total area depends on your numbers and will probably be different than 1300):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Alex and Skipper? [&#39;Alex&#39;, &#39;Skipper&#39;]
+
+Alex, Skipper, Marty, and Kowalski? [&#39;Alex&#39;, &#39;Skipper&#39;, &#39;Marty&#39;, &#39;Kowalski&#39;]
+
+All, but Alex? [&#39;Skipper&#39;, &#39;Marty&#39;, &#39;Kowalski&#39;]
+
+Alex, Skipper, Marty, and Kowalski? [&#39;Skipper&#39;, &#39;Marty&#39;, &#39;Kowalski&#39;, &#39;Alex&#39;]
+
+Total Zoo area is: 1300 m^2.
+</pre></div>
+</div>
+<p>then you succeeded and you are almost done!</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="additional-reading-not-mandatory">
+<h2><strong>4. Additional reading (not mandatory)</strong><a class="headerlink" href="#additional-reading-not-mandatory" title="Link to this heading">#</a></h2>
+<p>Additional reading in this pre-class assignment is might come across <strong>very</strong> technical and it <strong>extends beyond</strong> the scope of this class. However, if you are interested in learning more on the topics, read on:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/tutorial/classes.html#inheritance">Python - class inheritance</a></p></li>
+<li><p><a class="reference external" href="https://realpython.com/inheritance-composition-python/">Inheritance and composition: A Python OOP Guide</a></p></li>
+</ul>
+<p><strong>Important</strong>: The web pages above include comprehensive information about classes and you are <strong>NOT</strong> expected to read (or even remember) everything presented!</p>
+</section>
+<hr class="docutils" />
+<section id="follow-up-questions">
+<h2>Follow-up Questions<a class="headerlink" href="#follow-up-questions" title="Link to this heading">#</a></h2>
+<p>Copy and paste the following questions into the appropriate box in the assignment survey include below and answer them there. (Note: You’ll have to fill out the assignment number and go to the “NEXT” section of the survey to paste in these questions.)</p>
+<ol class="arabic simple">
+<li><p>Inheritance: what is the relationship of an object that inherits properties from another object? (Remember the relation of object <strong>Dog</strong> to object <strong>Animal</strong>)</p></li>
+<li><p>Composition: in your own words, explain the main difference between inheritance and composition.</p></li>
+<li><p>When might you use inheritance and when might you use composition?</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="assignment-wrap-up">
+<h2>Assignment wrap-up<a class="headerlink" href="#assignment-wrap-up" title="Link to this heading">#</a></h2>
+<p>Please fill out the form that appears when you run the code below.  <strong>You must completely fill this out in order to receive credit for the assignment!</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
+<span class="n">HTML</span><span class="p">(</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&lt;iframe </span>
+<span class="sd">	src=&quot;https://forms.cloud.microsoft/r/uyAtbWy3Sx&quot; </span>
+<span class="sd">	width=&quot;800&quot; </span>
+<span class="sd">	height=&quot;800px&quot; </span>
+<span class="sd">	frameborder=&quot;0&quot; </span>
+<span class="sd">	marginheight=&quot;0&quot; </span>
+<span class="sd">	marginwidth=&quot;0&quot;&gt;</span>
+<span class="sd">	Loading...</span>
+<span class="sd">&lt;/iframe&gt;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="congratulations-you-re-done">
+<h3>Congratulations, you’re done!<a class="headerlink" href="#congratulations-you-re-done" title="Link to this heading">#</a></h3>
+<p>Submit this assignment by uploading it to the course Desire2Learn web page.  Go to the “Pre-class assignments” folder, find the appropriate dropbox link, and upload it there.</p>
+<p>See you in class!</p>
+<p>© Copyright 2026,  Department of Computational Mathematics, Science and Engineering at Michigan State University</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Day-21"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Day-21.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Day-21</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../ReviewAndPracticeMaterials/ReviewAndPracticeMaterials.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Review and Practice Materials</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-name-here"><p style="text-align: right;"> ✅ Put your name here</p></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today-s-pre-class-assignment">Goals for Today’s Pre-Class Assignment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-instructions">Assignment instructions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-an-additional-file">Download an additional file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-inheritance"><strong>1. Object inheritance</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-questions">Quick questions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-inheritance"><strong>2. Using inheritance</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-inheritance-to-build-our-animal-kingdom">2.1 Using inheritance to build our <code class="docutils literal notranslate"><span class="pre">Animal</span></code> kingdom</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-object-for-lions">2.2 Creating object for lions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-objects-for-zebras-and-penguins">2.3 Creating objects for zebras and penguins</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-your-code">2.4 Test your code!</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-composition"><strong>3. Object composition</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-question">Quick question</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#few-important-things-before-combining-objects">3.1 Few important things before combining objects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-a-zoo-object">3.2 Defining a <code class="docutils literal notranslate"><span class="pre">Zoo</span></code> object</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-missing-code-in-methods-get-animal-names-and-total-area">3.3 Adding missing code in methods <code class="docutils literal notranslate"><span class="pre">get_animal_names()</span></code> and <code class="docutils literal notranslate"><span class="pre">total_area()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.4 Test your code!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#does-it-work">Does it work?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-reading-not-mandatory"><strong>4. Additional reading (not mandatory)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#follow-up-questions">Follow-up Questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-wrap-up">Assignment wrap-up</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#congratulations-you-re-done">Congratulations, you’re done!</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Department of Computational Mathematics, Science and Engineering at Michigan State University
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
