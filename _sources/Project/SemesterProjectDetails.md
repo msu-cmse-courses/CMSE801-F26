@@ -38,7 +38,7 @@ A successful project will include all of the following components:
 
 ## Locating data and models
 
-You'll need to spend some time figuring out what model is the right model to use or what data are available to answer your question. The internet is your friend for this part. You should be able to find the details you need to compute your model or the data you want to analyze on the web. While the hope is that you have access to a dataset that is directly related to your chosen field, you also have the friend to pursue a topic outside of your discipline. These are some possible, non-exhaustive resources for locating data:
+You'll need to spend some time figuring out what model is the right model to use or what data are available to answer your question. The internet is your friend for this part. You should be able to find the details you need to compute your model or the data you want to analyze on the web. While the hope is that you have access to a dataset that is directly related to your chosen field, you also have the freedom to pursue a topic outside of your discipline. These are some possible, non-exhaustive resources for locating data:
 
 * [Data.gov - Federal](http://www.data.gov/)
 * [Data.gov - State of Michigan](http://data.michigan.gov/)

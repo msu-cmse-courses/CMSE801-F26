@@ -17,6 +17,6 @@ For the pre-class assignment, you need to create 1-3 slides to present the curre
 
 ### Making your slides
 
-You can make the slides in whatever program you prefer (e.g., Google Slides, PowerPoint, or Keynote), but you need to **output your slides in PDF format, name it LastName_FirstName.pdf, and upload it to the D2L dropbox for the Day 22 pre-class assignment**.
+You can make the slides in whatever program you prefer (e.g., Google Slides, PowerPoint, or Keynote), but you need to **output your slides in PDF format, name it LastName_FirstName.pdf, and upload it to the D2L dropbox for the Day 23 pre-class assignment**.
 
 Also, **be prepared to present these slides to your classmates** so that you can discuss any concerns you might have about your idea and get their feedback.
