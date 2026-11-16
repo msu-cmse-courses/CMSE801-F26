@@ -296,15 +296,15 @@ parts:
       title: Day 22
       sections:
       - file: Day-22/Day-22_Pre-Class_RandomNumbers-STUDENT
-#       - file: Day-22/Day-22_In-Class_RandomWalks-STUDENT
+      - file: Day-22/Day-22_In-Class_RandomWalks-STUDENT
 #     # # #   - url: https://docs.google.com/presentation/d/1pkh7OU4nyaobjaKiJgcWC_-M4pM3oAgazKhk07NwVfg/
 #     # # #     title: Day 22 Slides (MSU Login)
 
 
-#     - file: Day-23/Day-23.md
-#       title: Day 23
-#       sections:
-#       - file: Day-23/Day-23_Pre-Class_ProjectWorkDay-STUDENT
+    - file: Day-23/Day-23.md
+      title: Day 23
+      sections:
+      - file: Day-23/Day-23_Pre-Class_ProjectWorkDay-STUDENT
 #       - file: Day-23/Day-23_In-Class_ProjectWorkDay-STUDENT
 #     # # #   - url: https://docs.google.com/presentation/d/1JecTe4iGcnuLL9XPVa43VfWPEj2IBF3RXuWg1paRnI8/
 #     # # #     title: Day 23 Slides (MSU Login)
