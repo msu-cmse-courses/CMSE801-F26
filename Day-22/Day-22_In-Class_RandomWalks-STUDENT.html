@@ -1,0 +1,975 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Day 22 In-class Assignment: Random Walks &#8212; CMSE 801</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Day-22/Day-22_In-Class_RandomWalks-STUDENT';</script>
+    <link rel="icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Day-23" href="../Day-23/Day-23.html" />
+    <link rel="prev" title="Day 22 Pre-Class Assignment: Random Numbers" href="Day-22_Pre-Class_RandomNumbers-STUDENT.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="CMSE 801 - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="CMSE 801 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Materials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Course_Documents/Course_Documents.html">Important Course information</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/Syllabus/syllabus.html">Syllabus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/Schedule/schedule.html">Course Schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/SoftwareSetup/SoftwareSetupGuide.html">Software Setup Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/classParticipation/classParticipation.html">Classroom Participation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Course_Documents/GenerativeAI/GenerativeAI_Policy.html">Generative AI Policy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Project/Project.html">Semester Project</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Project/SemesterProjectDetails.html">Project Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Project/ProjectProposal.html">Project Proposal - Due October 28</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Project/FinalProject_RequirementsAndGradingRubric.html">Requirements and Grading Rubric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Project/FinalProjectTemplate.html">CMSE 801 Final Project Template</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Project/ProjectDraft.html">Project Draft - Due November 22</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Project/Project_Self-Evaluation.html">Project Self-Evaluation</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/msu-cmse-courses/cmse801-supplemental/raw/main/Project/Presentation_Evaluation_Rubric.pdf">Presentation Evaluation Rubric</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Homework/Homework.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Homework/HW1/Homework-01_PythonFundamentals-STUDENT-F26.html">Homework 1 - Python Fundamentals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Homework/HW2/HW-02_NumPyMatplotlibAndODE-STUDENT.html">Homework 2 - NumPy, Matplotlib, and a Simple ODE</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/refs/heads/main/Homework/HW2/pop_data.csv">pop_data.csv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Homework/HW3/HW-03_F26_PandasAnalysisAndSolvingODEs-STUDENT.html">Homework 3 - Analyzing Data with Pandas and Solving ODEs</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/main/Homework/HW3/zipped_data_files_part1.zip">zipped_data_files_part1</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/main/Homework/HW3/zipped_data_files_part2.zip">zipped_data_files_part2</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/refs/heads/main/Homework/HW3/Example002.csv">Example002.csv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Homework/HW4/HW-04_F26_DataAnalysisWithPandasAndRegression-STUDENT.html">Homework 4 - Grouping, Visualizing, and Fitting a Model to Data</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/refs/heads/main/Homework/HW4/grape_harvest.csv">grape_harvest.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/refs/heads/main/Homework/HW4/stars.csv">stars.csv</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Daily Content</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-01/Day-01.html">Day 01</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-01/Day-01_In-Class_SortingAlgorithm-STUDENT.html">Day 1 In-Class Assignment: Introductions and Sorting Algorithms</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAZKaCUMP-JQZj6mQG9yZANAfXIokhXP63-2By8XLo81Kc?e=N4QF3I">Day 01 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-02/Day-02.html">Day 02</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-02/Day-02_Pre-Class_IntroToPython-STUDENT.html">Day 2 Pre-class Assignment: Intro to Python</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Day-02/Day-02_In-Class_OrderOfMagnitudeModeling-STUDENT.html">Day 2 In-class Assignment: Order of Magnitude Modeling</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAsDxwKy1WsQZESscQmuyYNAcZv06dZ4sIq42ScDGWk0NI?e=DpWI1l">Day 02 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-03/Day-03.html">Day 03</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-03/Day-03_Pre-Class_ListsAndLoops-STUDENT.html">Day 3: Pre-Class Assignment: Lists and Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-03/Day-03_In-Class_ListsLoopsAndSaving-STUDENT.html">Day 3 In-class Assignment: The power of compound interest</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAb9ETJNiiERaWy4yrIx4qhAdgLnvkqZzhlufoRgjSFbsc?e=eX1d6g">Day 03 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-04/Day-04.html">Day 04</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-04/Day-04_Pre-Class_IfStatementsAndFunctions-STUDENT.html">Day 4: Pre-class Assignment: Boolean logic, if statements, and an introduction to functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-04/Day-04_In-Class_IfStatementsAndFunctions-STUDENT.html">Day 4 In-class Assignment: Savings for Everyone</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQBUE1SWtyFdS7cpuhMKR9ziAZImiGk0yIZ7am1QEZSJNzY?e=CNH5Pn">Day 04 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-05/Day-05.html">Day 05</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-05/Day-05_Pre-Class_MoreFunctions-STUDENT.html">Day 5: Pre-class Assignment: Thinking more about functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-05/Day-05_In-Class_MoreFunctions-STUDENT.html">Day 5 In-class Assignment: Practicing with functions (for profit!)</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQDLt3-WevlVSIWT7hGXL7nmASHUThF9gw6ot2vXQYI5urM?e=tcg0FD">Day 05 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-06/Day-06.html">Day 06</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-06/Day-06_Pre-Class_ModulesMathAndPlots-STUDENT.html">Day 6 Pre-Class Assignment: Python Modules: Numpy and Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-06/Day-06_In-Class_MathAndPlotting-STUDENT.html">Day 6 In-class assignment: Visualizing population growth</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQA6BliAKVGfSKjQsFLkiz-_AV6ZJVXJGgF4R0BCNxhYRiQ?e=gAqGqt">Day 06 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-07/Day-07.html">Day 07</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-07/Day-07_Pre-Class_IntroToNumPy-STUDENT.html">Day 7 Pre-Class: Introduction to NumPy</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/michigan_pop.csv">michigan_pop.csv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-07/Day-07_In-Class_NumPyWithTheGreatLakes-STUDENT.html">Day 7 In-class Assignment: Exploring Great Lakes Water Levels using NumPy</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQC4UK6S6FAlTqwsLIkhTNpQAbHBjQg5M_lRHffAMQJdjXw?e=iN7YPP">Day 07 Slides (MSU Login)</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_erie.csv">lake_erie.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_michigan_huron.csv">lake_michigan_huron.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_ontario.csv">lake_ontario.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-07/lake_superior.csv">lake_superior.csv</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-08/Day-08.html">Day 08</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-08/Day-08_Pre-Class-IntroToODEs-STUDENT.html">Day 8 Pre-class Assignment: Introduction to Modeling with Ordinary Differential Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-08/Day-08_In-Class_IntroToODEs-STUDENT.html">Day 8: In-class Assignment: Introduction to Modeling with ODEs</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQCbGYeCi1IcRqONrvJOsN0-AQ30GucqeDx29bQm1a7xgWA?e=C2vB1I">Day 8 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-09/Day-09.html">Day 09</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-09/Day-09_Pre-Class_ModelingWithODEs-STUDENT.html">Day 9: Pre-class Assignment: Modeling with Ordinary Differential Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-09/Day-09_In-Class_ModelingWithODEs-STUDENT.html">Day 9: In-class Assignment: Modeling with ODEs</a></li>
+
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQC7RociakEXRIzDiwRVDKtgAYwCrHYiKafuZGCVEg_7ojw?e=eVuLhB">Day 9 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-10/Day-10.html">Day 10</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-10/Day-10_Pre-Class_ViralKinetics-STUDENT.html">Day 10 Pre-Class: Viral Kinetics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-10/Day-10_In-Class_CompartmentalModeling-STUDENT.html">Day 10 In-class Assignment: Building Compartmental Models</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQDLbK78zPJ1R5jLJoa8bEKkAR03qphuQjekNdNkhh98C-I?e=aIM12Z">Day 10 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-11/Day-11.html">Day 11</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-11/Day-11_Pre-Class_Zombies-STUDENT.html">Day 11 Pre-class Assignment: ZOMBIES!!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-11/Day-11_In-Class_CompartmentsWithSolveIVP-STUDENT.html">Day 11 In-Class Assignment: Compartmental Modeling, moving from the model to the code</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAer6LFg2lWRoiiaoF5GmW3AeHd4QZPyA3wGhxCcnJSBiA?e=HSfSv0">Day 11 Slides (MSU Login)</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAN5b_HGm3jS4lDETbk8HDPAdWoxpQRsJuiqiX4EwDLtng?e=9HEl4Y">Group presentation slides (Requires MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-12/Day-12.html">Day 12</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-12/Day-12_Pre-Class_Pandas-STUDENT.html">Day 12 Pre-class Assignment: Computational Models Overview and The Pandas Data Analysis Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-12/Day-12_In-Class_GDP-STUDENT.html">Day 12 In-Class: Cleaning and Analyzing Economic Data</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-12/GDP_Data.csv">GDP_Data.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQC-gTszoXbZTZE4olTgBenHAXBM5RPZfYsIPdEjSBlsK6w?e=Ykai0d">Day 12 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-13/Day-13.html">Day 13</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-13/Day-13_Pre-Class_Masking-STUDENT.html">Day 13 Pre-class Assignment: Normal Distributions, Masking, and Log Plots</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-13/GDP_Cleaned.csv">GDP_Cleaned.csv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-13/Day-13_In-Class_Flint-STUDENT.html">Day 13: In-class Assignment: Get the Lead Out: Understanding The Water Crisis in Flint, MI</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-13/flint_water_data.csv">flint_water_data.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQAFC6JfPpcpR4i_P7wNFmW8AcCD7ZUsKXCNqRp_y-GCjvg?e=zVGBRk">Day 13 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-14/Day-14.html">Day 14</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-14/Day-14_Pre-Class_FittingModelsAndEvaluatingFits-STUDENT.html">Day 14 Pre-Class Assignment: Fitting models, making predictions, and evaluating fits using data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-14/Day-14_In-Class_Evaluating_Fits-STUDENT.html">Day 14 In-Class Assignment: Evaluating Models</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQA11CMqBZGmS4JJSjVstnHiAZrMS7lToHeVqd8XBIGn3wg?e=8d93eL">Day 14 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-15/Day-15.html">Day 15</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-15/Day-15_Pre-Class_CurveFitting-STUDENT.html">Day 15 Pre-Class Assignment: Fitting functions to data (curve-fitting) and thinking more about models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-15/Day-15_In-Class_FittingCurves-STUDENT.html">Day 15 In-Class Assignment: (Thoughtfully) fitting models to data</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-15/pop200.csv">pop200.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-15/pop300.csv">pop300.csv</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://michiganstate-my.sharepoint.com/:p:/g/personal/nnadinke_msu_edu/IQDwkoL6n2LPQ53HLuQR51FQAbqGjTNKoHaJzQfs8qu6i5w?e=vsHHBc">Day 15 Slides (MSU Login)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-16/Day-16.html">Day 16</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-16/Day-16_Pre-Class_IntroToDataVisualization-STUDENT.html">Day 16 Pre-class Assignment: Introduction to Data Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-16/Day-16_In-Class_IntroToDataVisualization-STUDENT.html">Day 16 In-Class: Introduction to Data Visualization</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-17/Day-17.html">Day 17</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-17/Day-17_Pre-Class_2DNumPyArrays-STUDENT.html">Day 17 Pre-Class: 2D NumPy Arrays</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/msu-cmse-courses/cmse801-supplemental/blob/main/Day-17/example.jpeg?raw=true">example.jpeg</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/refs/heads/main/Day-17/cars.csv">cars.csv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-17/Day-17_In-Class_2DImageAnalysis-STUDENT.html">Day 17 In-Class Assignment: Image Analysis</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-supplemental/main/Day-17/beach.jpeg">beach.jpeg</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-supplemental/main/Day-17/landscape.jpeg">landscape.jpeg</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-supplemental/main/Day-17/zebra.png">zebra.png</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-18/Day-18.html">Day 18</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-18/Day-18_Pre-Class_ABMForestFire-STUDENT.html">Day 18 Pre-class: Agent-based models and forest fires</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../Day-18/Day-18_In-Class_ForestFiresPartI-STUDENT.html">Day 18 In-class Assignment: Modeling forest fires with an Agent-based Model (Part 1)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-19/Day-19.html">Day 19</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-19/Day-19_Pre-Class_MoreNumPyArrayManipulation-STUDENT.html">Day 19 Pre-class: More practice manipulating 2D Numpy Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-19/Day-19_In-Class_ForestFiresPartII-STUDENT.html">Day 19: In-class Assignment: Modeling forest fires with an Agent-based Model (Part 2)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-20/Day-20.html">Day 20</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-20/Day-20_Pre-Class_ObjectsClasses-STUDENT.html">Day 20 Pre-class Assignment: introduction to Object Oriented programming (OOP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-20/Day-20_In-Class_ObjectsClasses-STUDENT.html">Day 20 In-class Assignment: We have a Zoo!</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-20/Animal.py">Animal</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-21/Day-21.html">Day 21</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-21/Day-21_Pre-class_ObjectInheritanceAndComposition-STUDENT.html">Day 21 Pre-class Assignment: Object inheritance and composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-21/Day-21_In-Class_ObjectInheritanceAndComposition-STUDENT.html">Day 21 In-class Assignment: We have a Zoo! (part 2)</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-21/Animals.py">Animals.py</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-21/Zoo.py">Zoo.py</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Day-22.html">Day 22</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Day-22_Pre-Class_RandomNumbers-STUDENT.html">Day 22 Pre-Class Assignment: Random Numbers</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Day 22 In-class Assignment: Random Walks</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-23/Day-23.html">Day 23</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-23/Day-23_Pre-Class_ProjectWorkDay-STUDENT.html">Day 23 Pre-class: Project Draft Presentation Preparation</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Extra Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewAndPracticeMaterials.html">Review and Practice Materials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewNotebook_PythonFundamentals-STUDENT.html">Reviewing and practicing prior concepts: Python Fundamentals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewNotebook_Debugging-STUDENT.html">Practice with Debugging</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewNotebook_Functions-STUDENT.html">Practice with: functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewNotebook_Matplotlib-STUDENT.html">Practice with: <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewNotebook_CompartmentalModels-STUDENT.html">Practice with: Compartmental Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewNotebook_Pandas-STUDENT.html">Practice with: Pandas</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/ReviewNotebooks/weather.csv">weather.csv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReviewAndPracticeMaterials/ReviewNotebook_SolveIVP-STUDENT.html">Practice with: <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code></a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Day-22/Day-22_In-Class_RandomWalks-STUDENT.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Day 22 In-class Assignment: Random Walks</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-name-here"><p style="text-align: right;"> ✅ Put your name here.</p></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-group-member-names-here"><p style="text-align: right;"> ✅ Put your group member names here.</p></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today-s-in-class-assignment"><strong>Goals for today’s In-Class assignment</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-instructions">Assignment instructions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walks-what-and-why"><strong>Random Walks: What and Why?</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-background-and-einstein-s-relation">Historical Background and Einstein’s Relation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-dimensional-random-walk"><strong>1. One-dimensional random walk</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stop">🛑 STOP</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-up-a-solution">Coding up a solution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-permitting-two-dimensional-walk"><strong>2. (Time-permitting) Two-dimensional walk</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#congratulations-we-re-done">Congratulations, we’re done!</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="day-22-in-class-assignment-random-walks">
+<h1>Day 22 In-class Assignment: Random Walks<a class="headerlink" href="#day-22-in-class-assignment-random-walks" title="Link to this heading">#</a></h1>
+<section id="put-your-name-here">
+<h2><p style="text-align: right;"> ✅ Put your name here.</p><a class="headerlink" href="#put-your-name-here" title="Link to this heading">#</a></h2>
+<section id="put-your-group-member-names-here">
+<h3><p style="text-align: right;"> ✅ Put your group member names here.</p><a class="headerlink" href="#put-your-group-member-names-here" title="Link to this heading">#</a></h3>
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Random_walk_in2D_closeup.png" width=400px>
+</section>
+</section>
+<section id="goals-for-today-s-in-class-assignment">
+<h2><strong>Goals for today’s In-Class assignment</strong><a class="headerlink" href="#goals-for-today-s-in-class-assignment" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Model a random walk</p></li>
+<li><p>Learn about the behavior of random walks in one and two dimensions</p></li>
+<li><p>Plot both the distribution of random walks and the outcome of a single random walk</p></li>
+</ul>
+</section>
+<section id="assignment-instructions">
+<h2>Assignment instructions<a class="headerlink" href="#assignment-instructions" title="Link to this heading">#</a></h2>
+<p>Work with your group to complete this assignment. Instructions for submitting this assignment are at the end of the notebook. The assignment is due at the end of class.</p>
+</section>
+<hr class="docutils" />
+<section id="random-walks-what-and-why">
+<h2><strong>Random Walks: What and Why?</strong><a class="headerlink" href="#random-walks-what-and-why" title="Link to this heading">#</a></h2>
+<p>Random walks are a great first step towards modeling dynamical systems in which there is a random component.  Here we will use our knowledge of loops and if-statements to run random walk simulations, study their properties, and connect them to the Einstein diffusion relation. But, random walks like this are used to model a wide range of systems, including financial markets, biochemical reaction networks, atomic-scale motions, and much more.</p>
+<p>In many situations, it is very useful to think of processes with randomness as a succession of random steps.  This can describe a wide variety of phenomena - the behavior of the stock market, models of population dynamics in ecosystems, the properties of polymers, the movement of molecules in liquids or gases, modeling neurons in the brain, or in <a class="reference external" href="http://www.math.cmu.edu/~pmelsted/papers/pagerank.pdf">building Google’s PageRank search model</a>.  This type of model is known as a <a class="reference external" href="https://en.wikipedia.org/wiki/Random_walk">“random walk”</a>, and while the process being modeled can vary tremendously, the underlying process is simple.  In this project, we are going to model such a random walk and learn about some of its behaviors!</p>
+</section>
+<section id="historical-background-and-einstein-s-relation">
+<h2>Historical Background and Einstein’s Relation<a class="headerlink" href="#historical-background-and-einstein-s-relation" title="Link to this heading">#</a></h2>
+<p><img alt="Brown" src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Brownian_motion_large.gif" /></p>
+<p>Random walks are sometimes referred to as <a class="reference external" href="https://en.wikipedia.org/wiki/Brownian_motion">Brownian motion</a>, which referred originally to the motions of a single grain of pollen suspended in a liquid solution.  It is named after Robert Brown, who studied pollen under a microscope in 1829 in an attempt to understand the reproductive process in plants.  But in fact a little Wikipedia-ing reveals this phenomenon has been documented much earlier.  An excerpt from a poem by Lucreitus in 60 BC is remarkably on point:</p>
+<blockquote>
+<div><p>“Observe what happens when sunbeams are admitted into a building and shed light on its shadowy places. You will see a multitude of tiny particles mingling in a multitude of ways… their dancing is an actual indication of underlying movements of matter that are hidden from our sight… It originates with the atoms which move of themselves [i.e., spontaneously]. Then those small compound bodies that are least removed from the impetus of the atoms are set in motion by the impact of their invisible blows and in turn cannon against slightly larger bodies. So the movement mounts up from the atoms and gradually emerges to the level of our senses, so that those bodies are in motion that we see in sunbeams, moved by blows that remain invisible.”</p>
+</div></blockquote>
+<p>This remained surprisingly challenging to understand until Einstein in 1905, who rigorously tied the motion of the large particles (e.g. pollen) to the motions of many atoms (e.g., the water molecules the pollen was in).  What Brown saw under his microscope was a jiggling pollen grain, and Einstein showed that the jitter was due to many rapid collisions with water molecules. See the animation above.</p>
+<p>A prediction of Einstein is the “Einstein diffusion relation” (here, in 3 dimensions):</p>
+<p><span class="math notranslate nohighlight">\( \left&lt; \left(r(t)-r(0)\right)^2\right&gt; = 6Dt\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(r(t)\)</span> is the position of a particle at time <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(D\)</span> is the diffusion coefficient, and the angle brackets denote an average over an ensemble of measurements.</p>
+<p><strong>What does this mean?</strong> We measure the distance from the particle’s initial position, <span class="math notranslate nohighlight">\(r(0)\)</span>, which is <span class="math notranslate nohighlight">\(|r(t) - r(0)|\)</span>, over many different experiments and find that the mean squared distance (defined in the angle brackets above) increases linearly with time. You might ask: <em>is that so surprising?</em> It is when you consider the fact that Brown could not see the water molecules in his microscope, so the motion might be predicted to be given by <span class="math notranslate nohighlight">\(r = vt\)</span>, which predicts an increase in time of the squared distance of <span class="math notranslate nohighlight">\(t^2\)</span>; because the particle under observation (pollen in this case) can reverse directions over and over, its distance from the origin increases more slowly as just <span class="math notranslate nohighlight">\(t\)</span>. The slope is the diffusion coefficient. (This could be people buying and selling a stock over and over.)</p>
+<p><strong>Today we are going to code random walks and test their ability to model the behavior of diffusive particles.</strong></p>
+</section>
+<hr class="docutils" />
+<section id="one-dimensional-random-walk">
+<h2><strong>1. One-dimensional random walk</strong><a class="headerlink" href="#one-dimensional-random-walk" title="Link to this heading">#</a></h2>
+<p>Let’s start with the simplest case: a 1D random walk; that is, a random walk on a line.</p>
+<p>Imagine that you draw a line on the floor, with a mark every foot.  You start at the middle of the line (the point you have decided is the “origin”, at <span class="math notranslate nohighlight">\(x=0\)</span>).  You then flip a “fair” coin <span class="math notranslate nohighlight">\(N\)</span> times (“fair” means that it has equal chances of coming up heads and tails).  Every time the coin comes up heads, you take one step to the right (in the + direction).  Every time it comes up tails, you take a step to the left (in the - direction).</p>
+<p><strong>The questions we’re going to answer:</strong></p>
+<ul class="simple">
+<li><p>After <span class="math notranslate nohighlight">\(N_{step}\)</span> coin flips and steps, how far are you from the origin?</p></li>
+<li><p>If you repeat this experiment <span class="math notranslate nohighlight">\(N_{trial}\)</span> times, what will the distribution of distances from the origin be, and what is the mean distance that you go from the origin?  (Note: “distance” means the absolute value of distance from the origin!)</p></li>
+</ul>
+<p><strong>First:</strong> as a group, come up with a solution to this coding problem on your whiteboard.  Use a flow chart, pseudo-code, diagrams, or anything else that you need to get started.  Check with an instructor before you continue! <strong>Make sure you come up with a plan for not only how you are going to code your random walk, but how you will keep track of every new trial/walk you run.</strong></p>
+<p><strong>Note</strong>: Once you’ve drafted your plan, we’re going to pursue one possible path toward a solution in the rest of the notebook, this may be different than how you planned it out. If this is the case, think about how the content below compares to the plan you came up with and reflect on which option you like more and why.</p>
+<hr class="docutils" />
+<section id="stop">
+<h3>🛑 STOP<a class="headerlink" href="#stop" title="Link to this heading">#</a></h3>
+<p>Check in with an instructor before moving on! Talk them through your plan!</p>
+</section>
+<hr class="docutils" />
+<section id="coding-up-a-solution">
+<h3>Coding up a solution<a class="headerlink" href="#coding-up-a-solution" title="Link to this heading">#</a></h3>
+<p><strong>✅ Do This:</strong> After checking in with your instructors, <strong>in pairs</strong>, write a function, called <code class="docutils literal notranslate"><span class="pre">step1d</span></code>, that uses a random number generator to <strong>return</strong> instructions to take a step either left or right, which means that it should return -1 or +1.  Call the function a few times and print out the value it returns to make sure it works - we’ll use this as the basis of our random walk model.</p>
+<p>If you don’t have a full group of 4 at your table, just work as a single group.</p>
+<p><strong>Check with other pairs at your table to compare their method for writing the step function to yours.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import libraries</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="c1"># set the style of the plots</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;ticks&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;notebook&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># put your code here.  </span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>✅ <strong>Do This:</strong> Now, <strong>as a group</strong> write a code in the space provided below to do a <strong>single</strong> random walk with <span class="math notranslate nohighlight">\(N_{step} = 1000\)</span> using the function you have created.  You’ll start at <span class="math notranslate nohighlight">\(x=0\)</span> and take <span class="math notranslate nohighlight">\(N_{step}\)</span> consecutive steps to the right or left. At the end print the value of <span class="math notranslate nohighlight">\(x\)</span>.  Where did your particle go?  Run it a couple of times to see how this changes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># put your code here.  </span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Okay, great!  But, it would be much better if we could visualize what is happening.</p>
+<p>✅ <strong>Do This:</strong> Copy the code from above and modify it to keep track of the number of each step and your distance from the origin, and plot it!</p>
+<p>(<strong>Hint:</strong> start with empty arrays or lists, and fill or append to them.)  Run this a couple of times to see how it changes. You should get something that ends up looking like this:</p>
+<img src="https://raw.githubusercontent.com/msu-cmse-courses/cmse801-supplemental/main/Day-22/random_1.png" width=400px>
+<p><strong>Don’t forget to label your axis.</strong></p>
+<p><strong>Advanced</strong>: If you save the path of your particle as <code class="docutils literal notranslate"><span class="pre">all_x</span></code>, the extra code cell below will animate the random walk for you.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># put your code here.  </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this will animate the random walk</span>
+<span class="c1"># IMPORTANT NOTE: This will take a while to run!! Be prepared to interrupt the kernel if you&#39;re tired of waiting :)</span>
+
+<span class="c1"># other important imports</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">clear_output</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">y_min</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">all_x</span><span class="p">)</span>
+<span class="n">y_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">all_x</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">all_x</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_x</span><span class="p">)):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">all_x</span><span class="p">[:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;0.75&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">all_x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Timestep&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Distance from 0&#39;</span><span class="p">);</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>  
+    <span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>            <span class="c1"># Reset display</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final distance:&quot;</span><span class="p">,</span> <span class="n">all_x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, we want to see how several of these trajectories look at the same time.</p>
+<p>✅ <strong>Do This:</strong> Copy and paste your code from above (the static image with <em>distance from 0</em> vs <em>timestep</em>) and add an additional loop where you make five separate trajectories, and plot each of the complete trajectories on the same plot.  There is more than one way that you could do this. You could store the trajectories using a 2D array or by creating a list composed of lists of trajectories.  Alternatively, you could all call the plot command within your loop and avoid storing the trajectories completely. The structure of the code is up to you!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># put your code here.  </span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>✅ <strong>Do This:</strong> Ok.  Now we’re getting somewhere.  <strong>Let’s increase the number of trajectories from 5 to 1000.</strong>  But what about all the memory that will be required to store that many trajectories? Let’s be nice to our computers and not make them keep track of every single walk, just the final points.  <strong>So, after copying and pasting your code from above, comment out the code that either saved the trajectories or plotted every walk and instead just store the final position from every random walk in a new list.</strong></p>
+<p>Once you have code that stores all of the final positions, <strong>calculate <span class="math notranslate nohighlight">\(\left&lt; \left |r(t)-r(0)\right |^2\right&gt;\)</span></strong>, which is the equation from above and is the <strong>average squared distance</strong> of the walk. What is <span class="math notranslate nohighlight">\(r(0)\)</span> in this case? (Note: we’re keeping track of average squared distance because that makes it easier to do the next part!)</p>
+<p><strong>Also, plot a histogram of the final distances.</strong></p>
+<p><strong>Hint:</strong> You may want to use a numpy array and append distances to it, then you can square the values in the array and compute the mean of those values using the NumPy function.  Look at the help for <code class="docutils literal notranslate"><span class="pre">np.append()</span></code>! Alternatively, you can store the values in a list and then convert them to a NumPy array using <code class="docutils literal notranslate"><span class="pre">np.array()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># put your code here.  </span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’re almost ready for Einstein!  All we have to do is add another layer to our loop structure.  We want to see how far the particle goes, on average, <strong>as a function of the number of steps</strong> (which is actually just a proxy for time, since the size of the time steps are all the same).</p>
+<p>Below we have extended the code you wrote above to get the average of the square of the final position at 10 different time points (t = 100, 200, …, 1000), and save the results to a list, and then plotted the results versus time below, and use axis labels.</p>
+<p>✅ <strong>Question:</strong> Run following codes and given the output plot, is this what you would have expected from the Einstein diffusion equation?  Why or why not?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">avgs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">walk_lengths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">walk_lengths</span><span class="p">:</span>
+
+    <span class="n">distances</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># how many total steps do I want to take?</span>
+    <span class="n">nsteps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span> <span class="c1"># Loop over trials/experiments</span>
+
+        <span class="c1">#Define starting position</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="c1"># Create array for storing information</span>
+        <span class="n">all_x</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Add the first values to the list</span>
+        <span class="n">all_x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nsteps</span><span class="p">):</span> <span class="c1"># Walk!</span>
+
+            <span class="c1"># Take my step</span>
+            <span class="n">x</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+
+            <span class="c1"># Append my new location to my walk</span>
+            <span class="n">all_x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="n">distances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="n">distances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">distances</span><span class="p">)</span>
+    <span class="n">distances_squared</span> <span class="o">=</span> <span class="n">distances</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">avg_distance_sq</span> <span class="o">=</span> <span class="n">distances_squared</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">avgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">avg_distance_sq</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">walk_lengths</span><span class="p">,</span><span class="n">avgs</span><span class="p">,</span> <span class="s1">&#39;--o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Walk Length&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Avg Sq Distance&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">curve_fit</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">linear_model</span><span class="p">(</span> <span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">b</span>
+
+<span class="n">popt</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">linear_model</span><span class="p">,</span> <span class="n">walk_lengths</span><span class="p">,</span> <span class="n">avgs</span><span class="p">)</span>
+<span class="n">fit</span> <span class="o">=</span> <span class="n">linear_model</span><span class="p">(</span><span class="n">walk_lengths</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">walk_lengths</span><span class="p">,</span><span class="n">avgs</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;k&#39;</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">walk_lengths</span><span class="p">,</span> <span class="n">fit</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Walk Length&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Avg Sq Distance&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">popt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Put your answer here!</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="time-permitting-two-dimensional-walk">
+<h2><strong>2. (Time-permitting) Two-dimensional walk</strong><a class="headerlink" href="#time-permitting-two-dimensional-walk" title="Link to this heading">#</a></h2>
+<p>Now, we’re going to do the same thing, but in two dimensions, x and y. This time, you will start at the origin, pick a random direction (up, down, left, or right), and take one step in that direction.  You will then randomly pick a new direction, take a step, and so on, for a total of <span class="math notranslate nohighlight">\(N_{step}\)</span> steps.</p>
+<p><strong>Questions:</strong></p>
+<ul class="simple">
+<li><p>After <span class="math notranslate nohighlight">\(N_{step}\)</span> random steps, how far are you from the origin?</p></li>
+<li><p>If you repeat this experiment <span class="math notranslate nohighlight">\(N_{trial}\)</span> times, what will the distribution of distances from the origin be, and what is the mean distance that you go from the origin?  (Note: “distance” means the absolute value of distance from the origin!)  Does the mean value differ from Part 1?</p></li>
+<li><p>For one trial, plot out the steps taken in the x-y plane.  Does it look random?</p></li>
+</ul>
+<p><strong>First:</strong> As before, come up with a solution to this problem on your whiteboard as a group. Check with an instructor before you continue!</p>
+<p><strong>Then:</strong> In pairs, write a code in the space provided below to answer these questions!  (Hint: Start by modifying your coin-flip code to return an integer that is 0,1,2, or 3 (left, right, up, down).  How do you modify your function?)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># put your code here.  </span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>✅ <strong>Do This:</strong> As above, loop over this, but this time use the following rule:  (0 =&gt; go left, 1 =&gt; go right, 2 =&gt; go up, 3 =&gt; go down).  Start at x=0,y=0, and run for 1000 steps, while keeping track of the trajectory.  Plot the result as x versus y.  Do this a few times and see how it changes! (Again, if you want to try to animate this, see the animation code cell in Part 1 above.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># put your code here.  </span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>✅ <strong>Do This:</strong> Now plot the x and y values versus time, individually.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># put your code here.  </span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>✅ <strong>Do This:</strong>  How do these curves compare to the results of your 1D random walk?</p>
+<p><em>Answer here:</em></p>
+<p>✅ <strong>Question:</strong>  Recall the Einstein equation for 3 dimensions:  <span class="math notranslate nohighlight">\(\left&lt;(r(t)-r(0))^2\right&gt; = 6Dt\)</span>.  Given that <span class="math notranslate nohighlight">\(r(0) = 0\)</span> and that <span class="math notranslate nohighlight">\(r^2 = x^2 + y^2 + z^2\)</span>.  What do you think the corresponding Einstein equations are for 1D and 2D?</p>
+<p><em>Answer here:</em></p>
+<hr class="docutils" />
+<section id="congratulations-we-re-done">
+<h3>Congratulations, we’re done!<a class="headerlink" href="#congratulations-we-re-done" title="Link to this heading">#</a></h3>
+<p>Now, you just need to submit this assignment by uploading it to the course <a href="https://d2l.msu.edu/">Desire2Learn</a> web page for today’s submission folder (Don’t forget to add your names in the first cell).</p>
+<p>© Copyright 2026,  The Department of Computational Mathematics, Science and Engineering at Michigan State University.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Day-22"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Day-22_Pre-Class_RandomNumbers-STUDENT.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Day 22 Pre-Class Assignment: Random Numbers</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Day-23/Day-23.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Day-23</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-name-here"><p style="text-align: right;"> ✅ Put your name here.</p></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#put-your-group-member-names-here"><p style="text-align: right;"> ✅ Put your group member names here.</p></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-for-today-s-in-class-assignment"><strong>Goals for today’s In-Class assignment</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-instructions">Assignment instructions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walks-what-and-why"><strong>Random Walks: What and Why?</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-background-and-einstein-s-relation">Historical Background and Einstein’s Relation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-dimensional-random-walk"><strong>1. One-dimensional random walk</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stop">🛑 STOP</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-up-a-solution">Coding up a solution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-permitting-two-dimensional-walk"><strong>2. (Time-permitting) Two-dimensional walk</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#congratulations-we-re-done">Congratulations, we’re done!</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Department of Computational Mathematics, Science and Engineering at Michigan State University
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
