@@ -68,8 +68,8 @@ parts:
         title: grape_harvest.csv
       - url: https://raw.githubusercontent.com/msu-cmse-courses/CMSE801-F26/refs/heads/main/Homework/HW4/stars.csv
         title: stars.csv
-#       # - file: Homework/Spring2026/Homework-05/Homework-05_OOP_ABM-STUDENT
-#       #   title: Homework 5 - Python Objects and ABM
+      - file: Homework/HW5/HW-05_F26_OOP_ABM-STUDENT
+        title: Homework 5 - Object Oriented Programming and Agent Based Modeling
 
 #### DAILY CONTENT SECTION #### 
   - caption: Daily Content
