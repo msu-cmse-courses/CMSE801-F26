@@ -63,11 +63,11 @@ When you're finding datasets online you should make sure to record exactly where
 
 The following is a tentative plan for the timeline we'll be following to ensure that you successfully complete your assignment. There may end up being slight shifts in these days based on our progress through the course material.
 
-* **October 27/28**: Introduction to project. Project Plan Check-in assigned.
+* **October 28**: Introduction to project. Project Plan Check-in assigned.
 
 * **November 22**: Draft of Semester Project Due; *You will submit a preliminary draft of your project notebook, along with 1-2 slides explaining your project and highlighting your work/results so far.*
 
-* **November 23**: Structured Project Work Day: *All students will give *lightning presentations*, where everyone will give a short (<90 second, 2 slides max) presentation of their project in class. They will receive feedback from their classmates about their project.*
+* **November 23**: Structured Project Work Day: *You will give a short (~4 minute) presentation of your project draft to your group, and then receive feedback from your group members on the work you have done so far.*
 
 * **December 6**: Semester Project Due
 
